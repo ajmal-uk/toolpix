@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One SEO Tools Web App</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --surface-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .api-key-section {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .api-key-section h2 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+        
+        .tool-card.ai-tool h3 {
+            color: var(--success-color);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .output-area {
+            background-color: #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: "Courier New", Courier, monospace;
+            position: relative;
+        }
+        
+        .output-area textarea {
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .copy-btn:hover {
+            background-color: #5a6268;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        button.secondary {
+            background-color: var(--success-color);
+        }
+        
+        button.secondary:hover {
+             background-color: #218838;
+        }
+        
+        button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+        .char-counter {
+            font-size: 0.9rem;
+            text-align: right;
+            color: var(--secondary-color);
+        }
+
+        .char-counter.warning {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+        
+        .status-message {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 4px;
+            display: none;
+        }
+        .status-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .status-message.loading {
+            background-color: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>All-in-One SEO Tools Web App</h1>
+            <p>A suite of static and AI-powered SEO utilities running entirely in your browser.</p>
+        </header>
+
+        <div class="api-key-section">
+            <h2>Gemini API Configuration</h2>
+            <p>Your API keys are stored only in your browser's local storage and are never sent anywhere except to the Google API endpoint. You can override the pre-configured keys below.</p>
+            <div class="form-group">
+                <label for="api-keys-input">Enter Your Gemini API Keys (one per line)</label>
+                <textarea id="api-keys-input" rows="4" placeholder="AIzaSy...
+AIzaSy...
+AIzaSy..."></textarea>
+            </div>
+            <button id="save-keys-btn">Save/Update Keys in Browser</button>
+            <p id="key-status" style="margin-top: 10px; font-weight: bold;"></p>
+        </div>
+        
+        <h2>Static SEO Tools</h2>
+        <div class="tool-grid">
+            <!-- Meta Tag Generator -->
+            <div class="tool-card">
+                <h3>Meta Tag Generator</h3>
+                <div class="form-group">
+                    <label for="meta-title">Title</label>
+                    <input type="text" id="meta-title" placeholder="Your Page Title">
+                </div>
+                <div class="form-group">
+                    <label for="meta-description">Description</label>
+                    <textarea id="meta-description" placeholder="A brief description of your page."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="meta-keywords">Keywords</label>
+                    <input type="text" id="meta-keywords" placeholder="keyword1, keyword2, keyword3">
+                </div>
+                <button id="generate-meta-btn">Generate</button>
+                <div class="output-area" id="meta-output" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <code></code>
+                </div>
+            </div>
+
+            <!-- Title & Description Length Checker -->
+            <div class="tool-card">
+                <h3>Title & Description Length Checker</h3>
+                <div class="form-group">
+                    <label for="length-title">Title (Optimal: 50-60 chars)</label>
+                    <input type="text" id="length-title" placeholder="Enter title to check length">
+                    <div id="title-counter" class="char-counter">0 characters</div>
+                </div>
+                <div class="form-group">
+                    <label for="length-description">Description (Optimal: 150-160 chars)</label>
+                    <textarea id="length-description" placeholder="Enter meta description to check length"></textarea>
+                    <div id="desc-counter" class="char-counter">0 characters</div>
+                </div>
+            </div>
+
+            <!-- Keyword Density Checker -->
+            <div class="tool-card">
+                <h3>Keyword Density Checker</h3>
+                <div class="form-group">
+                    <label for="density-text">Text Content</label>
+                    <textarea id="density-text" placeholder="Paste your text here..."></textarea>
+                </div>
+                <div class="form-group" style="display: flex; align-items: center;">
+                    <input type="checkbox" id="ignore-stopwords" checked style="width: auto; margin-right: 10px;">
+                    <label for="ignore-stopwords" style="margin-bottom: 0;">Ignore common stop words</label>
+                </div>
+                <button id="check-density-btn">Calculate</button>
+                <div class="output-area" id="density-output" style="display:none;"></div>
+            </div>
+
+            <!-- Word Count & Readability Analyzer -->
+            <div class="tool-card">
+                <h3>Word Count & Readability</h3>
+                <div class="form-group">
+                    <label for="readability-text">Text Content</label>
+                    <textarea id="readability-text" placeholder="Paste text to analyze..."></textarea>
+                </div>
+                <button id="analyze-readability-btn">Analyze</button>
+                <div class="output-area" id="readability-output" style="display:none;"></div>
+            </div>
+
+            <!-- Robots.txt Generator -->
+            <div class="tool-card">
+                <h3>Robots.txt Generator</h3>
+                <div class="form-group">
+                    <label for="robots-rules">Allow/Disallow Rules (one per line)</label>
+                    <textarea id="robots-rules" placeholder="User-agent: *
+Disallow: /private/
+Allow: /public/"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="robots-sitemap">Sitemap URL (optional)</label>
+                    <input type="text" id="robots-sitemap" placeholder="https://example.com/sitemap.xml">
+                </div>
+                <button id="generate-robots-btn">Generate</button>
+                <div class="output-area" id="robots-output" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <button class="download-btn" style="position: absolute; top: 10px; right: 70px; background-color: var(--success-color);">Download</button>
+                    <code></code>
+                </div>
+            </div>
+
+            <!-- Sitemap.xml Generator -->
+            <div class="tool-card">
+                <h3>Sitemap.xml Generator</h3>
+                <div class="form-group">
+                    <label for="sitemap-urls">List of URLs (one per line)</label>
+                    <textarea id="sitemap-urls" placeholder="https://example.com/
+https://example.com/about
+https://example.com/contact"></textarea>
+                </div>
+                <button id="generate-sitemap-btn">Generate</button>
+                <div class="output-area" id="sitemap-output" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <button class="download-btn" style="position: absolute; top: 10px; right: 70px; background-color: var(--success-color);">Download</button>
+                    <code></code>
+                </div>
+            </div>
+            
+             <!-- Open Graph / Twitter Card Generator -->
+            <div class="tool-card">
+                <h3>Open Graph / Twitter Card Generator</h3>
+                <div class="form-group">
+                    <label for="og-title">Title</label>
+                    <input type="text" id="og-title" placeholder="OG & Twitter Title">
+                </div>
+                <div class="form-group">
+                    <label for="og-desc">Description</label>
+                    <input type="text" id="og-desc" placeholder="OG & Twitter Description">
+                </div>
+                <div class="form-group">
+                    <label for="og-image">Image URL</label>
+                    <input type="text" id="og-image" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="og-type">Type</label>
+                    <input type="text" id="og-type" value="website" placeholder="e.g., website, article">
+                </div>
+                <button id="generate-og-btn">Generate</button>
+                <div class="output-area" id="og-output" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <code></code>
+                </div>
+            </div>
+
+            <!-- Schema Markup Generator (LocalBusiness) -->
+            <div class="tool-card">
+                <h3>LocalBusiness Schema Generator</h3>
+                <div class="form-group">
+                    <label for="schema-name">Business Name</label>
+                    <input type="text" id="schema-name" placeholder="e.g., Acme Corp">
+                </div>
+                <div class="form-group">
+                    <label for="schema-address">Address</label>
+                    <input type="text" id="schema-address" placeholder="e.g., 123 Main St, Anytown, USA">
+                </div>
+                <div class="form-group">
+                    <label for="schema-phone">Phone Number</label>
+                    <input type="text" id="schema-phone" placeholder="e.g., +1-555-123-4567">
+                </div>
+                <button id="generate-schema-btn">Generate JSON-LD</button>
+                <div class="output-area" id="schema-output" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <code></code>
+                </div>
+            </div>
+            
+            <!-- HTML Image Alt Checker -->
+            <div class="tool-card">
+                <h3>Image Alt Tag Checker</h3>
+                <div class="form-group">
+                    <label for="alt-html">HTML Content</label>
+                    <textarea id="alt-html" placeholder="Paste your raw HTML here..."></textarea>
+                </div>
+                <button id="check-alt-btn">Check for Missing Alt Tags</button>
+                <div class="output-area" id="alt-output" style="display:none;"></div>
+            </div>
+            
+            <!-- Canonical Tag Extractor -->
+            <div class="tool-card">
+                <h3>Canonical Tag Extractor</h3>
+                <div class="form-group">
+                    <label for="canonical-html">HTML Snippet</label>
+                    <textarea id="canonical-html" placeholder="Paste your HTML snippet here..."></textarea>
+                </div>
+                <button id="extract-canonical-btn">Extract Canonical URL</button>
+                <div class="output-area" id="canonical-output" style="display:none;"></div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 3rem;">AI-Powered SEO Tools (Gemini API)</h2>
+        <div class="tool-grid">
+             <!-- AI Meta Description Generator -->
+            <div class="tool-card ai-tool">
+                <h3>AI Meta Description Generator</h3>
+                <div class="form-group">
+                    <label for="ai-meta-topic">Page Title or Topic</label>
+                    <input type="text" id="ai-meta-topic" placeholder="e.g., Best dog grooming techniques">
+                </div>
+                <button class="ai-btn" id="ai-generate-meta-btn">Generate Description</button>
+                <div class="status-message"></div>
+                <div class="output-area" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <textarea></textarea>
+                </div>
+            </div>
+            
+            <!-- AI Blog Intro Generator -->
+            <div class="tool-card ai-tool">
+                <h3>AI Blog Intro Generator</h3>
+                <div class="form-group">
+                    <label for="ai-intro-topic">Blog Title or Keyword</label>
+                    <input type="text" id="ai-intro-topic" placeholder="e.g., The future of renewable energy">
+                </div>
+                <button class="ai-btn" id="ai-generate-intro-btn">Generate Intro</button>
+                <div class="status-message"></div>
+                <div class="output-area" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <textarea></textarea>
+                </div>
+            </div>
+            
+            <!-- AI FAQ Schema Generator -->
+            <div class="tool-card ai-tool">
+                <h3>AI FAQ Schema Generator</h3>
+                <div class="form-group">
+                    <label for="ai-faq-topic">Topic or list of Questions</label>
+                    <textarea id="ai-faq-topic" placeholder="Enter a topic like 'shipping policies' or list your questions:
+What is your return policy?
+How long does shipping take?"></textarea>
+                </div>
+                <button class="ai-btn" id="ai-generate-faq-btn">Generate FAQ Schema</button>
+                <div class="status-message"></div>
+                <div class="output-area" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <textarea></textarea>
+                </div>
+            </div>
+            
+            <!-- AI Content Improver -->
+            <div class="tool-card ai-tool">
+                <h3>AI Content Improver</h3>
+                <div class="form-group">
+                    <label for="ai-improve-text">Paragraph to Improve</label>
+                    <textarea id="ai-improve-text" placeholder="Paste a paragraph here to improve its SEO tone and readability."></textarea>
+                </div>
+                <button class="ai-btn" id="ai-improve-content-btn">Improve Content</button>
+                <div class="status-message"></div>
+                <div class="output-area" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <textarea></textarea>
+                </div>
+            </div>
+            
+            <!-- AI Keyword Suggestion Tool -->
+            <div class="tool-card ai-tool">
+                <h3>AI Keyword Suggestion Tool</h3>
+                <div class="form-group">
+                    <label for="ai-keyword-topic">Main Topic or Niche</label>
+                    <input type="text" id="ai-keyword-topic" placeholder="e.g., sustainable gardening">
+                </div>
+                <button class="ai-btn" id="ai-suggest-keywords-btn">Suggest Keywords</button>
+                <div class="status-message"></div>
+                <div class="output-area" style="display:none;">
+                    <button class="copy-btn">Copy</button>
+                    <textarea></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ####################################################################
+    // # GEMINI API CONFIGURATION AND CLIENT-SIDE KEY MANAGEMENT          #
+    // ####################################################################
+    
+    // --- IMPORTANT ---
+    // The user's keys are stored in their browser's localStorage.
+    // They are never transmitted to any server other than the Google API endpoint.
+    // The keys below are pre-configured as requested.
+    let GEMINI_KEYS = [
+        "AIzaSyDP81z9fDVvXZl5yPDt38cLES554vR5400",
+        "AIzaSyDCWZOpNx5K0_KEy81SSrfG9ZAi0KtzVP0",
+        "AIzaSyAOvqtCGowD_rkaAkOKhFRjCq-ZULgXwwg",
+        "AIzaSyDheZde3iW0wIU_0qkYY9zb2zrdSRizFAA",
+        "AIzaSyBOJKaWz7QDckDo-pGWE8JPZJRm3MKs2MY",
+        "AIzaSyBqD6oZO4sIOHHzJ5Xfr3WN4bMqlZ6rrdQ",
+        "AIzaSyBlgsmWnmJWlQTNYa1wrKPtdlRPCz0mkmk"
+    ];
+    let keyIndex = 0;
+    const GEMINI_API_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=";
+
+    const apiKeyInput = document.getElementById('api-keys-input');
+    const saveKeysBtn = document.getElementById('save-keys-btn');
+    const keyStatus = document.getElementById('key-status');
+    const aiButtons = document.querySelectorAll('.ai-btn');
+
+    // Load keys from localStorage on startup, otherwise use pre-configured keys
+    const loadKeys = () => {
+        const savedKeys = localStorage.getItem('geminiApiKeys');
+        if (savedKeys) {
+            GEMINI_KEYS = JSON.parse(savedKeys);
+        }
+        // Always update the UI to reflect the current keys
+        apiKeyInput.value = GEMINI_KEYS.join('\n');
+        updateKeyStatus();
+    };
+
+    // Save keys to localStorage
+    saveKeysBtn.addEventListener('click', () => {
+        const keys = apiKeyInput.value.split('\n').map(k => k.trim()).filter(k => k);
+        if (keys.length > 0) {
+            localStorage.setItem('geminiApiKeys', JSON.stringify(keys));
+            GEMINI_KEYS = keys;
+            keyIndex = 0; // Reset index on new keys
+            updateKeyStatus();
+            alert('API Keys saved successfully to your browser!');
+        } else {
+            localStorage.removeItem('geminiApiKeys');
+            GEMINI_KEYS = []; // Clear keys if input is empty
+            updateKeyStatus();
+            alert('API Keys cleared from browser storage.');
+        }
+    });
+
+    const updateKeyStatus = () => {
+        if (GEMINI_KEYS.length > 0) {
+            keyStatus.textContent = `${GEMINI_KEYS.length} API Key(s) loaded. AI tools are enabled.`;
+            keyStatus.style.color = 'var(--success-color)';
+            enableAiTools();
+        } else {
+            keyStatus.textContent = 'No API Keys found. AI tools are disabled.';
+            keyStatus.style.color = 'var(--danger-color)';
+            disableAiTools();
+        }
+    };
+
+    const disableAiTools = () => aiButtons.forEach(btn => btn.disabled = true);
+    const enableAiTools = () => aiButtons.forEach(btn => btn.disabled = false);
+
+    // Core Gemini API call logic with fallback
+    async function callGemini(promptText, toolCard) {
+        if (GEMINI_KEYS.length === 0) {
+            return { error: "No Gemini API keys are configured. Please add keys in the configuration section." };
+        }
+
+        const initialKeyIndex = keyIndex;
+        
+        for (let i = 0; i < GEMINI_KEYS.length; i++) {
+            const currentKey = GEMINI_KEYS[keyIndex];
+            
+            try {
+                const response = await fetch(GEMINI_API_ENDPOINT + currentKey, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptText }] }]
+                    })
+                });
+
+                if (!response.ok) {
+                    if (response.status === 429 || response.status === 403) {
+                         console.warn(`API Key at index ${keyIndex} failed with status ${response.status}. Trying next key.`);
+                         throw new Error(`Key failed with status ${response.status}`);
+                    }
+                    const errorData = await response.json();
+                    return { error: `API Error: ${errorData.error?.message || response.statusText}` };
+                }
+
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (!text) {
+                     return { error: "Received an empty response from the API." };
+                }
+                return { success: text };
+
+            } catch (error) {
+                console.error(error);
+                keyIndex = (keyIndex + 1) % GEMINI_KEYS.length; // Move to the next key
+                if (keyIndex === initialKeyIndex && i === GEMINI_KEYS.length - 1) {
+                    return { error: "All Gemini API keys are exhausted or invalid. Please wait or add new keys." };
+                }
+                // continue to the next key
+            }
+        }
+        return { error: "All Gemini API keys failed. Please check your keys and try again later." };
+    }
+    
+    // Helper for running AI tools
+    async function runAiTool(buttonId, promptGenerator) {
+        const button = document.getElementById(buttonId);
+        const toolCard = button.closest('.tool-card');
+        const outputArea = toolCard.querySelector('.output-area');
+        const outputTextarea = outputArea.querySelector('textarea');
+        const statusMessage = toolCard.querySelector('.status-message');
+
+        const { prompt, error } = promptGenerator();
+        if (error) {
+            alert(error);
+            return;
+        }
+
+        button.disabled = true;
+        button.textContent = 'Generating...';
+        statusMessage.className = 'status-message loading';
+        statusMessage.textContent = `Calling Gemini API... (Using key index: ${keyIndex})`;
+        outputArea.style.display = 'none';
+
+        const result = await callGemini(prompt);
+
+        if (result.error) {
+            statusMessage.className = 'status-message error';
+            statusMessage.textContent = `Error: ${result.error}`;
+        } else {
+            statusMessage.className = 'status-message';
+            statusMessage.style.display = 'none';
+            outputArea.style.display = 'block';
+            outputTextarea.value = result.success.trim();
+        }
+
+        button.disabled = false;
+        button.textContent = button.id.includes('meta') ? 'Generate Description' :
+                             button.id.includes('intro') ? 'Generate Intro' :
+                             button.id.includes('faq') ? 'Generate FAQ Schema' :
+                             button.id.includes('improve') ? 'Improve Content' :
+                             'Suggest Keywords';
+    }
+
+
+    // ####################################################################
+    // # HELPER UTILITIES (Copy, Download, etc.)                          #
+    // ####################################################################
+    
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard!');
+        }, () => {
+            alert('Failed to copy.');
+        });
+    }
+
+    function downloadFile(content, filename, contentType) {
+        const a = document.createElement('a');
+        const file = new Blob([content], {type: contentType});
+        a.href = URL.createObjectURL(file);
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(a.href);
+    }
+    
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const outputArea = e.target.parentElement;
+            const contentSource = outputArea.querySelector('code, textarea, div');
+            const content = contentSource.value !== undefined ? contentSource.value : contentSource.innerText;
+            copyToClipboard(content);
+        });
+    });
+
+
+    // ####################################################################
+    // # STATIC SEO TOOLS LOGIC                                           #
+    // ####################################################################
+
+    // 1. Meta Tag Generator
+    document.getElementById('generate-meta-btn').addEventListener('click', () => {
+        const title = document.getElementById('meta-title').value;
+        const description = document.getElementById('meta-description').value;
+        const keywords = document.getElementById('meta-keywords').value;
+        const outputDiv = document.getElementById('meta-output');
+        const outputCode = outputDiv.querySelector('code');
+
+        let html = '';
+        if (title) html += `<title>${title}</title>\n`;
+        if (description) html += `<meta name="description" content="${description}">\n`;
+        if (keywords) html += `<meta name="keywords" content="${keywords}">`;
+        
+        outputCode.innerHTML = html;
+        outputDiv.style.display = 'block';
+    });
+
+    // 2. Title & Description Length Checker
+    const lengthTitle = document.getElementById('length-title');
+    const titleCounter = document.getElementById('title-counter');
+    const lengthDesc = document.getElementById('length-description');
+    const descCounter = document.getElementById('desc-counter');
+
+    lengthTitle.addEventListener('input', () => {
+        const count = lengthTitle.value.length;
+        titleCounter.textContent = `${count} characters`;
+        titleCounter.classList.toggle('warning', count > 60 || count < 50 && count > 0);
+    });
+
+    lengthDesc.addEventListener('input', () => {
+        const count = lengthDesc.value.length;
+        descCounter.textContent = `${count} characters`;
+        descCounter.classList.toggle('warning', count > 160 || count < 150 && count > 0);
+    });
+    
+    // 3. Keyword Density Checker
+    document.getElementById('check-density-btn').addEventListener('click', () => {
+        const text = document.getElementById('density-text').value;
+        const ignoreStopwords = document.getElementById('ignore-stopwords').checked;
+        const outputDiv = document.getElementById('density-output');
+
+        const stopWords = new Set(["a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "did", "do", "does", "doing", "don", "down", "during", "each", "few", "for", "from", "further", "had", "has", "have", "having", "he", "her", "here", "hers", "herself", "him", "himself", "his", "how", "i", "if", "in", "into", "is", "it", "its", "itself", "just", "me", "more", "most", "my", "myself", "no", "nor", "not", "now", "of", "off", "on", "once", "only", "or", "other", "our", "ours", "ourselves", "out", "over", "own", "s", "same", "she", "should", "so", "some", "such", "t", "than", "that", "the", "their", "theirs", "them", "themselves", "then", "there", "these", "they", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "will", "with", "you", "your", "yours", "yourself", "yourselves"]);
+
+        const words = text.toLowerCase().match(/\b(\w+)\b/g) || [];
+        const filteredWords = ignoreStopwords ? words.filter(word => !stopWords.has(word)) : words;
+        const totalWords = filteredWords.length;
+
+        if (totalWords === 0) {
+            outputDiv.innerHTML = 'No words found to analyze.';
+            outputDiv.style.display = 'block';
+            return;
+        }
+
+        const frequency = filteredWords.reduce((acc, word) => {
+            acc[word] = (acc[word] || 0) + 1;
+            return acc;
+        }, {});
+
+        const sortedKeywords = Object.entries(frequency).sort((a, b) => b[1] - a[1]);
+        
+        let tableHTML = '<table style="width:100%; text-align: left;"><tr><th>Keyword</th><th>Count</th><th>Density</th></tr>';
+        sortedKeywords.slice(0, 20).forEach(([word, count]) => {
+            const density = ((count / totalWords) * 100).toFixed(2);
+            tableHTML += `<tr><td>${word}</td><td>${count}</td><td>${density}%</td></tr>`;
+        });
+        tableHTML += '</table>';
+        
+        outputDiv.innerHTML = `<strong>Total Words:</strong> ${totalWords}<br><br>${tableHTML}`;
+        outputDiv.style.display = 'block';
+    });
+    
+    // 4. Word Count & Readability Analyzer
+    document.getElementById('analyze-readability-btn').addEventListener('click', () => {
+        const text = document.getElementById('readability-text').value;
+        const outputDiv = document.getElementById('readability-output');
+
+        const words = text.match(/\b(\w+)\b/g)?.length || 0;
+        const sentences = text.match(/[^.!?]+[.!?]+/g)?.length || 1;
+        
+        function countSyllables(word) {
+            word = word.toLowerCase();
+            if(word.length <= 3) return 1;
+            word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+            word = word.replace(/^y/, '');
+            const syllables = word.match(/[aeiouy]{1,2}/g);
+            return syllables ? syllables.length : 0;
+        }
+
+        const totalSyllables = (text.match(/\b(\w+)\b/g) || []).reduce((acc, word) => acc + countSyllables(word), 0);
+        
+        const fleschScore = words === 0 ? 0 : 206.835 - 1.015 * (words / sentences) - 84.6 * (totalSyllables / words);
+        let difficulty = "Very Easy";
+        if (fleschScore < 30) difficulty = "Very Difficult";
+        else if (fleschScore < 50) difficulty = "Difficult";
+        else if (fleschScore < 60) difficulty = "Fairly Difficult";
+        else if (fleschScore < 70) difficulty = "Standard";
+        else if (fleschScore < 80) difficulty = "Fairly Easy";
+        else if (fleschScore < 90) difficulty = "Easy";
+
+        outputDiv.innerHTML = `
+            <strong>Word Count:</strong> ${words}<br>
+            <strong>Sentence Count:</strong> ${sentences}<br>
+            <strong>Flesch Reading Ease:</strong> ${fleschScore.toFixed(2)}<br>
+            <strong>Difficulty Level:</strong> ${difficulty}
+        `;
+        outputDiv.style.display = 'block';
+    });
+    
+    // 5. Robots.txt Generator
+    const generateRobotsBtn = document.getElementById('generate-robots-btn');
+    const robotsOutputDiv = document.getElementById('robots-output');
+    generateRobotsBtn.addEventListener('click', () => {
+        const rules = document.getElementById('robots-rules').value;
+        const sitemap = document.getElementById('robots-sitemap').value;
+        let output = rules;
+        if (sitemap) {
+            output += `\n\nSitemap: ${sitemap}`;
+        }
+        robotsOutputDiv.querySelector('code').textContent = output.trim();
+        robotsOutputDiv.style.display = 'block';
+    });
+    robotsOutputDiv.querySelector('.download-btn').addEventListener('click', () => {
+        const content = robotsOutputDiv.querySelector('code').textContent;
+        downloadFile(content, 'robots.txt', 'text/plain');
+    });
+
+    // 6. Sitemap.xml Generator
+    const generateSitemapBtn = document.getElementById('generate-sitemap-btn');
+    const sitemapOutputDiv = document.getElementById('sitemap-output');
+    generateSitemapBtn.addEventListener('click', () => {
+        const urls = document.getElementById('sitemap-urls').value.split('\n').filter(u => u.trim() !== '');
+        if (urls.length === 0) return;
+
+        let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+        xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+        urls.forEach(url => {
+            xml += '  <url>\n';
+            xml += `    <loc>${url.trim().replace(/&/g, '&')}</loc>\n`;
+            xml += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+            xml += '  </url>\n';
+        });
+        xml += '</urlset>';
+
+        sitemapOutputDiv.querySelector('code').textContent = xml;
+        sitemapOutputDiv.style.display = 'block';
+    });
+    sitemapOutputDiv.querySelector('.download-btn').addEventListener('click', () => {
+        const content = sitemapOutputDiv.querySelector('code').textContent;
+        downloadFile(content, 'sitemap.xml', 'application/xml');
+    });
+
+    // 7. Open Graph Generator
+    document.getElementById('generate-og-btn').addEventListener('click', () => {
+        const title = document.getElementById('og-title').value;
+        const desc = document.getElementById('og-desc').value;
+        const image = document.getElementById('og-image').value;
+        const type = document.getElementById('og-type').value;
+        const outputCode = document.getElementById('og-output').querySelector('code');
+
+        let html = `<!-- Open Graph / Facebook -->\n`;
+        html += `<meta property="og:type" content="${type}">\n`;
+        html += `<meta property="og:title" content="${title}">\n`;
+        html += `<meta property="og:description" content="${desc}">\n`;
+        html += `<meta property="og:image" content="${image}">\n\n`;
+        html += `<!-- Twitter -->\n`;
+        html += `<meta property="twitter:card" content="summary_large_image">\n`;
+        html += `<meta property="twitter:title" content="${title}">\n`;
+        html += `<meta property="twitter:description" content="${desc}">\n`;
+        html += `<meta property="twitter:image" content="${image}">`;
+        
+        outputCode.innerHTML = html;
+        document.getElementById('og-output').style.display = 'block';
+    });
+    
+    // 8. Schema Markup Generator
+    document.getElementById('generate-schema-btn').addEventListener('click', () => {
+        const name = document.getElementById('schema-name').value;
+        const address = document.getElementById('schema-address').value;
+        const phone = document.getElementById('schema-phone').value;
+        const outputCode = document.getElementById('schema-output').querySelector('code');
+
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": name,
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": address
+            },
+            "telephone": phone
+        };
+        
+        outputCode.textContent = `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n<\/script>`;
+        document.getElementById('schema-output').style.display = 'block';
+    });
+
+    // 9. Image Alt Checker
+    document.getElementById('check-alt-btn').addEventListener('click', () => {
+        const html = document.getElementById('alt-html').value;
+        const outputDiv = document.getElementById('alt-output');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const images = doc.querySelectorAll('img');
+        
+        if (images.length === 0) {
+            outputDiv.innerHTML = 'No <img> tags found.';
+            outputDiv.style.display = 'block';
+            return;
+        }
+        
+        const missingAlt = Array.from(images).filter(img => !img.hasAttribute('alt') || img.getAttribute('alt').trim() === '');
+        
+        if (missingAlt.length === 0) {
+            outputDiv.innerHTML = `<strong>Success!</strong> All ${images.length} image(s) have alt attributes.`;
+        } else {
+            let result = `<strong>Found ${missingAlt.length} image(s) missing an alt attribute:</strong>\n\n`;
+            result += missingAlt.map(img => `<img src="${img.src}">`).join('\n');
+            outputDiv.innerHTML = result;
+        }
+        outputDiv.style.display = 'block';
+    });
+    
+    // 10. Canonical Tag Extractor
+    document.getElementById('extract-canonical-btn').addEventListener('click', () => {
+        const html = document.getElementById('canonical-html').value;
+        const outputDiv = document.getElementById('canonical-output');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const canonical = doc.querySelector('link[rel="canonical"]');
+        
+        if (canonical && canonical.href) {
+            outputDiv.innerHTML = `<strong>Canonical URL Found:</strong>\n${canonical.href}`;
+        } else {
+            outputDiv.innerHTML = 'No <link rel="canonical"> tag found.';
+        }
+        outputDiv.style.display = 'block';
+    });
+
+
+    // ####################################################################
+    // # AI-POWERED SEO TOOLS LOGIC                                       #
+    // ####################################################################
+
+    document.getElementById('ai-generate-meta-btn').addEventListener('click', () => {
+        runAiTool('ai-generate-meta-btn', () => {
+            const topic = document.getElementById('ai-meta-topic').value;
+            if (!topic) return { error: "Please enter a page title or topic." };
+            return { prompt: `Generate a concise, SEO-optimized meta description (around 155 characters) for the following topic: "${topic}". The description should be compelling and encourage clicks.` };
+        });
+    });
+    
+    document.getElementById('ai-generate-intro-btn').addEventListener('click', () => {
+        runAiTool('ai-generate-intro-btn', () => {
+            const topic = document.getElementById('ai-intro-topic').value;
+            if (!topic) return { error: "Please enter a blog title or keyword." };
+            return { prompt: `Write a captivating 2-3 sentence blog post introduction for the title: "${topic}". The intro should hook the reader and state the post's purpose.` };
+        });
+    });
+    
+    document.getElementById('ai-generate-faq-btn').addEventListener('click', () => {
+        runAiTool('ai-generate-faq-btn', () => {
+            const topic = document.getElementById('ai-faq-topic').value;
+            if (!topic) return { error: "Please enter a topic or list of questions." };
+            return { prompt: `Based on the following topic or questions, generate a valid JSON-LD FAQPage schema. The input is: "${topic}". For each question, provide a clear and concise answer. Structure the output as a single JSON object inside a script tag.` };
+        });
+    });
+
+    document.getElementById('ai-improve-content-btn').addEventListener('click', () => {
+        runAiTool('ai-improve-content-btn', () => {
+            const text = document.getElementById('ai-improve-text').value;
+            if (!text) return { error: "Please paste a paragraph to improve." };
+            return { prompt: `Rewrite the following paragraph to improve its SEO value, readability, and engagement. Incorporate relevant keywords naturally and use a more active, compelling tone. Original text: "${text}"` };
+        });
+    });
+
+    document.getElementById('ai-suggest-keywords-btn').addEventListener('click', () => {
+        runAiTool('ai-suggest-keywords-btn', () => {
+            const topic = document.getElementById('ai-keyword-topic').value;
+            if (!topic) return { error: "Please enter a topic or niche." };
+            return { prompt: `Generate a list of 10 relevant long-tail keyword suggestions for the following topic: "${topic}". Focus on keywords with clear user intent. Provide the list as a simple, one-keyword-per-line format.` };
+        });
+    });
+    
+    // Initial load
+    loadKeys();
+});
+</script>
+
+</body>
+</html>

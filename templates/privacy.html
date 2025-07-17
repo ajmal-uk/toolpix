@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Privacy Policy - UTHAKKAN (UK) | Tool Pix</title>
+  <meta name="description" content="Read the Privacy Policy for UTHAKKAN (UK) and Tool Pix. Understand how we collect, use, and protect your data on our online coding platform.">
+  <meta name="keywords" content="privacy policy, UTHAKKAN, Tool Pix, data protection, GDPR, CCPA, online tools privacy, coding platform, user data">
+  <meta name="author" content="UTHAKKAN (UK)">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+
+  <!-- Canonical & Language -->
+  <link rel="canonical" href="https://toolpix.pythonanywhere.com/privacy-policy">
+  <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/privacy-policy">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Privacy Policy - UTHAKKAN (UK) | Tool Pix">
+  <meta property="og:description" content="Learn how Tool Pix collects, stores, and protects your personal data in accordance with GDPR and CCPA.">
+  <meta property="og:url" content="https://toolpix.pythonanywhere.com/privacy-policy">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og-privacy.jpg">
+  <meta property="og:site_name" content="Tool Pix">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy - Tool Pix">
+  <meta name="twitter:description" content="Understand how we handle your data when you use Tool Pix, the online coding tools platform from UTHAKKAN (UK).">
+  <meta name="twitter:image" content="/twitter-privacy.jpg">
+  <meta name="twitter:site" content="@toolpix">
+  <meta name="twitter:creator" content="@toolpix">
+
+  <!-- JSON-LD: Privacy Policy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": "https://toolpix.pythonanywhere.com/privacy-policy",
+    "description": "Privacy Policy for UTHAKKAN (UK) and Tool Pix, describing how user data is collected, used, and protected.",
+    "mainEntity": {
+      "@type": "CreativeWork",
+      "name": "Privacy Policy",
+      "creator": {
+        "@type": "Organization",
+        "name": "UTHAKKAN (UK)",
+        "url": "https://toolpix.pythonanywhere.com/"
+      }
+    }
+  }
+  </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6e48aa;
+            --primary-dark: #4b3080;
+            --secondary: #9d50bb;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --accent: #64fcd9;
+            --border: #2d4059;
+            --success: #4ade80;
+            --error: #f87171;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: var(--bg-darker);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 101;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand i {
+            color: var(--accent);
+        }
+
+        .navbar-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+            flex: 1;
+            margin-top: 70px;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: calc(100vh - 70px);
+            top: 70px;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-title i {
+            color: var(--accent);
+        }
+
+        .sidebar-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+
+        .sidebar-toggle.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .compiler-list {
+            list-style: none;
+        }
+
+        .compiler-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compiler-item a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .compiler-item:hover {
+            background: rgba(110, 72, 170, 0.2);
+        }
+
+        .compiler-item.active {
+            background: var(--primary);
+        }
+
+        .compiler-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            max-width: calc(100% - 280px);
+            overflow-x: hidden;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .privacy-section {
+            text-align: center;
+            max-width: 900px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .privacy-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+        }
+
+        .privacy-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .privacy-content {
+            text-align: left;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .privacy-content h2 {
+            font-size: 1.5rem;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+
+        .privacy-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .privacy-content li {
+            margin-bottom: 10px;
+        }
+
+        .privacy-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            width: 100%;
+            margin-top: auto;
+            margin-left: 280px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay {
+                display: block;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sidebar.open ~ .sidebar-toggle {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .footer {
+                margin-left: 0;
+            }
+
+            .footer-bottom {
+                margin-top: 20px;
+                padding: 10px;
+            }
+
+            .privacy-title {
+                font-size: 2rem;
+            }
+
+            .privacy-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .privacy-content {
+                font-size: 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <i class="fas fa-code"></i>
+            <span>Tool Pix</span>
+        </a>
+        <button class="navbar-toggle" id="navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="compiler-list">
+                <li class="compiler-item">
+                    <a href="/base64-encoder">
+                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
+                        <span>Base64 Encoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/c-compiler">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/cpp-compiler">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/css-obfuscator">
+                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
+                        <span>CSS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/html-editor">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/java-compiler">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/js-obfuscator">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/javascript-editor">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/json-formatter">
+                        <span class="compiler-icon"><i class="fas fa-code"></i></span>
+                        <span>JSON Formatter</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/python-compiler">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/sql-editor">
+                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                        <span>SQL</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/online-text-editor">
+                        <span class="compiler-icon"><i class="fas fa-edit"></i></span>
+                        <span>Text Editor</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="privacy-section">
+                <h1 class="privacy-title">Privacy Policy</h1>
+                <div class="privacy-subtitle">UTHAKKAN (UK) and Tool Pix</div>
+                <div class="privacy-content">
+                    <p>Last Updated: July 8, 2025</p>
+                    <p>At UTHAKKAN (UK), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, share, and protect your personal information when you use our free online coding platform, Tool Pix, accessible at [website URL]. By using Tool Pix, you agree to the practices described in this policy. If you have any questions, please contact us at <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a>.</p>
+
+                    <h2>1. Information We Collect</h2>
+                    <p>We collect limited information to provide and improve Tool Pix. The types of information we may collect include:</p>
+                    <ul>
+                        <li><strong>Contact Information</strong>: If you reach out via our contact form or email, we may collect your name, email address, or other details you provide.</li>
+                        <li><strong>Usage Data</strong>: We may collect non-personal data such as IP addresses, browser type, device information, pages visited, and time spent on Tool Pix through analytics tools (e.g., Google Analytics).</li>
+                        <li><strong>Cookies</strong>: We use cookies to enhance your experience, such as remembering preferences or analyzing site usage. See our “Cookies” section below for details.</li>
+                        <li><strong>User-Generated Content</strong>: Code or text you input into our compilers or editors is processed to provide the service but is not stored unless you explicitly save it.</li>
+                    </ul>
+                    <p>We do not collect sensitive personal information (e.g., payment details) as Tool Pix is a free platform. We also do not knowingly collect data from users under 13 years of age.</p>
+
+                    <h2>2. How We Use Your Information</h2>
+                    <p>We use the collected information to:</p>
+                    <ul>
+                        <li>Provide and maintain Tool Pix’s functionality, such as running compilers and editors.</li>
+                        <li>Respond to your inquiries or support requests.</li>
+                        <li>Analyze usage patterns to improve our platform’s performance and user experience.</li>
+                        <li>Ensure the security and integrity of our services.</li>
+                    </ul>
+
+                    <h2>3. How We Share Your Information</h2>
+                    <p>We do not sell or share your personal information with third parties except in the following cases:</p>
+                    <ul>
+                        <li><strong>Service Providers</strong>: We may share data with trusted third-party providers (e.g., hosting or analytics services) who assist in operating Tool Pix, subject to strict confidentiality agreements.</li>
+                        <li><strong>Legal Requirements</strong>: We may disclose information if required by law or to protect our rights, users, or the public.</li>
+                    </ul>
+
+                    <h2>4. Cookies and Tracking Technologies</h2>
+                    <p>Tool Pix may use cookies and similar technologies to:</p>
+                    <ul>
+                        <li>Enable essential site functionality (e.g., session management).</li>
+                        <li>Analyze site usage through third-party tools like Google Analytics.</li>
+                    </ul>
+                    <p>You can manage cookie preferences through your browser settings. Note that disabling cookies may affect the functionality of Tool Pix. For more details, please review our <a href="/cookie-policy">Cookie Policy</a> (if applicable).</p>
+
+                    <h2>5. Data Security</h2>
+                    <p>We take the security of your data seriously. We use industry-standard measures, such as encryption and secure servers, to protect your information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+                    <h2>6. Your Data Rights</h2>
+                    <p>Depending on your location, you may have rights under laws like GDPR or CCPA, including:</p>
+                    <ul>
+                        <li><strong>Access</strong>: Request a copy of the data we hold about you.</li>
+                        <li><strong>Deletion</strong>: Request that we delete your personal data.</li>
+                        <li><strong>Opt-Out</strong>: Opt out of non-essential data collection (e.g., analytics cookies).</li>
+                    </ul>
+                    <p>To exercise these rights, contact us at <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a>. We will respond within a reasonable timeframe, typically within 30 days.</p>
+
+                    <h2>7. Third-Party Links</h2>
+                    <p>Tool Pix may contain links to third-party websites (e.g., GitHub, LinkedIn). We are not responsible for the privacy practices of these sites. We encourage you to review their privacy policies.</p>
+
+                    <h2>8. Children’s Privacy</h2>
+                    <p>Tool Pix is not intended for users under 13. If we discover that a child under 13 has provided personal information, we will delete it immediately. If you are a parent or guardian and believe your child has provided us with data, please contact us.</p>
+
+                    <h2>9. Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy to reflect changes in our practices or legal requirements. We will notify users of significant changes via email or a notice on Tool Pix. Please review this page periodically for updates.</p>
+
+                    <h2>10. Contact Us</h2>
+                    <p>If you have questions or concerns about this Privacy Policy, please contact us at:</p>
+                    <p>Email: <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a></p>
+                    <p>We value your trust and are committed to protecting your privacy while you code, learn, and create with Tool Pix.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Compilers</h3>
+                <ul>
+                    <li><a href="/c-compiler">C</a></li>
+                    <li><a href="/cpp-compiler">C++</a></li>
+                    <li><a href="/java-compiler">Java</a></li>
+                    <li><a href="/python-compiler">Python</a></li>
+                    <li><a href="/javascript-editor">JavaScript</a></li>
+                    <li><a href="/sql-editor">SQL</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Tools</h3>
+                <ul>
+                    <li><a href="/base64-encoder">Base64 Encoder</a></li>
+                    <li><a href="/css-obfuscator">CSS Obfuscator</a></li>
+                    <li><a href="/js-obfuscator">JS Obfuscator</a></li>
+                    <li><a href="/json-formatter">JSON Formatter</a></li>
+                    <li><a href="/online-text-editor">Text Editor</a></li>
+                    <li><a href="/html-editor">HTML Editor</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/muhammed-ajmal-u-k-616b152ba" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ajmal-uk/" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 UTHAKKAN (UK). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebar-toggle");
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+            function toggleSidebar() {
+                sidebar.classList.toggle("open");
+                sidebarOverlay.classList.toggle("open");
+                sidebarToggle.classList.toggle("hidden");
+                navbarToggle.classList.toggle("hidden");
+            }
+
+            sidebarToggle.addEventListener("click", toggleSidebar);
+            navbarToggle.addEventListener("click", toggleSidebar);
+            sidebarOverlay.addEventListener("click", toggleSidebar);
+        });
+    </script>
+</body>
+</html>

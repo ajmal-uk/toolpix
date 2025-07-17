@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online SQL editor by Tool Pix. Write, execute, and test SQL queries with real-time results for MySQL, PostgreSQL, and SQLite. Ideal for database developers, students, and data analysts.">
+    <meta name="keywords" content="SQL editor, online SQL editor, run SQL queries online, SQL query tester, MySQL online, PostgreSQL online, SQLite online, free SQL tool, database management, SQL learning, Tool Pix">
+    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+    <title>SQL Editor - Free Online SQL Query Tool for MySQL, PostgreSQL, SQLite | Tool Pix</title>
+    <link rel="canonical" href="https://toolpix.pythonanywhere.com/sql-editor">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="ToolPix">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/sql-editor">
+    <link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer">
+
+    <meta property="og:title" content="SQL Editor - Free Online SQL Query Tool for MySQL, PostgreSQL, SQLite | Tool Pix">
+    <meta property="og:description" content="Tool Pix’s free online SQL editor lets you write, execute, and test SQL queries for MySQL, PostgreSQL, and SQLite with real-time results. Perfect for database development and learning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpix.pythonanywhere.com/sql-editor">
+    <meta property="og:image" content="/sql-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix SQL Editor">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tool Pix">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SQL Editor - Free Online SQL Query Tool for MySQL, PostgreSQL, SQLite | Tool Pix">
+    <meta name="twitter:description" content="Run and test SQL queries online with Tool Pix’s free SQL editor. Supports MySQL, PostgreSQL, SQLite for database developers and learners.">
+    <meta name="twitter:image" content="/sql-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix SQL Editor">
+    <meta name="twitter:site" content="@toolpix">
+    <meta name="twitter:creator" content="@toolpix">
+
+    <!-- Preload critical assets for performance -->
+    <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "SQL Editor - Free Online SQL Query Tool for MySQL, PostgreSQL, SQLite | Tool Pix",
+        "url": "https://toolpix.pythonanywhere.com/sql-editor",
+        "description": "Tool Pix’s free online SQL editor supports writing, executing, and testing SQL queries for MySQL, PostgreSQL, and SQLite with real-time results. Ideal for database development and learning.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "UTHAKKAN (UK)",
+            "url": "https://toolpix.pythonanywhere.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/logo.png",
+                "width": 200,
+                "height": 60
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "name": "Tool Pix",
+            "url": "https://toolpix.pythonanywhere.com/"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tool Pix SQL Editor",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "url": "https://toolpix.pythonanywhere.com/sql-editor",
+        "image": "/sql-og-image.jpg",
+        "description": "A free online SQL editor by Tool Pix, created by Ajmal U K. Write, execute, and test SQL queries for MySQL, PostgreSQL, and SQLite with real-time results, ideal for database development.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "creator": {
+            "@type": "Person",
+            "name": "Ajmal U K"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toolpix.pythonanywhere.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "SQL Editor",
+                "item": "https://toolpix.pythonanywhere.com/sql-editor"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Tool Pix’s SQL Editor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tool Pix’s SQL Editor is a free online tool for writing, executing, and testing SQL queries for MySQL, PostgreSQL, and SQLite with real-time results, ideal for database development and learning."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the SQL Editor free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Tool Pix’s SQL Editor is completely free, offering full access to run and test SQL queries without any cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which databases does the SQL Editor support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The SQL Editor supports MySQL, PostgreSQL, and SQLite syntax, allowing you to write and test queries with real-time results and error diagnostics."
+                }
+            }
+        ]
+    }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6e48aa;
+            --primary-dark: #4b3080;
+            --secondary: #9d50bb;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --accent: #64fcd9;
+            --border: #2d4059;
+            --success: #4ade80;
+            --error: #f87171;
+            --output-font-size: 14px;
+            --sql-keyword: #f92672;
+            --sql-function: #66d9ef;
+            --sql-string: #e6db74;
+            --sql-number: #ae81ff;
+            --sql-comment: #75715e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-title i {
+            color: var(--accent);
+        }
+
+        .compiler-list {
+            list-style: none;
+        }
+
+        .compiler-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compiler-item a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .compiler-item:hover {
+            background: rgba(110, 72, 170, 0.2);
+        }
+
+        .compiler-item.active {
+            background: var(--primary);
+        }
+
+        .compiler-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            transition: margin 0.3s ease;
+            max-width: calc(100% - 280px);
+            overflow-x: hidden;
+        }
+
+        /* Mobile Sidebar Toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        /* Editor Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 15px 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title i {
+            color: var(--accent);
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Editor and Output Layout */
+        .editor-output-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .editor-section, .output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .editor-section {
+            border-right: 1px solid var(--border);
+        }
+
+        /* Editor Styles */
+        .editor-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .CodeMirror {
+            height: 100% !important;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            padding: 15px 0;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .CodeMirror-sizer, .CodeMirror-lines, .CodeMirror-scroll {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            overflow-wrap: anywhere;
+            word-break: break-all;
+        }
+
+        /* Output Styles */
+        .output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            max-height: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .output-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border);
+            max-height: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .output-header {
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+            max-width: 100%;
+        }
+
+        .output-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .output-content {
+            padding: 20px;
+            background: #0f0f1a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--output-font-size);
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            max-height: 100%;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .output-content span {
+            overflow-wrap: break-word;
+            word-break: break-word;
+            max-width: 100%;
+            display: inline;
+        }
+
+        #output {
+            margin: 0;
+            max-width: 100%;
+            width: 100%;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        /* SQL Result Table Styles */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+        }
+
+        .result-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+        }
+
+        .result-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .result-table tr:hover {
+            background-color: rgba(110, 72, 170, 0.2);
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-running {
+            background-color: #fbbf24;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-success {
+            background-color: var(--success);
+        }
+
+        .status-error {
+            background-color: var(--error);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Mobile Run Button */
+        .mobile-run-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .mobile-run-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .editor-output-container {
+                flex-direction: column;
+            }
+
+            .editor-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                height: 50vh;
+            }
+
+            .output-section {
+                height: 50vh;
+                max-height: 50vh;
+            }
+
+            .output-container {
+                max-height: 50vh;
+            }
+
+            .CodeMirror {
+                height: calc(50vh - 60px) !important;
+            }
+
+            .result-table {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay {
+                display: block;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+
+            .mobile-run-btn {
+                display: flex;
+            }
+
+            .controls .btn span {
+                display: none;
+            }
+
+            .controls .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .tooltip-text {
+                width: 100px;
+                font-size: 10px;
+                bottom: 100%;
+            }
+
+            .title span {
+                font-size: 1rem;
+            }
+
+            .output-content {
+                font-size: 12px;
+                padding: 15px;
+            }
+
+            #output {
+                line-height: 1.4;
+            }
+
+            .result-table {
+                font-size: 10px;
+            }
+
+            .result-table th, .result-table td {
+                padding: 4px 6px;
+            }
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            background: var(--bg-darker);
+            padding: 40px 20px;
+            margin: 0 auto;
+        }
+
+        .seo-content h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .seo-content h3 {
+            color: var(--text-lighter);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .seo-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .seo-content ul, .seo-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .seo-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .seo-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .note-box {
+            background: rgba(110, 72, 170, 0.2);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Ad Containers */
+        .ad-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .ad-container.horizontal {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-container.vertical {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-lighter);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-darker);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <button class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">
+                    <i class="fas fa-code"></i>
+                    <span>Tool Pix</span>
+                </h1>
+            </div>
+            <ul class="compiler-list">
+                <li class="compiler-item">
+                    <a href="/python-compiler">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python</span>
+                    </a>
+                </li>
+                <li class="compiler-item active">
+                    <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                    <span>SQL</span>
+                </li>
+                <li class="compiler-item">
+                    <a href="/html-editor">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/java-compiler">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/c-compiler">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/cpp-compiler">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/javascript-editor">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/online-text-editor">
+                        <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
+                        <span>Text Editor</span>
+                    </a>
+                </li>
+            </ul>            
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <div class="header">
+                    <h1 class="title">
+                        <i class="fas fa-database"></i>
+                        <span>SQL Online Editor</span>
+                    </h1>
+                    <div class="controls">
+                        <button class="btn btn-secondary tooltip" id="copy-btn">
+                            <i class="far fa-copy"></i>
+                            <span>Copy</span>
+                            <span class="tooltip-text">Copy to clipboard</span>
+                        </button>
+                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Clear</span>
+                        </button>
+                        <button class="btn btn-primary" id="run-btn" title="Run">
+                            <i class="fas fa-play"></i>
+                            <span>Run</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="editor-output-container">
+                    <!-- Editor Section -->
+                    <div class="editor-section">
+                        <div class="editor-wrapper">
+                            <textarea id="code">-- Online SQL Editor
+-- Type your SQL queries here and click "Run" to execute
+
+-- Sample database tables for demonstration
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    hire_date DATE
+);
+
+CREATE TABLE departments (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    location VARCHAR(100)
+);
+
+-- Sample data insertion
+INSERT INTO departments VALUES 
+(1, 'Engineering', 'New York'),
+(2, 'Marketing', 'Chicago'),
+(3, 'Sales', 'Boston');
+
+INSERT INTO employees VALUES 
+(101, 'John Smith', 'Engineering', 75000.00, '2020-05-15'),
+(102, 'Jane Doe', 'Marketing', 65000.00, '2019-11-20'),
+(103, 'Mike Johnson', 'Sales', 60000.00, '2021-02-10'),
+(104, 'Sarah Williams', 'Engineering', 80000.00, '2018-07-01'),
+(105, 'David Brown', 'Marketing', 70000.00, '2020-09-05');
+
+-- Example query: Select all employees
+SELECT * FROM employees;
+
+-- Example query: Join employees with departments
+SELECT e.name, e.salary, d.name AS department, d.location
+FROM employees e
+JOIN departments d ON e.department = d.name
+WHERE e.salary > 65000
+ORDER BY e.salary DESC;</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Output Section -->
+                    <div class="output-section">
+                        <div class="output-container">
+                            <div class="output-header">
+                                <h2 class="output-title">
+                                    <span class="status-indicator status-success"></span>
+                                    Query Results
+                                </h2>
+                            </div>
+                            <div class="output-content">
+                                <pre id="output"># Ready to execute SQL queries...
+# Write your queries above and click "Run"</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- First Ad Container -->
+            <div class="ad-container horizontal">
+                
+            </div>
+
+            <!-- SEO Content Section -->
+            <section class="seo-content">
+                <h2>Online SQL Editor - Write, Execute & Test SQL Queries Instantly</h2>
+                
+                <p>Our <strong>online SQL editor</strong> provides a powerful and convenient way to write, execute, and test SQL queries directly in your browser. Whether you're learning SQL, developing database applications, or need to quickly test a query, our editor offers a seamless experience with real-time results.</p>
+                
+                <h3>Why Use Our Online SQL Editor?</h3>
+                <ul>
+                    <li><strong>No installation required</strong> - Run SQL queries directly from your browser</li>
+                    <li><strong>Multiple database support</strong> - Works with MySQL, PostgreSQL, and SQLite syntax</li>
+                    <li><strong>Real-time results</strong> - See query output immediately in a formatted table</li>
+                    <li><strong>Sample database</strong> - Comes with pre-loaded tables for practice</li>
+                    <li><strong>User-friendly interface</strong> - Clean, intuitive design with SQL syntax highlighting</li>
+                    <li><strong>Free to use</strong> - No registration or subscription needed</li>
+                    <li><strong>Mobile-friendly</strong> - Write queries on the go from any device</li>
+                </ul>
+
+                <div class="ad-container vertical">
+
+                </div>
+
+                <h3>Getting Started with SQL</h3>
+                <p>SQL (Structured Query Language) is the standard language for managing and manipulating relational databases. It was first developed at IBM in the 1970s and has since become essential for working with data in applications ranging from small websites to enterprise systems.</p>
+                
+                <h4>Basic SQL Commands</h4>
+                <p>SQL commands can be divided into several categories:</p>
+                <ul>
+                    <li><strong>DDL (Data Definition Language):</strong> CREATE, ALTER, DROP</li>
+                    <li><strong>DML (Data Manipulation Language):</strong> SELECT, INSERT, UPDATE, DELETE</li>
+                    <li><strong>DCL (Data Control Language):</strong> GRANT, REVOKE</li>
+                    <li><strong>TCL (Transaction Control Language):</strong> COMMIT, ROLLBACK</li>
+                </ul>
+
+                <div class="note-box">
+                    <p><strong>Note:</strong> SQL is not case sensitive for keywords (SELECT, FROM, WHERE, etc.), but it's a common convention to write SQL keywords in uppercase for better readability.</p>
+                </div>
+
+                <h3>SQL Query Structure</h3>
+                <p>The most common SQL statement is the SELECT query, which retrieves data from database tables. A basic SELECT statement has this structure:</p>
+                <pre>SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+GROUP BY column
+HAVING group_condition
+ORDER BY column
+LIMIT number;</pre>
+
+                <h4>Example SELECT Query</h4>
+                <pre>SELECT name, salary
+FROM employees
+WHERE department = 'Engineering'
+ORDER BY salary DESC
+LIMIT 5;</pre>
+
+                <h3>Database Tables and Relationships</h3>
+                <p>Relational databases store data in tables that can be related to each other. The main types of table relationships are:</p>
+                <ul>
+                    <li><strong>One-to-One:</strong> Each record in Table A relates to one record in Table B</li>
+                    <li><strong>One-to-Many:</strong> Each record in Table A relates to multiple records in Table B</li>
+                    <li><strong>Many-to-Many:</strong> Multiple records in Table A relate to multiple records in Table B (requires a junction table)</li>
+                </ul>
+
+                <h4>Creating Tables with Relationships</h4>
+                <pre>CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    amount DECIMAL(10,2),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);</pre>
+
+                <div class="note-box">
+                    <p><strong>Tip:</strong> Primary keys uniquely identify each record in a table, while foreign keys establish relationships between tables by referencing the primary key of another table.</p>
+                </div>
+
+                <h3>SQL Joins</h3>
+                <p>JOIN operations combine rows from two or more tables based on related columns. The main types of joins are:</p>
+                <ul>
+                    <li><strong>INNER JOIN:</strong> Returns records with matching values in both tables</li>
+                    <li><strong>LEFT JOIN:</strong> Returns all records from the left table and matched records from the right</li>
+                    <li><strong>RIGHT JOIN:</strong> Returns all records from the right table and matched records from the left</li>
+                    <li><strong>FULL JOIN:</strong> Returns all records when there's a match in either table</li>
+                </ul>
+
+                <h4>Join Examples</h4>
+                <pre>-- INNER JOIN (default)
+SELECT e.name, d.name AS department
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.id;
+
+-- LEFT JOIN (all employees, even without department)
+SELECT e.name, d.name AS department
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.id;
+
+-- RIGHT JOIN (all departments, even without employees)
+SELECT e.name, d.name AS department
+FROM employees e
+RIGHT JOIN departments d ON e.department_id = d.id;</pre>
+
+                <div class="ad-container horizontal">
+                    
+                </div>
+
+                <h3>SQL Functions</h3>
+                <p>SQL provides many built-in functions for working with data:</p>
+                
+                <h4>Aggregate Functions</h4>
+                <pre>SELECT 
+    COUNT(*) AS total_employees,
+    AVG(salary) AS avg_salary,
+    MAX(salary) AS max_salary,
+    MIN(salary) AS min_salary,
+    SUM(salary) AS total_salary
+FROM employees;</pre>
+                
+                <h4>String Functions</h4>
+                <pre>SELECT 
+    UPPER(name) AS uppercase_name,
+    LOWER(name) AS lowercase_name,
+    LENGTH(name) AS name_length,
+    SUBSTRING(name, 1, 3) AS first_three_chars,
+    CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees;</pre>
+                
+                <h4>Date Functions</h4>
+                <pre>SELECT 
+    name,
+    hire_date,
+    CURRENT_DATE AS today,
+    DATE_PART('year', hire_date) AS hire_year,
+    AGE(hire_date) AS time_with_company
+FROM employees;</pre>
+
+                <h3>Grouping Data</h3>
+                <p>The GROUP BY clause groups rows that have the same values into summary rows:</p>
+                <pre>SELECT 
+    department,
+    COUNT(*) AS employee_count,
+    AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 2
+ORDER BY avg_salary DESC;</pre>
+                <p>The HAVING clause filters groups after aggregation, similar to WHERE for individual rows.</p>
+
+                <h3>Subqueries</h3>
+                <p>Subqueries (nested queries) allow you to use the result of one query within another:</p>
+                <pre>-- Subquery in WHERE clause
+SELECT name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+-- Subquery in FROM clause
+SELECT dept.name, emp_stats.avg_salary
+FROM departments dept
+JOIN (
+    SELECT department, AVG(salary) AS avg_salary
+    FROM employees
+    GROUP BY department
+) emp_stats ON dept.name = emp_stats.department;</pre>
+
+                <div class="ad-container vertical">
+                    
+                </div>
+
+                <h3>Indexes and Performance</h3>
+                <p>Indexes improve query performance by creating a quick lookup structure:</p>
+                <pre>-- Create an index
+CREATE INDEX idx_employee_name ON employees(name);
+
+-- Composite index
+CREATE INDEX idx_dept_salary ON employees(department, salary);
+
+-- View query execution plan
+EXPLAIN ANALYZE SELECT * FROM employees WHERE name = 'John Smith';</pre>
+                <p>Common indexing strategies:</p>
+                <ul>
+                    <li>Index columns frequently used in WHERE clauses</li>
+                    <li>Index columns used for JOIN conditions</li>
+                    <li>Consider composite indexes for multiple columns often queried together</li>
+                    <li>Avoid over-indexing as it slows down INSERT/UPDATE operations</li>
+                </ul>
+
+                <h3>Transactions</h3>
+                <p>Transactions ensure database operations are completed as a single unit:</p>
+                <pre>BEGIN TRANSACTION;
+
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+
+-- If both updates succeed
+COMMIT;
+
+-- If any operation fails
+ROLLBACK;</pre>
+                <p>Transactions follow ACID properties:</p>
+                <ul>
+                    <li><strong>Atomicity:</strong> All operations succeed or none do</li>
+                    <li><strong>Consistency:</strong> Database remains in a valid state</li>
+                    <li><strong>Isolation:</strong> Concurrent transactions don't interfere</li>
+                    <li><strong>Durability:</strong> Committed transactions persist</li>
+                </ul>
+
+                <h3>Views and Stored Procedures</h3>
+                <h4>Views</h4>
+                <p>Views are virtual tables based on SQL query results:</p>
+                <pre>CREATE VIEW high_paid_employees AS
+SELECT name, salary, department
+FROM employees
+WHERE salary > 70000;
+
+-- Use the view like a table
+SELECT * FROM high_paid_employees;</pre>
+
+                <h4>Stored Procedures</h4>
+                <p>Stored procedures are reusable SQL code blocks:</p>
+                <pre>CREATE PROCEDURE raise_salary(IN emp_id INT, IN raise_amount DECIMAL(10,2))
+BEGIN
+    UPDATE employees
+    SET salary = salary + raise_amount
+    WHERE id = emp_id;
+END;
+
+-- Execute the procedure
+CALL raise_salary(101, 5000);</pre>
+
+                <div class="note-box">
+                    <p><strong>Note:</strong> Our online SQL editor supports basic SQL execution. For advanced features like stored procedures, you may need a full database management system like MySQL or PostgreSQL installed locally.</p>
+                </div>
+
+                <div class="ad-container horizontal">
+                    
+                </div>
+
+                <h3>Database Normalization</h3>
+                <p>Normalization organizes data to minimize redundancy. The main normal forms are:</p>
+                <ol>
+                    <li><strong>1NF:</strong> Each table cell should contain a single value, and each record needs to be unique</li>
+                    <li><strong>2NF:</strong> Be in 1NF and have no partial dependencies (all non-key attributes depend on the entire primary key)</li>
+                    <li><strong>3NF:</strong> Be in 2NF and have no transitive dependencies (non-key attributes don't depend on other non-key attributes)</li>
+                </ol>
+
+                <h4>Example of Normalization</h4>
+                <pre>-- Before normalization (all in one table)
+CREATE TABLE orders (
+    order_id INT,
+    customer_name VARCHAR(100),
+    customer_email VARCHAR(100),
+    product_name VARCHAR(100),
+    product_price DECIMAL(10,2),
+    quantity INT
+);
+
+-- After normalization (3NF)
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT REFERENCES customers(customer_id),
+    order_date DATE
+);
+
+CREATE TABLE order_items (
+    order_id INT REFERENCES orders(order_id),
+    product_id INT REFERENCES products(product_id),
+    quantity INT,
+    PRIMARY KEY (order_id, product_id)
+);</pre>
+
+                <h3>Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between SQL and MySQL?</div>
+                    <p>SQL is the standard language for querying relational databases, while MySQL is a specific database management system that uses SQL. Other SQL-based databases include PostgreSQL, SQL Server, and Oracle.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I install a database to practice SQL?</div>
+                    <p>You can install MySQL, PostgreSQL, or SQLite on your computer. Alternatively, use our online SQL editor to practice without installation. For local setup, MySQL Community Edition is free to download.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between WHERE and HAVING?</div>
+                    <p>WHERE filters rows before grouping, while HAVING filters groups after aggregation. Use WHERE for conditions on individual rows and HAVING for conditions on grouped data.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I optimize slow SQL queries?</div>
+                    <p>Use EXPLAIN to analyze query execution, add appropriate indexes, avoid SELECT *, limit results with WHERE clauses, and consider query restructuring for complex operations.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What are SQL injections and how to prevent them?</div>
+                    <p>SQL injection is a security vulnerability where attackers insert malicious SQL. Prevent it by using parameterized queries, prepared statements, and input validation.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between DELETE, TRUNCATE, and DROP?</div>
+                    <p>DELETE removes specific rows with WHERE clause and can be rolled back. TRUNCATE removes all rows quickly but can't be rolled back. DROP removes the entire table structure.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I backup and restore a database?</div>
+                    <p>Most databases have export/import functions. For MySQL: <code>mysqldump -u user -p database > backup.sql</code> to backup and <code>mysql -u user -p database &lt; backup.sql</code> to restore.</p>
+                </div>
+
+                <h3>Advanced SQL Concepts</h3>
+                <p>Once you've mastered the basics, explore these advanced topics:</p>
+                <ul>
+                    <li><strong>Window Functions:</strong> Perform calculations across related rows</li>
+                    <li><pre>SELECT 
+    name, 
+    salary,
+    department,
+    RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank
+FROM employees;</pre></li>
+                    <li><strong>Common Table Expressions (CTEs):</strong> Temporary result sets for complex queries</li>
+                    <li><pre>WITH high_earners AS (
+    SELECT * FROM employees WHERE salary > 70000
+)
+SELECT department, COUNT(*) 
+FROM high_earners
+GROUP BY department;</pre></li>
+                    <li><strong>Recursive Queries:</strong> For hierarchical data (org charts, folders)</li>
+                    <li><strong>Pivoting Data:</strong> Transform rows into columns</li>
+                    <li><strong>Full-Text Search:</strong> Advanced text searching capabilities</li>
+                    <li><strong>JSON Support:</strong> Modern databases can store and query JSON data</li>
+                </ul>
+
+                <div class="note-box">
+                    <p><strong>Remember:</strong> Our online SQL editor is perfect for practicing all these concepts. Try writing queries for each topic to reinforce your learning!</p>
+                </div>
+
+                <div class="ad-container vertical">
+                    
+                </div>
+
+                <h3>SQL Best Practices</h3>
+                <p>Follow these guidelines for writing efficient, maintainable SQL:</p>
+                <ul>
+                    <li>Use meaningful table and column names (avoid spaces/special characters)</li>
+                    <li>Consistently format your SQL for readability</li>
+                    <li>Use comments to document complex queries</li>
+                    <li>Always specify columns in INSERT statements (don't rely on column order)</li>
+                    <li>Use transactions for multiple related operations</li>
+                    <li>Consider indexing strategies for performance</li>
+                    <li>Validate and sanitize user input to prevent SQL injection</li>
+                    <li>Use JOINs instead of subqueries when possible for better performance</li>
+                    <li>Limit results with WHERE clauses before processing large datasets</li>
+                </ul>
+
+                <h3>Learning Resources</h3>
+                <p>To continue your SQL learning journey, check out these resources:</p>
+                <ul>
+                    <li><strong>Books:</strong> "SQL in 10 Minutes" by Ben Forta, "Learning SQL" by Alan Beaulieu</li>
+                    <li><strong>Online courses:</strong> SQLZoo, Mode Analytics SQL Tutorial, Khan Academy</li>
+                    <li><strong>Practice platforms:</strong> LeetCode SQL, HackerRank SQL, StrataScratch</li>
+                    <li><strong>Documentation:</strong> MySQL Documentation, PostgreSQL Documentation</li>
+                </ul>
+                <p>Our online SQL editor is the perfect tool to practice what you learn from these resources. The more queries you write, the better you'll become!</p>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-links">
+                    <a href="/">Home</a>
+                    
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/contact">Contact</a>
+                    
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Tool Pix. All rights reserved.
+                </div>
+            </footer>
+        </div>
+
+        <button class="mobile-run-btn" id="mobile-run-btn">
+            <i class="fas fa-play"></i>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/sql/sql.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Initialize sql.js
+            const SQL = await initSqlJs({
+                locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+            });
+            let db = new SQL.Database(); // Changed from const to let
+
+            // Initialize CodeMirror with Syntax Highlighting for SQL
+            const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "text/x-sql",
+                theme: "dracula",
+                lineNumbers: true,
+                indentUnit: 4,
+                tabSize: 4,
+                smartIndent: true,
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                lineWrapping: true,
+                extraKeys: {
+                    "Ctrl-Enter": runCode,
+                    "Cmd-Enter": runCode
+                }
+            });
+
+            // DOM Elements
+            const runButton = document.getElementById("run-btn");
+            const mobileRunButton = document.getElementById("mobile-run-btn");
+            const clearButton = document.getElementById("clear-btn");
+            const copyButton = document.getElementById("copy-btn");
+            const outputElement = document.getElementById("output");
+            const statusIndicator = document.querySelector(".status-indicator");
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebar-toggle");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+            // Set initial status
+            updateStatus("ready");
+
+            // Sidebar Toggle Functionality
+            function toggleSidebar() {
+                sidebar.classList.toggle("open");
+                sidebarOverlay.classList.toggle("open");
+            }
+
+            sidebarToggle.addEventListener("click", toggleSidebar);
+            sidebarOverlay.addEventListener("click", toggleSidebar);
+
+            // Function to update status indicator
+            function updateStatus(status) {
+                statusIndicator.className = "status-indicator";
+                switch (status) {
+                    case "ready":
+                        statusIndicator.classList.add("status-success");
+                        break;
+                    case "running":
+                        statusIndicator.classList.add("status-running");
+                        break;
+                    case "error":
+                        statusIndicator.classList.add("status-error");
+                        break;
+                }
+            }
+
+            // Function to preprocess output to handle long lines
+            function preprocessOutput(text) {
+                const viewportWidth = window.innerWidth;
+                const maxLineLength = viewportWidth <= 768 ? Math.floor(viewportWidth / 10) : 80;
+                return text.split('\n').map(line => {
+                    if (line.length <= maxLineLength) return line;
+                    let result = '';
+                    for (let i = 0; i < line.length; i += maxLineLength) {
+                        result += line.slice(i, i + maxLineLength) + '\n';
+                    }
+                    return result.trimEnd();
+                }).join('\n');
+            }
+
+            // Function to format SQL results as a table
+            function formatSQLResults(columns, values) {
+                if (!values || values.length === 0) {
+                    return '<span style="color: #4ade80;">Query executed successfully (no results)</span>';
+                }
+
+                let html = '<table class="result-table">';
+                // Headers
+                html += '<tr>';
+                columns.forEach(col => {
+                    html += `<th>${col}</th>`;
+                });
+                html += '</tr>';
+
+                // Rows
+                values.forEach(row => {
+                    html += '<tr>';
+                    row.forEach(cell => {
+                        html += `<td>${cell !== null ? cell : ''}</td>`;
+                    });
+                    html += '</tr>';
+                });
+
+                html += '</table>';
+                return html;
+            }
+
+            // Function to run code
+            async function runCode() {
+                const code = editor.getValue();
+                updateStatus("running");
+                await executeCode(code);
+            }
+
+            // Function to Execute Code
+            async function executeCode(code) {
+                updateStatus("running");
+                outputElement.innerHTML = '<span style="color: #fbbf24;"><i class="fas fa-spinner fa-spin"></i> Running your query...</span>';
+
+                try {
+                    // Reset database for each run to ensure a fresh state
+                    db.close();
+                    const newDb = new SQL.Database();
+                    db = newDb;
+
+                    // Split queries by semicolon and filter out empty statements
+                    const queries = code.split(';').map(q => q.trim()).filter(q => q.length > 0);
+
+                    let lastResult = null;
+                    for (const query of queries) {
+                        // Execute each query
+                        lastResult = db.exec(query);
+                    }
+
+                    updateStatus("success");
+
+                    if (lastResult && lastResult.length > 0) {
+                        // Display results of the last query
+                        const columns = lastResult[0].columns;
+                        const values = lastResult[0].values;
+                        outputElement.innerHTML = formatSQLResults(columns, values);
+                    } else {
+                        // No results (e.g., INSERT, UPDATE, CREATE)
+                        outputElement.innerHTML = '<span style="color: #4ade80;">Query executed successfully (no results)</span>';
+                    }
+                } catch (error) {
+                    updateStatus("error");
+                    outputElement.innerHTML = `<span style="color: #f87171;">Error: ${preprocessOutput(error.message)}</span>`;
+                }
+            }
+
+            // Function to copy code to clipboard
+            function copyToClipboard() {
+                const code = editor.getValue();
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = copyButton.innerHTML;
+                    copyButton.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                    setTimeout(() => {
+                        copyButton.innerHTML = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+
+            // Function to clear editor
+            function clearEditor() {
+                if (confirm("Are you sure you want to clear the editor?")) {
+                    editor.setValue("");
+                    editor.focus();
+                }
+            }
+
+            // Event Listeners
+            runButton.addEventListener('click', runCode);
+            mobileRunButton.addEventListener('click', runCode);
+            clearButton.addEventListener('click', clearEditor);
+            copyButton.addEventListener('click', copyToClipboard);
+        });
+    </script>
+</body>
+</html>

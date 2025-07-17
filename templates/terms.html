@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Terms of Service - UTHAKKAN (UK) | Tool Pix</title>
+  <meta name="description" content="Review the Terms of Service for UTHAKKAN (UK) and Tool Pix. Learn your rights and responsibilities when using our free online coding and developer tools.">
+  <meta name="keywords" content="terms of service, UTHAKKAN, Tool Pix, user agreement, online IDE terms, coding platform rules, legal information, developer tools terms">
+  <meta name="author" content="UTHAKKAN (UK)">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+
+  <link rel="canonical" href="https://toolpix.pythonanywhere.com/terms-of-service">
+  <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/terms-of-service">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Terms of Service - UTHAKKAN (UK) | Tool Pix">
+  <meta property="og:description" content="Understand your rights and responsibilities when using Tool Pix, the free online developer tools platform from UTHAKKAN (UK).">
+  <meta property="og:url" content="https://toolpix.pythonanywhere.com/terms-of-service">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og-terms.jpg">
+  <meta property="og:site_name" content="Tool Pix">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terms of Service - UTHAKKAN (UK)">
+  <meta name="twitter:description" content="Read the official Terms of Service for Tool Pix and UTHAKKAN (UK) online tools and services.">
+  <meta name="twitter:image" content="/twitter-terms.jpg">
+  <meta name="twitter:site" content="@toolpix">
+  <meta name="twitter:creator" content="@toolpix">
+
+  <!-- JSON-LD: Legal Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms of Service",
+    "url": "https://toolpix.pythonanywhere.com/terms-of-service",
+    "description": "Terms of Service for UTHAKKAN (UK) and Tool Pix. Outlining user agreements for using the platform's coding and developer tools.",
+    "mainEntity": {
+      "@type": "CreativeWork",
+      "name": "Terms of Service",
+      "creator": {
+        "@type": "Organization",
+        "name": "UTHAKKAN (UK)",
+        "url": "https://toolpix.pythonanywhere.com/"
+      }
+    }
+  }
+  </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6e48aa;
+            --primary-dark: #4b3080;
+            --secondary: #9d50bb;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --accent: #64fcd9;
+            --border: #2d4059;
+            --success: #4ade80;
+            --error: #f87171;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: var(--bg-darker);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 101;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand i {
+            color: var(--accent);
+        }
+
+        .navbar-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+            flex: 1;
+            margin-top: 70px;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: calc(100vh - 70px);
+            top: 70px;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-title i {
+            color: var(--accent);
+        }
+
+        .sidebar-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+
+        .sidebar-toggle.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .compiler-list {
+            list-style: none;
+        }
+
+        .compiler-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compiler-item a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .compiler-item:hover {
+            background: rgba(110, 72, 170, 0.2);
+        }
+
+        .compiler-item.active {
+            background: var(--primary);
+        }
+
+        .compiler-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            max-width: calc(100% - 280px);
+            overflow-x: hidden;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .terms-section {
+            text-align: center;
+            max-width: 900px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .terms-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+        }
+
+        .terms-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .terms-content {
+            text-align: left;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .terms-content h2 {
+            font-size: 1.5rem;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .terms-content p {
+            margin-bottom: 15px;
+        }
+
+        .terms-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+        }
+
+        .terms-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .terms-content a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            width: 100%;
+            margin-top: auto;
+            margin-left: 280px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay {
+                display: block;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sidebar.open ~ .sidebar-toggle {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .footer {
+                margin-left: 0;
+            }
+
+            .footer-bottom {
+                margin-top: 20px;
+                padding: 10px;
+            }
+
+            .terms-title {
+                font-size: 2rem;
+            }
+
+            .terms-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .terms-content {
+                font-size: 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <i class="fas fa-code"></i>
+            <span>Tool Pix</span>
+        </a>
+        <button class="navbar-toggle" id="navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="compiler-list">
+                <li class="compiler-item">
+                    <a href="/base64-encoder">
+                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
+                        <span>Base64 Encoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/c-compiler">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/cpp-compiler">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/css-obfuscator">
+                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
+                        <span>CSS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/html-editor">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/java-compiler">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/js-obfuscator">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/javascript-editor">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/json-formatter">
+                        <span class="compiler-icon"><i class="fas fa-code"></i></span>
+                        <span>JSON Formatter</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/python-compiler">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/sql-editor">
+                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                        <span>SQL</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/online-text-editor">
+                        <span class="compiler-icon"><i class="fas fa-edit"></i></span>
+                        <span>Text Editor</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="terms-section">
+                <h1 class="terms-title">Terms of Service</h1>
+                <div class="terms-subtitle">UTHAKKAN (UK) and Tool Pix</div>
+                <div class="terms-content">
+                    <p>Last Updated: July 8, 2025</p>
+                    <p>Welcome to Tool Pix, a free online coding platform provided by UTHAKKAN (UK). These Terms of Service (“Terms”) govern your use of Tool Pix, accessible at [website URL]. By accessing or using Tool Pix, you agree to be bound by these Terms. If you do not agree, please do not use our platform. For questions, contact us at <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a>.</p>
+
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By using Tool Pix, you confirm that you are at least 13 years old and agree to these Terms and our <a href="/privacy">Privacy Policy</a>. If you are under 18, you must have parental consent to use the platform.</p>
+
+                    <h2>2. Use of the Service</h2>
+                    <p>Tool Pix provides compilers, interpreters, and editors for coding in languages like Python, Java, C, C++, JavaScript, SQL, HTML, and CSS. You agree to use Tool Pix responsibly and in compliance with all applicable laws. You are responsible for:</p>
+                    <ul>
+                        <li>The content you create or input, including code or text.</li>
+                        <li>Ensuring your use does not harm the platform or other users.</li>
+                    </ul>
+                    <p>Prohibited activities include:</p>
+                    <ul>
+                        <li>Uploading or running malicious code, viruses, or harmful scripts.</li>
+                        <li>Attempting to access, modify, or disrupt Tool Pix’s systems or servers.</li>
+                        <li>Using the platform for illegal or unauthorized purposes.</li>
+                        <li>Interfering with other users’ access to Tool Pix.</li>
+                    </ul>
+
+                    <h2>3. Intellectual Property</h2>
+                    <p><strong>Our Content</strong>: Tool Pix, including its design, code, and branding, is owned by UTHAKKAN (UK) and protected by intellectual property laws. You may not copy, modify, or distribute our content without permission.</p>
+                    <p><strong>Your Content</strong>: You retain ownership of any code or text you create on Tool Pix. By using the platform, you grant UTHAKKAN a non-exclusive, worldwide, royalty-free license to process your content as needed to provide the service (e.g., compiling or running your code).</p>
+
+                    <h2>4. Service Availability</h2>
+                    <p>Tool Pix is provided “as is” and “as available.” We do not guarantee uninterrupted access or error-free operation. UTHAKKAN may modify, suspend, or discontinue parts of the platform at any time without notice.</p>
+
+                    <h2>5. Limitation of Liability</h2>
+                    <p>To the fullest extent permitted by law, UTHAKKAN (UK) is not liable for:</p>
+                    <ul>
+                        <li>Data loss or corruption caused by using Tool Pix.</li>
+                        <li>Service interruptions or technical issues.</li>
+                        <li>Any damages arising from your use of the platform or user-generated content.</li>
+                    </ul>
+                    <p>You use Tool Pix at your own risk.</p>
+
+                    <h2>6. Termination</h2>
+                    <p>We may suspend or terminate your access to Tool Pix if you violate these Terms, engage in prohibited activities, or for any other reason at our discretion. You may stop using Tool Pix at any time.</p>
+
+                    <h2>7. Third-Party Links</h2>
+                    <p>Tool Pix may include links to third-party websites (e.g., GitHub, LinkedIn). We are not responsible for their content or practices. Review their terms before use.</p>
+
+                    <h2>8. Changes to These Terms</h2>
+                    <p>We may update these Terms to reflect changes in our services or legal requirements. We will notify users of significant changes via email or a notice on Tool Pix. Continued use of the platform after changes constitutes acceptance of the new Terms.</p>
+
+                    <h2>9. Governing Law</h2>
+                    <p>These Terms are governed by the laws of the United Kingdom. Any disputes will be resolved in the courts of the United Kingdom.</p>
+
+                    <h2>10. Contact Us</h2>
+                    <p>If you have questions about these Terms, please contact us at:</p>
+                    <p>Email: <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a></p>
+                    <p>Thank you for using Tool Pix. We’re excited to support your coding journey!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Compilers</h3>
+                <ul>
+                    <li><a href="/c-compiler">C</a></li>
+                    <li><a href="/cpp-compiler">C++</a></li>
+                    <li><a href="/java-compiler">Java</a></li>
+                    <li><a href="/python-compiler">Python</a></li>
+                    <li><a href="/javascript-editor">JavaScript</a></li>
+                    <li><a href="/sql-editor">SQL</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Tools</h3>
+                <ul>
+                    <li><a href="/base64-encoder">Base64 Encoder</a></li>
+                    <li><a href="/css-obfuscator">CSS Obfuscator</a></li>
+                    <li><a href="/js-obfuscator">JS Obfuscator</a></li>
+                    <li><a href="/json-formatter">JSON Formatter</a></li>
+                    <li><a href="/online-text-editor">Text Editor</a></li>
+                    <li><a href="/html-editor">HTML Editor</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/muhammed-ajmal-u-k-616b152ba" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ajmal-uk/" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 UTHAKKAN (UK). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebar-toggle");
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+            function toggleSidebar() {
+                sidebar.classList.toggle("open");
+                sidebarOverlay.classList.toggle("open");
+                sidebarToggle.classList.toggle("hidden");
+                navbarToggle.classList.toggle("hidden");
+            }
+
+            sidebarToggle.addEventListener("click", toggleSidebar);
+            navbarToggle.addEventListener("click", toggleSidebar);
+            sidebarOverlay.addEventListener("click", toggleSidebar);
+        });
+    </script>
+</body>
+</html>

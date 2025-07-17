@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.sitemaps.org/schemas/sitemap/0.9 
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- ========== HOME PAGE ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+        <image:image>
+            <image:loc>https://toolpix.pythonanywhere.com/logo.png</image:loc>
+            <image:title>ToolPix - Online Developer Tools Platform</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://toolpix.pythonanywhere.com/og-image.jpg</image:loc>
+            <image:title>ToolPix: 50+ Online Tools for Developers</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://toolpix.pythonanywhere.com/twitter-image.jpg</image:loc>
+            <image:title>Code, Compile and Convert Online</image:title>
+        </image:image>
+    </url>
+
+    <!-- ========== MOST POPULAR TOOLS (0.90) ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/python-compiler</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/javascript-editor</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/json-formatter</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <!-- ========== POPULAR TOOLS (0.80) ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/html-editor</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/java-compiler</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/cpp-compiler</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/online-text-editor</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- ========== NICHE TOOLS (0.70) ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/base64-encoder</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/c-compiler</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/css-obfuscator</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/sql-editor</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- ========== SUPPORT PAGES (0.60) ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/about</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.60</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/contact</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.60</priority>
+    </url>
+
+    <!-- ========== LEGAL PAGES (0.30) ========== -->
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/privacy</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.30</priority>
+    </url>
+
+    <url>
+        <loc>https://toolpix.pythonanywhere.com/terms</loc>
+        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.30</priority>
+    </url>
+
+</urlset>
