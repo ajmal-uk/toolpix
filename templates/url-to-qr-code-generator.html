@@ -6,22 +6,63 @@
   <title>URL to QR Code Generator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f9fa; }
-    .container { padding: 20px; max-width: 700px; margin: auto; }
-    .title { font-size: 24px; margin-bottom: 10px; }
-    textarea { width: 100%; height: 80px; padding: 10px; font-size: 16px; }
-    .controls { margin-top: 15px; display: flex; gap: 10px; }
-    .btn { padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; }
-    .btn-primary { background-color: #2563eb; color: #fff; }
-    .btn-secondary { background-color: #e2e8f0; color: #000; }
-    .output-content { margin-top: 30px; text-align: center; }
-    #qr-code { display: flex; justify-content: center; margin-top: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    .container {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+    .btn-primary {
+      background-color: #2563eb;
+      color: #fff;
+    }
+    .btn-secondary {
+      background-color: #e2e8f0;
+      color: #000;
+    }
+    .output-content {
+      margin-top: 30px;
+      text-align: center;
+    }
+    #qr-code {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1 class="title"><i class="fas fa-qrcode"></i> URL to QR Code Generator</h1>
-    <textarea id="url-editor">https://example.com</textarea>
+    <textarea id="url-editor" placeholder="Enter URL here...">https://example.com</textarea>
 
     <div class="controls">
       <button class="btn btn-primary" id="generate-btn"><i class="fas fa-qrcode"></i> Generate</button>
@@ -50,8 +91,8 @@
     }
 
     function isValidURL(str) {
-      const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[a-zA-Z]{2,}(\/.*)?$/;
-      return urlPattern.test(str);
+      const pattern = /^(https?:\/\/)([\w-]+\.)+[a-z]{2,}([\/\w .-]*)*\/?$/i;
+      return pattern.test(str);
     }
 
     function calculateQRCodeSize() {
@@ -69,11 +110,11 @@
       }
 
       if (!isValidURL(url)) {
-        alert("Invalid URL format. Use http:// or https://");
+        alert("Invalid URL format. Make sure it starts with http:// or https://");
         return;
       }
 
-      qrContainer.innerHTML = ""; // Clear existing QR code
+      qrContainer.innerHTML = "";
 
       const size = calculateQRCodeSize();
 
@@ -85,8 +126,6 @@
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
-
-      console.log("QR generated for:", url);
     }
 
     function downloadQRCode() {
@@ -118,10 +157,10 @@
     downloadBtn.addEventListener("click", downloadQRCode);
     clearBtn.addEventListener("click", clearEditor);
 
-    // Auto-generate on load
+    // Generate on load
     window.onload = generateQRCode;
 
-    // Responsive regenerate
+    // Regenerate on resize if URL exists
     window.addEventListener("resize", () => {
       if (urlInput.value.trim()) generateQRCode();
     });

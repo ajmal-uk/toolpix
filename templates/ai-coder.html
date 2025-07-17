@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multi-language Code Editor with AI code generation. Write, compile, and run programs with real-time output.">
+    <meta name="keywords" content="online compiler, AI code generation, run code online, programming, compile online, IDE, code editor, free compiler">
+    <meta name="author" content="ToolPix">
+    <meta name="robots" content="index, follow">
+    <title>ToolPix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/eclipse.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --secondary: #a78bfa;
+            --bg-dark: #1e1e2e;
+            --bg-darker: #181825;
+            --text-light: #e2e8f0;
+            --text-lighter: #ffffff;
+            --accent: #4ade80;
+            --border: #374151;
+            --success: #22c55e;
+            --error: #ef4444;
+            --warning: #facc15;
+            --info: #3b82f6;
+            --output-font-size: 14px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light {
+            --bg-dark: #f3f4f6;
+            --bg-darker: #ffffff;
+            --text-light: #1f2937;
+            --text-lighter: #111827;
+            --border: #d1d5db;
+            --accent: #16a34a;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .header {
+            padding: 16px 24px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 10000;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title i {
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn, .theme-toggle, .zoom-btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover, .theme-toggle:hover, .zoom-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:disabled, .theme-toggle:disabled, .zoom-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .theme-toggle {
+            background: linear-gradient(45deg, #4b5563, #6b7280);
+            color: white;
+        }
+
+        body.light .theme-toggle {
+            background: linear-gradient(45deg, #d1d5db, #e5e7eb);
+            color: #1f2937;
+        }
+
+        .zoom-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .zoom-btn:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+        }
+
+        .prompt-container {
+            padding: 12px 24px;
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 120px;
+            overflow: hidden;
+        }
+
+        #prompt {
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-light);
+            font-family: 'JetBrains Mono', monospace;
+            flex: 1;
+            resize: none;
+            height: 90px;
+            transition: all 0.3s ease;
+        }
+
+        #prompt:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        body.light #prompt {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .editor-output-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            max-width: 100%;
+            height: calc(100vh - 120px - 60px);
+        }
+
+        .editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+            border-right: 1px solid var(--border);
+            background: var(--bg-darker);
+        }
+
+        .editor-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .editor-wrapper.fullscreen {
+            position: fixed !important;
+            top: 0;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            z-index: 9999 !important;
+            background: var(--bg-dark) !important;
+            height: 100vh !important;
+            width: 100vw !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        body.light .editor-wrapper.fullscreen {
+            background: var(--bg-darker) !important;
+        }
+
+        .CodeMirror {
+            height: 100% !important;
+            width: 100%;
+        }
+
+        .output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            max-height: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        .output-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border);
+            max-height: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--bg-darker);
+            border-radius: 8px;
+        }
+
+        .output-container.html-output {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .output-container.html-output .output-content {
+            background: transparent !important;
+            color: #000000 !important;
+        }
+
+        .output-header {
+            padding: 12px 20px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+            max-width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .output-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .output-content {
+            padding: 20px;
+            background: transparent;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--output-font-size);
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            max-height: 100%;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .output-content a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .output-content a:hover {
+            text-decoration: underline;
+            color: var(--primary-dark);
+        }
+
+        .input-dialog.terminal {
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #00ff00;
+            position: relative;
+            max-height: 100%;
+            overflow-y: auto;
+        }
+
+        .input-dialog.terminal .input-history {
+            margin-bottom: 15px;
+            color: #ffffff;
+            white-space: pre-wrap;
+            font-size: 14px;
+        }
+
+        .input-dialog.terminal .input-prompt {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .input-dialog.terminal .input-prompt span {
+            color: #00ff00;
+            margin-right: 8px;
+            max-width: 50%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .input-dialog.terminal .user-input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            flex: 1;
+            padding: 0;
+            outline: none;
+        }
+
+        .input-dialog.terminal .user-input:disabled {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .input-dialog.terminal .user-input:focus {
+            border: none;
+            box-shadow: none;
+        }
+
+        .input-dialog.terminal .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background-color: #00ff00;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .status-ready { background-color: var(--info); }
+        .status-running { background-color: var(--warning); animation: pulse 1.5s infinite; }
+        .status-success { background-color: var(--success); }
+        .status-error { background-color: var(--error); }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .copy-btn, .generate-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, var(--accent), #86efac);
+            color: #1f2937;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+            color: var(--text-light);
+        }
+
+        .copy-btn:hover, .generate-btn:hover {
+            background: linear-gradient(45deg, #16a34a, var(--accent));
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #1f2937;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--bg-darker);
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            color: var(--text-light);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-lighter);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .language-select {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+        }
+
+        .language-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .auto-run-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: var(--text-light);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 992px) {
+            .editor-output-container {
+                flex-direction: column;
+                height: calc(100vh - 120px - 60px);
+            }
+
+            .editor-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                height: 50%;
+            }
+
+            .output-section {
+                height: 50%;
+            }
+
+            .output-container {
+                max-height: 100%;
+            }
+
+            .CodeMirror {
+                height: 100% !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 16px;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .title i {
+                font-size: 1.2rem;
+            }
+
+            .controls .btn span, .controls .theme-toggle span, .controls .zoom-btn span {
+                display: none;
+            }
+
+            .controls .btn, .controls .theme-toggle, .controls .zoom-btn {
+                padding: 10px;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .tooltip-text {
+                width: 100px;
+                font-size: 11px;
+                bottom: 110%;
+            }
+
+            .prompt-container {
+                padding: 10px 16px;
+                height: 100px;
+            }
+
+            #prompt {
+                height: 80px;
+                font-size: 0.9rem;
+            }
+
+            .output-content {
+                font-size: 13px;
+                padding: 16px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="app-container">
+        <div class="main-content">
+            <div class="container">
+                <div class="header">
+                    <h1 class="title" aria-label="ToolPix Online Code Editor">
+                        <i class="fas fa-code"></i>
+                        <span>ToolPix</span>
+                    </h1>
+                    <div class="controls">
+                        <button class="btn btn-secondary tooltip copy-btn" id="copy-btn" aria-label="Copy code to clipboard">
+                            <i class="far fa-copy"></i>
+                            <span>Copy</span>
+                            <span class="tooltip-text">Copy to clipboard</span>
+                        </button>
+                        <button class="btn btn-secondary" id="clear-btn" title="Clear" aria-label="Clear editor">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Clear</span>
+                        </button>
+                        <button class="btn btn-primary" id="run-btn" title="Run" aria-label="Run code">
+                            <i class="fas fa-play"></i>
+                            <span>Run</span>
+                        </button>
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                            <i class="fa fa-adjust"></i>
+                            <span>Toggle Theme</span>
+                        </button>
+                        <button class="zoom-btn" id="zoom-btn" title="Toggle Fullscreen" aria-label="Toggle fullscreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="editor-output-container">
+                    <div class="editor-section">
+                        <div class="editor-wrapper">
+                            <textarea id="code" aria-label="Code editor"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="output-section">
+                        <div class="output-container">
+                            <div class="output-header">
+                                <h2 class="output-title">
+                                    <span class="status-indicator status-ready"></span>
+                                    Output
+                                </h2>
+                            </div>
+                            <div class="output-content">
+                                <pre id="output" aria-live="polite">Write your code above and click "Run"</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-container">
+                    <textarea id="prompt" placeholder="Ask something like 'write Python code to print hello world'..." aria-label="AI prompt input"></textarea>
+                    <button class="generate-btn" id="generate-btn" aria-label="Generate code">
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="loading" style="display: none;"><i class="fa fa-spinner fa-spin"></i></span>
+                    </button>
+                    <label class="auto-run-checkbox">
+                        <input type="checkbox" id="auto-run" checked aria-label="Auto-run generated code">
+                        <span>Auto-run generated code</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="language-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Detected Language</h2>
+                <button class="modal-close" id="modal-close" aria-label="Close language selection modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>We detected the programming language of your code. Please confirm or select the correct language:</p>
+                <select class="language-select" id="language-select" aria-label="Select programming language">
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="C">C</option>
+                    <option value="C++" selected>C++</option>
+                    <option value="Java">Java</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="PHP">PHP</option>
+                    <option value="SQL">SQL</option>
+                    <option value="Bash">Bash</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Perl">Perl</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modal-cancel" aria-label="Cancel language selection">Cancel</button>
+                <button class="btn btn-primary" id="modal-run" aria-label="Run code with selected language">Run Code</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/php/php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/sql/sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/ruby/ruby.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/shell/shell.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/perl/perl.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modeMap = {
+                'Python': 'python',
+                'JavaScript': 'javascript',
+                'C': 'text/x-csrc',
+                'C++': 'text/x-c++src',
+                'Java': 'text/x-java',
+                'HTML': 'htmlmixed',
+                'CSS': 'css',
+                'PHP': 'php',
+                'SQL': 'sql',
+                'Bash': 'shell',
+                'Ruby': 'ruby',
+                'Perl': 'perl'
+            };
+
+            const languageVersions = {
+                'Python': '3.10.0',
+                'JavaScript': '18.15.0',
+                'C': '10.2.0',
+                'C++': '10.2.0',
+                'Java': '15.0.2',
+                'PHP': '8.2.3',
+                'SQL': 'latest',
+                'Bash': '5.1.0',
+                'Ruby': '3.0.0',
+                'Perl': '5.36.0'
+            };
+
+            const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "text/x-c++src",
+                theme: localStorage.getItem("theme") === "light" ? "eclipse" : "dracula",
+                lineNumbers: true,
+                indentUnit: 4,
+                tabSize: 4,
+                smartIndent: true,
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                lineWrapping: true,
+                extraKeys: {
+                    "Ctrl-Enter": runCode,
+                    "Cmd-Enter": runCode
+                }
+            });
+
+            const runButton = document.getElementById("run-btn");
+            const clearButton = document.getElementById("clear-btn");
+            const copyButton = document.getElementById("copy-btn");
+            const generateButton = document.getElementById("generate-btn");
+            const themeToggle = document.getElementById("theme-toggle");
+            const outputElement = document.getElementById("output");
+            const statusIndicator = document.querySelector(".status-indicator");
+            const zoomButton = document.getElementById("zoom-btn");
+            const promptInput = document.getElementById("prompt");
+            const autoRunCheckbox = document.getElementById("auto-run");
+            const languageModal = document.getElementById("language-modal");
+            const languageSelect = document.getElementById("language-select");
+            const modalClose = document.getElementById("modal-close");
+            const modalCancel = document.getElementById("modal-cancel");
+            const modalRun = document.getElementById("modal-run");
+
+            let selectedLanguage = 'C++';
+            let isGeneratingCode = false;
+            let typingInterval = null;
+
+            if (localStorage.getItem("theme") === "light") {
+                document.body.classList.add("light");
+            }
+
+            updateStatus("ready");
+
+            function detectLanguage(code) {
+                if (!code.trim()) return 'Unknown';
+
+                const trimmed = code.trim();
+                const lower = trimmed.toLowerCase();
+
+                // Improved language detection with precedence
+                if (trimmed.startsWith('<!DOCTYPE html') || /<(html|head|body|div|script|style|title)/i.test(code)) {
+                    return 'HTML';
+                }
+                if (/^\s*[.#]?\w+\s*{[\s\S]*?}/m.test(code) && /;/.test(code)) {
+                    return 'CSS';
+                }
+                if (trimmed.startsWith('#!/bin/bash') || trimmed.startsWith('#!/bin/sh') || lower.includes('echo $') || lower.includes('fi') || lower.includes('done')) {
+                    return 'Bash';
+                }
+                if (/^\s*def\s+\w+\s*\(/m.test(code) || /^import\s+\w+/m.test(code) || /print\s*\(/.test(code)) {
+                    return 'Python';
+                }
+                if (/public\s+class\s+\w+/.test(code) || /public\s+static\s+void\s+main\s*\(/.test(code)) {
+                    return 'Java';
+                }
+                if (code.includes('#include') && /std::\w+/.test(code)) {
+                    return 'C++';
+                }
+                if (code.includes('#include') && /scanf|printf/.test(code) && !/std::/.test(code)) {
+                    return 'C';
+                }
+                if (/function\s+\w+\s*\(/.test(code) || /console\.log/.test(code) || /\=\>\s*{?/.test(code)) {
+                    return 'JavaScript';
+                }
+                if (/\b(SELECT|INSERT|UPDATE|DELETE|FROM|WHERE)\b/i.test(code)) {
+                    return 'SQL';
+                }
+                if (code.includes('<?php') || /echo\s+["']/.test(code) || /\$\w+/.test(code)) {
+                    return 'PHP';
+                }
+                if (/puts\s+["']/.test(code) || /^class\s+\w+/.test(code) || /^def\s+\w+/.test(code)) {
+                    return 'Ruby';
+                }
+                if (/print\s+["']/.test(code) && /\$\w+/.test(code) || /use\s+\w+/.test(code)) {
+                    return 'Perl';
+                }
+                return 'Unknown';
+            }
+
+            function showLanguageModal() {
+                const code = editor.getValue();
+                if (!code.trim()) return;
+                selectedLanguage = detectLanguage(code);
+                languageSelect.value = selectedLanguage;
+                editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
+                languageModal.style.display = 'flex';
+                languageSelect.focus();
+            }
+
+            function closeLanguageModal() {
+                languageModal.style.display = 'none';
+            }
+
+            function updateStatus(status) {
+                statusIndicator.className = "status-indicator";
+                switch (status) {
+                    case "ready":
+                        statusIndicator.classList.add("status-ready");
+                        break;
+                    case "running":
+                        statusIndicator.classList.add("status-running");
+                        break;
+                    case "success":
+                        statusIndicator.classList.add("status-success");
+                        break;
+                    case "error":
+                        statusIndicator.classList.add("status-error");
+                        break;
+                }
+            }
+
+            function preprocessOutput(text) {
+                if (typeof text !== 'string') return text;
+                const viewportWidth = window.innerWidth;
+                const maxLineLength = viewportWidth <= 768 ? Math.floor(viewportWidth / 10) : 80;
+                return text.split('\n').map(line => {
+                    if (line.length <= maxLineLength) return line;
+                    let result = '';
+                    for (let i = 0; i < line.length; i += maxLineLength) {
+                        result += line.slice(i, i + maxLineLength) + '\n';
+                    }
+                    return result.trimEnd();
+                }).join('\n');
+            }
+
+            function extractPrompt(match) {
+                if (match[0].includes('scanf')) {
+                    const promptMatch = match[0].match(/scanf\s*\(\s*"([^"]*)"/);
+                    return promptMatch ? promptMatch[1] : "scanf> ";
+                }
+                if (match[0].includes('input') || match[0].includes('readline') || match[0].includes('prompt')) {
+                    const promptMatch = match[0].match(/(?:input|readline|prompt)\s*\(\s*['"]([^'"]*)['"]/);
+                    return promptMatch ? promptMatch[1] : "input> ";
+                }
+                return "input> ";
+            }
+
+            async function runCode() {
+                const code = editor.getValue();
+                if (!code.trim()) {
+                    showToast("No code to execute.");
+                    return;
+                }
+
+                const editorWrapper = document.querySelector('.editor-wrapper');
+                if (editorWrapper.classList.contains("fullscreen")) {
+                    toggleFullscreen();
+                }
+
+                updateStatus("running");
+                outputElement.innerHTML = '<span style="color: var(--warning);"><i class="fas fa-spinner fa-spin"></i> Running your code...</span>';
+
+                const inputPattern = /scanf\s*\(\s*"[^"]*"\s*,[^)]*\)|cin\s*>>[^;]*|input\s*\([^)]*\)|readline\s*\([^)]*\)|prompt\s*\([^)]*\)/g;
+                let inputPrompts = [...code.matchAll(inputPattern)].map(match => extractPrompt(match));
+
+                if (selectedLanguage === 'C++') {
+                    const cinLines = code.split('\n').filter(line => line.includes('cin >>'));
+                    inputPrompts = [];
+                    cinLines.forEach(line => {
+                        const variables = line.match(/cin\s*>>\s*([^;]*)/);
+                        if (variables) {
+                            const varCount = variables[1].split('>>').length;
+                            for (let i = 0; i < varCount; i++) {
+                                inputPrompts.push("cin> ");
+                            }
+                        }
+                    });
+                }
+
+                if (inputPrompts.length > 0 && selectedLanguage !== 'HTML' && selectedLanguage !== 'CSS') {
+                    showInputDialog(inputPrompts, code);
+                    return;
+                }
+
+                await executeCodeClientSide(code);
+            }
+
+            function showInputDialog(prompts, code) {
+                let currentIndex = 0;
+                let inputs = [];
+                outputElement.innerHTML = '<div class="input-dialog terminal"><div class="input-history"></div><button class="btn btn-secondary" id="cancel-input">Cancel</button></div>';
+                const inputHistoryElement = outputElement.querySelector('.input-history');
+                const cancelButton = outputElement.querySelector('#cancel-input');
+
+                const cancelHandler = () => {
+                    outputElement.innerHTML = '<pre id="output">Input collection cancelled.</pre>';
+                    updateStatus("ready");
+                };
+                cancelButton.addEventListener('click', cancelHandler);
+
+                function addInputPrompt() {
+                    if (currentIndex < prompts.length) {
+                        const promptDiv = document.createElement('div');
+                        promptDiv.className = 'input-prompt';
+                        promptDiv.innerHTML = `
+                            <span>${prompts[currentIndex]}</span>
+                            <input type="text" class="user-input" placeholder="Enter value" autocomplete="off" aria-label="Input for ${prompts[currentIndex]}">
+                            <span class="typing-cursor"></span>
+                        `;
+                        inputHistoryElement.appendChild(promptDiv);
+                        const inputField = promptDiv.querySelector('.user-input');
+                        inputField.focus();
+
+                        const handleInputKeydown = (e) => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                const value = inputField.value.trim();
+                                if (!value) {
+                                    showToast("Please enter a valid value.");
+                                    return;
+                                }
+                                inputs.push(value);
+                                inputField.disabled = true;
+                                inputField.nextElementSibling.remove();
+                                inputHistoryElement.scrollTop = inputHistoryElement.scrollHeight;
+                                currentIndex++;
+                                if (currentIndex < prompts.length) {
+                                    addInputPrompt();
+                                } else {
+                                    cancelButton.removeEventListener('click', cancelHandler);
+                                    cancelButton.remove();
+                                    const runningMessage = document.createElement('div');
+                                    runningMessage.textContent = "All inputs collected. Running code...";
+                                    inputHistoryElement.appendChild(runningMessage);
+                                    setTimeout(() => executeCodeClientSide(code, inputs), 500);
+                                }
+                            }
+                        };
+                        inputField.addEventListener('keydown', handleInputKeydown);
+                    }
+                }
+
+                addInputPrompt();
+            }
+
+            async function executeCodeClientSide(code, inputs = []) {
+                updateStatus("running");
+                outputElement.innerHTML = '<span style="color: var(--warning);"><i class="fas fa-spinner fa-spin"></i> Running your code...</span>';
+
+                const outputContainer = document.querySelector('.output-container');
+                if (selectedLanguage.toLowerCase() === 'html') {
+                    outputContainer.classList.add('html-output');
+                } else {
+                    outputContainer.classList.remove('html-output');
+                }
+
+                try {
+                    if (selectedLanguage.toLowerCase() === 'html' || selectedLanguage.toLowerCase() === 'css') {
+                        updateStatus("success");
+                        outputElement.innerHTML = code;
+                        return;
+                    }
+
+                    const response = await fetch("/execute", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            language: selectedLanguage,
+                            code: code,
+                            input: inputs.join("\n")
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(errorText || "Failed to execute code. Please check your server connection.");
+                    }
+
+                    const result = await response.json();
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+
+                    updateStatus("success");
+                    outputElement.innerHTML = preprocessOutput(result.output || "No output");
+                } catch (error) {
+                    updateStatus("error");
+                    outputElement.innerHTML = `<span style="color: var(--error);">Error: ${preprocessOutput(error.message)}</span>`;
+                }
+            }
+
+            function copyToClipboard() {
+                const code = editor.getValue();
+                navigator.clipboard.writeText(code).then(() => {
+                    showToast("📋 Code copied to clipboard.");
+                }).catch(() => {
+                    showToast("Error copying code. Please try again.");
+                });
+            }
+
+            function clearEditor() {
+                if (confirm("Are you sure you want to clear the editor?")) {
+                    editor.setValue("");
+                    editor.focus();
+                    showToast("Editor cleared.");
+                }
+            }
+
+            function cleanCodeBlocks(code) {
+                return code.replace(/```[\w]*\n?|```/g, '').trim();
+            }
+
+            function typeCodeAnimation(code, callback) {
+                let i = 0;
+                const speed = 10;
+                const currentCode = editor.getValue();
+
+                copyButton.disabled = true;
+                generateButton.disabled = true;
+                runButton.disabled = true;
+                clearButton.disabled = true;
+
+                if (currentCode.trim().length > 0) {
+                    editor.setValue("");
+                }
+
+                const typingCursor = document.createElement('span');
+                typingCursor.className = 'typing-cursor';
+                editor.getWrapperElement().appendChild(typingCursor);
+
+                typingInterval = setInterval(() => {
+                    if (i < code.length) {
+                        const currentValue = editor.getValue();
+                        editor.setValue(currentValue + code.charAt(i));
+                        i++;
+                        editor.scrollIntoView({ line: editor.lineCount(), ch: 0 });
+                    } else {
+                        clearInterval(typingInterval);
+                        typingCursor.remove();
+
+                        copyButton.disabled = false;
+                        generateButton.disabled = false;
+                        runButton.disabled = false;
+                        clearButton.disabled = false;
+
+                        if (callback) callback();
+                    }
+                }, speed);
+            }
+
+            async function generateCode() {
+                if (isGeneratingCode) return;
+                isGeneratingCode = true;
+
+                const prompt = promptInput.value.trim();
+                if (!prompt) {
+                    showToast("Please enter a prompt.");
+                    isGeneratingCode = false;
+                    return;
+                }
+
+                generateButton.disabled = true;
+                generateButton.querySelector('.loading').style.display = 'inline-block';
+                outputElement.innerHTML = '<span style="color: var(--info);"><i class="fas fa-spinner fa-spin"></i> Generating code...</span>';
+
+                try {
+                    const current_code = editor.getValue();
+                    const response = await fetch('https://droq.pythonanywhere.com/generate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            prompt,
+                            language: selectedLanguage,
+                            current_code
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(errorText || "Failed to generate code. Please check your server connection.");
+                    }
+
+                    const result = await response.json();
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+
+                    selectedLanguage = result.language || 'C++';
+                    editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
+
+                    const cleanCode = cleanCodeBlocks(result.code);
+
+                    typeCodeAnimation(cleanCode, () => {
+                        if (autoRunCheckbox.checked && selectedLanguage.toLowerCase() !== 'html' && selectedLanguage.toLowerCase() !== 'css') {
+                            runCode();
+                        } else {
+                            updateStatus("success");
+                            outputElement.innerHTML = selectedLanguage.toLowerCase() === 'html' ? cleanCode : preprocessOutput(cleanCode);
+                        }
+                    });
+
+                    showToast("✅ Code generated successfully!");
+                } catch (error) {
+                    console.error("Error generating code:", error);
+                    showToast("Error generating code. Please try again.");
+                    outputElement.innerHTML = `<span style="color: var(--error);">Error: ${preprocessOutput(error.message)}</span>`;
+                } finally {
+                    generateButton.disabled = false;
+                    generateButton.querySelector('.loading').style.display = 'none';
+                    isGeneratingCode = false;
+                }
+            }
+
+            function showToast(message) {
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "center",
+                    backgroundColor: "linear-gradient(45deg, var(--primary), var(--secondary))",
+                    close: true,
+                    stopOnFocus: true,
+                    escapeMarkup: false
+                }).showToast();
+            }
+
+            function toggleTheme() {
+                const body = document.body;
+                body.classList.toggle("light");
+                localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+                editor.setOption("theme", body.classList.contains("light") ? "eclipse" : "dracula");
+                showToast(`Switched to ${body.classList.contains("light") ? "light" : "dark"} theme.`);
+            }
+
+            function toggleFullscreen() {
+                const editorWrapper = document.querySelector('.editor-wrapper');
+                const header = document.querySelector('.header');
+                const headerHeight = header.offsetHeight;
+                if (editorWrapper.classList.contains("fullscreen")) {
+                    editorWrapper.classList.remove("fullscreen");
+                    editorWrapper.style.position = '';
+                    editorWrapper.style.top = '';
+                    editorWrapper.style.left = '';
+                    editorWrapper.style.right = '';
+                    editorWrapper.style.bottom = '';
+                    editorWrapper.style.zIndex = '';
+                    editorWrapper.style.background = '';
+                    zoomButton.innerHTML = '<i class="fas fa-expand"></i>';
+                    zoomButton.title = "Toggle Fullscreen";
+                    zoomButton.setAttribute("aria-label", "Toggle fullscreen");
+                    document.body.style.overflow = 'auto';
+                } else {
+                    editorWrapper.classList.add("fullscreen");
+                    editorWrapper.style.position = 'fixed';
+                    editorWrapper.style.top = headerHeight + 'px';
+                    editorWrapper.style.left = '0';
+                    editorWrapper.style.right = '0';
+                    editorWrapper.style.bottom = '0';
+                    editorWrapper.style.zIndex = '9999';
+                    editorWrapper.style.background = getComputedStyle(document.body).getPropertyValue('--bg-dark');
+                    zoomButton.innerHTML = '<i class="fas fa-compress"></i>';
+                    zoomButton.title = "Exit Fullscreen";
+                    zoomButton.setAttribute("aria-label", "Exit fullscreen");
+                    document.body.style.overflow = 'hidden';
+                }
+                editor.refresh();
+                editor.focus();
+            }
+
+            // Debounce function for input events
+            function debounce(func, wait) {
+                let timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            // Event listeners
+            runButton.addEventListener('click', runCode);
+            clearButton.addEventListener('click', clearEditor);
+            copyButton.addEventListener('click', copyToClipboard);
+            generateButton.addEventListener('click', generateCode);
+            themeToggle.addEventListener('click', toggleTheme);
+            zoomButton.addEventListener('click', toggleFullscreen);
+            modalClose.addEventListener('click', closeLanguageModal);
+            modalCancel.addEventListener('click', closeLanguageModal);
+            modalRun.addEventListener('click', () => {
+                selectedLanguage = languageSelect.value;
+                editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
+                closeLanguageModal();
+                runCode();
+            });
+            languageSelect.addEventListener('change', () => {
+                selectedLanguage = languageSelect.value;
+                editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
+            });
+
+            // Debounced input detection for language selection
+            editor.on('change', debounce(() => {
+                if (editor.getValue().trim()) {
+                    showLanguageModal();
+                }
+            }, 500));
+
+            if (editor.getValue().trim()) {
+                showLanguageModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -32,7 +32,7 @@
       referrerpolicy="no-referrer">
 
     <meta property="og:title" content="Java Compiler - Free Online Java SE Programming Tool | Tool Pix">
-    <meta property="og:description" content="Tool Pix’s free online Java compiler lets you write, compile, and run Java SE programs with real-time output. Perfect for object-oriented programming, app development, and learning Java.">
+    <meta property="og:description" content="Tool Pix's free online Java compiler lets you write, compile, and run Java SE programs with real-time output. Perfect for object-oriented programming, app development, and learning Java.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpix.pythonanywhere.com/java-compiler">
     <meta property="og:image" content="/java-og-image.jpg">
@@ -44,25 +44,23 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Java Compiler - Free Online Java SE Programming Tool | Tool Pix">
-    <meta name="twitter:description" content="Compile and run Java SE programs online with Tool Pix’s free Java compiler. Ideal for beginners and experts in object-oriented programming and app development.">
+    <meta name="twitter:description" content="Compile and run Java SE programs online with Tool Pix's free Java compiler. Ideal for beginners and experts in object-oriented programming and app development.">
     <meta name="twitter:image" content="/java-twitter-image.jpg">
     <meta name="twitter:image:alt" content="Tool Pix Java Compiler">
     <meta name="twitter:site" content="@toolpix">
     <meta name="twitter:creator" content="@toolpix">
 
-    <!-- Preload critical assets for performance -->
     <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Java Compiler - Free Online Java SE Programming Tool | Tool Pix",
         "url": "https://toolpix.pythonanywhere.com/java-compiler",
-        "description": "Tool Pix’s free online Java compiler supports Java SE programming with real-time compilation and debugging. Perfect for object-oriented programming, app development, and learning Java.",
+        "description": "Tool Pix's free online Java compiler supports Java SE programming with real-time compilation and debugging. Perfect for object-oriented programming, app development, and learning Java.",
         "publisher": {
             "@type": "Organization",
             "name": "UTHAKKAN (UK)",
@@ -140,10 +138,10 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What is Tool Pix’s Java Compiler?",
+                "name": "What is Tool Pix's Java Compiler?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Tool Pix’s Java Compiler is a free online tool for writing, compiling, and running Java SE programs with real-time output, ideal for object-oriented programming and app development."
+                    "text": "Tool Pix's Java Compiler is a free online tool for writing, compiling, and running Java SE programs with real-time output, ideal for object-oriented programming and app development."
                 }
             },
             {
@@ -151,7 +149,7 @@
                 "name": "Is the Java Compiler free to use?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, Tool Pix’s Java Compiler is completely free, offering full access to compile and debug Java programs without any cost."
+                    "text": "Yes, Tool Pix's Java Compiler is completely free, offering full access to compile and debug Java programs without any cost."
                 }
             },
             {
@@ -185,6 +183,10 @@
             --error: #f87171;
             --output-font-size: 14px;
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
         }
 
         * {
@@ -285,7 +287,7 @@
         }
 
         .sidebar-toggle {
-            display: none; /* Hidden by default, shown on mobile */
+            display: none;
             background: var(--primary);
             color: white;
             border: none;
@@ -417,12 +419,38 @@
             font-size: 14px;
             padding: 15px 0;
             max-width: 100%;
-            overflow-x: hidden;
+            overflow-x: auto;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            touch-action: auto !important;
+            line-height: 1.5;
+        }
+
+        .CodeMirror-gutters {
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        .CodeMirror-linenumber {
+            color: var(--text-light);
+            padding: 0 5px;
+            font-size: 12px;
+            min-width: 24px;
+            text-align: right;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .CodeMirror-linenumber:hover {
+            opacity: 1;
         }
 
         .CodeMirror-sizer, .CodeMirror-lines, .CodeMirror-scroll {
             max-width: 100% !important;
-            overflow-x: hidden !important;
+            overflow-x: auto !important;
             overflow-wrap: anywhere;
             word-break: break-all;
         }
@@ -449,11 +477,13 @@
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
+            background: var(--terminal-bg);
+            border-radius: 6px;
         }
 
         .output-header {
             padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -465,7 +495,7 @@
         .output-title {
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--terminal-text);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -473,19 +503,24 @@
 
         .output-content {
             padding: 20px;
-            background: #0f0f1a;
+            background: var(--terminal-bg);
             font-family: 'JetBrains Mono', monospace;
             font-size: var(--output-font-size);
             white-space: pre-wrap;
             overflow-wrap: break-word;
             word-break: break-word;
             overflow-y: auto;
-            overflow-x: hidden;
+            overflow-x: auto;
             flex: 1;
             max-height: 100%;
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
+            color: var(--terminal-text);
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
 
         .output-content span {
@@ -505,10 +540,9 @@
         }
 
         .input-dialog {
-            background: var(--bg-darker);
+            background: var(--terminal-bg);
             padding: 10px;
             border-radius: 8px;
-            box-shadow: var(--shadow);
             margin: 10px 0;
             display: flex;
             align-items: center;
@@ -524,7 +558,7 @@
 
         .input-label {
             font-size: 14px;
-            color: var(--text-light);
+            color: var(--terminal-text);
             flex-shrink: 0;
         }
 
@@ -534,7 +568,7 @@
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border);
             border-radius: 6px;
-            color: var(--text-light);
+            color: var(--terminal-text);
             font-family: 'JetBrains Mono', monospace;
             transition: all 0.2s;
         }
@@ -543,11 +577,6 @@
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 2px rgba(110, 72, 170, 0.3);
-        }
-
-        .submit-btn {
-            padding: 8px 16px;
-            font-size: 14px;
         }
 
         .status-indicator {
@@ -585,7 +614,7 @@
             padding: 8px 16px;
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
+            color: var(--terminal-text);
             border: 1px solid var(--border);
             cursor: pointer;
             transition: all 0.2s ease;
@@ -712,14 +741,55 @@
             overflow-x: auto;
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
+            position: relative;
+        }
+
+        .try-out-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 10px 0;
+            background: var(--primary);
+            color: var(--text-lighter);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .try-out-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
         .note-box {
-            background: rgba(110, 72, 170, 0.2);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
+            background: var(--note-bg);
+            border: 1px solid var(--note-border);
+            padding: 20px;
             margin: 20px 0;
-            border-radius: 0 4px 4px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .note-box h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .note-box p {
+            margin-bottom: 10px;
+        }
+
+        .note-box ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .note-box li {
+            margin-bottom: 5px;
         }
 
         .ad-container {
@@ -819,12 +889,15 @@
 
             .CodeMirror {
                 height: calc(50vh - 60px) !important;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
             }
         }
 
         @media (max-width: 768px) {
             .sidebar-toggle {
-                display: flex; /* Show on mobile */
+                display: flex;
                 align-items: center;
                 justify-content: center;
                 padding: 8px;
@@ -864,7 +937,7 @@
             }
 
             .controls .btn span {
-                display: none; /* Hide text labels on mobile */
+                display: none;
             }
 
             .controls .btn {
@@ -885,6 +958,16 @@
                 font-size: 1rem;
             }
 
+            /* Improved mobile text sizing */
+            .CodeMirror {
+                font-size: 12px;
+            }
+
+            .CodeMirror-linenumber {
+                font-size: 10px;
+                min-width: 20px;
+            }
+
             .output-content {
                 font-size: 12px;
                 padding: 15px;
@@ -892,6 +975,7 @@
 
             #output {
                 line-height: 1.4;
+                font-size: 12px;
             }
 
             .input-dialog {
@@ -899,9 +983,19 @@
                 padding: 8px;
             }
 
-            .submit-btn {
-                padding: 6px 12px;
+            .input-label {
                 font-size: 12px;
+            }
+
+            .user-input {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .CodeMirror {
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
             }
         }
     </style>
@@ -978,10 +1072,9 @@
                         <span>Java Online Compiler</span>
                     </h1>
                     <div class="controls">
-                        <button class="btn btn-secondary tooltip" id="sidebar-toggle">
-                            <i class="fas fa-bars"></i>
-                            <span>Menu</span>
-                            <span class="tooltip-text">Toggle Sidebar</span>
+                        <button class="btn btn-primary" id="run-btn" title="Run">
+                            <i class="fas fa-play"></i>
+                            <span>Run</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="copy-btn">
                             <i class="far fa-copy"></i>
@@ -992,9 +1085,11 @@
                             <i class="fas fa-trash-alt"></i>
                             <span>Clear</span>
                         </button>
-                        <button class="btn btn-primary" id="run-btn" title="Run">
-                            <i class="fas fa-play"></i>
-                            <span>Run</span>
+                       
+                        <button class="btn btn-secondary tooltip" id="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                            <span>Menu</span>
+                            <span class="tooltip-text">Toggle Sidebar</span>
                         </button>
                     </div>
                 </div>
@@ -1006,13 +1101,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter your age: ");
-        int age = scanner.nextInt();
-        System.out.println("Hello, " + name + "! You are " + age + " years old.");
-        scanner.close();
+        System.out.println("Welcome to Tool Pix Java Compiler!");
     }
 }</textarea>
                         </div>
@@ -1025,6 +1114,11 @@ public class Main {
                                     <span class="status-indicator status-success"></span>
                                     Output
                                 </h2>
+                                <button class="copy-btn tooltip" id="copy-output-btn">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy Output</span>
+                                    <span class="tooltip-text">Copy output to clipboard</span>
+                                </button>
                             </div>
                             <div class="output-content">
                                 <pre id="output"># Ready to execute Java code...
@@ -1041,102 +1135,109 @@ public class Main {
 
             <section class="seo-content">
                 <h2>Online Java Compiler - Write, Run & Share Java Code Instantly</h2>
-                <p>Our <strong>online Java compiler</strong> offers a seamless way to write, compile, and run Java programs directly in your browser. Perfect for beginners learning Java or experienced developers testing code snippets, our compiler provides real-time output with a user-friendly interface.</p>
+                <p>Our <strong>online Java compiler</strong> empowers developers of all levels to write, compile, and execute Java SE programs directly in the browser. Whether you're a beginner exploring Java or an advanced developer prototyping complex applications, our tool offers a robust, real-time coding environment with syntax highlighting and debugging support.</p>
 
-                <h3>Why Use Our Online Java Compiler?</h3>
+                <h3>Why Choose Our Java Compiler?</h3>
                 <ul>
-                    <li><strong>No installation required</strong> - Code and run Java programs without setting up a local environment.</li>
-                    <li><strong>Fast compilation</strong> - Powered by an optimized backend for quick execution.</li>
-                    <li><strong>Real-time output</strong> - View results instantly after running your code.</li>
-                    <li><strong>Syntax highlighting</strong> - Enhanced code readability with CodeMirror and Dracula theme.</li>
-                    <li><strong>Mobile-friendly</strong> - Code on any device, anywhere, anytime.</li>
-                    <li><strong>Free and accessible</strong> - No subscription or login required.</li>
-                    <li><strong>Shareable code</strong> - Easily share your Java code for collaboration or debugging.</li>
+                    <li><strong>Zero Setup</strong>: No need to install JDK or configure environments—start coding instantly.</li>
+                    <li><strong>High Performance</strong>: Fast compilation with an optimized backend for quick results.</li>
+                    <li><strong>Interactive Output</strong>: Real-time console output with support for user input via Scanner.</li>
+                    <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
+                    <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
+                    <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
+                    <li><strong>Collaboration Ready</strong>: Copy and share code snippets effortlessly.</li>
                 </ul>
 
                 <div class="ad-container vertical">
                     
                 </div>
 
-                <h3>Getting Started with Java Programming</h3>
-                <p>Java is a versatile, object-oriented programming language developed by Sun Microsystems in 1995. Known for its portability ("write once, run anywhere"), Java is widely used for web development, mobile apps (Android), enterprise applications, and more.</p>
+                <h3>Mastering Java Programming</h3>
+                <p>Java, launched by Sun Microsystems in 1995, is a cornerstone of modern software development. Its "write once, run anywhere" philosophy, robust standard library, and object-oriented design make it ideal for web applications, Android development, and enterprise systems.</p>
 
                 <h4>Basic Java Program Structure</h4>
-                <pre>import java.util.Scanner;
+                <pre id="basic-structure">import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
 }</pre>
-                <p>Key components:</p>
+                <button class="try-out-btn" data-code-id="basic-structure">Try It Out</button>
+                <p>Key elements of a Java program:</p>
                 <ul>
-                    <li><code>import java.util.Scanner;</code>: Imports the Scanner class for user input.</li>
-                    <li><code>public class Main</code>: Defines a class named Main (must match the file name).</li>
-                    <li><code>public static void main(String[] args)</code>: The entry point of the program.</li>
-                    <li><code>System.out.println</code>: Prints output to the console.</li>
+                    <li><code>import java.util.Scanner;</code>: Imports utilities for user input.</li>
+                    <li><code>public class Main</code>: Defines the main class (must match file name).</li>
+                    <li><code>main</code> method: The program's entry point.</li>
+                    <li><code>System.out.println</code>: Outputs text to the console.</li>
                 </ul>
-
                 <div class="note-box">
-                    <p><strong>Note:</strong> Every Java program requires a class with a <code>main</code> method as the entry point. Ensure the class name matches the file name (e.g., <code>Main.java</code>).</p>
+                    <h4>Best Practice</h4>
+                    <p>Ensure the class name matches the file name (e.g., <code>Main.java</code>) and always include a <code>main</code> method for execution.</p>
                 </div>
 
-                <h3>Java Programming Basics</h3>
+                <h3>Core Java Concepts for All Levels</h3>
                 <h4>Variables and Data Types</h4>
-                <p>Java is strongly typed, with several primitive and reference types:</p>
+                <p>Java's type system ensures robust data handling:</p>
                 <ul>
-                    <li><code>int</code>: 4 bytes, stores integers (-2,147,483,648 to 2,147,483,647).</li>
-                    <li><code>double</code>: 8 bytes, stores floating-point numbers.</li>
-                    <li><code>char</code>: 2 bytes, stores single Unicode characters.</li>
-                    <li><code>String</code>: A reference type for text (e.g., <code>String name = "John";</code>).</li>
-                    <li><code>boolean</code>: Stores <code>true</code> or <code>false</code>.</li>
+                    <li><code>int</code>: 32-bit integers for whole numbers.</li>
+                    <li><code>double</code>: 64-bit floating-point for decimals.</li>
+                    <li><code>char</code>: Single Unicode characters.</li>
+                    <li><code>String</code>: For text manipulation.</li>
+                    <li><code>boolean</code>: True/false values for logic.</li>
                 </ul>
-                <pre>int age = 25;
+                <pre id="variables-example">int age = 25;
 double price = 19.99;
 char grade = 'A';
-String name = "John";
+String name = "Alice";
 boolean isActive = true;</pre>
+                <button class="try-out-btn" data-code-id="variables-example">Try It Out</button>
 
                 <h4>Control Structures</h4>
-                <p>Java supports standard control structures for decision-making and loops:</p>
-
-                <h5>If-Else Statement</h5>
-                <pre>if (age >= 18) {
+                <p>Control program flow with these constructs:</p>
+                <h5>If-Else</h5>
+                <pre id="if-else-example">int age = 20;
+if (age >= 18) {
     System.out.println("Adult");
 } else {
     System.out.println("Minor");
 }</pre>
+                <button class="try-out-btn" data-code-id="if-else-example">Try It Out</button>
 
                 <h5>For Loop</h5>
-                <pre>for (int i = 0; i < 5; i++) {
-    System.out.println(i);
+                <pre id="for-loop-example">for (int i = 0; i < 5; i++) {
+    System.out.println("Count: " + i);
 }</pre>
+                <button class="try-out-btn" data-code-id="for-loop-example">Try It Out</button>
 
                 <h5>While Loop</h5>
-                <pre>int i = 0;
+                <pre id="while-loop-example">int i = 0;
 while (i < 5) {
-    System.out.println(i);
+    System.out.println("Count: " + i);
     i++;
 }</pre>
+                <button class="try-out-btn" data-code-id="while-loop-example">Try It Out</button>
 
                 <h5>Switch Statement</h5>
-                <pre>switch (day) {
+                <pre id="switch-example">int day = 1;
+switch (day) {
     case 1:
         System.out.println("Monday");
         break;
     default:
         System.out.println("Invalid day");
 }</pre>
+                <button class="try-out-btn" data-code-id="switch-example">Try It Out</button>
 
-                <h3>Object-Oriented Programming in Java</h3>
-                <p>Java’s core strength is its object-oriented programming (OOP) features:</p>
+                <h3>Object-Oriented Programming (OOP)</h3>
+                <p>Java's OOP principles enable modular, reusable code:</p>
                 <ul>
-                    <li><strong>Classes and Objects</strong>: Blueprint and instances for creating structured programs.</li>
-                    <li><strong>Inheritance</strong>: Reuse code with <code>extends</code>.</li>
-                    <li><strong>Encapsulation</strong>: Protect data with access modifiers (<code>private</code>, <code>public</code>).</li>
-                    <li><strong>Polymorphism</strong>: Method overriding and overloading.</li>
+                    <li><strong>Classes and Objects</strong>: Create blueprints and instances.</li>
+                    <li><strong>Inheritance</strong>: Extend classes for code reuse.</li>
+                    <li><strong>Encapsulation</strong>: Secure data with access modifiers.</li>
+                    <li><strong>Polymorphism</strong>: Flexible method implementations.</li>
                 </ul>
-                <pre>class Person {
+                <pre id="oop-example">class Person {
     private String name;
     private int age;
 
@@ -1152,18 +1253,19 @@ while (i < 5) {
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("John", 30);
+        Person person = new Person("Alice", 30);
         person.display();
     }
 }</pre>
-
-                <div class="ad-container horizontal">
-                    
+                <button class="try-out-btn" data-code-id="oop-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>OOP Tip</h4>
+                    <p>Use <code>private</code> fields with public getters/setters to enforce encapsulation and maintain data integrity.</p>
                 </div>
 
                 <h3>Handling User Input</h3>
-                <p>Use the <code>Scanner</code> class to read user input:</p>
-                <pre>import java.util.Scanner;
+                <p>The <code>Scanner</code> class simplifies user interaction:</p>
+                <pre id="input-example">import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -1174,39 +1276,49 @@ public class Main {
         scanner.close();
     }
 }</pre>
+                <button class="try-out-btn" data-code-id="input-example">Try It Out</button>
                 <div class="note-box">
-                    <p><strong>Tip:</strong> Always close the Scanner object with <code>scanner.close()</code> to prevent resource leaks.</p>
+                    <h4>Input Best Practice</h4>
+                    <p>Always close <code>Scanner</code> with <code>scanner.close()</code> to free resources. Handle invalid inputs with try-catch blocks for robustness.</p>
                 </div>
 
                 <h3>Arrays and Collections</h3>
-                <p>Java supports arrays and dynamic collections like <code>ArrayList</code>:</p>
-                <pre><code>
-// Array
-int[] numbers = {1, 2, 3, 4, 5};
-for (int num : numbers) {
-    System.out.println(num);
-}
+                <p>Manage data with arrays or dynamic collections:</p>
+                <pre id="array-example">import java.util.ArrayList;
 
-// ArrayList
-import java.util.ArrayList;
-ArrayList<String> names = new ArrayList();
-names.add("Alice");
-names.add("Bob");
-System.out.println(names);
-</code></pre>
+public class Main {
+    public static void main(String[] args) {
+        // Array
+        int[] numbers = {1, 2, 3, 4, 5};
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+
+        // ArrayList
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        System.out.println(names);
+    }
+}</pre>
+                <button class="try-out-btn" data-code-id="array-example">Try It Out</button>
 
                 <h3>Exception Handling</h3>
-                <p>Use <code>try-catch</code> to handle runtime errors:</p>
-                <pre><code>try {
-    int result = 10 / 0;
-} catch (ArithmeticException e) {
-    System.out.println("Error: " + e.getMessage());
-}</code></pre>
+                <p>Handle errors gracefully with try-catch:</p>
+                <pre id="exception-example">public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero");
+        }
+    }
+}</pre>
+                <button class="try-out-btn" data-code-id="exception-example">Try It Out</button>
 
                 <h3>File Handling</h3>
-                <p>Java provides classes like <code>File</code> and <code>Files</code> for file operations:</p>
-                <pre>import java.io.File;
-import java.io.FileWriter;
+                <p>Perform file operations with <code>File</code> and <code>FileWriter</code> (note: file operations may be limited in online environments):</p>
+                <pre id="file-example">import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
@@ -1214,40 +1326,41 @@ public class Main {
             FileWriter writer = new FileWriter("output.txt");
             writer.write("Hello, Java!");
             writer.close();
+            System.out.println("File written successfully");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 }</pre>
+                <button class="try-out-btn" data-code-id="file-example">Try It Out</button>
 
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
-                    <div class="faq-question">How do I take user input in Java?</div>
-                    <p>Use the <code>Scanner</code> class: <code>Scanner scanner = new Scanner(System.in);</code> followed by methods like <code>nextLine()</code> or <code>nextInt()</code>.</p>
+                    <div class="faq-question">How do I handle user input in Java?</div>
+                    <p>Use <code>Scanner</code> with methods like <code>nextLine()</code> or <code>nextInt()</code>. Always validate input to prevent errors.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What is the difference between Java and C++?</div>
-                    <p>Java is platform-independent with automatic memory management (garbage collection), while C++ offers manual memory control and is platform-specific.</p>
+                    <div class="faq-question">Java vs. C++: What's the difference?</div>
+                    <p>Java offers platform independence and garbage collection, while C++ provides low-level control and is platform-specific.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I compile Java code locally?</div>
-                    <p>Install the JDK, save your code as <code>Main.java</code>, and run: <code>javac Main.java</code> to compile, then <code>java Main</code> to execute.</p>
+                    <div class="faq-question">How do I compile Java locally?</div>
+                    <p>Install JDK, save code as <code>Main.java</code>, then run <code>javac Main.java</code> and <code>java Main</code>.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Why learn Java?</div>
-                    <p>Java is widely used in enterprise applications, Android development, and web servers, with strong community support and robust libraries.</p>
+                    <div class="faq-question">Why choose Java?</div>
+                    <p>Java's versatility, extensive libraries, and strong community make it ideal for enterprise, Android, and web development.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I debug Java programs?</div>
-                    <p>Use print statements, IDE debuggers (e.g., IntelliJ, Eclipse), or our online compiler to view compilation errors and runtime output.</p>
+                    <div class="faq-question">How can I debug Java code?</div>
+                    <p>Use print statements, IDE debuggers, or our compiler's real-time error output to identify and fix issues.</p>
                 </div>
 
                 <h3>Advanced Java Concepts</h3>
                 <ul>
                     <li>
-                        <strong>Interfaces</strong>: Define contracts for classes.
-                        <pre>
-interface Animal {
+                        <strong>Interfaces</strong>: Define behavior contracts.
+                        <pre id="interface-example">interface Animal {
     void makeSound();
 }
 class Dog implements Animal {
@@ -1255,52 +1368,98 @@ class Dog implements Animal {
         System.out.println("Woof!");
     }
 }
-                        </pre>
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.makeSound();
+    }
+}</pre>
+                        <button class="try-out-btn" data-code-id="interface-example">Try It Out</button>
                     </li>
-                    <li><strong>Generics</strong>: Type-safe collections.</li>
-                    <li><strong>Multithreading</strong>: Run tasks concurrently with <code>Thread</code> or <code>Runnable</code>.</li>
                     <li>
-                        <strong>Lambda Expressions</strong>: Simplify functional programming.
-                        <pre>
-List<Integer> numbers = Arrays.asList(1, 2, 3);
-numbers.forEach(n -> System.out.println(n));
-                        </pre>
+                        <strong>Generics</strong>: Ensure type safety in collections.
+                        <pre id="generics-example">import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        System.out.println(numbers);
+    }
+}</pre>
+                        <button class="try-out-btn" data-code-id="generics-example">Try It Out</button>
+                    </li>
+                    <li>
+                        <strong>Multithreading</strong>: Execute tasks concurrently.
+                        <pre id="thread-example">public class Main {
+    public static void main(String[] args) {
+        Thread thread = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Thread running: " + i);
+                try { Thread.sleep(500); } catch (Exception e) {}
+            }
+        });
+        thread.start();
+    }
+}</pre>
+                        <button class="try-out-btn" data-code-id="thread-example">Try It Out</button>
+                    </li>
+                    <li>
+                        <strong>Lambda Expressions</strong>: Streamline functional programming.
+                        <pre id="lambda-example">import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        numbers.forEach(n -> System.out.println(n));
+    }
+}</pre>
+                        <button class="try-out-btn" data-code-id="lambda-example">Try It Out</button>
                     </li>
                 </ul>
-
                 <div class="note-box">
-                    <p><strong>Tip:</strong> Experiment with these concepts using our online Java compiler to solidify your understanding!</p>
+                    <h4>Advanced Tip</h4>
+                    <p>Leverage lambda expressions and streams for cleaner, more efficient code in modern Java applications.</p>
                 </div>
 
-                <h3>Common Java Programming Mistakes</h3>
-                <ul>
-                    <li>Not closing resources (e.g., <code>Scanner</code>, <code>FileWriter</code>).</li>
-                    <li>Case sensitivity in class/file names.</li>
-                    <li>Missing <code>break</code> in switch statements.</li>
-                    <li>Null pointer exceptions (e.g., accessing null objects).</li>
-                    <li>Incorrect use of <code>==</code> for String comparison (use <code>.equals()</code>).</li>
-                </ul>
+                <h3>Common Java Pitfalls and Solutions</h3>
+                <div class="note-box">
+                    <h4>Watch Out!</h4>
+                    <ul>
+                        <li><strong>Resource Leaks</strong>: Always close resources like <code>Scanner</code> or <code>FileWriter</code>.</li>
+                        <li><strong>Case Sensitivity</strong>: Ensure class and file names match exactly.</li>
+                        <li><strong>Missing Break</strong>: Include <code>break</code> in switch cases to avoid fall-through.</li>
+                        <li><strong>Null Pointers</strong>: Check for <code>null</code> before accessing objects.</li>
+                        <li><strong>String Comparison</strong>: Use <code>.equals()</code> instead of <code>==</code> for Strings.</li>
+                    </ul>
+                </div>
 
-                <h3>Java Standard Library</h3>
-                <p>Key packages include:</p>
+                <h3>Java Standard Library Highlights</h3>
+                <p>Key packages for powerful development:</p>
                 <ul>
-                    <li><code>java.util</code>: Collections, Scanner, etc.</li>
-                    <li><code>java.io</code>: File handling.</li>
-                    <li><code>java.net</code>: Networking.</li>
-                    <li><code>java.time</code>: Date and time utilities.</li>
+                    <li><code>java.util</code>: Collections, Scanner, and utilities.</li>
+                    <li><code>java.io</code>: File and stream operations.</li>
+                    <li><code>java.net</code>: Networking and socket programming.</li>
+                    <li><code>java.time</code>: Modern date and time APIs.</li>
                 </ul>
 
                 <div class="ad-container horizontal">
                     
                 </div>
 
-                <h3>Learning Resources</h3>
-                <ul>
-                    <li><strong>Books</strong>: "Effective Java" by Joshua Bloch, "Head First Java" by Kathy Sierra.</li>
-                    <li><strong>Online Courses</strong>: Coursera, Udemy, Oracle’s Java tutorials.</li>
-                    <li><strong>Practice Platforms</strong>: LeetCode, HackerRank, Codewars.</li>
-                    <li><strong>Community</strong>: Join Java forums on Stack Overflow or Reddit.</li>
-                </ul>
+                <h3>Learning Resources for Java</h3>
+                <div class="note-box">
+                    <h4>Level Up Your Skills</h4>
+                    <ul>
+                        <li><strong>Beginner Books</strong>: "Head First Java" by Kathy Sierra and Bert Bates.</li>
+                        <li><strong>Advanced Books</strong>: "Effective Java" by Joshua Bloch.</li>
+                        <li><strong>Courses</strong>: Oracle's Java Tutorials, Coursera, Udemy.</li>
+                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codewars.</li>
+                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or Java user groups.</li>
+                    </ul>
+                </div>
             </section>
 
             <footer class="footer">
@@ -1339,23 +1498,30 @@ numbers.forEach(n -> System.out.println(n));
                 extraKeys: {
                     "Ctrl-Enter": runCode,
                     "Cmd-Enter": runCode
-                }
+                },
+                readOnly: false,
+                styleActiveLine: true,
+                viewportMargin: Infinity,
+                gutters: ["CodeMirror-linenumbers"]
             });
 
             const runButton = document.getElementById("run-btn");
             const mobileRunButton = document.getElementById("mobile-run-btn");
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
+            const copyOutputButton = document.getElementById("copy-output-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
             const sidebarToggle = document.getElementById("sidebar-toggle");
             const sidebarOverlay = document.getElementById("sidebar-overlay");
+            const tryOutButtons = document.querySelectorAll(".try-out-btn");
 
             let currentOutput = [];
             let currentInputs = [];
             let currentPromptIndex = 0;
             let isRunning = false;
+            let expectedInputCount = 0;
 
             updateStatus("ready");
 
@@ -1366,6 +1532,30 @@ numbers.forEach(n -> System.out.println(n));
 
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+
+            tryOutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeId = button.getAttribute('data-code-id');
+                    const codeElement = document.getElementById(codeId);
+                    if (codeElement) {
+                        const rawCode = codeElement.textContent.trim();
+
+                        const hasClass = /class\s+[A-Za-z_][A-Za-z0-9_]*/.test(rawCode);
+                        const hasMain = /public\s+static\s+void\s+main\s*\(\s*String\s*\[\s*\]\s*\w*\)/.test(rawCode);
+
+                        let finalCode = rawCode;
+
+                        if (!hasClass || !hasMain) {
+                            finalCode = `public class Main {\n    public static void main(String[] args) {\n        ${rawCode.split('\n').map(line => '        ' + line).join('\n')}\n    }\n}`;
+                        }
+
+                        editor.setValue(finalCode);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        editor.focus();
+                    }
+                });
+            });
+
 
             function updateStatus(status) {
                 statusIndicator.className = "status-indicator";
@@ -1406,7 +1596,7 @@ numbers.forEach(n -> System.out.println(n));
                     };
                 }
 
-                const classRegex = /(public\s+)?class\s+([A-Za-z_][A-Za-z0-9_]*)\s*[\s\S]*?\{[\s\S]*?\}/g;
+                const classRegex = /(public\s+)?class\s+([A-Za-z_][A-Za-z0-9_]*)\s*[\extends\s]*\{[\s\S]*?\}/g;
                 let classes = [];
                 let match;
 
@@ -1434,6 +1624,16 @@ numbers.forEach(n -> System.out.println(n));
                 };
             }
 
+            function countExpectedInputs(code) {
+                const scannerInputRegex = /\bscanner\.next(?:Line|Int|Double|Float|Boolean|Byte|Short|Long)?\s*\(\s*\)/g;
+                let count = 0;
+                let match;
+                while ((match = scannerInputRegex.exec(code)) !== null) {
+                    count++;
+                }
+                return count;
+            }
+
             function extractPrompts(code) {
                 const promptRegex = /System\.out\.print(ln)?\s*\(\s*["'](.*?)["']\s*\)\s*;/g;
                 let prompts = [];
@@ -1455,7 +1655,8 @@ numbers.forEach(n -> System.out.println(n));
                 updateStatus("running");
                 outputElement.innerHTML = '<span style="color: #fbbf24;"><i class="fas fa-spinner fa-spin"></i> Running your code...</span>';
 
-                const prompts = extractPrompts(code);
+                expectedInputCount = countExpectedInputs(code);
+                const prompts = extractPrompts(code).slice(0, expectedInputCount);
                 if (prompts.length > 0) {
                     await handleInteractiveInput(code, prompts);
                 } else {
@@ -1472,7 +1673,7 @@ numbers.forEach(n -> System.out.println(n));
             }
 
             async function processNextPrompt(code, prompts) {
-                if (currentPromptIndex >= prompts.length) {
+                if (currentPromptIndex >= expectedInputCount || currentPromptIndex >= prompts.length) {
                     await executeCode(code, currentInputs);
                     return;
                 }
@@ -1485,10 +1686,7 @@ numbers.forEach(n -> System.out.println(n));
                     <div class="input-dialog">
                         <div class="input-group">
                             <span class="input-label">${prompt}: </span>
-                            <input type="text" class="user-input" id="input-${currentPromptIndex}" placeholder="Enter value...">
-                            <button class="btn btn-primary submit-btn" id="submit-input-${currentPromptIndex}">
-                                <i class="fas fa-paper-plane"></i> Submit
-                            </button>
+                            <input type="text" class="user-input" id="input-${currentPromptIndex}" placeholder="Enter value and press Enter...">
                         </div>
                     </div>
                 `;
@@ -1496,31 +1694,15 @@ numbers.forEach(n -> System.out.println(n));
                 outputElement.scrollTop = outputElement.scrollHeight;
 
                 const inputField = document.getElementById(`input-${currentPromptIndex}`);
-                const submitButton = document.getElementById(`submit-input-${currentPromptIndex}`);
                 inputField.focus();
 
                 return new Promise(resolve => {
-                    submitButton.addEventListener('click', async () => {
-                        const input = inputField.value;
-                        if (input.trim() !== '') {
-                            currentInputs.push(input);
-                            currentOutput.push(input);
-                            inputField.disabled = true;
-                            submitButton.disabled = true;
-                            updateOutput();
-                            currentPromptIndex++;
-                            await processNextPrompt(code, prompts);
-                            resolve();
-                        }
-                    });
-
                     inputField.addEventListener('keypress', async (e) => {
                         if (e.key === 'Enter' && inputField.value.trim() !== '') {
                             const input = inputField.value;
                             currentInputs.push(input);
                             currentOutput.push(input);
                             inputField.disabled = true;
-                            submitButton.disabled = true;
                             updateOutput();
                             currentPromptIndex++;
                             await processNextPrompt(code, prompts);
@@ -1599,6 +1781,25 @@ numbers.forEach(n -> System.out.println(n));
                 });
             }
 
+            function copyOutputToClipboard() {
+                let outputText = outputElement.textContent.trim();
+                // Optional: Normalize line breaks and remove extra newlines
+                outputText = outputText.replace(/\n\s*\n/g, '\n').replace(/^\s+|\s+$/g, '');
+                navigator.clipboard.writeText(outputText).then(() => {
+                    const originalText = copyOutputButton.innerHTML;
+                    copyOutputButton.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                    setTimeout(() => {
+                        copyOutputButton.innerHTML = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy output: ', err);
+                    copyOutputButton.innerHTML = '<i class="fas fa-times"></i> <span>Failed to Copy</span>';
+                    setTimeout(() => {
+                        copyOutputButton.innerHTML = '<i class="far fa-copy"></i> <span>Copy Output</span>';
+                    }, 2000);
+                });
+            }
+
             function clearEditor() {
                 if (confirm("Are you sure you want to clear the editor?")) {
                     editor.setValue("");
@@ -1616,6 +1817,7 @@ numbers.forEach(n -> System.out.println(n));
             mobileRunButton.addEventListener('click', runCode);
             clearButton.addEventListener('click', clearEditor);
             copyButton.addEventListener('click', copyToClipboard);
+            copyOutputButton.addEventListener('click', copyOutputToClipboard);
 
             editor.on('focus', () => {
                 console.log('Editor focused');

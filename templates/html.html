@@ -15,7 +15,7 @@
 
     <title>HTML Editor - Free Online HTML5 Coding Tool | Tool Pix</title>
     <link rel="canonical" href="https://toolpix.pythonanywhere.com/html-editor">
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -49,12 +49,10 @@
     <meta name="twitter:site" content="@toolpix">
     <meta name="twitter:creator" content="@toolpix">
 
-    <!-- Preload critical assets for performance -->
     <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -183,6 +181,11 @@
             --success: #4ade80;
             --error: #f87171;
             --output-font-size: 14px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
         }
 
         * {
@@ -216,6 +219,7 @@
             position: fixed;
             height: 100vh;
             z-index: 100;
+            box-shadow: var(--shadow);
         }
 
         .sidebar-header {
@@ -265,6 +269,7 @@
 
         .compiler-item.active {
             background: var(--primary);
+            color: var(--text-lighter);
         }
 
         .compiler-icon {
@@ -272,7 +277,6 @@
             text-align: center;
         }
 
-        /* Main Content */
         .main-content {
             flex: 1;
             margin-left: 280px;
@@ -281,21 +285,16 @@
             overflow-x: hidden;
         }
 
-        /* Mobile Sidebar Toggle */
         .sidebar-toggle {
             display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
+            border-radius: 6px;
+            font-size: 14px;
             cursor: pointer;
-            z-index: 101;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
         }
 
         .sidebar-overlay {
@@ -309,7 +308,6 @@
             z-index: 99;
         }
 
-        /* Editor Container */
         .container {
             display: flex;
             flex-direction: column;
@@ -318,7 +316,6 @@
             overflow-x: hidden;
         }
 
-        /* Header Styles */
         .header {
             padding: 15px 24px;
             background: rgba(0, 0, 0, 0.2);
@@ -327,6 +324,7 @@
             justify-content: space-between;
             align-items: center;
             max-width: 100%;
+            box-shadow: var(--shadow);
         }
 
         .title {
@@ -358,6 +356,7 @@
             align-items: center;
             gap: 6px;
             font-size: 14px;
+            box-shadow: var(--shadow);
         }
 
         .btn-primary {
@@ -368,6 +367,7 @@
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary {
@@ -378,9 +378,9 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
 
-        /* Editor and Output Layout */
         .editor-output-container {
             display: flex;
             flex: 1;
@@ -403,7 +403,6 @@
             border-right: 1px solid var(--border);
         }
 
-        /* Editor Styles */
         .editor-wrapper {
             position: relative;
             flex: 1;
@@ -419,17 +418,42 @@
             font-size: 14px;
             padding: 15px 0;
             max-width: 100%;
-            overflow-x: hidden;
+            overflow-x: auto;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            touch-action: auto !important;
+            line-height: 1.5;
+        }
+
+        .CodeMirror-gutters {
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        .CodeMirror-linenumber {
+            color: var(--text-light);
+            padding: 0 5px;
+            font-size: 12px;
+            min-width: 24px;
+            text-align: right;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .CodeMirror-linenumber:hover {
+            opacity: 1;
         }
 
         .CodeMirror-sizer, .CodeMirror-lines, .CodeMirror-scroll {
             max-width: 100% !important;
-            overflow-x: hidden !important;
+            overflow-x: auto !important;
             overflow-wrap: anywhere;
             word-break: break-all;
         }
 
-        /* Output Styles */
         .output-section {
             flex: 1;
             display: flex;
@@ -452,11 +476,13 @@
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
+            background: var(--terminal-bg);
+            border-radius: 6px;
         }
 
         .output-header {
             padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -468,7 +494,7 @@
         .output-title {
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--terminal-text);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -478,16 +504,22 @@
             padding: 0;
             background: white;
             font-family: 'JetBrains Mono', monospace;
+            font-size: var(--output-font-size);
             white-space: pre-wrap;
             overflow-wrap: break-word;
             word-break: break-word;
             overflow-y: auto;
-            overflow-x: hidden;
+            overflow-x: auto;
             flex: 1;
             max-height: 100%;
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
+            color: var(--terminal-text);
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
 
         .output-content iframe {
@@ -506,42 +538,6 @@
             white-space: pre-wrap;
         }
 
-        /* Input Dialog Styles */
-        .input-group {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .input-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .user-input {
-            width: 100%;
-            padding: 10px 12px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-light);
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.2s;
-        }
-
-        .user-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(110, 72, 170, 0.3);
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        /* Status Indicator */
         .status-indicator {
             display: inline-block;
             width: 10px;
@@ -569,27 +565,6 @@
             100% { opacity: 1; }
         }
 
-        /* Copy Button */
-        .copy-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-        }
-
-        /* Tooltip */
         .tooltip {
             position: relative;
         }
@@ -617,7 +592,6 @@
             opacity: 1;
         }
 
-        /* Mobile Run Button */
         .mobile-run-btn {
             display: none;
             position: fixed;
@@ -631,8 +605,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 50;
+            box-shadow: var(--shadow);
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
@@ -643,7 +616,6 @@
             transform: translateY(-2px);
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -662,7 +634,185 @@
             background: var(--primary-dark);
         }
 
-        /* Responsive Styles */
+        .seo-content {
+            background: var(--bg-darker);
+            padding: 40px 20px;
+            margin: 0 auto;
+        }
+
+        .seo-content h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .seo-content h3 {
+            color: var(--text-lighter);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .seo-content h4 {
+            color: var(--text-lighter);
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .seo-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .seo-content ul, .seo-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .seo-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .seo-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+        }
+
+        .try-out-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 10px 0;
+            background: var(--primary);
+            color: var(--text-lighter);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .try-out-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .note-box {
+            background: var(--note-bg);
+            border: 1px solid var(--note-border);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .note-box h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .note-box p {
+            margin-bottom: 10px;
+        }
+
+        .note-box ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .note-box li {
+            margin-bottom: 5px;
+        }
+
+        .ad-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .ad-container.horizontal {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-container.vertical {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-lighter);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: var(--bg-darker);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 992px) {
             .editor-output-container {
                 flex-direction: column;
@@ -685,12 +835,26 @@
 
             .CodeMirror {
                 height: calc(50vh - 60px) !important;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
             }
         }
 
         @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
+                z-index: 100;
             }
 
             .sidebar.open {
@@ -707,12 +871,6 @@
             .sidebar-overlay.open {
                 opacity: 1;
                 pointer-events: auto;
-            }
-
-            .sidebar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
 
             .main-content {
@@ -746,6 +904,15 @@
                 font-size: 1rem;
             }
 
+            .CodeMirror {
+                font-size: 12px;
+            }
+
+            .CodeMirror-linenumber {
+                font-size: 10px;
+                min-width: 20px;
+            }
+
             .output-content {
                 font-size: 12px;
                 padding: 15px;
@@ -753,152 +920,14 @@
 
             #output {
                 line-height: 1.4;
+                font-size: 12px;
             }
-        }
-
-        /* SEO Content Section */
-        .seo-content {
-            background: var(--bg-darker);
-            padding: 40px 20px;
-            margin: 0 auto;
-        }
-
-        .seo-content h2 {
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .seo-content h3 {
-            color: var(--text-lighter);
-            margin: 25px 0 15px;
-            font-size: 1.4rem;
-        }
-
-        .seo-content p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-
-        .seo-content ul, .seo-content ol {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
-        .seo-content li {
-            margin-bottom: 8px;
-        }
-
-        .seo-content code {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9em;
-        }
-
-        .seo-content pre {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 20px 0;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .note-box {
-            background: rgba(110, 72, 170, 0.2);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* Ad Containers */
-        .ad-container {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            padding: 15px;
-            margin: 20px auto;
-            text-align: center;
-            border-radius: 6px;
-        }
-
-        .ad-container.horizontal {
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ad-container.vertical {
-            width: 300px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ad-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* FAQ Section */
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
-
-        .faq-question {
-            font-weight: 600;
-            color: var(--text-lighter);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-darker);
-            padding: 30px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
         }
     </style>
 </head>
 
 <body>
     <div class="app-container">
-        <button class="sidebar-toggle" id="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <div class="sidebar" id="sidebar">
@@ -922,8 +951,10 @@
                     </a>
                 </li>
                 <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fab fa-html5"></i></span>
-                    <span>HTML</span>
+                    <a href="/html-editor">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML</span>
+                    </a>
                 </li>
                 <li class="compiler-item">
                     <a href="/java-compiler">
@@ -955,10 +986,9 @@
                         <span>Text Editor</span>
                     </a>
                 </li>
-            </ul>            
+            </ul>
         </div>
 
-        <!-- Main Content -->
         <div class="main-content">
             <div class="container">
                 <div class="header">
@@ -967,6 +997,10 @@
                         <span>HTML Online Editor</span>
                     </h1>
                     <div class="controls">
+                        <button class="btn btn-primary" id="run-btn" title="Run">
+                            <i class="fas fa-play"></i>
+                            <span>Run</span>
+                        </button>
                         <button class="btn btn-secondary tooltip" id="copy-btn">
                             <i class="far fa-copy"></i>
                             <span>Copy</span>
@@ -976,15 +1010,15 @@
                             <i class="fas fa-trash-alt"></i>
                             <span>Clear</span>
                         </button>
-                        <button class="btn btn-primary" id="run-btn" title="Run">
-                            <i class="fas fa-play"></i>
-                            <span>Run</span>
+                        <button class="btn btn-secondary tooltip" id="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                            <span>Menu</span>
+                            <span class="tooltip-text">Toggle Sidebar</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="editor-output-container">
-                    <!-- Editor Section -->
                     <div class="editor-section">
                         <div class="editor-wrapper">
                             <textarea id="code"><!DOCTYPE html>
@@ -1022,7 +1056,6 @@
                         </div>
                     </div>
 
-                    <!-- Output Section -->
                     <div class="output-section">
                         <div class="output-container">
                             <div class="output-header">
@@ -1039,293 +1072,258 @@
                 </div>
             </div>
 
-            <!-- First Ad Container -->
             <div class="ad-container horizontal">
                 
             </div>
 
-            <!-- SEO Content Section -->
             <section class="seo-content">
-                <h2>Online HTML Editor - Write, Edit & Preview HTML Instantly</h2>
-                
-                <p>Our <strong>online HTML editor</strong> provides a powerful and convenient way to write, edit, and preview HTML code directly in your browser. Whether you're a beginner learning web development or an experienced developer testing code snippets, our editor offers a seamless coding experience with real-time preview.</p>
-                
-                <h3>Why Use Our Online HTML Editor?</h3>
+                <h2>Online HTML Editor - Write, Edit & Preview HTML5 Instantly</h2>
+                <p>Our <strong>online HTML editor</strong> provides a powerful platform to write, edit, and preview HTML5 code with CSS3 and JavaScript integration directly in your browser. Whether you're a beginner learning web development or a professional testing code snippets, our tool offers real-time previews, syntax highlighting, and a user-friendly interface.</p>
+
+                <h3>Why Choose Our HTML Editor?</h3>
                 <ul>
-                    <li><strong>No installation required</strong> - Code and preview HTML directly from your browser</li>
-                    <li><strong>Real-time preview</strong> - See changes immediately as you type</li>
-                    <li><strong>User-friendly interface</strong> - Clean, intuitive design with syntax highlighting</li>
-                    <li><strong>Free to use</strong> - No registration or subscription needed</li>
-                    <li><strong>Mobile-friendly</strong> - Code on the go from any device</li>
-                    <li><strong>Share code easily</strong> - Generate shareable links to your code for collaboration or getting help</li>
-                    <li><strong>Supports HTML5</strong> - Work with the latest HTML standards</li>
+                    <li><strong>Zero Setup</strong>: No software installation required—code instantly.</li>
+                    <li><strong>Real-Time Preview</strong>: See changes as you type in a live iframe preview.</li>
+                    <li><strong>Full HTML5 Support</strong>: Includes CSS3 and JavaScript for modern web development.</li>
+                    <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
+                    <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
+                    <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
+                    <li><strong>Collaboration Ready</strong>: Copy and share code or output effortlessly.</li>
                 </ul>
 
                 <div class="ad-container vertical">
-
-                </div>
-
-                <h3>Getting Started with HTML</h3>
-                <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It provides the structure of a webpage and is used in conjunction with CSS (for styling) and JavaScript (for interactivity). HTML uses elements, represented by tags, to structure content.</p>
-                
-                <h4>Basic HTML Document Structure</h4>
-                <pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Page Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;My First Heading&lt;/h1&gt;
-    &lt;p&gt;My first paragraph.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                
-                <p>Let's break down each part of this document:</p>
-                <ul>
-                    <li><code>&lt;!DOCTYPE html&gt;</code>: Declares the document type and HTML version (HTML5)</li>
-                    <li><code>&lt;html&gt;</code>: The root element of an HTML page</li>
-                    <li><code>&lt;head&gt;</code>: Contains meta information about the document</li>
-                    <li><code>&lt;title&gt;</code>: Specifies a title for the document (shown in browser tab)</li>
-                    <li><code>&lt;body&gt;</code>: Contains the visible page content</li>
-                    <li><code>&lt;h1&gt;</code>: Defines a large heading</li>
-                    <li><code>&lt;p&gt;</code>: Defines a paragraph</li>
-                </ul>
-
-                <div class="note-box">
-                    <p><strong>Note:</strong> HTML tags normally come in pairs like <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code>. The first tag is the start tag, the second is the end tag (with a forward slash).</p>
-                </div>
-
-                <h3>HTML Basics</h3>
-                <h4>Common HTML Elements</h4>
-                <p>Here are some essential HTML elements you'll use frequently:</p>
-                <ul>
-                    <li><code>&lt;div&gt;</code>: A container for other elements</li>
-                    <li><code>&lt;a href="url"&gt;</code>: Creates a hyperlink</li>
-                    <li><code>&lt;img src="image.jpg"&gt;</code>: Embeds an image</li>
-                    <li><code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>: Creates unordered lists and list items</li>
-                    <li><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>: Creates tables, rows, and cells</li>
-                    <li><code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>: Creates forms and input fields</li>
-                </ul>
-                
-                <h4>Example of HTML with Common Elements</h4>
-                <pre>&lt;div class="container"&gt;
-    &lt;h1&gt;Welcome&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph with a &lt;a href="#"&gt;link&lt;/a&gt;.&lt;/p&gt;
-    &lt;ul&gt;
-        &lt;li&gt;First item&lt;/li&gt;
-        &lt;li&gt;Second item&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;img src="image.jpg" alt="Sample image"&gt;
-&lt;/div&gt;</pre>
-
-                <h3>HTML Attributes</h3>
-                <p>Attributes provide additional information about HTML elements:</p>
-                <ul>
-                    <li>Always specified in the start tag</li>
-                    <li>Usually come in name/value pairs like: name="value"</li>
-                    <li>Common attributes include:
-                        <ul>
-                            <li><code>id</code> - Specifies a unique id for an element</li>
-                            <li><code>class</code> - Specifies one or more class names</li>
-                            <li><code>style</code> - Specifies inline CSS styles</li>
-                            <li><code>src</code> - Specifies the source for images, scripts, etc.</li>
-                            <li><code>href</code> - Specifies the URL for links</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="ad-container horizontal">
                     
                 </div>
 
-                <h3>HTML5 Semantic Elements</h3>
-                <p>HTML5 introduced semantic elements that clearly describe their meaning:</p>
+                <h3>Mastering HTML Programming</h3>
+                <p>HTML (HyperText Markup Language), first developed in 1990 by Tim Berners-Lee, is the backbone of web development. It structures content on the web, working alongside CSS for styling and JavaScript for interactivity.</p>
+
+                <h4>Basic HTML Structure</h4>
+                <pre id="basic-html-example"><!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a paragraph.</p>
+</body>
+</html></pre>
+                <button class="try-out-btn" data-code-id="basic-html-example">Try It Out</button>
+                <p>Key components:</p>
                 <ul>
-                    <li><code>&lt;header&gt;</code> - Represents introductory content</li>
-                    <li><code>&lt;nav&gt;</code> - Contains navigation links</li>
-                    <li><code>&lt;section&gt;</code> - Defines sections in a document</li>
-                    <li><code>&lt;article&gt;</code> - Contains independent, self-contained content</li>
-                    <li><code>&lt;footer&gt;</code> - Represents a footer for its section</li>
-                    <li><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> - Represents self-contained content with caption</li>
+                    <li><code><!DOCTYPE html></code>: Declares HTML5 document type.</li>
+                    <li><code><html></code>: Root element of the page.</li>
+                    <li><code><head></code>: Contains metadata like title and links.</li>
+                    <li><code><body></code>: Holds visible content.</li>
                 </ul>
-                <p>Example of semantic HTML5 structure:</p>
-                <pre>&lt;header&gt;
-    &lt;h1&gt;Website Title&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href="#"&gt;Home&lt;/a&gt;
-        &lt;a href="#"&gt;About&lt;/a&gt;
-    &lt;/nav&gt;
-&lt;/header&gt;
-&lt;main&gt;
-    &lt;article&gt;
-        &lt;h2&gt;Article Title&lt;/h2&gt;
-        &lt;p&gt;Article content...&lt;/p&gt;
-    &lt;/article&gt;
-&lt;/main&gt;
-&lt;footer&gt;
-    &lt;p&gt;Copyright information&lt;/p&gt;
-&lt;/footer&gt;</pre>
-
-                <h3>HTML Forms</h3>
-                <p>Forms allow users to enter data that is sent to a server for processing:</p>
-                <pre>&lt;form action="/submit" method="post"&gt;
-    &lt;label for="name"&gt;Name:&lt;/label&gt;
-    &lt;input type="text" id="name" name="name" required&gt;
-    
-    &lt;label for="email"&gt;Email:&lt;/label&gt;
-    &lt;input type="email" id="email" name="email" required&gt;
-    
-    &lt;label for="message"&gt;Message:&lt;/label&gt;
-    &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
-    
-    &lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
-                <p>Common input types include text, email, password, checkbox, radio, date, file, etc.</p>
-
                 <div class="note-box">
-                    <p><strong>Tip:</strong> Always include <code>&lt;label&gt;</code> elements for form inputs to improve accessibility. Use the <code>for</code> attribute to associate labels with their inputs.</p>
+                    <h4>Best Practice</h4>
+                    <p>Always include the <code><!DOCTYPE html></code> declaration to ensure browsers render your page correctly.</p>
                 </div>
 
-                <h3>Frequently Asked Questions</h3>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I add CSS to my HTML?</div>
-                    <p>You can add CSS in three ways:</p>
-                    <ol>
-                        <li><strong>Inline:</strong> Using the style attribute: <code>&lt;p style="color:red;"&gt;</code></li>
-                        <li><strong>Internal:</strong> Using a <code>&lt;style&gt;</code> element in the <code>&lt;head&gt;</code> section</li>
-                        <li><strong>External:</strong> Linking to an external .css file: <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></li>
-                    </ol>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I add JavaScript to my HTML?</div>
-                    <p>You can add JavaScript in two ways:</p>
-                    <ol>
-                        <li><strong>Internal:</strong> Using a <code>&lt;script&gt;</code> element</li>
-                        <li><strong>External:</strong> Linking to an external .js file: <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></li>
-                    </ol>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What's the difference between HTML and HTML5?</div>
-                    <p>HTML5 is the latest version of HTML with new elements, attributes, and APIs. Key differences include:</p>
-                    <ul>
-                        <li>New semantic elements like <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></li>
-                        <li>New form input types like date, time, email, etc.</li>
-                        <li>Native support for audio and video (<code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>)</li>
-                        <li>Canvas and SVG for drawing</li>
-                        <li>Better support for mobile devices</li>
-                    </ul>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I make my HTML page responsive?</div>
-                    <p>To make your page responsive (work well on all devices):</p>
-                    <ol>
-                        <li>Add the viewport meta tag: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></li>
-                        <li>Use relative units (%, vw, vh) instead of fixed units (px) for widths</li>
-                        <li>Use CSS media queries to apply different styles at different screen sizes</li>
-                        <li>Use flexible layouts with Flexbox or CSS Grid</li>
-                    </ol>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I center elements in HTML?</div>
-                    <p>Centering depends on what you're centering:</p>
-                    <ul>
-                        <li><strong>Text:</strong> <code>text-align: center;</code></li>
-                        <li><strong>Block elements:</strong> <code>margin: 0 auto;</code> (with defined width)</li>
-                        <li><strong>Flexbox:</strong> <code>display: flex; justify-content: center; align-items: center;</code></li>
-                        <li><strong>Grid:</strong> <code>display: grid; place-items: center;</code></li>
-                    </ul>
+                <h3>Core HTML Concepts for All Levels</h3>
+                <h4>Common Elements</h4>
+                <p>Use essential HTML elements to structure content:</p>
+                <pre id="common-elements-example"><div class="container">
+    <h1>Welcome</h1>
+    <p>This is a <a href="#">link</a>.</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <img src="example.jpg" alt="Sample image">
+</div></pre>
+                <button class="try-out-btn" data-code-id="common-elements-example">Try It Out</button>
+
+                <h4>Semantic HTML5</h4>
+                <p>Use semantic elements for better structure and accessibility:</p>
+                <pre id="semantic-example"><header>
+    <h1>Website Title</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+<main>
+    <article>
+        <h2>Article Title</h2>
+        <p>Content...</p>
+    </article>
+</main>
+<footer>
+    <p>© 2025</p>
+</footer></pre>
+                <button class="try-out-btn" data-code-id="semantic-example">Try It Out</button>
+
+                <h4>Forms</h4>
+                <p>Create interactive forms for user input:</p>
+                <pre id="form-example"><form action="/submit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+</form></pre>
+                <button class="try-out-btn" data-code-id="form-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>Form Tip</h4>
+                    <p>Always associate <code><label></code> with inputs using the <code>for</code> attribute for accessibility.</p>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">How do I add comments in HTML?</div>
-                    <p>HTML comments are not displayed in the browser but can help document your code:</p>
-                    <pre>&lt;!-- This is a comment --&gt;</pre>
-                </div>
+                <h4>Adding CSS</h4>
+                <p>Style your HTML with inline, internal, or external CSS:</p>
+                <pre id="css-example"><!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 { color: #6e48aa; }
+        .box { background: #f5f5f5; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Styled Heading</h1>
+    <div class="box">Styled content</div>
+</body>
+</html></pre>
+                <button class="try-out-btn" data-code-id="css-example">Try It Out</button>
 
-                <div class="faq-item">
-                    <div class="faq-question">What is the difference between &lt;div&gt; and &lt;span&gt;?</div>
-                    <p><code>&lt;div&gt;</code> is a block-level element used to group other elements, while <code>&lt;span&gt;</code> is an inline element used to group text or other inline elements for styling.</p>
+                <h4>Adding JavaScript</h4>
+                <p>Add interactivity with JavaScript:</p>
+                <pre id="js-example"><!DOCTYPE html>
+<html>
+<body>
+    <h1>Click Me</h1>
+    <button onclick="myFunction()">Click</button>
+    <script>
+        function myFunction() {
+            alert("Hello from JavaScript!");
+        }
+    </script>
+</body>
+</html></pre>
+                <button class="try-out-btn" data-code-id="js-example">Try It Out</button>
+
+                <h3>Responsive Design</h3>
+                <p>Make your pages mobile-friendly:</p>
+                <pre id="responsive-example"><!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Responsive Page</h1>
+    </div>
+</body>
+</html></pre>
+                <button class="try-out-btn" data-code-id="responsive-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>Responsive Tip</h4>
+                    <p>Always include the viewport meta tag and use relative units like % or vw for responsive layouts.</p>
                 </div>
 
                 <h3>Advanced HTML Features</h3>
-                <p>Once you've mastered the basics, you can explore these advanced HTML features:</p>
                 <ul>
-                    <li><strong>HTML5 APIs:</strong> Geolocation, Drag and Drop, Web Storage, etc.</li>
-                    <li><strong>Canvas:</strong> For drawing graphics programmatically</li>
-                    <li><strong>SVG:</strong> Scalable Vector Graphics</li>
-                    <li><strong>Web Components:</strong> Create reusable custom elements</li>
-                    <li><strong>Accessibility (ARIA):</strong> Make your content accessible to all users</li>
-                    <li><strong>Microdata:</strong> Add semantic meaning to your content for search engines</li>
+                    <li>
+                        <strong>Canvas</strong>: Draw graphics programmatically.
+                        <pre id="canvas-example"><canvas id="myCanvas" width="200" height="100"></canvas>
+<script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#6e48aa";
+    ctx.fillRect(0, 0, 200, 100);
+</script></pre>
+                        <button class="try-out-btn" data-code-id="canvas-example">Try It Out</button>
+                    </li>
+                    <li>
+                        <strong>SVG</strong>: Create scalable vector graphics.
+                        <pre id="svg-example"><svg width="100" height="100">
+    <circle cx="50" cy="50" r="40" fill="#6e48aa"/>
+</svg></pre>
+                        <button class="try-out-btn" data-code-id="svg-example">Try It Out</button>
+                    </li>
+                    <li>
+                        <strong>Web Storage</strong>: Store data locally.
+                        <pre id="storage-example"><script>
+    localStorage.setItem("key", "value");
+    console.log(localStorage.getItem("key"));
+</script></pre>
+                        <button class="try-out-btn" data-code-id="storage-example">Try It Out</button>
+                    </li>
                 </ul>
 
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between HTML and HTML5?</div>
+                    <p>HTML5 is the latest version of HTML, introducing semantic elements, new input types, and APIs like canvas and geolocation.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I make my HTML page accessible?</div>
+                    <p>Use semantic elements, include <code>alt</code> attributes for images, associate labels with inputs, and use ARIA roles where needed.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are HTML comments?</div>
+                    <p>Comments (<code><!-- Comment --></code>) document code without displaying in the browser.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I validate my HTML?</div>
+                    <p>Use the W3C HTML Validator to check for errors and ensure compliance with standards.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are CSS media queries?</div>
+                    <p>Media queries apply styles based on device characteristics, like screen size: <code>@media (max-width: 600px) { ... }</code>.</p>
+                </div>
+
+                <h3>Common HTML Pitfalls and Solutions</h3>
                 <div class="note-box">
-                    <p><strong>Remember:</strong> Our online HTML editor is perfect for practicing all these concepts. Try writing code examples for each topic to reinforce your learning!</p>
+                    <h4>Watch Out!</h4>
+                    <ul>
+                        <li><strong>Unclosed Tags</strong>: Always close tags to avoid rendering issues.</li>
+                        <li><strong>Improper Nesting</strong>: Ensure tags are nested correctly (e.g., avoid <code><p><div></p></div></code>).</li>
+                        <li><strong>Missing Alt Text</strong>: Add <code>alt</code> attributes to images for accessibility.</li>
+                        <li><strong>Deprecated Tags</strong>: Avoid old tags like <code><center></code> or <code><font></code>.</li>
+                        <li><strong>Missing Viewport Tag</strong>: Include <code><meta name="viewport"></code> for responsive design.</li>
+                    </ul>
                 </div>
 
-                <div class="ad-container vertical">
-                    
+                <h3>Learning Resources for HTML</h3>
+                <div class="note-box">
+                    <h4>Level Up Your Skills</h4>
+                    <ul>
+                        <li><strong>Documentation</strong>: MDN Web Docs for HTML, CSS, and JavaScript.</li>
+                        <li><strong>Books</strong>: "HTML and CSS" by Jon Duckett.</li>
+                        <li><strong>Courses</strong>: freeCodeCamp, Codecademy, Coursera.</li>
+                        <li><strong>Practice</strong>: Build small websites or clone existing pages.</li>
+                        <li><strong>Community</strong>: Stack Overflow, dev.to, CSS-Tricks.</li>
+                    </ul>
                 </div>
-
-                <h3>Common HTML Mistakes</h3>
-                <p>Be aware of these common pitfalls when working with HTML:</p>
-                <ul>
-                    <li>Forgetting to close tags</li>
-                    <li>Nesting tags incorrectly (e.g., <code>&lt;p&gt;&lt;div&gt;&lt;/p&gt;&lt;/div&gt;</code>)</li>
-                    <li>Using deprecated elements like <code>&lt;center&gt;</code> or <code>&lt;font&gt;</code></li>
-                    <li>Not using semantic elements when appropriate</li>
-                    <li>Forgetting the viewport meta tag for mobile</li>
-                    <li>Not including alt text for images (hurts accessibility)</li>
-                    <li>Using tables for layout instead of tabular data</li>
-                </ul>
-                <p>Tip: Always validate your HTML using the W3C Validator.</p>
-
-                <h3>HTML Best Practices</h3>
-                <p>Follow these best practices for clean, maintainable HTML:</p>
-                <ul>
-                    <li>Use proper document structure with DOCTYPE, html, head, and body</li>
-                    <li>Use semantic HTML5 elements where appropriate</li>
-                    <li>Separate content (HTML), presentation (CSS), and behavior (JavaScript)</li>
-                    <li>Use lowercase for element and attribute names</li>
-                    <li>Quote all attribute values</li>
-                    <li>Close all elements properly</li>
-                    <li>Include alt attributes for images</li>
-                    <li>Validate your HTML regularly</li>
-                </ul>
 
                 <div class="ad-container horizontal">
                     
                 </div>
-
-                <h3>Learning Resources</h3>
-                <p>To continue your HTML learning journey, check out these resources:</p>
-                <ul>
-                    <li><strong>Official documentation:</strong> MDN Web Docs (developer.mozilla.org)</li>
-                    <li><strong>Books:</strong> "HTML and CSS: Design and Build Websites" by Jon Duckett</li>
-                    <li><strong>Online courses:</strong> freeCodeCamp, Codecademy, Udemy</li>
-                    <li><strong>Practice projects:</strong> Build small websites, clone existing pages</li>
-                    <li><strong>Community:</strong> Stack Overflow, dev.to, CSS-Tricks</li>
-                </ul>
-                <p>Our online HTML editor is the perfect tool to practice what you learn from these resources. The more you code, the better you'll become!</p>
             </section>
 
-            <!-- Footer -->
             <footer class="footer">
                 <div class="footer-links">
-                    <a href="/">Dev Tools</a>
-                    
+                    <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
                     <a href="/contact">Contact</a>
-                    
                 </div>
                 <div class="copyright">
-                    &copy; 2023 Tool Pix. All rights reserved.
+                    © 2025 Tool Pix. All rights reserved.
                 </div>
             </footer>
         </div>
@@ -1342,7 +1340,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/css/css.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize CodeMirror with Syntax Highlighting for HTML
             const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                 mode: "htmlmixed",
                 theme: "dracula",
@@ -1356,26 +1353,27 @@
                 extraKeys: {
                     "Ctrl-Enter": runCode,
                     "Cmd-Enter": runCode
-                }
+                },
+                readOnly: false,
+                styleActiveLine: true,
+                viewportMargin: Infinity,
+                gutters: ["CodeMirror-linenumbers"]
             });
 
-            // DOM Elements
             const runButton = document.getElementById("run-btn");
             const mobileRunButton = document.getElementById("mobile-run-btn");
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
-
-            // Sidebar elements
             const sidebar = document.getElementById("sidebar");
             const sidebarToggle = document.getElementById("sidebar-toggle");
             const sidebarOverlay = document.getElementById("sidebar-overlay");
+            const tryOutButtons = document.querySelectorAll(".try-out-btn");
 
-            // Set initial status
             updateStatus("ready");
+            runCode();
 
-            // Sidebar Toggle Functionality
             function toggleSidebar() {
                 sidebar.classList.toggle("open");
                 sidebarOverlay.classList.toggle("open");
@@ -1384,7 +1382,20 @@
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
 
-            // Function to update status indicator
+            tryOutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeId = button.getAttribute('data-code-id');
+                    const codeElement = document.getElementById(codeId);
+                    if (codeElement) {
+                        const rawCode = codeElement.textContent.trim();
+                        editor.setValue(rawCode);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        editor.focus();
+                        runCode();
+                    }
+                });
+            });
+
             function updateStatus(status) {
                 statusIndicator.className = "status-indicator";
                 switch (status) {
@@ -1400,20 +1411,28 @@
                 }
             }
 
-            // Function to run code
+            function preprocessOutput(text) {
+                const viewportWidth = window.innerWidth;
+                const maxLineLength = viewportWidth <= 768 ? Math.floor(viewportWidth / 10) : 80;
+                return text.split('\n').map(line => {
+                    if (line.length <= maxLineLength) return line;
+                    let result = '';
+                    for (let i = 0; i < line.length; i += maxLineLength) {
+                        result += line.slice(i, i + maxLineLength) + '\n';
+                    }
+                    return result.trimEnd();
+                }).join('\n');
+            }
+
             function runCode() {
                 updateStatus("running");
                 const code = editor.getValue();
                 
                 try {
-                    // Get the iframe's document
                     const iframeDoc = outputElement.contentDocument || outputElement.contentWindow.document;
-                    
-                    // Write the HTML to the iframe
                     iframeDoc.open();
                     iframeDoc.write(code);
                     iframeDoc.close();
-                    
                     updateStatus("success");
                 } catch (error) {
                     updateStatus("error");
@@ -1421,7 +1440,6 @@
                 }
             }
 
-            // Function to copy code to clipboard
             function copyToClipboard() {
                 const code = editor.getValue();
                 navigator.clipboard.writeText(code).then(() => {
@@ -1435,48 +1453,38 @@
                 });
             }
 
-            // Function to clear editor
             function clearEditor() {
                 if (confirm("Are you sure you want to clear the editor?")) {
                     editor.setValue("");
                     editor.focus();
+                    outputElement.contentDocument.open();
+                    outputElement.contentDocument.write("");
+                    outputElement.contentDocument.close();
+                    updateStatus("ready");
                 }
             }
 
-            // Event Listeners
             runButton.addEventListener('click', runCode);
             mobileRunButton.addEventListener('click', runCode);
             clearButton.addEventListener('click', clearEditor);
             copyButton.addEventListener('click', copyToClipboard);
 
-            // Run the initial code
-            runCode();
-
-            // Track editor focus for analytics
             editor.on('focus', () => {
                 console.log('Editor focused');
-                // You can add analytics tracking here
             });
 
-            // Track code execution for analytics
             function trackExecution() {
                 console.log('Code executed');
-                // You can add analytics tracking here
             }
 
-            // Add tracking to run functions
             const originalRunCode = runCode;
-            runCode = function() {
+            runCode = function () {
                 trackExecution();
                 return originalRunCode.apply(this, arguments);
             };
 
-            // Track page view for analytics
             console.log('HTML Editor page loaded');
-            // You can add analytics tracking here
         });
-
- 
     </script>
 </body>
 </html>
