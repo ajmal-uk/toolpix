@@ -152,7 +152,7 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        .btn:disabled, .theme-toggle:disabled, .zoom-btn:disabled {
+        .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
@@ -367,13 +367,6 @@
             overflow-y: auto;
         }
 
-        .input-dialog.terminal .input-history {
-            margin-bottom: 15px;
-            color: #ffffff;
-            white-space: pre-wrap;
-            font-size: 14px;
-        }
-
         .input-dialog.terminal .input-prompt {
             display: flex;
             align-items: center;
@@ -383,9 +376,6 @@
         .input-dialog.terminal .input-prompt span {
             color: #00ff00;
             margin-right: 8px;
-            max-width: 50%;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .input-dialog.terminal .user-input {
@@ -397,13 +387,6 @@
             flex: 1;
             padding: 0;
             outline: none;
-        }
-
-        .input-dialog.terminal .user-input:disabled {
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            opacity: 0.7;
         }
 
         .input-dialog.terminal .user-input:focus {
@@ -418,6 +401,13 @@
             background-color: #00ff00;
             margin-left: 4px;
             animation: blink 1s infinite;
+        }
+
+        .input-dialog.terminal .input-history {
+            margin-bottom: 15px;
+            color: #ffffff;
+            white-space: pre-wrap;
+            font-size: 14px;
         }
 
         .status-indicator {
@@ -569,15 +559,6 @@
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
         }
 
-        .auto-run-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
         ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
@@ -699,29 +680,29 @@
         <div class="main-content">
             <div class="container">
                 <div class="header">
-                    <h1 class="title" aria-label="ToolPix Online Code Editor">
+                    <h1 class="title">
                         <i class="fas fa-code"></i>
                         <span>ToolPix</span>
                     </h1>
                     <div class="controls">
-                        <button class="btn btn-secondary tooltip copy-btn" id="copy-btn" aria-label="Copy code to clipboard">
+                        <button class="btn btn-secondary tooltip copy-btn" id="copy-btn">
                             <i class="far fa-copy"></i>
                             <span>Copy</span>
                             <span class="tooltip-text">Copy to clipboard</span>
                         </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear" aria-label="Clear editor">
+                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
                             <i class="fas fa-trash-alt"></i>
                             <span>Clear</span>
                         </button>
-                        <button class="btn btn-primary" id="run-btn" title="Run" aria-label="Run code">
+                        <button class="btn btn-primary" id="run-btn" title="Run">
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <button class="theme-toggle" id="theme-toggle">
                             <i class="fa fa-adjust"></i>
                             <span>Toggle Theme</span>
                         </button>
-                        <button class="zoom-btn" id="zoom-btn" title="Toggle Fullscreen" aria-label="Toggle fullscreen">
+                        <button class="zoom-btn" id="zoom-btn" title="Toggle Fullscreen">
                             <i class="fas fa-expand"></i>
                         </button>
                     </div>
@@ -730,7 +711,7 @@
                 <div class="editor-output-container">
                     <div class="editor-section">
                         <div class="editor-wrapper">
-                            <textarea id="code" aria-label="Code editor"></textarea>
+                            <textarea id="code"></textarea>
                         </div>
                     </div>
 
@@ -743,22 +724,18 @@
                                 </h2>
                             </div>
                             <div class="output-content">
-                                <pre id="output" aria-live="polite">Write your code above and click "Run"</pre>
+                                <pre id="output">Write your code above and click "Run"</pre>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="prompt-container">
-                    <textarea id="prompt" placeholder="Ask something like 'write Python code to print hello world'..." aria-label="AI prompt input"></textarea>
-                    <button class="generate-btn" id="generate-btn" aria-label="Generate code">
+                    <textarea id="prompt" placeholder="Ask something like 'write Python code to print hello world'..."></textarea>
+                    <button class="generate-btn" id="generate-btn">
                         <i class="fas fa-paper-plane"></i>
                         <span class="loading" style="display: none;"><i class="fa fa-spinner fa-spin"></i></span>
                     </button>
-                    <label class="auto-run-checkbox">
-                        <input type="checkbox" id="auto-run" checked aria-label="Auto-run generated code">
-                        <span>Auto-run generated code</span>
-                    </label>
                 </div>
             </div>
         </div>
@@ -768,11 +745,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">Detected Language</h2>
-                <button class="modal-close" id="modal-close" aria-label="Close language selection modal">×</button>
+                <button class="modal-close" id="modal-close">×</button>
             </div>
             <div class="modal-body">
                 <p>We detected the programming language of your code. Please confirm or select the correct language:</p>
-                <select class="language-select" id="language-select" aria-label="Select programming language">
+                <select class="language-select" id="language-select">
                     <option value="Python">Python</option>
                     <option value="JavaScript">JavaScript</option>
                     <option value="C">C</option>
@@ -788,8 +765,8 @@
                 </select>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="modal-cancel" aria-label="Cancel language selection">Cancel</button>
-                <button class="btn btn-primary" id="modal-run" aria-label="Run code with selected language">Run Code</button>
+                <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="modal-run">Run Code</button>
             </div>
         </div>
     </div>
@@ -862,7 +839,6 @@
             const statusIndicator = document.querySelector(".status-indicator");
             const zoomButton = document.getElementById("zoom-btn");
             const promptInput = document.getElementById("prompt");
-            const autoRunCheckbox = document.getElementById("auto-run");
             const languageModal = document.getElementById("language-modal");
             const languageSelect = document.getElementById("language-select");
             const modalClose = document.getElementById("modal-close");
@@ -885,13 +861,6 @@
                 const trimmed = code.trim();
                 const lower = trimmed.toLowerCase();
 
-                // Improved language detection with precedence
-                if (trimmed.startsWith('<!DOCTYPE html') || /<(html|head|body|div|script|style|title)/i.test(code)) {
-                    return 'HTML';
-                }
-                if (/^\s*[.#]?\w+\s*{[\s\S]*?}/m.test(code) && /;/.test(code)) {
-                    return 'CSS';
-                }
                 if (trimmed.startsWith('#!/bin/bash') || trimmed.startsWith('#!/bin/sh') || lower.includes('echo $') || lower.includes('fi') || lower.includes('done')) {
                     return 'Bash';
                 }
@@ -909,6 +878,12 @@
                 }
                 if (/function\s+\w+\s*\(/.test(code) || /console\.log/.test(code) || /\=\>\s*{?/.test(code)) {
                     return 'JavaScript';
+                }
+                if (/<(html|head|body|div|script|style|title)/i.test(code)) {
+                    return 'HTML';
+                }
+                if (/^\s*[.#]?\w+\s*{[\s\S]*?}/m.test(code) && /;/.test(code)) {
+                    return 'CSS';
                 }
                 if (/\b(SELECT|INSERT|UPDATE|DELETE|FROM|WHERE)\b/i.test(code)) {
                     return 'SQL';
@@ -932,7 +907,6 @@
                 languageSelect.value = selectedLanguage;
                 editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
                 languageModal.style.display = 'flex';
-                languageSelect.focus();
             }
 
             function closeLanguageModal() {
@@ -971,18 +945,6 @@
                 }).join('\n');
             }
 
-            function extractPrompt(match) {
-                if (match[0].includes('scanf')) {
-                    const promptMatch = match[0].match(/scanf\s*\(\s*"([^"]*)"/);
-                    return promptMatch ? promptMatch[1] : "scanf> ";
-                }
-                if (match[0].includes('input') || match[0].includes('readline') || match[0].includes('prompt')) {
-                    const promptMatch = match[0].match(/(?:input|readline|prompt)\s*\(\s*['"]([^'"]*)['"]/);
-                    return promptMatch ? promptMatch[1] : "input> ";
-                }
-                return "input> ";
-            }
-
             async function runCode() {
                 const code = editor.getValue();
                 if (!code.trim()) {
@@ -998,22 +960,13 @@
                 updateStatus("running");
                 outputElement.innerHTML = '<span style="color: var(--warning);"><i class="fas fa-spinner fa-spin"></i> Running your code...</span>';
 
-                const inputPattern = /scanf\s*\(\s*"[^"]*"\s*,[^)]*\)|cin\s*>>[^;]*|input\s*\([^)]*\)|readline\s*\([^)]*\)|prompt\s*\([^)]*\)/g;
-                let inputPrompts = [...code.matchAll(inputPattern)].map(match => extractPrompt(match));
-
-                if (selectedLanguage === 'C++') {
-                    const cinLines = code.split('\n').filter(line => line.includes('cin >>'));
-                    inputPrompts = [];
-                    cinLines.forEach(line => {
-                        const variables = line.match(/cin\s*>>\s*([^;]*)/);
-                        if (variables) {
-                            const varCount = variables[1].split('>>').length;
-                            for (let i = 0; i < varCount; i++) {
-                                inputPrompts.push("cin> ");
-                            }
-                        }
-                    });
-                }
+                const inputPattern = /scanf\s*\(\s*"(?:[^"]*)"\s*,[^)]*\)|cin\s*>>|input\(\)|readline\(\)|prompt\(\)/g;
+                const inputPrompts = [...code.matchAll(inputPattern)].map(match => {
+                    if (match[0].includes('scanf')) return "scanf> ";
+                    if (match[0].includes('cin')) return "cin> ";
+                    if (match[0].includes('input')) return "input> ";
+                    return "input> ";
+                });
 
                 if (inputPrompts.length > 0 && selectedLanguage !== 'HTML' && selectedLanguage !== 'CSS') {
                     showInputDialog(inputPrompts, code);
@@ -1026,59 +979,63 @@
             function showInputDialog(prompts, code) {
                 let currentIndex = 0;
                 let inputs = [];
-                outputElement.innerHTML = '<div class="input-dialog terminal"><div class="input-history"></div><button class="btn btn-secondary" id="cancel-input">Cancel</button></div>';
-                const inputHistoryElement = outputElement.querySelector('.input-history');
-                const cancelButton = outputElement.querySelector('#cancel-input');
+                let inputHistory = '';
 
-                const cancelHandler = () => {
-                    outputElement.innerHTML = '<pre id="output">Input collection cancelled.</pre>';
-                    updateStatus("ready");
-                };
-                cancelButton.addEventListener('click', cancelHandler);
-
-                function addInputPrompt() {
+                function renderInputDialog() {
+                    outputElement.innerHTML = ''; // Clear previous content
+                    let html = '<div class="input-dialog terminal">';
+                    if (inputHistory) {
+                        html += `<div class="input-history">${inputHistory}</div>`;
+                    }
                     if (currentIndex < prompts.length) {
-                        const promptDiv = document.createElement('div');
-                        promptDiv.className = 'input-prompt';
-                        promptDiv.innerHTML = `
-                            <span>${prompts[currentIndex]}</span>
-                            <input type="text" class="user-input" placeholder="Enter value" autocomplete="off" aria-label="Input for ${prompts[currentIndex]}">
-                            <span class="typing-cursor"></span>
+                        html += `
+                            <div class="input-prompt">
+                                <span>${prompts[currentIndex]}</span>
+                                <input type="text" class="user-input" id="current-input" placeholder="" autocomplete="off">
+                                <span class="typing-cursor"></span>
+                            </div>
                         `;
-                        inputHistoryElement.appendChild(promptDiv);
-                        const inputField = promptDiv.querySelector('.user-input');
+                    } else {
+                        html += `<div class="input-history">All inputs collected. Running code...</div>`;
+                    }
+                    html += '</div>';
+                    outputElement.innerHTML = html;
+
+                    if (currentIndex < prompts.length) {
+                        const inputField = document.getElementById('current-input');
                         inputField.focus();
 
-                        const handleInputKeydown = (e) => {
+                        // Remove previous listeners to prevent duplicates
+                        const newInputField = inputField.cloneNode(true);
+                        inputField.parentNode.replaceChild(newInputField, inputField);
+
+                        newInputField.addEventListener('keydown', handleInputKeydown);
+
+                        function handleInputKeydown(e) {
                             if (e.key === 'Enter') {
                                 e.preventDefault();
-                                const value = inputField.value.trim();
+                                const value = newInputField.value.trim();
                                 if (!value) {
-                                    showToast("Please enter a valid value.");
+                                    showToast("Please enter a value.");
                                     return;
                                 }
                                 inputs.push(value);
-                                inputField.disabled = true;
-                                inputField.nextElementSibling.remove();
-                                inputHistoryElement.scrollTop = inputHistoryElement.scrollHeight;
+                                inputHistory += `${prompts[currentIndex]} ${value}\n`;
                                 currentIndex++;
                                 if (currentIndex < prompts.length) {
-                                    addInputPrompt();
+                                    renderInputDialog();
                                 } else {
-                                    cancelButton.removeEventListener('click', cancelHandler);
-                                    cancelButton.remove();
-                                    const runningMessage = document.createElement('div');
-                                    runningMessage.textContent = "All inputs collected. Running code...";
-                                    inputHistoryElement.appendChild(runningMessage);
-                                    setTimeout(() => executeCodeClientSide(code, inputs), 500);
+                                    outputElement.innerHTML = `<div class="input-dialog terminal"><div class="input-history">${inputHistory}</div></div>`;
+                                    setTimeout(() => executeCodeClientSide(code, inputs), 500); // Small delay for UX
                                 }
                             }
-                        };
-                        inputField.addEventListener('keydown', handleInputKeydown);
+                        }
+                    } else {
+                        setTimeout(() => executeCodeClientSide(code, inputs), 500);
                     }
                 }
 
-                addInputPrompt();
+                renderInputDialog();
             }
 
             async function executeCodeClientSide(code, inputs = []) {
@@ -1111,7 +1068,7 @@
 
                     if (!response.ok) {
                         const errorText = await response.text();
-                        throw new Error(errorText || "Failed to execute code. Please check your server connection.");
+                        throw new Error(errorText || "Network response was not ok");
                     }
 
                     const result = await response.json();
@@ -1123,7 +1080,7 @@
                     outputElement.innerHTML = preprocessOutput(result.output || "No output");
                 } catch (error) {
                     updateStatus("error");
-                    outputElement.innerHTML = `<span style="color: var(--error);">Error: ${preprocessOutput(error.message)}</span>`;
+                    outputElement.innerHTML = `<span style="color: var(--error);">${preprocessOutput(error.message)}</span>`;
                 }
             }
 
@@ -1131,8 +1088,8 @@
                 const code = editor.getValue();
                 navigator.clipboard.writeText(code).then(() => {
                     showToast("📋 Code copied to clipboard.");
-                }).catch(() => {
-                    showToast("Error copying code. Please try again.");
+                }).catch(err => {
+                    showToast("Error copying code.");
                 });
             }
 
@@ -1140,12 +1097,11 @@
                 if (confirm("Are you sure you want to clear the editor?")) {
                     editor.setValue("");
                     editor.focus();
-                    showToast("Editor cleared.");
                 }
             }
 
             function cleanCodeBlocks(code) {
-                return code.replace(/```[\w]*\n?|```/g, '').trim();
+                return code.replace(/```[\w]*\n?/g, '').trim();
             }
 
             function typeCodeAnimation(code, callback) {
@@ -1171,7 +1127,7 @@
                         const currentValue = editor.getValue();
                         editor.setValue(currentValue + code.charAt(i));
                         i++;
-                        editor.scrollIntoView({ line: editor.lineCount(), ch: 0 });
+                        editor.scrollIntoView({line: editor.lineCount(), ch: 0});
                     } else {
                         clearInterval(typingInterval);
                         typingCursor.remove();
@@ -1215,7 +1171,7 @@
 
                     if (!response.ok) {
                         const errorText = await response.text();
-                        throw new Error(errorText || "Failed to generate code. Please check your server connection.");
+                        throw new Error(errorText || "Network response was not ok");
                     }
 
                     const result = await response.json();
@@ -1229,19 +1185,19 @@
                     const cleanCode = cleanCodeBlocks(result.code);
 
                     typeCodeAnimation(cleanCode, () => {
-                        if (autoRunCheckbox.checked && selectedLanguage.toLowerCase() !== 'html' && selectedLanguage.toLowerCase() !== 'css') {
+                        if (selectedLanguage.toLowerCase() !== 'html' && selectedLanguage.toLowerCase() !== 'css') {
                             runCode();
                         } else {
                             updateStatus("success");
-                            outputElement.innerHTML = selectedLanguage.toLowerCase() === 'html' ? cleanCode : preprocessOutput(cleanCode);
+                            outputElement.innerHTML = cleanCode;
                         }
                     });
 
-                    showToast("✅ Code generated successfully!");
+                    showToast("✅ Code Generated!");
                 } catch (error) {
                     console.error("Error generating code:", error);
                     showToast("Error generating code. Please try again.");
-                    outputElement.innerHTML = `<span style="color: var(--error);">Error: ${preprocessOutput(error.message)}</span>`;
+                    outputElement.innerHTML = `<span style="color: var(--error);">Error: ${error.message}</span>`;
                 } finally {
                     generateButton.disabled = false;
                     generateButton.querySelector('.loading').style.display = 'none';
@@ -1267,7 +1223,6 @@
                 body.classList.toggle("light");
                 localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
                 editor.setOption("theme", body.classList.contains("light") ? "eclipse" : "dracula");
-                showToast(`Switched to ${body.classList.contains("light") ? "light" : "dark"} theme.`);
             }
 
             function toggleFullscreen() {
@@ -1285,7 +1240,6 @@
                     editorWrapper.style.background = '';
                     zoomButton.innerHTML = '<i class="fas fa-expand"></i>';
                     zoomButton.title = "Toggle Fullscreen";
-                    zoomButton.setAttribute("aria-label", "Toggle fullscreen");
                     document.body.style.overflow = 'auto';
                 } else {
                     editorWrapper.classList.add("fullscreen");
@@ -1298,23 +1252,11 @@
                     editorWrapper.style.background = getComputedStyle(document.body).getPropertyValue('--bg-dark');
                     zoomButton.innerHTML = '<i class="fas fa-compress"></i>';
                     zoomButton.title = "Exit Fullscreen";
-                    zoomButton.setAttribute("aria-label", "Exit fullscreen");
                     document.body.style.overflow = 'hidden';
                 }
                 editor.refresh();
-                editor.focus();
             }
 
-            // Debounce function for input events
-            function debounce(func, wait) {
-                let timeout;
-                return function (...args) {
-                    clearTimeout(timeout);
-                    timeout = setTimeout(() => func.apply(this, args), wait);
-                };
-            }
-
-            // Event listeners
             runButton.addEventListener('click', runCode);
             clearButton.addEventListener('click', clearEditor);
             copyButton.addEventListener('click', copyToClipboard);
@@ -1333,13 +1275,6 @@
                 selectedLanguage = languageSelect.value;
                 editor.setOption("mode", modeMap[selectedLanguage] || "text/x-c++src");
             });
-
-            // Debounced input detection for language selection
-            editor.on('change', debounce(() => {
-                if (editor.getValue().trim()) {
-                    showLanguageModal();
-                }
-            }, 500));
 
             if (editor.getValue().trim()) {
                 showLanguageModal();

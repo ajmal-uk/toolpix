@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced QR Code Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
+  <style>
+    body {
+      background-color: #181825;
+      font-family: Arial, sans-serif;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #1e1e2e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 10px;
+      background-color: #374151;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .tab-buttons button.active {
+      background-color: #7c3aed;
+    }
+
+    #reader, #upload-section {
+      display: none;
+    }
+
+    #upload-preview {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #4f46e5;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    input[type="file"] {
+      background-color: #374151;
+      padding: 10px;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .output {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #11111b;
+      border-radius: 5px;
+      border: 1px solid #374151;
+      word-break: break-word;
+      min-height: 40px;
+    }
+
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Advanced QR Code Scanner</h2>
+
+    <div class="tab-buttons">
+      <button id="cameraTab" class="active">Camera</button>
+      <button id="uploadTab">Upload</button>
+    </div>
+
+    <!-- Camera Scan Section -->
+    <div id="reader"></div>
+    <div class="controls" id="cameraControls">
+      <button onclick="startCamera()">Start Camera</button>
+      <button onclick="stopCamera()">Stop Camera</button>
+    </div>
+
+    <!-- Upload Scan Section -->
+    <div id="upload-section">
+      <input type="file" accept="image/*" id="uploadInput">
+      <img id="upload-preview" src="" alt="" style="display:none;">
+      <div class="controls" id="uploadButtons" style="display:none;">
+        <button onclick="retryUpload()">Retry</button>
+        <button onclick="processUpload()">Process</button>
+      </div>
+    </div>
+
+    <div class="output" id="output">Scan result will appear here.</div>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    const cameraTab = document.getElementById("cameraTab");
+    const uploadTab = document.getElementById("uploadTab");
+    const reader = document.getElementById("reader");
+    const uploadSection = document.getElementById("upload-section");
+    const cameraControls = document.getElementById("cameraControls");
+    const uploadInput = document.getElementById("uploadInput");
+    const uploadPreview = document.getElementById("upload-preview");
+    const uploadButtons = document.getElementById("uploadButtons");
+    const output = document.getElementById("output");
+    let scanner;
+
+    cameraTab.addEventListener("click", () => {
+      setTab("camera");
+    });
+
+    uploadTab.addEventListener("click", () => {
+      setTab("upload");
+    });
+
+    function setTab(tab) {
+      if (tab === "camera") {
+        cameraTab.classList.add("active");
+        uploadTab.classList.remove("active");
+        reader.style.display = "block";
+        cameraControls.style.display = "flex";
+        uploadSection.style.display = "none";
+        stopCamera();
+      } else {
+        uploadTab.classList.add("active");
+        cameraTab.classList.remove("active");
+        reader.style.display = "none";
+        cameraControls.style.display = "none";
+        uploadSection.style.display = "block";
+        stopCamera();
+      }
+      output.innerText = "Scan result will appear here.";
+      uploadPreview.style.display = "none";
+      uploadButtons.style.display = "none";
+    }
+
+    function startCamera() {
+      scanner = new Html5Qrcode("reader");
+      scanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        (decodedText) => {
+          output.innerText = `Scanned: ${decodedText}`;
+          stopCamera();
+        },
+        (err) => { }
+      ).catch((err) => {
+        output.innerText = `Camera error: ${err}`;
+      });
+    }
+
+    function stopCamera() {
+      if (scanner) {
+        scanner.stop().then(() => {
+          scanner.clear();
+        }).catch((e) => console.log("Stop error", e));
+      }
+    }
+
+    uploadInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        uploadPreview.src = e.target.result;
+        uploadPreview.style.display = "block";
+        uploadButtons.style.display = "flex";
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function retryUpload() {
+      uploadInput.value = "";
+      uploadPreview.style.display = "none";
+      uploadButtons.style.display = "none";
+      output.innerText = "Scan result will appear here.";
+    }
+
+    function processUpload() {
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, canvas.width, canvas.height);
+        if (code) {
+          output.innerText = `Scanned: ${code.data}`;
+        } else {
+          output.innerText = "No QR code found in the image.";
+        }
+      };
+      img.src = uploadPreview.src;
+    }
+
+    // Set default tab
+    setTab("camera");
+  </script>
+</body>
+</html>

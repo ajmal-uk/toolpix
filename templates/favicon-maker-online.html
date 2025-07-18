@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .tab {
+            margin-bottom: 20px;
+        }
+        .tab button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            background-color: #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #preview {
+            width: 128px;
+            height: 128px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        button#generate {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button#generate:hover {
+            background-color: #45a049;
+        }
+        #download {
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Favicon Maker</h2>
+        <div class="tab">
+            <button class="tablink" onclick="openTab('image')">Image</button>
+            <button class="tablink" onclick="openTab('text')">Text</button>
+            <button class="tablink" onclick="openTab('emoji')" id="defaultOpen">Emoji</button>
+        </div>
+
+        <div id="image" class="tabcontent">
+            <div class="input-group">
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+        </div>
+
+        <div id="text" class="tabcontent" style="display:none;">
+            <div class="input-group">
+                <input type="text" id="textInput" placeholder="Enter text" maxlength="2">
+                <input type="color" id="textColor" value="#000000">
+                <select id="textSize">
+                    <option value="32">32px</option>
+                    <option value="64">64px</option>
+                    <option value="128" selected>128px</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="emoji" class="tabcontent" style="display:none;">
+            <div class="input-group">
+                <input type="text" id="emojiInput" placeholder="Enter emoji" maxlength="1">
+                <input type="color" id="emojiColor" value="#000000">
+                <select id="emojiSize">
+                    <option value="32">32px</option>
+                    <option value="64">64px</option>
+                    <option value="128" selected>128px</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="preview">Preview</div>
+        <button id="generate">Generate Favicon</button>
+        <a id="download" href="#" download="favicon.ico">Download Favicon</a>
+    </div>
+
+    <script>
+        document.getElementById("defaultOpen").click();
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        document.getElementById('generate').addEventListener('click', () => {
+            const activeTab = document.getElementsByClassName("tablink active")[0].innerText.toLowerCase();
+            let size = activeTab === 'text' ? document.getElementById('textSize').value : document.getElementById('emojiSize').value;
+            size = parseInt(size);
+            canvas.width = size;
+            canvas.height = size;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, size, size);
+
+            if (activeTab === 'image') {
+                const file = document.getElementById('imageInput').files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            ctx.drawImage(img, 0, 0, size, size);
+                            createAndDownloadFavicon();
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            } else if (activeTab === 'text') {
+                const text = document.getElementById('textInput').value;
+                const color = document.getElementById('textColor').value;
+                if (text) {
+                    ctx.fillStyle = color;
+                    ctx.font = `${size / 2}px Arial`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(text, size / 2, size / 2);
+                    createAndDownloadFavicon();
+                } else {
+                    alert('Please enter text');
+                }
+            } else if (activeTab === 'emoji') {
+                const emoji = document.getElementById('emojiInput').value;
+                const color = document.getElementById('emojiColor').value;
+                if (emoji) {
+                    ctx.fillStyle = color;
+                    ctx.font = `${size / 1.5}px Arial`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(emoji, size / 2, size / 2);
+                    createAndDownloadFavicon();
+                } else {
+                    alert('Please enter an emoji');
+                }
+            }
+
+            function createAndDownloadFavicon() {
+                const preview = document.getElementById('preview');
+                preview.innerHTML = '';
+                const previewImg = new Image();
+                previewImg.src = canvas.toDataURL();
+                preview.appendChild(previewImg);
+
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const downloadLink = document.getElementById('download');
+                    downloadLink.href = url;
+                    downloadLink.download = 'favicon.ico';
+                    downloadLink.style.display = 'block';
+                }, 'image/ico');
+            }
+        });
+
+        // Update preview on input change
+        ['textInput', 'emojiInput', 'textColor', 'emojiColor', 'textSize', 'emojiSize'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                const activeTab = document.getElementsByClassName("tablink active")[0].innerText.toLowerCase();
+                if ((activeTab === 'text' && id === 'textInput') || (activeTab === 'emoji' && id === 'emojiInput')) {
+                    document.getElementById('generate').click();
+                }
+            });
+        });
+
+        document.getElementById('imageInput').addEventListener('change', () => {
+            document.getElementById('generate').click();
+        });
+    </script>
+</body>
+</html>
