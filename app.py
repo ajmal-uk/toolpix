@@ -27,7 +27,6 @@ def privacy():
     return render_template('privacy.html')
 
 
-
 @app.route('/python-compiler')
 def python():
     return render_template('python.html')
