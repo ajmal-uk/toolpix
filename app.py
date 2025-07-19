@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, request, send_from_directory
 from flask_compress import Compress
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -32,9 +32,17 @@ def privacy():
 def python():
     return render_template('python.html')
 
-@app.route('/java-compiler')
+@app.route('/java-compiler', methods=['GET', 'POST'])
 def java():
-    return render_template('java.html')
+    initial_code = None
+    if request.method == 'POST':
+        # Retrieve initial code from POST form data
+        initial_code = request.form.get('initialCode')
+    elif request.method == 'GET':
+        # Optionally, still support GET for backward compatibility or direct access
+        initial_code = request.args.get('initialCode')
+    # Render the template, passing the initial code (None if not provided)
+    return render_template('java.html', initial_code=initial_code)
 
 @app.route('/c-compiler')
 def c():
