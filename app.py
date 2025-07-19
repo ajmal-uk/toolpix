@@ -32,17 +32,9 @@ def privacy():
 def python():
     return render_template('python.html')
 
-@app.route('/java-compiler', methods=['GET', 'POST'])
+@app.route('/java-compiler')
 def java():
-    initial_code = None
-    if request.method == 'POST':
-        # Retrieve initial code from POST form data
-        initial_code = request.form.get('initialCode')
-    elif request.method == 'GET':
-        # Optionally, still support GET for backward compatibility or direct access
-        initial_code = request.args.get('initialCode')
-    # Render the template, passing the initial code (None if not provided)
-    return render_template('java.html', initial_code=initial_code)
+    return render_template('java.html')
 
 @app.route('/c-compiler')
 def c():
@@ -64,6 +56,9 @@ def html():
 def sql():
     return render_template('sql.html')
 
+@app.route('/php-compiler')
+def php():
+    return render_template('php.html')
 
 
 @app.route('/json-formatter')
