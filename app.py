@@ -12,77 +12,131 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('details/about.html')
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('details/contact.html')
 
 @app.route('/terms')
 def terms():
-    return render_template('terms.html')
+    return render_template('details/terms.html')
 
 @app.route('/privacy')
 def privacy():
-    return render_template('privacy.html')
+    return render_template('details/privacy.html')
 
 
-@app.route('/python-compiler')
+
+#code-editors
+@app.route('/free-online-ai-python-compiler')
 def python():
-    return render_template('python.html')
+    return render_template('code-editors/python.html')
 
-@app.route('/java-compiler')
+@app.route('/free-online-ai-java-compiler')
 def java():
-    return render_template('java.html')
+    return render_template('code-editors/java.html')
 
-@app.route('/c-compiler')
+@app.route('/free-online-ai-c-compiler')
 def c():
-    return render_template('c.html')
+    return render_template('code-editors/c.html')
 
-@app.route('/cpp-compiler')
+@app.route('/free-online-ai-cpp-compiler')
 def cpp():
-    return render_template('cpp.html')
+    return render_template('code-editors/cpp.html')
 
-@app.route('/javascript-editor')
+@app.route('/free-online-ai-javascript-compiler')
 def js():
-    return render_template('js.html')
+    return render_template('code-editors/js.html')
 
-@app.route('/html-editor')
+@app.route('/free-online-ai-html-editor')
 def html():
-    return render_template('html.html')
+    return render_template('code-editors/html.html')
 
-@app.route('/sql-editor')
+@app.route('/free-online-ai-sql-editor')
 def sql():
-    return render_template('sql.html')
+    return render_template('code-editors/sql.html')
 
-@app.route('/php-compiler')
+@app.route('/free-php-online-ai-compiler')
 def php():
-    return render_template('php.html')
+    return render_template('code-editors/php.html')
 
-
-@app.route('/json-formatter')
-def json_formatter():
-    return render_template('json-formatter.html')
-
-@app.route('/base64-encoder')
-def base64_encoder():
-    return render_template('base64-encoder.html')
-
-@app.route('/css-obfuscator')
-def css_obfuscator():
-    return render_template('css-obfuscator.html')
-
-@app.route('/javascript-obfuscator')
-def js_obfuscator():
-    return render_template('js-obfuscator.html')
-
-@app.route('/online-text-editor')
+@app.route('/free-online-text-editor')
 def text_editor():
-    return render_template('text-editor.html')
+    return render_template('code-editors/text-editor.html')
+
+@app.route('/free-online-markdown-editor')
+def markdown_editor():
+    return render_template('code-editors/markdown-editor.html')
+
+
+#coding-tools
+@app.route('/free-online-json-formatter')
+def json_formatter():
+    return render_template('coding-tools/json-formatter.html')
+
+@app.route('/free-online-base64-encoder')
+def base64_encoder():
+    return render_template('coding-tools/base64-encoder.html')
+
+@app.route('/free-online-css-obfuscator')
+def css_obfuscator():
+    return render_template('coding-tools/css-obfuscator.html')
+
+@app.route('/free-online-javascript-obfuscator')
+def js_obfuscator():
+    return render_template('coding-tools/js-obfuscator.html')
+
+@app.route('/free-online-code-diff-tool')
+def code_diff_tool():
+    return render_template('coding-tools/code-diff-tool.html')
+
+@app.route('/free-online-regex-tester')
+def regex_tester():
+    return render_template('coding-tools/regex-tester.html')
+
+@app.route('/free-online-xml-beautifier')
+def xml_beautifier():
+    return render_template('coding-tools/xml-beautifier.html')
+
+@app.route('/free-online-xml-formatter')
+def xml_formatter():
+    return render_template('coding-tools/xml-formatter.html')
+
+@app.route('/free-online-xml-obfuscator')
+def xml_obfuscator():
+    return render_template('coding-tools/xml-obfuscator.html')
 
 
 
+#Utility Tools
+@app.route('/free-online-color-picker')
+def color_picker():
+    return render_template('utility-tools/color-picker.html')
 
+@app.route('/free-online-favicon-generator')
+def favicon_generator():
+    return render_template('utility-tools/favicon-maker.html')
+
+@app.route('/free-online-qr-code-scanner')
+def qr_code_scanner():
+    return render_template('utility-tools/qr-scanner.html')
+
+@app.route('/convert-qr-to-url-online')
+def qr_to_url():
+    return render_template('utility-tools/qr-to-url-code-generator.html')
+
+@app.route('/free-online-url-encoder-decoder')
+def url_encoder_decoder():
+    return render_template('utility-tools/url-encoder-decoder.html')
+
+@app.route('/convert-url-to-qr-code-online')
+def url_to_qr():
+    return render_template('utility-tools/url-to-qr-code-generator.html')
+
+
+
+#error handlers
 @app.errorhandler(400)
 def bad_request(error):
     return render_template('errors/400.html', title='400 Bad Request'), 400

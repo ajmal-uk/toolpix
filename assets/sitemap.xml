@@ -29,21 +29,21 @@
 
     <!-- ========== MOST POPULAR TOOLS (0.90) ========== -->
     <url>
-        <loc>https://toolpix.pythonanywhere.com/python-compiler</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-python-compiler</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/javascript-editor</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/json-formatter</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-json-formatter</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
@@ -51,21 +51,21 @@
 
     <!-- ========== POPULAR TOOLS (0.80) ========== -->
     <url>
-        <loc>https://toolpix.pythonanywhere.com/html-editor</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-html-editor</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.80</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/java-compiler</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-java-compiler</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.80</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/cpp-compiler</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.80</priority>
@@ -80,28 +80,28 @@
 
     <!-- ========== NICHE TOOLS (0.70) ========== -->
     <url>
-        <loc>https://toolpix.pythonanywhere.com/base64-encoder</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-base64-encoder</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/c-compiler</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-c-compiler</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/css-obfuscator</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-css-obfuscator</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
     </url>
 
     <url>
-        <loc>https://toolpix.pythonanywhere.com/sql-editor</loc>
+        <loc>https://toolpix.pythonanywhere.com/free-online-ai-sql-editor</loc>
         <lastmod>2025-07-10T07:29:07+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>

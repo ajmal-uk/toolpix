@@ -204,7 +204,6 @@
             }
         });
 
-        // Update preview on input change
         ['textInput', 'emojiInput', 'textColor', 'emojiColor', 'textSize', 'emojiSize'].forEach(id => {
             document.getElementById(id).addEventListener('input', () => {
                 const activeTab = document.getElementsByClassName("tablink active")[0].innerText.toLowerCase();
