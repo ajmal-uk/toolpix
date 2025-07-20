@@ -81,6 +81,10 @@ def base64_encoder():
 
 @app.route('/free-online-css-obfuscator')
 def css_obfuscator():
+    return render_template('coding-tools/free-online-css-obfuscator.html')
+
+@app.route('/css-obfuscator')
+def css_obfuscator():
     return render_template('coding-tools/css-obfuscator.html')
 
 @app.route('/free-online-javascript-obfuscator')
