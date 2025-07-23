@@ -2848,12 +2848,16 @@ int main() {
             const paddingBottom = parseFloat(getComputedStyle(promptInput).paddingBottom);
             const singleLineHeight = lineHeight + paddingTop + paddingBottom;
             const scrollHeight = promptInput.scrollHeight;
-            const maxHeight = parseInt(getComputedStyle(promptInput).maxHeight);
+            const maxHeight = window.innerWidth <= 768 ? 120 : parseInt(getComputedStyle(promptInput).maxHeight);
             const newHeight = promptInput.value.trim() === '' || promptInput.value.split('\n').length === 1
                 ? singleLineHeight
                 : Math.min(scrollHeight, maxHeight);
 
             promptInput.style.height = `${newHeight}px`;
+            const promptSection = document.querySelector('.prompt-section');
+            if (window.innerWidth <= 768) {
+                promptSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
         }
 
         promptInput.addEventListener('input', adjustTextareaHeight);

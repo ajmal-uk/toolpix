@@ -2174,32 +2174,34 @@
             const promptInput = document.getElementById("prompt-input");
 
             function adjustTextareaHeight() {
-                promptInput.style.height = 'auto';
-                const fontSize = parseFloat(getComputedStyle(promptInput).fontSize);
-                const lineHeight = fontSize * 1.4;
-                const paddingTop = parseFloat(getComputedStyle(promptInput).paddingTop);
-                const paddingBottom = parseFloat(getComputedStyle(promptInput).paddingBottom);
-                const singleLineHeight = lineHeight + paddingTop + paddingBottom;
-                const scrollHeight = promptInput.scrollHeight;
-                const maxHeight = parseInt(getComputedStyle(promptInput).maxHeight);
-                const newHeight = promptInput.value.trim() === '' || promptInput.value.split('\n').length === 1
-                    ? singleLineHeight
-                    : Math.min(scrollHeight, maxHeight);
+            promptInput.style.height = 'auto';
+            const fontSize = parseFloat(getComputedStyle(promptInput).fontSize);
+            const lineHeight = fontSize * 1.4;
+            const paddingTop = parseFloat(getComputedStyle(promptInput).paddingTop);
+            const paddingBottom = parseFloat(getComputedStyle(promptInput).paddingBottom);
+            const singleLineHeight = lineHeight + paddingTop + paddingBottom;
+            const scrollHeight = promptInput.scrollHeight;
+            const maxHeight = window.innerWidth <= 768 ? 120 : parseInt(getComputedStyle(promptInput).maxHeight);
+            const newHeight = promptInput.value.trim() === '' || promptInput.value.split('\n').length === 1
+                ? singleLineHeight
+                : Math.min(scrollHeight, maxHeight);
 
-                promptInput.style.height = `${newHeight}px`;
+            promptInput.style.height = `${newHeight}px`;
+            const promptSection = document.querySelector('.prompt-section');
+            if (window.innerWidth <= 768) {
+                promptSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
+        }
 
-            promptInput.addEventListener('input', adjustTextareaHeight);
-            promptInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    processText();
-                } else if (e.key === 'Enter') {
-                    promptInput.value += '\n';
-                    setTimeout(adjustTextareaHeight, 0);
-                }
-            });
-            adjustTextareaHeight();
+        promptInput.addEventListener('input', adjustTextareaHeight);
+        promptInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                promptInput.value += '\n';
+                setTimeout(adjustTextareaHeight, 0);
+            }
+        });
+        adjustTextareaHeight();
 
             updateStats();
             console.log('AI-Powered Advanced Text Editor page loaded');
