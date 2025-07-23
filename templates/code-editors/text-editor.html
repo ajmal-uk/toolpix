@@ -1294,12 +1294,7 @@
                 margin-top: 10px;
                 display: flex;
                 justify-content: flex-end;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-
-            .control-group:not(:last-child)::after {
-                display: none;
+                gap: 10px;
             }
 
             .controls #notes-btn,
@@ -1331,25 +1326,103 @@
 
             .CodeMirror {
                 font-size: 12px;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
+            }
+
+            .output-content {
+                font-size: 12px;
+                padding: 15px;
+            }
+
+            #output {
+                line-height: 1.4;
+                font-size: 12px;
+            }
+
+            .input-dialog {
+                margin: 5px 0;
+                padding: 8px;
+            }
+
+            .input-label {
+                font-size: 12px;
+            }
+
+            .user-input {
+                font-size: 12px;
+                padding: 6px 10px;
             }
 
             .prompt-section {
                 padding: 8px 15px;
+                background: var(--bg-darker);          
+                border-top: 1px solid var(--border);   
+                position: relative;                    
+                width: 100%;                           
+                box-sizing: border-box;                
+                min-height: 80px;                      
+                max-height: 200px;                     
+                overflow-y: auto;                     
+                z-index: 10;                           
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+            }
+
+            .prompt-container {
+                flex: 0 0 auto; 
+            }
+
+            .prompt-input-wrapper {
+                margin-bottom: 10px;
             }
 
             #prompt-input {
                 min-height: 40px;
-                max-height: 160px;
-                font-size: 13px;
-                line-height: 1.5;
-                padding: 8px 12px;
+                max-height: 120px;     
+                font-size: 12px;       
+                padding: 6px 10px;    
+                line-height: 1.4;   
+                background: linear-gradient(145deg, #1e2a2b, #1a2223);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s;
+            }
+
+            #prompt-input:hover {
+                border-color: var(--primary);
+                box-shadow: 0 0 8px rgba(110, 72, 170, 0.2);
+            }
+
+            #prompt-input:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 8px rgba(110, 72, 170, 0.4);
+                transform: translateY(-1px);
+            }
+
+            #prompt-input::placeholder {
+                color: rgba(224, 224, 224, 0.5);
+                font-style: italic;
             }
 
             #submit-prompt {
-                padding: 8px 12px;
                 height: 32px;
                 width: 32px;
                 font-size: 14px;
+                padding: 0; 
+            }
+
+            .container {
+                min-height: 100vh; 
+                display: flex; 
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .editor-output-container {
+                flex: 1 1 auto; 
+                min-height: 0;   
             }
 
             .auto-run-container {
@@ -1359,11 +1432,6 @@
             #auto-run-checkbox {
                 width: 14px;
                 height: 14px;
-            }
-
-            .font-size-controls,
-            .theme-selector {
-                display: none;
             }
         }
 

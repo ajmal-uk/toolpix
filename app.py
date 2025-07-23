@@ -113,7 +113,6 @@ def xml_beautifier():
     return render_template('coding-tools/xml-beautifier.html')
 
 
-#Utility Tools
 @app.route('/free-online-color-picker')
 def color_picker():
     return render_template('utility-tools/color-picker.html')

@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-        <loc>https://toolpix.pythonanywhere.com/</loc>
-        <lastmod>2025-07-10T07:29:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.00</priority>
-        <image:image>
-            <image:loc>https://toolpix.pythonanywhere.com/logo.png</image:loc>
-            <image:title>ToolPix - Online Developer Tools Platform</image:title>
-        </image:image>
-        <image:image>
-            <image:loc>https://toolpix.pythonanywhere.com/og-image.jpg</image:loc>
-            <image:title>ToolPix: 50+ Online Tools for Developers</image:title>
-        </image:image>
-        <image:image>
-            <image:loc>https://toolpix.pythonanywhere.com/twitter-image.jpg</image:loc>
-            <image:title>Code, Compile and Convert Online</image:title>
-        </image:image>
-</url>
+    <loc>https://toolpix.pythonanywhere.com/</loc>
+    <lastmod>2025-07-10T07:29:07+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://toolpix.pythonanywhere.com/logo.png</image:loc>
+      <image:title>ToolPix - Online Developer Tools Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toolpix.pythonanywhere.com/og-image.jpg</image:loc>
+      <image:title>ToolPix: 50+ Online Tools for Developers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toolpix.pythonanywhere.com/twitter-image.jpg</image:loc>
+      <image:title>Code, Compile and Convert Online</image:title>
+    </image:image>
+  </url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-python-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-java-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-c-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
@@ -48,5 +49,4 @@
   <url><loc>https://toolpix.pythonanywhere.com/guides</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/terms</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.50</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/privacy</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.50</priority></url>
-
 </urlset>

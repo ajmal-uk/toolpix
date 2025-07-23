@@ -1462,6 +1462,9 @@
 
             .CodeMirror {
                 font-size: 12px;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
             }
 
             .output-content {
@@ -1488,22 +1491,34 @@
                 padding: 6px 10px;
             }
 
-            .CodeMirror {
-                -webkit-user-select: text !important;
-                user-select: text !important;
-                touch-action: manipulation !important;
-            }
-
             .prompt-section {
                 padding: 8px 15px;
+                background: var(--bg-darker);          
+                border-top: 1px solid var(--border);   
+                position: relative;                    
+                width: 100%;                           
+                box-sizing: border-box;                
+                min-height: 80px;                      
+                max-height: 200px;                     
+                overflow-y: auto;                     
+                z-index: 10;                           
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+            }
+
+            .prompt-container {
+                flex: 0 0 auto; 
+            }
+
+            .prompt-input-wrapper {
+                margin-bottom: 10px;
             }
 
             #prompt-input {
                 min-height: 40px;
-                max-height: 160px;
-                font-size: 13px;
-                line-height: 1.5;
-                padding: 8px 12px;
+                max-height: 120px;     
+                font-size: 12px;       
+                padding: 6px 10px;    
+                line-height: 1.4;   
                 background: linear-gradient(145deg, #1e2a2b, #1a2223);
                 border: 1px solid var(--border);
                 border-radius: 8px;
@@ -1528,10 +1543,22 @@
             }
 
             #submit-prompt {
-                padding: 8px 12px;
                 height: 32px;
                 width: 32px;
                 font-size: 14px;
+                padding: 0; 
+            }
+
+            .container {
+                min-height: 100vh; 
+                display: flex; 
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .editor-output-container {
+                flex: 1 1 auto; 
+                min-height: 0;   
             }
 
             .auto-run-container {
@@ -1543,6 +1570,7 @@
                 height: 14px;
             }
         }
+
 
         @media (min-width: 769px) {
             .mobile-header-icons {
@@ -2768,12 +2796,16 @@ int main() {
             const paddingBottom = parseFloat(getComputedStyle(promptInput).paddingBottom);
             const singleLineHeight = lineHeight + paddingTop + paddingBottom;
             const scrollHeight = promptInput.scrollHeight;
-            const maxHeight = parseInt(getComputedStyle(promptInput).maxHeight);
+            const maxHeight = window.innerWidth <= 768 ? 120 : parseInt(getComputedStyle(promptInput).maxHeight);
             const newHeight = promptInput.value.trim() === '' || promptInput.value.split('\n').length === 1
                 ? singleLineHeight
                 : Math.min(scrollHeight, maxHeight);
 
             promptInput.style.height = `${newHeight}px`;
+            const promptSection = document.querySelector('.prompt-section');
+            if (window.innerWidth <= 768) {
+                promptSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
         }
 
         promptInput.addEventListener('input', adjustTextareaHeight);
