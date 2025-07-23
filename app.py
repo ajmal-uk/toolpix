@@ -30,6 +30,11 @@ def privacy():
 def faq():
     return render_template('details/faq.html')
 
+@app.route('/guides')
+def guides():
+    return render_template('details/guides.html')
+
+
 
 
 #code-editors
@@ -88,7 +93,7 @@ def css_obfuscator():
     return render_template('coding-tools/css-obfuscator.html')
 
 @app.route('/css-obfuscator')
-def css_obfuscator():
+def css_obfuscator_short():
     return render_template('coding-tools/css-obfuscator.html')
 
 @app.route('/free-online-text-editor')
