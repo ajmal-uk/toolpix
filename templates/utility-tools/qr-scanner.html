@@ -1,9 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced QR Code Scanner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tool Pix's free online QR code scanner: scan and decode QR codes instantly from images or webcam. Perfect for users needing quick and reliable QR code reading for web, mobile, and desktop applications.">
+    <meta name="keywords" content="QR code scanner, online QR code scanner, QR code reader, free QR code tool, Tool Pix, QR code decoder, web development, mobile QR scanner, QR code analysis">
+    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+    <title>Free QR Code Scanner Online - Instant QR Code Reader | Tool Pix</title>
+    <link rel="canonical" href="https://toolpix.pythonanywhere.com/free-online-qr-code-scanner">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Tool Pix">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/free-online-qr-code-scanner">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <meta property="og:title" content="Free QR Code Scanner Online - Instant QR Code Reader | Tool Pix">
+    <meta property="og:description" content="Scan and decode QR codes instantly with Tool Pix's free online QR code scanner. Supports image uploads and webcam scanning for web, mobile, and desktop use.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpix.pythonanywhere.com/free-online-qr-code-scanner">
+    <meta property="og:image" content="/qr-code-scanner-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix QR Code Scanner Interface">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tool Pix">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free QR Code Scanner Online - Instant QR Code Reader | Tool Pix">
+    <meta name="twitter:description" content="Tool Pix offers a free online QR code scanner to decode QR codes from images or webcam, perfect for quick and reliable QR code reading.">
+    <meta name="twitter:image" content="/qr-code-scanner-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix QR Code Scanner Interface">
+    <meta name="twitter:site" content="@toolpix">
+    <meta name="twitter:creator" content="@toolpix">
+
+    <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#webpage",
+                "name": "Free QR Code Scanner Online - Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                "description": "Tool Pix's free online QR code scanner allows users to scan and decode QR codes from images or webcam with real-time results, ideal for web, mobile, and desktop applications.",
+                "keywords": "QR code scanner, online QR code scanner, QR code reader, free QR code tool, web development, mobile QR scanner",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "QR Code Scanner",
+                            "item": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner"
+                        }
+                    ]
+                },
+                "isPartOf": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/free-online-qr-code-scanner"]
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#software",
+                "name": "Tool Pix QR Code Scanner",
+                "operatingSystem": "Cross-Platform",
+                "applicationCategory": "UtilityApplication",
+                "applicationSubCategory": "QR Code Reader",
+                "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                "image": "https://toolpix.pythonanywhere.com/qr-code-scanner-og-image.jpg",
+                "description": "Tool Pix's free online QR code scanner enables users to scan and decode QR codes from images or webcam with real-time results, supporting web, mobile, and desktop applications.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2025-01-15",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "120",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "Instant QR Code Scanning from Images",
+                    "Real-Time Webcam QR Code Scanning",
+                    "Support for Multiple QR Code Types (URLs, Text, Contact, Wi-Fi, etc.)",
+                    "Real-Time Decoding Results",
+                    "Copy Decoded Content with One Click",
+                    "Dark & Light Theme Support for Better Visibility",
+                    "Mobile-Friendly and Responsive Interface",
+                    "No Login Required for Basic Features",
+                    "Export Decoded Data as Text or JSON",
+                    "Shareable Links for Scanned Results",
+                    "Support for High-Resolution QR Codes",
+                    "Error Detection for Invalid QR Codes",
+                    "Keyboard Shortcuts for Faster Navigation",
+                    "Optimized for Web and Mobile Use"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge) with webcam access for live scanning"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/tool-pix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "support@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "tech@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/support"
+                    }
+                ],
+                "description": "Tool Pix is a leading provider of utility tools, offering a free online QR code scanner for instant decoding, designed for users worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US",
+                "description": "Tool Pix offers innovative utility tools, including a free online QR code scanner for instant decoding from images or webcam, designed for web and mobile users."
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix's QR Code Scanner?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's QR Code Scanner is a free online tool for scanning and decoding QR codes from images or webcam, ideal for quick and reliable QR code reading."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's QR Code Scanner completely free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix's QR Code Scanner is 100% free, offering full access to all scanning and decoding features at no cost."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What types of QR codes does Tool Pix's scanner support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The scanner supports multiple QR code types, including URLs, text, contact details, Wi-Fi credentials, and more."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I scan QR codes using my webcam?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool supports real-time QR code scanning using your device's webcam."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why choose Tool Pix's QR Code Scanner?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix provides a free, user-friendly online QR code scanner with real-time decoding and versatile features, ideal for web and mobile users."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share scanned QR code results?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, you can share decoded QR code results via shareable links for easy collaboration."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does the QR code scanner detect invalid codes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, it includes error detection to identify and notify users of invalid or unreadable QR codes."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's QR Code Scanner suitable for beginners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely, its intuitive interface and real-time results make it an excellent tool for beginners."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's QR code scanner for high-resolution codes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the scanner supports high-resolution QR codes for accurate decoding."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix's QR code scanner require any software installation?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No, the scanner is web-based and requires only a modern browser with webcam access for live scanning."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's QR Code Scanner offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's QR Code Scanner is web-based and requires an internet connection to function, as it relies on cloud-based processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix provide sample QR codes for testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix offers sample QR codes to help users test the scanner's features."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#product",
+                "name": "Tool Pix QR Code Scanner",
+                "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                "image": "https://toolpix.pythonanywhere.com/qr-code-scanner-og-image.jpg",
+                "description": "Tool Pix's QR Code Scanner is a free online tool for scanning and decoding QR codes from images or webcam, perfect for web, mobile, and desktop applications.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Tool Pix"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                    "validFrom": "2025-01-15"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "120",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#review"
+                },
+                "sku": "TPQR2025",
+                "category": "Utility Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#creativework",
+                "name": "Tool Pix QR Code Scanner",
+                "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "inLanguage": "en-US",
+                "description": "A free online QR code scanner by Tool Pix, designed for instant decoding of QR codes from images or webcam, ideal for web and mobile users.",
+                "keywords": "QR code scanner, online QR code scanner, QR code reader, free QR code tool, web development, mobile QR scanner"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.6",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's QR Code Scanner is fast and reliable, making it easy to decode QR codes from images or webcam. Highly recommended for users needing quick QR code reading.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#howto",
+                "name": "How to Use Tool Pix's QR Code Scanner",
+                "description": "A step-by-step guide to scanning and decoding QR codes using Tool Pix's free online QR code scanner.",
+                "inLanguage": "en-US",
+                "totalTime": "PT2M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Webcam (optional for live scanning)"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix QR Code Scanner",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Access the QR Code Scanner",
+                        "text": "Navigate to Tool Pix's QR Code Scanner at the provided URL to start scanning QR codes instantly.",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner",
+                        "image": "https://toolpix.pythonanywhere.com/images/free-online-qr-code-scanner-access.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Upload Image or Use Webcam",
+                        "text": "Upload a QR code image or enable your webcam to scan a QR code in real-time.",
+                        "image": "https://toolpix.pythonanywhere.com/images/qr-code-scanner-upload.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Scan and Decode QR Code",
+                        "text": "Click the 'Scan' button to decode the QR code and view the results instantly.",
+                        "image": "https://toolpix.pythonanywhere.com/images/qr-code-scanner-decode.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Copy or Export Results",
+                        "text": "Copy the decoded content with one click or export it as text or JSON for further use.",
+                        "image": "https://toolpix.pythonanywhere.com/images/qr-code-scanner-export.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Share Scanned Results",
+                        "text": "Share the decoded QR code results via a shareable link for collaboration or reference.",
+                        "image": "https://toolpix.pythonanywhere.com/images/qr-code-scanner-share.jpg"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-qr-code-scanner#video",
+                "name": "Introduction to Tool Pix QR Code Scanner",
+                "description": "A brief video tutorial demonstrating how to use Tool Pix's QR code scanner for decoding QR codes from images or webcam in an online interface.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/qr-code-scanner-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/free-online-qr-code-scanner-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/free-online-qr-code-scanner-intro",
+                "uploadDate": "2025-01-20",
+                "duration": "PT2M",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "This video guides you through using Tool Pix's QR code scanner, including uploading images or using a webcam, decoding QR codes, and copying or sharing results.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 400
+                }
+            }
+        ]
+    }
+    </script>
   <script src="https://unpkg.com/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
   <style>

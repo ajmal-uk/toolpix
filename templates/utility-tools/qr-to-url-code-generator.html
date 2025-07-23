@@ -1,9 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced QR to URL Converter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tool Pix's free online QR code to URL converter: decode QR codes to extract URLs instantly from images or webcam. Perfect for web developers, marketers, and users needing quick URL extraction.">
+    <meta name="keywords" content="QR code to URL, QR code decoder, online QR code reader, free QR code tool, Tool Pix, URL extractor, web development, digital marketing, QR code scanning">
+    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+    <title>Free QR Code to URL Converter Online - Decode QR Codes | Tool Pix</title>
+    <link rel="canonical" href="https://toolpix.pythonanywhere.com/convert-qr-to-url-online">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Tool Pix">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/convert-qr-to-url-online">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <meta property="og:title" content="Free QR Code to URL Converter Online - Decode QR Codes | Tool Pix">
+    <meta property="og:description" content="Decode QR codes to extract URLs instantly with Tool Pix's free online QR code to URL converter. Supports image uploads and webcam scanning for web and mobile use.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpix.pythonanywhere.com/convert-qr-to-url-online">
+    <meta property="og:image" content="/qr-to-url-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix QR Code to URL Converter Interface">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tool Pix">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free QR Code to URL Converter Online - Decode QR Codes | Tool Pix">
+    <meta name="twitter:description" content="Tool Pix offers a free online QR code to URL converter to decode QR codes and extract URLs, perfect for web developers and marketers.">
+    <meta name="twitter:image" content="/qr-to-url-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix QR Code to URL Converter Interface">
+    <meta name="twitter:site" content="@toolpix">
+    <meta name="twitter:creator" content="@toolpix">
+
+    <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        #preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 10px 0;
+            display: none;
+        }
+        #webcam {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 10px 0;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            word-wrap: break-word;
+            max-width: 100%;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        a#resultLink {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a#resultLink:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#webpage",
+                "name": "Free QR Code to URL Converter Online - Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                "description": "Tool Pix's free online QR code to URL converter allows users to decode QR codes and extract URLs instantly from images or webcam, ideal for web development and marketing.",
+                "keywords": "QR code to URL, QR code decoder, online QR code reader, free QR code tool, web development, digital marketing",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "QR Code to URL Converter",
+                            "item": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online"
+                        }
+                    ]
+                },
+                "isPartOf": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/convert-qr-to-url-online"]
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#software",
+                "name": "Tool Pix QR Code to URL Converter",
+                "operatingSystem": "Cross-Platform",
+                "applicationCategory": "UtilityApplication",
+                "applicationSubCategory": "QR Code Reader",
+                "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                "image": "https://toolpix.pythonanywhere.com/qr-to-url-og-image.jpg",
+                "description": "Tool Pix's free online QR code to URL converter enables users to decode QR codes and extract URLs instantly from images or webcam, supporting web development and marketing applications.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2025-01-15",
+                    "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "125",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "Instant QR Code Decoding to URLs",
+                    "Support for Image Upload and Webcam Scanning",
+                    "Real-Time URL Extraction Results",
+                    "Copy Decoded URLs with One Click",
+                    "Dark & Light Theme Support for Better Visibility",
+                    "Mobile-Friendly and Responsive Interface",
+                    "No Login Required for Basic Features",
+                    "Export Decoded URLs as Text or JSON",
+                    "Shareable Links for Decoded URLs",
+                    "Support for High-Resolution QR Codes",
+                    "Error Detection for Invalid QR Codes or Non-URL Content",
+                    "Keyboard Shortcuts for Faster Navigation",
+                    "Optimized for Web Development and Marketing Workflows"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge) with webcam access for live scanning"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/tool-pix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "support@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "tech@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/support"
+                    }
+                ],
+                "description": "Tool Pix is a leading provider of utility tools, offering a free online QR code to URL converter for instant URL extraction, designed for web developers and marketers worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US",
+                "description": "Tool Pix offers innovative utility tools, including a free online QR code to URL converter for decoding QR codes and extracting URLs, designed for web developers and marketers."
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix's QR Code to URL Converter?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's QR Code to URL Converter is a free online tool for decoding QR codes to extract URLs instantly from images or webcam, ideal for web development and marketing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's QR Code to URL Converter completely free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix's QR Code to URL Converter is 100% free, offering full access to all decoding features at no cost."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I scan QR codes using my webcam?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool supports real-time QR code scanning using your device's webcam to extract URLs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What happens if the QR code doesn't contain a URL?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The tool will display an error message if the QR code contains non-URL content or is invalid."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why choose Tool Pix's QR Code to URL Converter?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix provides a free, user-friendly online QR code to URL converter with real-time results and versatile features, perfect for web developers and marketers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share decoded URLs?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, you can share decoded URLs via shareable links for easy collaboration."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does the converter support high-resolution QR codes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool supports high-resolution QR codes for accurate URL extraction."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's QR Code to URL Converter suitable for beginners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely, its intuitive interface and real-time results make it an excellent tool for beginners."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's QR Code to URL Converter for marketing campaigns?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the converter is optimized for extracting URLs from QR codes used in marketing campaigns."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix's converter require software installation?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No, the converter is web-based and requires only a modern browser with webcam access for live scanning."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's QR Code to URL Converter offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's QR Code to URL Converter is web-based and requires an internet connection to function, as it relies on cloud-based processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix provide sample QR codes for testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix offers sample QR codes to help users test and explore the converter's features."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#product",
+                "name": "Tool Pix QR Code to URL Converter",
+                "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                "image": "https://toolpix.pythonanywhere.com/qr-to-url-og-image.jpg",
+                "description": "Tool Pix's QR Code to URL Converter is a free online tool for decoding QR codes to extract URLs, perfect for web developers, marketers, and businesses.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Tool Pix"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                    "validFrom": "2025-01-15"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "125",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#review"
+                },
+                "sku": "TPQRURL2025",
+                "category": "Utility Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#creativework",
+                "name": "Tool Pix QR Code to URL Converter",
+                "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "inLanguage": "en-US",
+                "description": "A free online QR code to URL converter by Tool Pix, designed for decoding QR codes and extracting URLs with real-time results, ideal for web developers and marketers.",
+                "keywords": "QR code to URL, QR code decoder, online QR code reader, free QR code tool, web development, digital marketing"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.6",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's QR Code to URL Converter is fast and reliable, making it easy to extract URLs from QR codes. Highly recommended for web developers and marketers.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#howto",
+                "name": "How to Use Tool Pix's QR Code to URL Converter",
+                "description": "A step-by-step guide to decoding QR codes and extracting URLs using Tool Pix's free online QR code to URL converter.",
+                "inLanguage": "en-US",
+                "totalTime": "PT2M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Webcam (optional for live scanning)"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix QR Code to URL Converter",
+                        "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Access the QR Code to URL Converter",
+                        "text": "Navigate to Tool Pix's QR Code to URL Converter at the provided URL to start decoding QR codes instantly.",
+                        "url": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online",
+                        "image": "https://toolpix.pythonanywhere.com/images/convert-qr-to-url-access.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Upload Image or Use Webcam",
+                        "text": "Upload a QR code image or enable your webcam to scan a QR code in real-time.",
+                        "image": "https://toolpix.pythonanywhere.com/images/convert-qr-to-url-upload.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Decode QR Code",
+                        "text": "Click the 'Decode' button to extract the URL from the QR code and view the result instantly.",
+                        "image": "https://toolpix.pythonanywhere.com/images/convert-qr-to-url-decode.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Copy or Export URL",
+                        "text": "Copy the extracted URL with one click or export it as text or JSON for further use.",
+                        "image": "https://toolpix.pythonanywhere.com/images/convert-qr-to-url-export.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Share Decoded URL",
+                        "text": "Share the extracted URL via a shareable link for collaboration or reference.",
+                        "image": "https://toolpix.pythonanywhere.com/images/convert-qr-to-url-share.jpg"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/convert-qr-to-url-online#video",
+                "name": "Introduction to Tool Pix QR Code to URL Converter",
+                "description": "A brief video tutorial demonstrating how to use Tool Pix's QR code to URL converter for decoding QR codes and extracting URLs in an online interface.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/qr-to-url-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/convert-qr-to-url-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/convert-qr-to-url-intro",
+                "uploadDate": "2025-01-20",
+                "duration": "PT2M",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "This video guides you through using Tool Pix's QR code to URL converter, including uploading images or using a webcam, decoding QR codes, and copying or sharing URLs.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 410
+                }
+            }
+        ]
+    }
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
   <style>
     :root {

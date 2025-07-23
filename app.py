@@ -26,6 +26,10 @@ def terms():
 def privacy():
     return render_template('details/privacy.html')
 
+@app.route('/faq')
+def faq():
+    return render_template('details/faq.html')
+
 
 
 #code-editors
@@ -81,13 +85,13 @@ def base64_encoder():
 
 @app.route('/free-online-css-obfuscator')
 def css_obfuscator():
-    return render_template('coding-tools/free-online-css-obfuscator.html')
+    return render_template('coding-tools/css-obfuscator.html')
 
 @app.route('/css-obfuscator')
 def css_obfuscator():
     return render_template('coding-tools/css-obfuscator.html')
 
-@app.route('/free-online-javascript-obfuscator')
+@app.route('/free-online-text-editor')
 def js_obfuscator():
     return render_template('coding-tools/js-obfuscator.html')
 
@@ -102,15 +106,6 @@ def regex_tester():
 @app.route('/free-online-xml-beautifier')
 def xml_beautifier():
     return render_template('coding-tools/xml-beautifier.html')
-
-@app.route('/free-online-xml-formatter')
-def xml_formatter():
-    return render_template('coding-tools/xml-formatter.html')
-
-@app.route('/free-online-xml-obfuscator')
-def xml_obfuscator():
-    return render_template('coding-tools/xml-obfuscator.html')
-
 
 
 #Utility Tools

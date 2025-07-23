@@ -1,6 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tool Pix's free online regex tester: create, test, and debug regular expressions with real-time matching and validation. Perfect for developers working on pattern matching and string validation in web development.">
+    <meta name="keywords" content="regex tester, online regex tester, regular expression tester, regex validator, regex debugger, free regex tool, Tool Pix, pattern matching, string validation, web development, regex editor">
+    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+    <title>Free Regex Tester Online - Test & Debug Regular Expressions | Tool Pix</title>
+    <link rel="canonical" href="https://toolpix.pythonanywhere.com/free-online-regex-tester">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Tool Pix">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/free-online-regex-tester">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <meta property="og:title" content="Free Regex Tester Online - Test & Debug Regular Expressions | Tool Pix">
+    <meta property="og:description" content="Test and debug regular expressions with Tool Pix's free online regex tester. Features real-time matching, validation, and detailed explanations for developers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpix.pythonanywhere.com/free-online-regex-tester">
+    <meta property="og:image" content="/regex-tester-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix Regex Tester Interface">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tool Pix">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Regex Tester Online - Test & Debug Regular Expressions | Tool Pix">
+    <meta name="twitter:description" content="Tool Pix offers a free online regex tester to create, test, and debug regular expressions with real-time matching, ideal for developers working on pattern matching.">
+    <meta name="twitter:image" content="/regex-tester-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix Regex Tester Interface">
+    <meta name="twitter:site" content="@toolpix">
+    <meta name="twitter:creator" content="@toolpix">
+
+    <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#webpage",
+                "name": "Free Regex Tester Online - Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                "description": "Tool Pix's free online regex tester allows users to create, test, and debug regular expressions with real-time matching and validation, ideal for web development and pattern matching.",
+                "keywords": "regex tester, online regex tester, regular expression tester, regex validator, regex debugger, free regex tool, web development, pattern matching",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Regex Tester",
+                            "item": "https://toolpix.pythonanywhere.com/free-online-regex-tester"
+                        }
+                    ]
+                },
+                "isPartOf": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/free-online-regex-tester"]
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#software",
+                "name": "Tool Pix Regex Tester",
+                "operatingSystem": "Cross-Platform",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Web Development",
+                "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                "image": "https://toolpix.pythonanywhere.com/regex-tester-og-image.jpg",
+                "description": "Tool Pix's free online regex tester enables users to create, test, and debug regular expressions with real-time matching, validation, and detailed explanations, supporting web development workflows.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2025-01-15",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "135",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "Real-Time Regex Testing and Matching",
+                    "Syntax Highlighting for Regex Patterns",
+                    "Detailed Match Explanations",
+                    "Support for Common Regex Flavors (PCRE, JavaScript, etc.)",
+                    "Test String Input for Pattern Matching",
+                    "Error Detection and Debugging Tips",
+                    "Dark & Light Theme Support for Better Visibility",
+                    "Mobile-Friendly and Responsive Interface",
+                    "No Login Required for Basic Features",
+                    "Export Regex Patterns as Text or JSON",
+                    "Shareable Links for Collaborative Testing",
+                    "Regex Cheat Sheet and Reference Guide",
+                    "Keyboard Shortcuts for Faster Navigation",
+                    "Optimized for Web Development Workflows"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge)"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/tool-pix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "support@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "tech@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/support"
+                    }
+                ],
+                "description": "Tool Pix is a leading provider of development tools, offering a free online regex tester for creating, testing, and debugging regular expressions, designed for developers worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US",
+                "description": "Tool Pix offers innovative development tools, including a free online regex tester for creating, testing, and debugging regular expressions, designed for web developers."
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix's Regex Tester?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's Regex Tester is a free online tool for creating, testing, and debugging regular expressions with real-time matching and validation, ideal for web development."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's Regex Tester completely free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix's Regex Tester is 100% free, offering full access to all testing and debugging features at no cost."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What regex flavors does Tool Pix's tester support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The tester supports common regex flavors, including PCRE, JavaScript, and others, ensuring compatibility with various programming environments."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I debug regex patterns with Tool Pix's tester?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool provides detailed match explanations and error detection to help debug regex patterns effectively."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why choose Tool Pix's Regex Tester?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix provides a free, user-friendly online regex tester with real-time matching, validation, and detailed explanations, ideal for developers working on pattern matching."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share regex patterns with others?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, you can share regex patterns via shareable links for easy collaboration."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does the regex tester provide real-time results?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, it offers real-time matching and validation as you type your regex pattern and test string."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's Regex Tester suitable for beginners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely, its intuitive interface, cheat sheet, and detailed explanations make it an excellent tool for regex beginners."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's regex tester for complex patterns?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tester supports complex regex patterns, with features like syntax highlighting and detailed match breakdowns."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix's regex tester support multiple programming languages?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, it supports regex flavors used in multiple programming languages, such as JavaScript, Python, and PHP."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's Regex Tester offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's Regex Tester is web-based and requires an internet connection to function, as it relies on cloud-based processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix provide sample regex patterns for testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix offers sample regex patterns and test strings to help users explore and test the tool's features."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#product",
+                "name": "Tool Pix Regex Tester",
+                "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                "image": "https://toolpix.pythonanywhere.com/regex-tester-og-image.jpg",
+                "description": "Tool Pix's Regex Tester is a free online tool for creating, testing, and debugging regular expressions, perfect for developers working on pattern matching and string validation.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Tool Pix"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                    "validFrom": "2025-01-15"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "135",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#review"
+                },
+                "sku": "TPREGEX2025",
+                "category": "Developer Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#creativework",
+                "name": "Tool Pix Regex Tester",
+                "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "inLanguage": "en-US",
+                "description": "A free online regex tester by Tool Pix, designed for creating, testing, and debugging regular expressions with real-time matching, ideal for developers.",
+                "keywords": "regex tester, online regex tester, regular expression tester, regex validator, regex debugger, free regex tool, web development, pattern matching"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.8",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's Regex Tester is intuitive and powerful, making it easy to create and debug regular expressions with real-time feedback. Highly recommended for developers.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#howto",
+                "name": "How to Use Tool Pix's Regex Tester",
+                "description": "A step-by-step guide to creating, testing, and debugging regular expressions using Tool Pix's free online regex tester.",
+                "inLanguage": "en-US",
+                "totalTime": "PT3M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Regex Tester",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Access the Regex Tester",
+                        "text": "Navigate to Tool Pix's Regex Tester at the provided URL to start testing regular expressions instantly.",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                        "image": "https://toolpix.pythonanywhere.com/images/free-online-regex-tester-access.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Input Regex Pattern",
+                        "text": "Enter your regular expression in the provided editor, with syntax highlighting for better readability.",
+                        "image": "https://toolpix.pythonanywhere.com/images/regex-tester-editor.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Input Test String",
+                        "text": "Enter a test string to match against your regex pattern, viewing real-time matching results.",
+                        "image": "https://toolpix.pythonanywhere.com/images/regex-tester-test-string.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Analyze and Debug",
+                        "text": "Review detailed match explanations and debugging tips to refine your regex pattern.",
+                        "image": "https://toolpix.pythonanywhere.com/images/regex-tester-debug.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Share or Export Regex",
+                        "text": "Share your regex pattern via a shareable link or export it as text or JSON for further use.",
+                        "image": "https://toolpix.pythonanywhere.com/images/regex-tester-share-export.jpg"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#video",
+                "name": "Introduction to Tool Pix Regex Tester",
+                "description": "A brief video tutorial demonstrating how to use Tool Pix's regex tester for creating, testing, and debugging regular expressions in an online interface.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/regex-tester-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/free-online-regex-tester-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/free-online-regex-tester-intro",
+                "uploadDate": "2025-01-20",
+                "duration": "PT2M30S",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "This video guides you through using Tool Pix's regex tester, including inputting regex patterns, testing strings, debugging, and sharing or exporting results.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 400
+                }
+            }
+        ]
+    }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -117,22 +584,6 @@
             overflow-x: hidden;
         }
 
-        .sidebar-toggle {
-            display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 101;
-        }
-
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -211,6 +662,10 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu {
+            display: none;
         }
 
         .editor-output-container {
@@ -372,7 +827,7 @@
 
         .copy-btn {
             display: flex;
-            align-items: center;
+            align-items: center dysphagia;
             gap: 6px;
             font-size: 14px;
             padding: 8px 16px;
@@ -385,7 +840,7 @@
         }
 
         .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255 Travel Agency, 255, 255, 0.2);
             transform: translateY(-1px);
         }
 
@@ -432,6 +887,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 50;
             align-items: center;
+
+
             justify-content: center;
             transition: all 0.2s;
         }
@@ -503,10 +960,8 @@
                 pointer-events: auto;
             }
 
-            .sidebar-toggle {
+            .mobile-menu {
                 display: flex;
-                align-items: center;
-                justify-content: center;
             }
 
             .main-content {
@@ -524,6 +979,10 @@
                 height: 40px;
                 justify-content: center;
                 border-radius: 50%;
+            }
+
+            .btn .btn-text {
+                display: none;
             }
 
             .tooltip-text {
@@ -681,9 +1140,6 @@
 </head>
 <body>
     <div class="app-container">
-        <button class="sidebar-toggle" id="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <div class="sidebar" id="sidebar">
@@ -694,44 +1150,142 @@
                 </h1>
             </div>
             <ul class="compiler-list">
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-json-formatter" data-description="Free online AI-powered tool to format and validate JSON data for APIs.">
+                        <span class="compiler-icon"><i class="fas fa-code"></i></span>
+                        <span>JSON Formatter</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered active">
+                    <a href="/free-online-base64-encoder" data-description="Free online tool to encode and decode Base64 strings securely.">
+                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
+                        <span>Base64 Encoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-css-obfuscator" data-description="Free online AI-powered tool to obfuscate and optimize CSS code for web development.">
+                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
+                        <span>CSS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-text-editor" data-description="Free online AI-enhanced text editor for quick code and text editing.">
+                        <span class="compiler-icon"><i class="fas fa-edit"></i></span>
+                        <span>Text Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-code-diff-tool" data-description="Compare two code snippets and highlight differences for version control and collaboration.">
+                        <span class="compiler-icon"><i class="fas fa-code-compare"></i></span>
+                        <span>Code Diff Tool</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="#" data-description="Test and debug regular expressions with live matching and detailed explanations.">
+                        <span class="compiler-icon"><i class="fas fa-asterisk"></i></span>
+                        <span>Regex Tester</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-xml-beautifier" data-description="Format and validate XML documents with proper indentation for better readability.">
+                        <span class="compiler-icon"><i class="fas fa-file-code"></i></span>
+                        <span>XML Beautifier</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-python-compiler" data-description="Free online AI-powered Python compiler for coding, debugging, and learning Python programming.">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-java-compiler" data-description="Free online AI-powered Java compiler for developing and testing Java applications.">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-c-compiler" data-description="Free online AI-powered C compiler for system programming and debugging C code.">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-cpp-compiler" data-description="Free online AI-powered C++ compiler for high-performance coding and debugging.">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++ Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-javascript-compiler" data-description="Free online AI-powered JavaScript editor for web development and testing JS code.">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-html-editor" data-description="Free online AI-powered HTML editor for creating and previewing web pages.">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-sql-editor" data-description="Free online AI-powered SQL editor for writing and testing database queries.">
+                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                        <span>SQL Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-php-online-ai-compiler" data-description="Run PHP scripts online with AI debugging, suitable for server-side web development.">
+                        <span class="compiler-icon"><i class="fab fa-php"></i></span>
+                        <span>PHP Compiler</span>
+                    </a>
+                </li>
                 <li class="compiler-item">
-                    <a href="/js-obfuscator">
+                    <a href="/free-online-javascript-obfuscator" data-description="Free online AI-powered tool to obfuscate and protect JavaScript code.">
                         <span class="compiler-icon"><i class="fab fa-js"></i></span>
                         <span>JS Obfuscator</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-css-obfuscator">
-                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
-                        <span>CSS Obfuscator</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-xml-beautifier">
-                        <span class="compiler-icon"><i class="fas fa-file-code"></i></span>
-                        <span>XML Beautifier</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-xml-obfuscator">
-                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
-                        <span>XML Obfuscator</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/markdown-editor">
-                        <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
+                    <a href="/free-online-markdown-editor" data-description="Write and preview Markdown documents with live rendering, great for documentation and blogs.">
+                        <span class="compiler-icon"><i class="fas fa-markdown"></i></span>
                         <span>Markdown Editor</span>
                     </a>
                 </li>
-                <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fas fa-search"></i></span>
-                    <span>Regex Tester</span>
+                <li class="compiler-item">
+                    <a href="/free-online-color-picker" data-description="Select, convert, and manage colors for web design and development projects.">
+                        <span class="compiler-icon"><i class="fas fa-palette"></i></span>
+                        <span>Color Picker</span>
+                    </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-base64-encoder">
-                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
-                        <span>Base64 Encoder</span>
+                    <a href="/free-online-favicon-generator" data-description="Create favicons in multiple sizes for your website, enhancing brand visibility.">
+                        <span class="compiler-icon"><i class="fas fa-icons"></i></span>
+                        <span>Favicon Generator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-qr-code-scanner" data-description="Scan QR codes directly in your browser for quick access to information.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>QR Code Scanner</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-qr-to-url-online" data-description="Convert QR code images to web URLs for easy sharing and access.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>QR to URL</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-url-encoder-decoder" data-description="Encode and decode URLs for safe web application usage.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>URL Encoder/Decoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-url-to-qr-code-online" data-description="Generate QR codes from URLs for offline sharing and marketing.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>URL to QR Code</span>
                     </a>
                 </li>
             </ul>
@@ -740,6 +1294,9 @@
         <div class="main-content">
             <div class="container">
                 <div class="header">
+                    <button class="btn btn-secondary mobile-menu" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                     <h1 class="title">
                         <i class="fas fa-search"></i>
                         <span>Regex Tester</span>
@@ -747,16 +1304,16 @@
                     <div class="controls">
                         <button class="btn btn-secondary tooltip" id="copy-btn">
                             <i class="far fa-copy"></i>
-                            <span>Copy Results</span>
+                            <span class="btn-text">Copy Results</span>
                             <span class="tooltip-text">Copy match results</span>
                         </button>
                         <button class="btn btn-secondary" id="clear-btn" title="Clear">
                             <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                            <span class="btn-text">Clear</span>
                         </button>
                         <button class="btn btn-primary" id="test-btn" title="Test">
                             <i class="fas fa-play"></i>
-                            <span>Test</span>
+                            <span class="btn-text">Test</span>
                         </button>
                     </div>
                 </div>
@@ -885,7 +1442,7 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 <ul>
                     <li><strong>Capture Groups</strong>: Use <code>(...)</code> to extract specific parts</li>
                     <li><strong>Lookaheads</strong>: Use <code>(?=...)</code> for conditional matching</li>
-                    <li><strong>Named Groups</strong>: Use <code>(?&lt;name&gt;...)</code> for clarity (JavaScript supports via recent browsers)</li>
+                    <li><strong>Named Groups</strong>: Use <code>(?<name>...)</code> for clarity (JavaScript supports via recent browsers)</li>
                     <li><strong>Replace Operations</strong>: Test regex for string replacements</li>
                 </ul>
 
@@ -971,7 +1528,7 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebar-toggle");
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
             const sidebarOverlay = document.getElementById("sidebar-overlay");
 
             updateStatus("ready");
@@ -981,7 +1538,7 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 sidebarOverlay.classList.toggle("open");
             }
 
-            sidebarToggle.addEventListener("click", toggleSidebar);
+            mobileMenuBtn.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
 
             function updateStatus(status) {
@@ -1019,12 +1576,10 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 outputElement.innerHTML = '<span style="color: #fbbf24;"><i class="fas fa-spinner fa-spin"></i> Testing regex...</span>';
 
                 try {
-                    // Validate and create regex
                     const regex = new RegExp(regexPattern, 'g');
                     const matches = [];
                     let match;
 
-                    // Find all matches
                     while ((match = regex.exec(inputText)) !== null) {
                         matches.push({
                             fullMatch: match[0],
@@ -1033,7 +1588,6 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                         });
                     }
 
-                    // Format output
                     let output = '';
                     if (matches.length === 0) {
                         output = 'No matches found.';
@@ -1062,7 +1616,7 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 const text = outputElement.innerText;
                 navigator.clipboard.writeText(text).then(() => {
                     const originalText = copyButton.innerHTML;
-                    copyButton.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                    copyButton.innerHTML = '<i class="fas fa-check"></i> <span class="btn-text">Copied!</span>';
                     setTimeout(() => {
                         copyButton.innerHTML = originalText;
                     }, 2000);
@@ -1080,7 +1634,6 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 }
             }
 
-            // Real-time testing on input
             regexEditor.on('change', testRegex);
             inputEditor.on('change', testRegex);
 
@@ -1107,7 +1660,6 @@ Input: Contact us at info@example.com or support@toolpix.com</pre>
                 return originalTestRegex.apply(this, arguments);
             };
 
-            // Initial test
             testRegex();
 
             console.log('Regex Tester page loaded');

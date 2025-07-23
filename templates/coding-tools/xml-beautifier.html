@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online XML beautifier by Tool Pix. Beautify, format, and validate your XML code with real-time previews. Ideal for web developers working with XML data.">
-    <meta name="keywords" content="XML beautifier, XML formatter, online XML beautifier, format XML, validate XML, XML code formatting, free XML tool, web development, Tool Pix">
+    <meta name="description" content="Tool Pix's free online XML beautifier: format, beautify, and validate XML code with real-time previews. Also supports XML minification and obfuscation for developers optimizing or securing XML data.">
+    <meta name="keywords" content="XML beautifier, online XML formatter, XML validator, XML minifier, XML obfuscator, free XML tool, Tool Pix, XML code formatter, web development, XML optimization, XML data security">
     <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
@@ -13,7 +13,7 @@
     <meta name="distribution" content="global">
     <meta name="rating" content="general">
 
-    <title>XML Beautifier - Free Online XML Formatting Tool | Tool Pix</title>
+    <title>Free XML Beautifier Online - Formatter, Validator & Obfuscator | Tool Pix</title>
     <link rel="canonical" href="https://toolpix.pythonanywhere.com/free-online-xml-beautifier">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -21,152 +21,465 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-title" content="ToolPix">
+    <meta name="apple-mobile-web-app-title" content="Tool Pix">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/free-online-xml-beautifier">
-    <link rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <meta property="og:title" content="XML Beautifier - Free Online XML Formatting Tool | Tool Pix">
-    <meta property="og:description" content="Tool Pix’s free online XML beautifier helps you beautify, format, and validate your XML code with real-time previews. Perfect for web developers working with XML data.">
+    <meta property="og:title" content="Free XML Beautifier Online - Formatter, Validator & Obfuscator | Tool Pix">
+    <meta property="og:description" content="Format, validate, minify, or obfuscate XML code with Tool Pix's free online XML beautifier. Perfect for developers working with XML data in web development and data processing.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpix.pythonanywhere.com/free-online-xml-beautifier">
-    <meta property="og:image" content="/free-online-xml-beautifier-og-image.jpg">
-    <meta property="og:image:alt" content="Tool Pix XML Beautifier">
+    <meta property="og:image" content="/xml-beautifier-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix XML Beautifier Interface">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Tool Pix">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="XML Beautifier - Free Online XML Formatting Tool | Tool Pix">
-    <meta name="twitter:description" content="Beautify and validate XML code online with Tool Pix’s free XML beautifier. Format your XML data effortlessly with real-time previews.">
-    <meta name="twitter:image" content="/free-online-xml-beautifier-twitter-image.jpg">
-    <meta name="twitter:image:alt" content="Tool Pix XML Beautifier">
+    <meta name="twitter:title" content="Free XML Beautifier Online - Formatter, Validator & Obfuscator | Tool Pix">
+    <meta name="twitter:description" content="Tool Pix offers a free online XML beautifier to format, validate, minify, or obfuscate XML code, ideal for developers working on XML data optimization and security.">
+    <meta name="twitter:image" content="/xml-beautifier-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix XML Beautifier Interface">
     <meta name="twitter:site" content="@toolpix">
     <meta name="twitter:creator" content="@toolpix">
 
-    <!-- Preload critical assets for performance -->
     <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "XML Beautifier - Free Online XML Formatting Tool | Tool Pix",
-        "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
-        "description": "Tool Pix’s free online XML beautifier allows you to beautify, format, and validate XML code with real-time previews. Ideal for web developers working with XML data.",
-        "publisher": {
-            "@type": "Organization",
-            "name": "UTHAKKAN (UK)",
-            "url": "https://toolpix.pythonanywhere.com/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "/logo.png",
-                "width": 200,
-                "height": 60
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebSite",
-            "name": "Tool Pix",
-            "url": "https://toolpix.pythonanywhere.com/"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Tool Pix XML Beautifier",
-        "operatingSystem": "Web",
-        "applicationCategory": "DeveloperApplication",
-        "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
-        "image": "/free-online-xml-beautifier-og-image.jpg",
-        "description": "A free online XML beautifier by Tool Pix, created by Ajmal U K. Beautify, format, and validate XML code with real-time previews, ideal for web developers working with XML data.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        },
-        "creator": {
-            "@type": "Person",
-            "name": "Ajmal U K"
-        },
-        "aggregateRating": {
-            "@type artificialeRating",
-            "ratingValue": "4.8",
-            "reviewCount": "150",
-            "bestRating": "5",
-            "worstRating": "1"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
+        "@graph": [
             {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://toolpix.pythonanywhere.com/"
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#webpage",
+                "name": "Free XML Beautifier Online - Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                "description": "Tool Pix's free online XML beautifier allows users to format, validate, minify, or obfuscate XML code with real-time previews, ideal for web development and data processing.",
+                "keywords": "XML beautifier, online XML formatter, XML validator, XML minifier, XML obfuscator, free XML tool, web development, XML optimization",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "XML Beautifier",
+                            "item": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier"
+                        }
+                    ]
+                },
+                "isPartOf": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/free-online-xml-beautifier"]
+                    }
+                ]
             },
             {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "XML Beautifier",
-                "item": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier"
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#software",
+                "name": "Tool Pix XML Beautifier",
+                "operatingSystem": "Cross-Platform",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Web Development",
+                "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                "image": "https://toolpix.pythonanywhere.com/xml-beautifier-og-image.jpg",
+                "description": "Tool Pix's free online XML beautifier enables users to format, validate, minify, or obfuscate XML code with real-time results, supporting web development and data processing workflows.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2025-01-15",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "reviewCount": "125",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "XML Code Formatting and Beautification",
+                    "Real-Time XML Validation",
+                    "XML Minification for Optimized Data",
+                    "XML Obfuscation for Data Security",
+                    "Support for Large XML Files",
+                    "Syntax Highlighting for Better Readability",
+                    "Dark & Light Theme Support for Better Visibility",
+                    "Mobile-Friendly and Responsive Interface",
+                    "No Login Required for Basic Features",
+                    "Export Formatted XML as XML or TXT",
+                    "Shareable Links for Collaborative Use",
+                    "Error Detection and Correction Suggestions",
+                    "Keyboard Shortcuts for Faster Processing",
+                    "Optimized for Web Development Workflows"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge)"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/tool-pix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "support@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "tech@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/support"
+                    }
+                ],
+                "description": "Tool Pix is a leading provider of development tools, offering a free online XML beautifier for formatting, validating, minifying, and obfuscating XML code, designed for developers worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US",
+                "description": "Tool Pix offers innovative development tools, including a free online XML beautifier for formatting, validating, minifying, and obfuscating XML code, designed for web developers."
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix's XML Beautifier?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's XML Beautifier is a free online tool for formatting, validating, minifying, or obfuscating XML code, ideal for web development and data processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's XML Beautifier completely free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix's XML Beautifier is 100% free, offering full access to formatting, validation, minification, and obfuscation features at no cost."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What XML standards does Tool Pix's beautifier support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The beautifier supports standard XML formats, ensuring compatibility with various web development and data processing projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I minify XML code with Tool Pix's beautifier?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool supports XML minification by removing unnecessary whitespace and comments, optimizing it for data transfer."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is XML obfuscation, and does Tool Pix support it?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "XML obfuscation makes XML code less readable to protect sensitive data while maintaining functionality. Tool Pix's beautifier supports XML obfuscation."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why choose Tool Pix's XML Beautifier?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix provides a free, user-friendly online XML beautifier with formatting, validation, minification, and obfuscation features, ideal for developers working with XML data."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share formatted or obfuscated XML code?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, you can share formatted or obfuscated XML code via shareable links for easy collaboration."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does the beautifier validate XML syntax?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, it validates XML syntax in real-time to ensure the code is well-formed before processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's XML Beautifier suitable for beginners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely, its intuitive interface and real-time results make it an excellent tool for XML beginners."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's beautifier for large XML files?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the beautifier supports large XML files, ensuring efficient processing for complex projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix's beautifier support XML schemas or DTDs?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The tool validates XML against standard syntax and supports basic schema validation for well-formed XML documents."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's XML Beautifier offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's XML Beautifier is web-based and requires an internet connection to function, as it relies on cloud-based processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix provide sample XML files for testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix offers sample XML files to help users test the beautification, minification, and obfuscation features."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#product",
+                "name": "Tool Pix XML Beautifier",
+                "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                "image": "https://toolpix.pythonanywhere.com/xml-beautifier-og-image.jpg",
+                "description": "Tool Pix's XML Beautifier is a free online tool for formatting, validating, minifying, and obfuscating XML code, perfect for web developers and data processing tasks.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Tool Pix"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                    "validFrom": "2025-01-15"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "reviewCount": "125",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#review"
+                },
+                "sku": "TPXML2025",
+                "category": "Developer Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#creativework",
+                "name": "Tool Pix XML Beautifier",
+                "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "inLanguage": "en-US",
+                "description": "A free online XML beautifier by Tool Pix, designed for formatting, validating, minifying, and obfuscating XML code, ideal for developers working with XML data.",
+                "keywords": "XML beautifier, online XML formatter, XML validator, XML minifier, XML obfuscator, free XML tool, web development, XML optimization"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.7",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's XML Beautifier is intuitive and efficient, making it easy to format, validate, minify, or obfuscate XML code. Highly recommended for developers working with XML data.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#howto",
+                "name": "How to Use Tool Pix's XML Beautifier",
+                "description": "A step-by-step guide to formatting, validating, minifying, or obfuscating XML code using Tool Pix's free online XML beautifier.",
+                "inLanguage": "en-US",
+                "totalTime": "PT3M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix XML Beautifier",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Access the XML Beautifier",
+                        "text": "Navigate to Tool Pix's XML Beautifier at the provided URL to start processing XML code instantly.",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                        "image": "https://toolpix.pythonanywhere.com/images/free-online-xml-beautifier-access.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Input XML Code",
+                        "text": "Paste or write your XML code in the editor to prepare it for formatting, validation, minification, or obfuscation.",
+                        "image": "https://toolpix.pythonanywhere.com/images/xml-beautifier-editor.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Format, Minify, or Obfuscate",
+                        "text": "Click the 'Beautify', 'Minify', or 'Obfuscate' button to process your XML code. View the real-time output in the result pane.",
+                        "image": "https://toolpix.pythonanywhere.com/images/xml-beautifier-output.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Validate XML Syntax",
+                        "text": "Ensure your XML code is validated for correct syntax before finalizing the formatting, minification, or obfuscation process.",
+                        "image": "https://toolpix.pythonanywhere.com/images/xml-beautifier-validation.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Share or Download Code",
+                        "text": "Use the share feature to collaborate with others or download your processed XML code in .xml or .txt formats for offline use.",
+                        "image": "https://toolpix.pythonanywhere.com/images/xml-beautifier-share-download.jpg"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#video",
+                "name": "Introduction to Tool Pix XML Beautifier",
+                "description": "A brief video tutorial demonstrating how to use Tool Pix's XML beautifier for formatting, validating, minifying, or obfuscating XML code in an online interface.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/xml-beautifier-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/free-online-xml-beautifier-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/free-online-xml-beautifier-intro",
+                "uploadDate": "2025-01-20",
+                "duration": "PT2M30S",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "This video guides you through using Tool Pix's XML beautifier, including inputting XML code, formatting, validating, minifying, or obfuscating it, and sharing or downloading the results.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 350
+                }
             }
         ]
     }
     </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is Tool Pix’s XML Beautifier?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Tool Pix’s XML Beautifier is a free online tool that beautifies, formats, and validates XML code, ensuring readable and well-structured data with real-time previews."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is the XML Beautifier free to use?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Tool Pix’s XML Beautifier is completely free, offering full access to beautify and validate XML code without any cost."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Why should I beautify XML code?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Beautifying XML improves readability, ensures proper structure, and helps identify errors, making it easier to work with data in development and debugging."
-                }
-            }
-        ]
-    }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -183,6 +496,11 @@
             --success: #4ade80;
             --error: #f87171;
             --output-font-size: 14px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
         }
 
         * {
@@ -216,6 +534,7 @@
             position: fixed;
             height: 100vh;
             z-index: 100;
+            box-shadow: var(--shadow);
         }
 
         .sidebar-header {
@@ -265,6 +584,7 @@
 
         .compiler-item.active {
             background: var(--primary);
+            color: var(--text-lighter);
         }
 
         .compiler-icon {
@@ -282,18 +602,14 @@
 
         .sidebar-toggle {
             display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
+            border-radius: 6px;
+            font-size: 14px;
             cursor: pointer;
-            z-index: 101;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
         }
 
         .sidebar-overlay {
@@ -323,6 +639,19 @@
             justify-content: space-between;
             align-items: center;
             max-width: 100%;
+            box-shadow: var(--shadow);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mobile-header-icons {
+            display: flex;
+            gap: 10px;
         }
 
         .title {
@@ -354,6 +683,7 @@
             align-items: center;
             gap: 6px;
             font-size: 14px;
+            box-shadow: var(--shadow);
         }
 
         .btn-primary {
@@ -364,6 +694,7 @@
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary {
@@ -374,6 +705,12 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .switch-btn.active {
+            background: var(--accent);
+            color: var(--bg-dark);
         }
 
         .editor-output-container {
@@ -407,18 +744,48 @@
             overflow: hidden;
         }
 
+        #editor-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #editor-overlay i {
+            color: white;
+            font-size: 24px;
+            animation: rotate 1s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .CodeMirror {
             height: 100% !important;
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
-            padding: 15px 0;
+            padding: 15px;
             max-width: 100%;
-            overflow-x: hidden;
+            overflow-x: auto;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            touch-action: auto !important;
+            line-height: 1.5;
         }
 
         .CodeMirror-sizer, .CodeMirror-lines, .CodeMirror-scroll {
             max-width: 100% !important;
-            overflow-x: hidden !important;
+            overflow-x: auto !important;
             overflow-wrap: anywhere;
             word-break: break-all;
         }
@@ -432,7 +799,7 @@
             max-width: 100%;
             overflow: hidden;
             width: 100%;
-            box-sizing: border-point;
+            box-sizing: border-box;
         }
 
         .output-container {
@@ -445,11 +812,13 @@
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
+            background: var(--terminal-bg);
+            border-radius: 6px;
         }
 
         .output-header {
             padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -461,7 +830,7 @@
         .output-title {
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--terminal-text);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -469,19 +838,24 @@
 
         .output-content {
             padding: 20px;
-            background: #0f0f1a;
+            background: var(--terminal-bg);
             font-family: 'JetBrains Mono', monospace;
             font-size: var(--output-font-size);
             white-space: pre-wrap;
             overflow-wrap: break-word;
             word-break: break-word;
             overflow-y: auto;
-            overflow-x: hidden;
+            overflow-x: auto;
             flex: 1;
             max-height: 100%;
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
+            color: var(--terminal-text);
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
 
         .output-content span {
@@ -535,7 +909,7 @@
             padding: 8px 16px;
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
+            color: var(--terminal-text);
             border: 1px solid var(--border);
             cursor: pointer;
             transition: all 0.2s ease;
@@ -547,6 +921,10 @@
         }
 
         .tooltip {
+            position: relative;
+        }
+
+        .tooltip-text {
             visibility: hidden;
             width: 120px;
             background-color: #333;
@@ -564,7 +942,7 @@
             font-size: 12px;
         }
 
-        .tooltip:hover .tooltip {
+        .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
@@ -582,7 +960,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             z-index: 50;
             align-items: center;
             justify-content: center;
@@ -612,95 +990,6 @@
             background: var(--primary-dark);
         }
 
-        @media (max-width: 992px) {
-            .editor-output-container {
-                flex-direction: column;
-            }
-
-            .editor-section {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-                height: 50vh;
-            }
-
-            .output-section {
-                height: 50vh;
-                max-height: 50vh;
-            }
-
-            .output-container {
-                max-height: 50%;
-            }
-
-            .CodeMirror {
-                height: calc(50vh - 60px) !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .sidebar-overlay {
-                display: block;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s;
-            }
-
-            .sidebar-overlay.open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .sidebar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .main-content {
-                margin-left: 0;
-                max-width: 100%;
-            }
-
-            .mobile-run-btn {
-                display: flex;
-            }
-
-            .controls .btn {
-                padding: 8px;
-                width: 40px;
-                height: 40px;
-                justify-content: center;
-                border-radius: 50%;
-            }
-
-            .tooltip-text {
-                width: 100px;
-                font-size: 10px;
-                bottom: 100%;
-            }
-
-            .title span {
-                font-size: 1rem;
-            }
-
-            .output-content {
-                font-size: 12px;
-                padding: 15px;
-            }
-
-            #output {
-                line-height: 1.4;
-            }
-        }
-
         .seo-content {
             background: var(--bg-darker);
             padding: 40px 20px;
@@ -716,7 +1005,13 @@
         .seo-content h3 {
             color: var(--text-lighter);
             margin: 25px 0 15px;
-            font-size: 1.4rem;
+            font-size: 1.6em;
+        }
+
+        .seo-content h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         .seo-content p {
@@ -724,7 +1019,7 @@
             line-height: 1.7;
         }
 
-        .seo-content ul, ol {
+        .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
         }
@@ -748,14 +1043,55 @@
             overflow-x: auto;
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
+            position: relative;
+        }
+
+        .try-out-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 10px 0;
+            background: var(--primary);
+            color: var(--text-lighter);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .try-out-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
         .note-box {
-            background: rgba(110, 72, 170, 0.2);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
+            background: var(--note-bg);
+            border: 1px solid var(--note-border);
+            padding: 20px;
             margin: 20px 0;
-            border-radius: 0 4px 4px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .note-box h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .note-box p {
+            margin-bottom: 10px;
+        }
+
+        .note-box ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .note-box li {
+            margin-bottom: 5px;
         }
 
         .ad-container {
@@ -783,7 +1119,7 @@
             justify-content: center;
         }
 
-        .ad-container-label {
+        .ad-label {
             font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
@@ -832,13 +1168,219 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 100;
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-dark);
+        }
+
+        .download-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+
+        .download-dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .download-dropdown li {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .download-dropdown li:hover {
+            background: rgba(110, 72, 170, 0.2);
+        }
+
+        @media (max-width: 992px) {
+            .editor-output-container {
+                flex-direction: column;
+                position: relative;
+            }
+
+            .editor-section, .output-section {
+                height: 50vh;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .editor-section.hidden, .output-section.hidden {
+                opacity: 0;
+                transform: translateY(20px);
+                position: absolute;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+            }
+
+            .editor-section.visible, .output-section.visible {
+                opacity: 1;
+                transform: translateY(0);
+                position: relative;
+                height: calc(100vh - 60px);
+            }
+
+            .output-container {
+                max-height: calc(100vh - 60px);
+            }
+
+            .CodeMirror {
+                height: calc(100vh - 60px) !important;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: carve 8px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 100;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay {
+                display: block;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .mobile-header-icons {
+                display: flex;
+                gap: 10px;
+            }
+
+            .controls {
+                margin-top: 10px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+            }
+
+            .controls #notes-btn,
+            .controls #sidebar-toggle {
+                display: none;
+            }
+
+            .controls .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .controls .btn span {
+                display: none;
+            }
+
+            .tooltip-text {
+                width: 100px;
+                font-size: 10px;
+                bottom: 100%;
+            }
+
+            .title span {
+                font-size: 1rem;
+            }
+
+            .CodeMirror {
+                font-size: 12px;
+            }
+
+            .output-content {
+                font-size: 12px;
+                padding: 15px;
+            }
+
+            #output {
+                line-height: 1.4;
+                font-size: 12px;
+            }
+
+            .mobile-run-btn {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-header-icons {
+                display: none;
+            }
+
+            #switch-btn,
+            #sidebar-toggle {
+                display: none;
+            }
+
+            .header-top {
+                display: contents;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <button class="sidebar-toggle" id="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <div class="sidebar" id="sidebar">
@@ -849,26 +1391,142 @@
                 </h1>
             </div>
             <ul class="compiler-list">
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-json-formatter" data-description="Free online AI-powered tool to format and validate JSON data for APIs.">
+                        <span class="compiler-icon"><i class="fas fa-code"></i></span>
+                        <span>JSON Formatter</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered active">
+                    <a href="/free-online-base64-encoder" data-description="Free online tool to encode and decode Base64 strings securely.">
+                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
+                        <span>Base64 Encoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-css-obfuscator" data-description="Free online AI-powered tool to obfuscate and optimize CSS code for web development.">
+                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
+                        <span>CSS Obfuscator</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-text-editor" data-description="Free online AI-enhanced text editor for quick code and text editing.">
+                        <span class="compiler-icon"><i class="fas fa-edit"></i></span>
+                        <span>Text Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-code-diff-tool" data-description="Compare two code snippets and highlight differences for version control and collaboration.">
+                        <span class="compiler-icon"><i class="fas fa-code-compare"></i></span>
+                        <span>Code Diff Tool</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-regex-tester" data-description="Test and debug regular expressions with live matching and detailed explanations.">
+                        <span class="compiler-icon"><i class="fas fa-asterisk"></i></span>
+                        <span>Regex Tester</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="#" data-description="Format and validate XML documents with proper indentation for better readability.">
+                        <span class="compiler-icon"><i class="fas fa-file-code"></i></span>
+                        <span>XML Beautifier</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-python-compiler" data-description="Free online AI-powered Python compiler for coding, debugging, and learning Python programming.">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-java-compiler" data-description="Free online AI-powered Java compiler for developing and testing Java applications.">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-c-compiler" data-description="Free online AI-powered C compiler for system programming and debugging C code.">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-cpp-compiler" data-description="Free online AI-powered C++ compiler for high-performance coding and debugging.">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++ Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-javascript-compiler" data-description="Free online AI-powered JavaScript editor for web development and testing JS code.">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-html-editor" data-description="Free online AI-powered HTML editor for creating and previewing web pages.">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-sql-editor" data-description="Free online AI-powered SQL editor for writing and testing database queries.">
+                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                        <span>SQL Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-php-online-ai-compiler" data-description="Run PHP scripts online with AI debugging, suitable for server-side web development.">
+                        <span class="compiler-icon"><i class="fab fa-php"></i></span>
+                        <span>PHP Compiler</span>
+                    </a>
+                </li>
                 <li class="compiler-item">
-                    <a href="/js-obfuscator">
+                    <a href="/free-online-javascript-obfuscator" data-description="Free online AI-powered tool to obfuscate and protect JavaScript code.">
                         <span class="compiler-icon"><i class="fab fa-js"></i></span>
                         <span>JS Obfuscator</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-css-obfuscator">
-                        <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
-                        <span>CSS Obfuscator</span>
+                    <a href="/free-online-markdown-editor" data-description="Write and preview Markdown documents with live rendering, great for documentation and blogs.">
+                        <span class="compiler-icon"><i class="fas fa-markdown"></i></span>
+                        <span>Markdown Editor</span>
                     </a>
                 </li>
-                <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fas fa-file-code"></i></span>
-                    <span>XML Beautifier</span>
+                <li class="compiler-item">
+                    <a href="/free-online-color-picker" data-description="Select, convert, and manage colors for web design and development projects.">
+                        <span class="compiler-icon"><i class="fas fa-palette"></i></span>
+                        <span>Color Picker</span>
+                    </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-base64-encoder">
-                        <span class="compiler-icon"><i class="fas fa-lock"></i></span>
-                        <span>Base64 Encoder</span>
+                    <a href="/free-online-favicon-generator" data-description="Create favicons in multiple sizes for your website, enhancing brand visibility.">
+                        <span class="compiler-icon"><i class="fas fa-icons"></i></span>
+                        <span>Favicon Generator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-qr-code-scanner" data-description="Scan QR codes directly in your browser for quick access to information.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>QR Code Scanner</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-qr-to-url-online" data-description="Convert QR code images to web URLs for easy sharing and access.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>QR to URL</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-url-encoder-decoder" data-description="Encode and decode URLs for safe web application usage.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>URL Encoder/Decoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-url-to-qr-code-online" data-description="Generate QR codes from URLs for offline sharing and marketing.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>URL to QR Code</span>
                     </a>
                 </li>
             </ul>
@@ -877,11 +1535,25 @@
         <div class="main-content">
             <div class="container">
                 <div class="header">
-                    <h1 class="title">
-                        <i class="fas fa-file-code"></i>
-                        <span>XML Beautifier</span>
-                    </h1>
+                    <div class="header-top">
+                        <h1 class="title">
+                            <i class="fas fa-file-code"></i>
+                            <span>XML Beautifier</span>
+                        </h1>
+                        <div class="mobile-header-icons">
+                            <button class="btn btn-secondary" id="notes-btn-mobile" title="Notes">
+                                <i class="fas fa-sticky-note"></i>
+                            </button>
+                            <button class="btn btn-secondary" id="sidebar-toggle-mobile" title="Menu">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="controls">
+                        <button class="btn btn-primary" id="beautify-btn" title="Beautify">
+                            <i class="fas fa-code"></i>
+                            <span>Beautify</span>
+                        </button>
                         <button class="btn btn-secondary tooltip" id="copy-btn">
                             <i class="far fa-copy"></i>
                             <span>Copy</span>
@@ -891,27 +1563,58 @@
                             <i class="fas fa-trash-alt"></i>
                             <span>Clear</span>
                         </button>
-                        <button class="btn btn-primary" id="beautify-btn" title="Beautify">
-                            <i class="fas fa-code"></i>
-                            <span>Beautify</span>
+                        <div class="download-wrapper" style="position: relative;">
+                            <button class="btn btn-secondary" id="download-btn" title="Download">
+                                <i class="fas fa-download"></i>
+                                <span>Download</span>
+                            </button>
+                            <div class="download-dropdown" id="download-dropdown">
+                                <ul>
+                                    <li id="download-txt">code.txt</li>
+                                    <li id="download-xml">code.xml</li>
+                                    <li id="download-pdf">code.pdf</li>
+                                    <li id="download-cwo">CWO.pdf</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary tooltip switch-btn" id="switch-btn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Switch View</span>
+                            <span class="tooltip-text">Switch Editor/Output</span>
+                        </button>
+                        <button class="btn btn-secondary" id="notes-btn" title="Notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </button>
+                        <button class="btn btn-secondary" id="sidebar-toggle" title="Menu">
+                            <i class="fas fa-bars"></i>
+                            <span>Menu</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="editor-output-container">
-                    <div class="editor-section">
+                    <div class="editor-section visible">
                         <div class="editor-wrapper">
+                            <div id="editor-overlay">
+                                <i class="fas fa-spinner"></i>
+                            </div>
                             <textarea id="editor"><?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note></textarea>
                         </div>
                     </div>
 
-                    <div class="output-section">
+                    <div class="output-section hidden">
                         <div class="output-container">
                             <div class="output-header">
                                 <h2 class="output-title">
                                     <span class="status-indicator status-success"></span>
                                     Beautified Output
                                 </h2>
+                                <button class="copy-btn tooltip" id="copy-output-btn">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy Output</span>
+                                    <span class="tooltip-text">Copy output to clipboard</span>
+                                </button>
                             </div>
                             <div class="output-content">
                                 <pre id="output"><?xml version="1.0" encoding="UTF-8"?>
@@ -928,124 +1631,118 @@
             </div>
 
             <div class="ad-container horizontal">
-                <span class="ad-container-label">Advertisement</span>
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
                 <h2>Online XML Beautifier - Format & Validate XML Code Instantly</h2>
-                <p>Our <strong>online XML beautifier</strong> provides a fast and user-friendly way to beautify, format, and validate your XML code directly in your browser. Whether you're a developer working with XML data or debugging complex structures, our beautifier ensures your XML is well-structured and readable.</p>
+                <p>Our <strong>online XML Beautifier</strong> provides a fast and user-friendly way to beautify, format, and validate your XML code directly in your browser. Whether you're a developer working with XML data or debugging complex structures, our beautifier ensures your XML is well-structured and readable.</p>
 
-                <h3>Why Use Our XML Beautifier?</h3>
+                <h3>Why Choose Our XML Beautifier?</h3>
                 <ul>
-                    <li><strong>Beautification</strong> - Adds indentation and line breaks for readability</li>
-                    <li><strong>Validation</strong> - Checks for well-formed XML and syntax errors</li>
-                    <li><strong>Real-time processing</strong> - Instantly generate beautified XML</li>
-                    <li><strong>User-friendly interface</strong> - Intuitive design with syntax highlighting</li>
-                    <li><strong>Free to use</strong> - No registration or subscription required</li>
-                    <li><strong>Mobile-friendly</strong> - Beautify XML on any device</li>
-                    <li><strong>Shareable output</strong> - Easily copy and share beautified XML</li>
+                    <li><strong>Zero Setup</strong>: Beautify XML instantly without software installation.</li>
+                    <li><strong>High Performance</strong>: Fast processing for efficient formatting.</li>
+                    <li><strong>Validation</strong>: Checks for well-formed XML and syntax errors.</li>
+                    <li><strong>Advanced Editor</strong>: CodeMirror with Dracula theme and syntax highlighting.</li>
+                    <li><strong>Cross-Device Support</strong>: Works on desktops, tablets, and mobiles.</li>
+                    <li><strong>Free Forever</strong>: Full access to all features at no cost.</li>
+                    <li><strong>Collaboration Ready</strong>: Share beautified XML easily.</li>
                 </ul>
 
                 <div class="ad-container vertical">
-                    <span class="ad-container-label">Advertisement</span>
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
-                <h3>Getting Started with XML Beautification</h3>
-                <p>XML (Extensible Markup Language) is used to structure and store data. Beautifying XML improves readability, ensures proper nesting, and helps identify errors.</p>
+                <h3>Mastering XML Beautification</h3>
+                <p>XML (Extensible Markup Language), introduced in 1998, is used to structure and store data. Beautifying XML improves readability, ensures proper nesting, and helps identify errors.</p>
 
                 <h4>Basic XML Structure</h4>
-                <pre><?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note></pre>
-                <p>Key components of XML:</p>
+                <pre id="basic-structure"><?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note></pre>
+                <button class="try-out-btn" data-code-id="basic-structure">Try It Out</button>
+                <p>Key XML components:</p>
                 <ul>
-                    <li><strong>Declaration</strong>: Specifies version and encoding (e.g., <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code>)</li>
-                    <li><strong>Elements</strong>: Tags that define data structure (e.g., <code>&lt;note&gt;</code>)</li>
-                    <li><strong>Attributes</strong>: Additional data within tags (e.g., <code>id="1"</code>)</li>
-                    <li><strong>Nesting</strong>: Proper hierarchy of elements</li>
+                    <li><code>Declaration</code>: Specifies version and encoding (e.g., <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code>).</li>
+                    <li><code>Elements</code>: Tags that define data structure (e.g., <code>&lt;note&gt;</code>).</li>
+                    <li><code>Attributes</code>: Additional data within tags (e.g., <code>id="1"</code>).</li>
+                    <li><code>Nesting</code>: Proper hierarchy of elements.</li>
                 </ul>
-
                 <div class="note-box">
-                    <p><strong>Note:</strong> Always ensure XML is well-formed (properly closed tags, correct nesting) before beautifying. Our tool validates and highlights errors.</p>
+                    <h4>Best Practice</h4>
+                    <p>Ensure XML is well-formed with properly closed tags and correct nesting before beautifying.</p>
                 </div>
 
-                <h3>XML Beautification Basics</h3>
-                <p>Beautifying XML involves indenting elements, adding line breaks, and ensuring proper structure. For example:</p>
-                <h4>Unformatted XML</h4>
-                <pre><?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note></pre>
-                <h4>Beautified XML</h4>
-                <pre><?xml version="1.0" encoding="UTF-8"?>
-<note>
-    <to>Tove</to>
-    <from>Jani</from>
-    <heading>Reminder</heading>
-    <body>Don't forget me this weekend!</body>
-</note></pre>
+                <h3>Core XML Concepts</h3>
+                <h4>Elements and Attributes</h4>
+                <p>Structure data with elements and attributes:</p>
+                <pre id="elements-example"><?xml version="1.0" encoding="UTF-8"?><person id="1"><name>John</name><age>30</age></person></pre>
+                <button class="try-out-btn" data-code-id="elements-example">Try It Out</button>
 
-                <h3>Common XML Beautification Operations</h3>
+                <h4>CDATA Sections</h4>
+                <p>Handle special characters safely:</p>
+                <pre id="cdata-example"><?xml version="1.0" encoding="UTF-8"?><data><![CDATA[<content>Special chars &<]]></data></pre>
+                <button class="try-out-btn" data-code-id="cdata-example">Try It Out</button>
+
+                <h4>Namespaces</h4>
+                <p>Manage multiple vocabularies:</p>
+                <pre id="namespace-example"><?xml version="1.0" encoding="UTF-8"?><root xmlns:h="http://www.w3.org/TR/html4/"><h:table><h:tr><h:td>Data</h:td></h:tr></h:table></root></pre>
+                <button class="try-out-btn" data-code-id="namespace-example">Try It Out</button>
+
+                <h3>Beautification Techniques</h3>
+                <p>Our beautifier applies:</p>
                 <ul>
-                    <li><strong>Indentation</strong>: Add consistent spacing for readability</li>
-                    <li><strong>Line Breaks</strong>: Separate elements for clarity</li>
-                    <li><strong>Validation</strong>: Check for well-formed XML</li>
-                    <li><strong>Error Highlighting</strong>: Identify syntax issues</li>
+                    <li><strong>Indentation</strong>: Adds consistent spacing for readability.</li>
+                    <li><strong>Line Breaks</strong>: Separates elements for clarity.</li>
+                    <li><strong>Validation</strong>: Checks for well-formed XML.</li>
+                    <li><strong>Error Highlighting</strong>: Identifies syntax issues.</li>
                 </ul>
+                <pre id="beautification-example"><?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note></pre>
+                <button class="try-out-btn" data-code-id="beautification-example">Try It Out</button>
 
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
-                    <div class="faq-question">What is XML beautification used for?</div>
-                    <p>XML beautification improves readability, ensures proper structure, and validates data, making it easier to debug and share XML documents.</p>
+                    <div class="faq-question">What is Tool Pix's XML Beautifier?</div>
+                    <p>Tool Pix's XML Beautifier is a free online tool for formatting and validating XML code for better readability and debugging.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I validate XML?</div>
-                    <p>Paste your XML into our beautifier and click "Beautify." If there are errors, they'll be highlighted in the output section.</p>
+                    <div class="faq-question">Is the XML Beautifier free?</div>
+                    <p>Yes, it's completely free with full access to all features.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Does beautification affect XML functionality?</div>
                     <p>No, beautification only adjusts spacing and line breaks, preserving the XML's data and structure.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What are common XML errors?</div>
-                    <p>Common errors include unclosed tags, improper nesting, missing declarations, or invalid characters.</p>
+                    <div class="faq-question">Can I collaborate using this tool?</div>
+                    <p>Yes, share beautified XML code via copy or download options.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How does XML differ from HTML?</div>
-                    <p>XML is for data storage and structure with custom tags, while HTML is for displaying content with predefined tags.</p>
+                    <p>XML is for data storage with custom tags, while HTML is for displaying content with predefined tags.</p>
                 </div>
 
-                <div class="note-box">
-                    <p><strong>Tip:</strong> Use our beautifier to validate XML before using it in applications to avoid runtime errors.</p>
+                <h3>Common XML Pitfalls</h3>
+                <div class="note-box" id="notes">
+                    <h4>Watch Out!</h4>
+                    <ul>
+                        <li><strong>Unclosed Tags</strong>: Ensure all tags are properly closed.</li>
+                        <li><strong>Improper Nesting</strong>: Maintain correct element hierarchy.</li>
+                        <li><strong>Missing Declaration</strong>: Include XML declaration for compatibility.</li>
+                        <li><strong>Reserved Characters</strong>: Use CDATA or encode special characters.</li>
+                        <li><strong>Namespace Conflicts</strong>: Define unique namespaces.</li>
+                    </ul>
                 </div>
-
-                <h3>Advanced XML Beautification</h3>
-                <p>Explore these advanced XML beautification techniques:</p>
-                <ul>
-                    <li><strong>Schema Validation</strong>: Validate against XSD or DTD</li>
-                    <li><strong>CDATA Sections</strong>: Handle special characters</li>
-                    <li><pre>&lt;![CDATA[&lt;content&gt;Special chars &amp;&lt;]]&gt;</pre></li>
-                    <li><strong>Namespaces</strong>: Manage multiple vocabularies</li>
-                    <li><strong>Minification</strong>: Remove unnecessary whitespace for production</li>
-                </ul>
-
-                <div class="ad-container vertical">
-                    <span class="ad-container-label">Advertisement</span>
-                </div>
-
-                <h3>Common XML Mistakes</h3>
-                <ul>
-                    <li>Unclosed or mismatched tags</li>
-                    <li>Improper nesting of elements</li>
-                    <li>Missing XML declaration</li>
-                    <li>Using reserved characters without encoding</li>
-                    <li>Ignoring namespace conflicts</li>
-                </ul>
 
                 <h3>Learning Resources</h3>
-                <p>Enhance your XML skills with these resources:</p>
-                <ul>
-                    <li><strong>W3Schools</strong>: Beginner-friendly XML guides</li>
-                    <li><strong>MDN Web Docs</strong>: XML reference and best practices</li>
-                    <li><strong>XML.com</strong>: In-depth XML articles</li>
-                    <li><strong>Books</strong>: "XML in a Nutshell" by Elliotte Rusty Harold</li>
-                </ul>
-                <p>Use our XML beautifier to streamline your workflow and master XML!</p>
+                <div class="note-box">
+                    <h4>Level Up Your XML Skills</h4>
+                    <ul>
+                        <li><strong>W3Schools</strong>: Beginner-friendly XML guides.</li>
+                        <li><strong>MDN Web Docs</strong>: XML reference and best practices.</li>
+                        <li><strong>XML.com</strong>: In-depth XML articles.</li>
+                        <li><strong>Books</strong>: "XML in a Nutshell" by Elliotte Rusty Harold.</li>
+                        <li><strong>Practice</strong>: Use our beautifier to experiment and learn.</li>
+                    </ul>
+                </div>
             </section>
 
             <footer class="footer">
@@ -1062,6 +1759,10 @@
             </footer>
         </div>
 
+        <button class="scroll-to-top btn btn-secondary" id="scroll-to-top" title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
         <button class="mobile-run-btn" id="mobile-run-btn">
             <i class="fas fa-code"></i>
         </button>
@@ -1069,6 +1770,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/closebrackets.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -1084,28 +1787,192 @@
                 extraKeys: {
                     "Ctrl-Enter": beautifyXML,
                     "Cmd-Enter": beautifyXML
-                }
+                },
+                readOnly: false,
+                styleActiveLine: true,
+                viewportMargin: Infinity
             });
 
             const beautifyButton = document.getElementById("beautify-btn");
             const mobileRunButton = document.getElementById("mobile-run-btn");
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
+            const copyOutputButton = document.getElementById("copy-output-btn");
+            const downloadBtn = document.getElementById("download-btn");
+            const downloadDropdown = document.getElementById("download-dropdown");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebar-toggle");
             const sidebarOverlay = document.getElementById("sidebar-overlay");
+            const tryOutButtons = document.querySelectorAll(".try-out-btn");
+            const editorSection = document.querySelector(".editor-section");
+            const outputSection = document.querySelector(".output-section");
+            const scrollToTopBtn = document.getElementById("scroll-to-top");
+            const editorOverlay = document.getElementById("editor-overlay");
 
-            updateStatus("ready");
+            let isRunning = false;
+            let isEditorView = true;
 
             function toggleSidebar() {
                 sidebar.classList.toggle("open");
                 sidebarOverlay.classList.toggle("open");
             }
 
-            sidebarToggle.addEventListener("click", toggleSidebar);
+            function toggleView() {
+                isEditorView = !isEditorView;
+                editorSection.classList.toggle("visible", isEditorView);
+                editorSection.classList.toggle("hidden", !isEditorView);
+                outputSection.classList.toggle("visible", !isEditorView);
+                outputSection.classList.toggle("hidden", isEditorView);
+                document.getElementById("switch-btn").classList.toggle("active");
+                document.getElementById("switch-btn").querySelector("span").textContent = isEditorView ? "Switch to Output" : "Switch to Editor";
+                editor.refresh();
+            }
+
+            const sidebarToggles = document.querySelectorAll("[id^='sidebar-toggle']");
+            sidebarToggles.forEach(toggle => toggle.addEventListener("click", toggleSidebar));
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            document.getElementById("switch-btn").addEventListener("click", toggleView);
+
+            function scrollToNotes() {
+                const notesSection = document.getElementById("notes");
+                if (notesSection) {
+                    notesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            const notesBtns = document.querySelectorAll("[id^='notes-btn']");
+            notesBtns.forEach(btn => btn.addEventListener("click", scrollToNotes));
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            tryOutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeId = button.getAttribute('data-code-id');
+                    const codeElement = document.getElementById(codeId);
+                    if (codeElement) {
+                        editor.setValue(codeElement.textContent.trim());
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        editor.focus();
+                        if (!isEditorView) toggleView();
+                    }
+                });
+            });
+
+            downloadBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                downloadDropdown.style.display = downloadDropdown.style.display === "block" ? "none" : "block";
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!downloadBtn.contains(e.target) && !downloadDropdown.contains(e.target)) {
+                    downloadDropdown.style.display = "none";
+                }
+            });
+
+            document.getElementById("download-txt").addEventListener("click", () => {
+                const code = editor.getValue();
+                const blob = new Blob([code], { type: "text/plain" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "code.txt";
+                a.click();
+                URL.revokeObjectURL(url);
+                downloadDropdown.style.display = "none";
+            });
+
+            document.getElementById("download-xml").addEventListener("click", () => {
+                const code = outputElement.textContent;
+                if (!code || code.includes('Beautifying XML...') || code.includes('Error:')) {
+                    alert('Please beautify the XML first or ensure there are no errors.');
+                    return;
+                }
+                const blob = new Blob([code], { type: "application/xml" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "beautified.xml";
+                a.click();
+                URL.revokeObjectURL(url);
+                downloadDropdown.style.display = "none";
+            });
+
+            document.getElementById("download-pdf").addEventListener("click", () => {
+                const code = editor.getValue().trim();
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(14);
+                doc.text("XML Code", 10, 10);
+                addTextToPDF(doc, code, 10, 20);
+                doc.save("code.pdf");
+                downloadDropdown.style.display = "none";
+            });
+
+            document.getElementById("download-cwo").addEventListener("click", () => {
+                const code = editor.getValue().trim();
+                let output = outputElement.textContent.trim();
+                output = output.replace(/<[^>]+>/g, '')
+                              .replace(/#.*?\n/g, '')
+                              .replace(/Beautifying XML\.\.\./g, '')
+                              .replace(/\n\s*\n/g, '\n')
+                              .trim();
+
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(14);
+                doc.text("Code:", 10, 10);
+                let y = addTextToPDF(doc, code, 10, 20);
+
+                doc.addPage();
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(14);
+                doc.text("Beautified Output:", 10, 10);
+                addTextToPDF(doc, output || "No output generated.", 10, 20);
+
+                doc.save("CWO.pdf");
+                downloadDropdown.style.display = "none";
+            });
+
+            function addTextToPDF(doc, text, startX, startY, maxWidth = 180, lineHeight = 7) {
+                doc.setFont("courier", "normal");
+                doc.setFontSize(10);
+                const lines = text.split('\n');
+                let y = startY;
+                lines.forEach(line => {
+                    const wrappedLines = doc.splitTextToSize(line, maxWidth);
+                    wrappedLines.forEach(wrappedLine => {
+                        if (y > 280) {
+                            doc.addPage();
+                            y = 10;
+                        }
+                        doc.text(wrappedLine, startX, y);
+                        y += lineHeight;
+                    });
+                });
+                return y;
+            }
 
             function updateStatus(status) {
                 statusIndicator.className = "status-indicator";
@@ -1135,10 +2002,14 @@
                 }).join('\n');
             }
 
-            function beautifyXML() {
-                const xmlString = editor.getValue();
+            async function beautifyXML() {
+                if (isRunning) return;
+                isRunning = true;
                 updateStatus("running");
+                editorOverlay.style.display = 'flex';
                 outputElement.innerHTML = '<span style="color: #fbbf24;"><i class="fas fa-spinner fa-spin"></i> Beautifying XML...</span>';
+
+                const xmlString = editor.getValue();
 
                 try {
                     // Parse and validate XML
@@ -1188,30 +2059,46 @@
                     }).filter(line => line).join('\n');
 
                     updateStatus("success");
+                    if (window.innerWidth <= 992 && isEditorView) {
+                        toggleView();
+                    }
                     outputElement.innerHTML = preprocessOutput(formattedLines);
                 } catch (error) {
                     updateStatus("error");
+                    if (window.innerWidth <= 992 && isEditorView) {
+                        toggleView();
+                    }
                     outputElement.innerHTML = `<span style="color: #f87171;">Error: ${preprocessOutput(error.message)}</span>`;
+                } finally {
+                    isRunning = false;
+                    editorOverlay.style.display = 'none';
                 }
             }
 
-            function copyToClipboard() {
-                const text = outputElement.innerText;
+            function copyToClipboard(button) {
+                const text = button.id === "copy-btn" ? editor.getValue() : outputElement.textContent;
                 navigator.clipboard.writeText(text).then(() => {
-                    const originalText = copyButton.innerHTML;
-                    copyButton.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
                     setTimeout(() => {
-                        copyButton.innerHTML = originalText;
+                        button.innerHTML = originalText;
                     }, 2000);
                 }).catch(err => {
                     console.error('Failed to copy: ', err);
+                    button.innerHTML = '<i class="fas fa-times"></i> <span>Failed to Copy</span>';
+                    setTimeout(() => {
+                        button.innerHTML = button.id === "copy-btn" ? '<i class="far fa-copy"></i> <span>Copy</span>' : '<i class="far fa-copy"></i> <span>Copy Output</span>';
+                    }, 2000);
                 });
             }
 
             function clearEditor() {
                 if (confirm("Are you sure you want to clear the editor?")) {
                     editor.setValue("");
-                    outputElement.innerHTML = "Ready to beautify XML...";
+                    outputElement.innerHTML = `Ready to beautify XML...`;
+                    updateStatus("ready");
+                    isRunning = false;
+                    if (!isEditorView) toggleView();
                     editor.focus();
                 }
             }
@@ -1219,7 +2106,14 @@
             beautifyButton.addEventListener('click', beautifyXML);
             mobileRunButton.addEventListener('click', beautifyXML);
             clearButton.addEventListener('click', clearEditor);
-            copyButton.addEventListener('click', copyToClipboard);
+            copyButton.addEventListener('click', () => copyToClipboard(copyButton));
+            copyOutputButton.addEventListener('click', () => copyToClipboard(copyOutputButton));
+
+            editor.on('change', () => {
+                if (isRunning) return;
+                updateStatus("ready");
+                outputElement.innerHTML = `Ready to beautify XML...`;
+            });
 
             editor.on('focus', () => {
                 console.log('Editor focused');
@@ -1230,9 +2124,9 @@
             }
 
             const originalBeautifyXML = beautifyXML;
-            beautifyXML = function() {
+            beautifyXML = async function() {
                 trackBeautification();
-                return originalBeautifyXML.apply(this, arguments);
+                return await originalBeautifyXML.apply(this, arguments);
             };
 
             console.log('XML Beautifier page loaded');

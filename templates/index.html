@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tool Pix - Free online coding platform offering compilers, editors, encoders, and formatters for Python, Java, C, C++, JavaScript, SQL, HTML, CSS, JSON, and more. Code, debug, and optimize in real-time with our developer tools.">
-    <meta name="keywords" content="online compiler, code editor, Python compiler, Java compiler, C++ compiler, JavaScript editor, SQL editor, HTML editor, CSS formatter, JSON formatter, Base64 encoder, JS obfuscator, free coding tools, developer tools, programming IDE, web development">
-    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
+    <meta name="description" content="Tool Pix offers free AI-powered online compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, plus editors and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier. Code smarter with UTHAKKAN (UK).">
+    <meta name="keywords" content="AI compiler, Python compiler, Java compiler, C compiler, C++ compiler, JavaScript editor, PHP compiler, SQL editor, HTML editor, JSON formatter, Base64 encoder, CSS obfuscator, JS obfuscator, Regex tester, XML beautifier, Tool Pix, free coding tools, AI coding assistant, UTHAKKAN UK, Ajmal U K, web development, programming tools">
+    <meta name="author" content="Ajmal U K, UTHAKKAN (UK)">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="revisit-after" content="7 days">
@@ -13,250 +12,754 @@
     <meta name="distribution" content="global">
     <meta name="rating" content="general">
 
-    <title>Tool Pix - Free Online Coding Tools & Compilers for Developers</title>
+    <title>Tool Pix - Free AI-Powered Compilers & Coding Tools</title>
     <link rel="canonical" href="https://toolpix.pythonanywhere.com/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-title" content="ToolPix">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/">
-    <link rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <meta property="og:title" content="Tool Pix - Free Online Coding Tools & Compilers for Developers">
-    <meta property="og:description" content="Discover Tool Pix, a free web-based platform with compilers, editors, and formatters for Python, Java, C++, JavaScript, SQL, HTML, CSS, JSON, and more. Code smarter, debug faster.">
+    <meta property="og:title" content="Tool Pix - Free AI-Powered Compilers & Coding Tools">
+    <meta property="og:description" content="Tool Pix provides free AI-powered compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, plus editors and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier by UTHAKKAN (UK).">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpix.pythonanywhere.com/">
-    <meta property="og:image" content="/og-image.jpg">
-    <meta property="og:image:alt" content="Tool Pix Online Coding Platform">
+    <meta property="og:image" content="https://toolpix.pythonanywhere.com/og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix AI-Powered Coding Platform Interface">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Tool Pix">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tool Pix - Free Online Coding Tools & Compilers">
-    <meta name="twitter:description" content="Code and debug with Tool Pix’s free online compilers and editors for Python, Java, C++, JavaScript, SQL, HTML, CSS, and more.">
-    <meta name="twitter:image" content="/twitter-image.jpg">
-    <meta name="twitter:image:alt" content="Tool Pix Coding Tools">
+    <meta name="twitter:title" content="Tool Pix - Free AI-Powered Compilers & Coding Tools">
+    <meta name="twitter:description" content="Tool Pix offers free AI-powered compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Regex Tester, and XML Beautifier by UTHAKKAN (UK).">
+    <meta name="twitter:image" content="https://toolpix.pythonanywhere.com/og-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix AI Coding Platform Interface">
     <meta name="twitter:site" content="@toolpix">
-    <meta name="twitter:creator" content="@toolpix">
+    <meta name="twitter:creator" content="@ajmal_uk_">
 
-    <!-- Preload critical assets for performance -->
     <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Tool Pix",
-        "url": "https://toolpix.pythonanywhere.com/",
-        "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://push.aplu.io/push-notify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "UTHAKKAN (UK)",
-        "url": "https://toolpix.pythonanywhere.com/",
-        "logo": {
-        "@type": "ImageObject",
-        "url": "/logo.png",
-        "width": 200,
-        "height": 60
-        },
-        "founder": {
-        "@type": "Person",
-        "name": "Ajmal U K",
-        "email": "contact.uthakkan@gmail.com",
-        "sameAs": [
-            "https://www.linkedin.com/in/ajmal-uk/",
-            "https://github.com/toolpix",
-            "https://twitter.com/toolpix"
-        ]
-        },
-        "contactPoint": [
-        {
-            "@type": "ContactPoint",
-            "contactType": "Customer Support",
-            "email": "contact.uthakkan@gmail.com",
-            "url": "https://toolpix.pythonanywhere.com/contact"
-        },
-        {
-            "@type": "ContactPoint",
-            "contactType": "Technical Support",
-            "email": "support@toolpix.pythonanywhere.com"
-        }
-        ],
-        "sameAs": [
-        "https://linkedin.com/company/toolpix",
-        "https://github.com/toolpix",
-        "https://twitter.com/toolpix",
-        "https://www.facebook.com/toolpix"
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Ajmal U K",
-        "jobTitle": "Founder & Developer",
-        "worksFor": {
-        "@type": "Organization",
-        "name": "UTHAKKAN (UK)"
-        },
-        "url": "https://toolpix.pythonanywhere.com/",
-        "email": "contact.uthakkan@gmail.com",
-        "sameAs": [
-        "https://www.linkedin.com/in/ajmal-uk/",
-        "https://github.com/toolpix",
-        "https://twitter.com/toolpix"
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Tool Pix",
-        "operatingSystem": "Web",
-        "applicationCategory": "DeveloperApplication",
-        "url": "https://toolpix.pythonanywhere.com/",
-        "image": "/og-image.jpg",
-        "description": "Tool Pix is a free web-based platform created by Ajmal U K (UTHAKKAN) offering compilers, editors, encoders, and formatters for Python, Java, C, C++, JavaScript, SQL, HTML, CSS, JSON, and more. Code, debug, and optimize in real-time.",
-        "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-        },
-        "creator": {
-        "@type": "Person",
-        "name": "Ajmal U K"
-        },
-        "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "150",
-        "bestRating": "5",
-        "worstRating": "1"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Tool Pix Tool Pages",
-        "description": "List of available coding tools and pages on Tool Pix platform",
-        "itemListElement": [
-        { "@type": "SiteNavigationElement", "name": "Python Compiler", "url": "https://toolpix.pythonanywhere.com/free-online-ai-python-compiler", "description": "Online Python compiler for writing and debugging Python code." },
-        { "@type": "SiteNavigationElement", "name": "Java Compiler", "url": "https://toolpix.pythonanywhere.com/free-online-ai-java-compiler", "description": "Online Java compiler for coding and testing Java programs." },
-        { "@-type": "SiteNavigationElement", "name": "C Compiler", "url": "https://toolpix.pythonanywhere.com/free-online-ai-c-compiler", "description": "Online C compiler for developing and debugging C code." },
-        { "@type": "SiteNavigationElement", "name": "C++ Compiler", "url": "https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler", "description": "Online C++ compiler for coding and debugging C++ programs." },
-        { "@type": "SiteNavigationElement", "name": "JavaScript Editor", "url": "https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler", "description": "Online JavaScript editor for writing and testing JS code." },
-        { "@type": "SiteNavigationElement", "name": "HTML Editor", "url": "https://toolpix.pythonanywhere.com/free-online-ai-html-editor", "description": "Online HTML editor for creating and previewing HTML code." },
-        { "@type": "SiteNavigationElement", "name": "CSS Obfuscator", "url": "https://toolpix.pythonanywhere.com/free-online-css-obfuscator", "description": "Tool to obfuscate and optimize CSS code." },
-        { "@type": "SiteNavigationElement", "name": "JS Obfuscator", "url": "https://toolpix.pythonanywhere.com/js-obfuscator", "description": "Tool to obfuscate and protect JavaScript code." },
-        { "@type": "SiteNavigationElement", "name": "SQL Editor", "url": "https://toolpix.pythonanywhere.com/free-online-ai-sql-editor", "description": "Online SQL editor for writing and testing SQL queries." },
-        { "@type": "SiteNavigationElement", "name": "JSON Formatter", "url": "https://toolpix.pythonanywhere.com/free-online-json-formatter", "description": "Tool to format and validate JSON data." },
-        { "@type": "SiteNavigationElement", "name": "Base64 Encoder", "url": "https://toolpix.pythonanywhere.com/free-online-base64-encoder", "description": "Tool to encode and decode Base64 strings." },
-        { "@type": "SiteNavigationElement", "name": "Text Editor", "url": "https://toolpix.pythonanywhere.com/online-text-editor", "description": "Simple online text editor for quick edits." },
-        { "@type": "SiteNavigationElement", "name": "Privacy Policy", "url": "https://toolpix.pythonanywhere.com/privacy", "description": "Privacy policy for Tool Pix platform." },
-        { "@type": "SiteNavigationElement", "name": "Terms & Conditions", "url": "https://toolpix.pythonanywhere.com/terms", "description": "Terms and conditions for using Tool Pix." },
-        { "@type": "SiteNavigationElement", "name": "Contact", "url": "https://toolpix.pythonanywhere.com/contact", "description": "Contact page for Tool Pix support." },
-        { "@type": "SiteNavigationElement", "name": "About", "url": "https://toolpix.pythonanywhere.com/about", "description": "About Tool Pix and its mission." }
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://toolpix.pythonanywhere.com/"
-        }
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-        {
-            "@type": "Question",
-            "name": "What is Tool Pix?",
-            "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tool Pix is a free online platform offering compilers, editors, encoders, and formatters for programming languages like Python, Java, C, C++, JavaScript, SQL, HTML, CSS, and JSON."
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "description": "Tool Pix offers free AI-powered online compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, plus editors and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier by UTHAKKAN (UK).",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "UTHAKKAN (UK)",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/toolpix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "contact.uthakkan@gmail.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "support@toolpix.pythonanywhere.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact"
+                    }
+                ],
+                "description": "UTHAKKAN (UK), founded by Ajmal U K, develops Tool Pix, a free platform offering AI-powered compilers and coding tools for developers worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://toolpix.pythonanywhere.com/#person",
+                "name": "Ajmal U K",
+                "jobTitle": "Founder & CEO",
+                "worksFor": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "url": "https://toolpix.pythonanywhere.com/about",
+                "email": "contact.uthakkan@gmail.com",
+                "sameAs": [
+                    "https://github.com/ajmal-uk",
+                    "https://www.linkedin.com/in/muhammed-ajmal-u-k-616b152ba",
+                    "https://x.com/ajmal_uk_"
+                ]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/#webpage",
+                "name": "Tool Pix - Free AI-Powered Compilers & Coding Tools",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "description": "Tool Pix by UTHAKKAN (UK) offers free AI-powered compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, plus editors and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier.",
+                "keywords": "AI compiler, Python compiler, Java compiler, C++ compiler, PHP compiler, SQL editor, JSON formatter, Base64 encoder, CSS obfuscator, JS obfuscator, Regex tester, XML beautifier, free coding tools",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2024-01-01",
+                "dateModified": "2025-07-23",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "About",
+                            "item": "https://toolpix.pythonanywhere.com/about"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "Contact",
+                            "item": "https://toolpix.pythonanywhere.com/contact"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 4,
+                            "name": "Terms",
+                            "item": "https://toolpix.pythonanywhere.com/terms"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 5,
+                            "name": "Privacy",
+                            "item": "https://toolpix.pythonanywhere.com/privacy"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 6,
+                            "name": "Guides",
+                            "item": "https://toolpix.pythonanywhere.com/guides"
+                        }
+                    ]
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/"]
+                    },
+                    {
+                        "@type": "InteractAction",
+                        "target": [
+                            "https://toolpix.pythonanywhere.com/free-online-ai-python-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-java-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-c-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-html-editor",
+                            "https://toolpix.pythonanywhere.com/free-online-ai-sql-editor",
+                            "https://toolpix.pythonanywhere.com/free-php-online-ai-compiler",
+                            "https://toolpix.pythonanywhere.com/free-online-text-editor",
+                            "https://toolpix.pythonanywhere.com/free-online-markdown-editor",
+                            "https://toolpix.pythonanywhere.com/free-online-json-formatter",
+                            "https://toolpix.pythonanywhere.com/free-online-base64-encoder",
+                            "https://toolpix.pythonanywhere.com/free-online-css-obfuscator",
+                            "https://toolpix.pythonanywhere.com/free-online-javascript-obfuscator",
+                            "https://toolpix.pythonanywhere.com/free-online-code-diff-tool",
+                            "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                            "https://toolpix.pythonanywhere.com/free-online-xml-beautifier"
+                        ]
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/#software",
+                "name": "Tool Pix AI Coding Platform",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "image": "https://toolpix.pythonanywhere.com/og-image.jpg",
+                "description": "Tool Pix is a free AI-powered platform by UTHAKKAN (UK) offering compilers for Python, Java, C, C++, JavaScript, PHP, SQL, HTML, plus editors and coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2024-01-01",
+                    "url": "https://toolpix.pythonanywhere.com/"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "200",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "AI-Powered Code Suggestions",
+                    "Real-Time Code Compilation",
+                    "Smart Error Detection",
+                    "Syntax Highlighting",
+                    "Auto-Completion",
+                    "Built-in Debugger",
+                    "JSON Formatter",
+                    "Base64 Encoder/Decoder",
+                    "CSS/JavaScript Obfuscator",
+                    "Code Diff Tool",
+                    "Regex Tester",
+                    "XML Beautifier",
+                    "Support for Python, Java, C, C++, JavaScript, PHP, SQL, HTML",
+                    "Text Editor",
+                    "Markdown Editor",
+                    "Mobile-Friendly Interface",
+                    "No Login Required"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2024-01-01",
+                "dateModified": "2025-07-23",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge)"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-python-compiler#software",
+                "name": "Tool Pix AI Python Compiler",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-python-compiler",
+                "description": "AI-powered Python compiler supporting Python 3.x with real-time code suggestions, debugging, and support for data science libraries like NumPy and Pandas."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-java-compiler#software",
+                "name": "Tool Pix AI Java Compiler",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-java-compiler",
+                "description": "AI-powered Java compiler for Java SE with real-time debugging and design pattern suggestions."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-c-compiler#software",
+                "name": "Tool Pix AI C Compiler",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-c-compiler",
+                "description": "AI-powered C compiler supporting C11 for system programming with smart error detection."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler#software",
+                "name": "Tool Pix AI C++ Compiler",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler",
+                "description": "AI-powered C++ compiler supporting C++17 for high-performance coding with STL support."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler#software",
+                "name": "Tool Pix AI JavaScript Editor",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler",
+                "description": "AI-powered JavaScript editor supporting ES6+ for web development with real-time suggestions."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-html-editor#software",
+                "name": "Tool Pix AI HTML Editor",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Web Development",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-html-editor",
+                "description": "AI-powered HTML editor with live preview for creating responsive web pages."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-ai-sql-editor#software",
+                "name": "Tool Pix AI SQL Editor",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Database Management",
+                "url": "https://toolpix.pythonanywhere.com/free-online-ai-sql-editor",
+                "description": "AI-powered SQL editor with mock database support for query testing and learning."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-php-online-ai-compiler#software",
+                "name": "Tool Pix AI PHP Compiler",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Programming",
+                "url": "https://toolpix.pythonanywhere.com/free-php-online-ai-compiler",
+                "description": "AI-powered PHP compiler for server-side scripting with real-time debugging."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-text-editor#software",
+                "name": "Tool Pix Text Editor",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Text Editing",
+                "url": "https://toolpix.pythonanywhere.com/free-online-text-editor",
+                "description": "AI-enhanced text editor with syntax highlighting for quick code and text editing."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-markdown-editor#software",
+                "name": "Tool Pix Markdown Editor",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Text Editing",
+                "url": "https://toolpix.pythonanywhere.com/free-online-markdown-editor",
+                "description": "AI-powered Markdown editor with live rendering for documentation and blogs."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-json-formatter#software",
+                "name": "Tool Pix JSON Formatter",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Code Formatting",
+                "url": "https://toolpix.pythonanywhere.com/free-online-json-formatter",
+                "description": "AI-powered JSON formatter and validator for APIs and data structuring."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-base64-encoder#software",
+                "name": "Tool Pix Base64 Encoder",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Data Encoding",
+                "url": "https://toolpix.pythonanywhere.com/free-online-base64-encoder",
+                "description": "Free tool to encode and decode Base64 strings securely for web applications."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-css-obfuscator#software",
+                "name": "Tool Pix CSS Obfuscator",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Code Obfuscation",
+                "url": "https://toolpix.pythonanywhere.com/free-online-css-obfuscator",
+                "description": "AI-powered tool to obfuscate and optimize CSS code for web development."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-javascript-obfuscator#software",
+                "name": "Tool Pix JavaScript Obfuscator",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Code Obfuscation",
+                "url": "https://toolpix.pythonanywhere.com/free-online-javascript-obfuscator",
+                "description": "AI-powered tool to obfuscate and protect JavaScript code."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-code-diff-tool#software",
+                "name": "Tool Pix Code Diff Tool",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Code Comparison",
+                "url": "https://toolpix.pythonanywhere.com/free-online-code-diff-tool",
+                "description": "Free tool to compare code snippets and highlight differences for collaboration."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-regex-tester#software",
+                "name": "Tool Pix Regex Tester",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Pattern Matching",
+                "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                "description": "Free tool to test and debug regular expressions with live matching."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier#software",
+                "name": "Tool Pix XML Beautifier",
+                "operatingSystem": "Web",
+                "applicationCategory": "DeveloperApplication",
+                "applicationSubCategory": "Code Formatting",
+                "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                "description": "Free tool to format and validate XML documents for readability."
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/#product",
+                "name": "Tool Pix AI Coding Platform",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "image": "https://toolpix.pythonanywhere.com/og-image.jpg",
+                "description": "Tool Pix by UTHAKKAN (UK) offers free AI-powered compilers and coding tools for Python, Java, C++, JavaScript, PHP, SQL, HTML, JSON, and more, with real-time AI assistance.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "UTHAKKAN (UK)"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/",
+                    "validFrom": "2024-01-01"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "200",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/#review"
+                },
+                "sku": "TPAI2025",
+                "category": "Developer Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/#creativework",
+                "name": "Tool Pix AI Coding Tools",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2024-01-01",
+                "dateModified": "2025-07-23",
+                "inLanguage": "en-US",
+                "description": "Tool Pix, created by UTHAKKAN (UK), offers AI-powered compilers and coding tools for developers, including Python, Java, C++, JavaScript, PHP, SQL, HTML, JSON, and more.",
+                "keywords": "AI compiler, Python compiler, Java compiler, PHP compiler, JSON formatter, Base64 encoder, CSS obfuscator, JS obfuscator, Regex tester, XML beautifier, programming tools"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.8",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's AI-powered compilers and coding tools are user-friendly, offering seamless programming and code optimization features for developers worldwide.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix, by UTHAKKAN (UK), is a free AI-powered platform offering compilers and coding tools for Python, Java, C++, JavaScript, PHP, SQL, HTML, JSON, and more, with real-time AI assistance."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix free to use?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix is completely free, providing unrestricted access to all AI-powered compilers and coding tools for personal and commercial use."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which programming languages does Tool Pix support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix supports Python, Java, C, C++, JavaScript, PHP, SQL, HTML, and CSS with AI-driven code assistance."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What coding tools are available on Tool Pix?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix offers coding tools like JSON Formatter, Base64 Encoder, CSS/JS Obfuscator, Code Diff Tool, Regex Tester, and XML Beautifier for developers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the AI coding assistant work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The AI assistant provides real-time code suggestions, error detection, debugging tips, and optimization recommendations for all supported coding tools."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can beginners use Tool Pix?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix is beginner-friendly with AI guidance, tutorials, and sample projects for learning Python, Java, JavaScript, and more."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How can I contact Tool Pix support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Contact support via the Contact page or email contact.uthakkan@gmail.com for assistance."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/#howto",
+                "name": "How to Use Tool Pix AI-Powered Coding Tools",
+                "description": "A guide to using Tool Pix's AI-powered compilers and coding tools for programming and code optimization tasks.",
+                "inLanguage": "en-US",
+                "totalTime": "PT5M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI Python Compiler",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-python-compiler",
+                        "description": "AI-powered compiler for Python 3.x with data science library support."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI Java Compiler",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-java-compiler",
+                        "description": "AI-powered compiler for Java SE with debugging and design pattern suggestions."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI C Compiler",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-c-compiler",
+                        "description": "AI-powered compiler for C11 with system programming support."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI C++ Compiler",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler",
+                        "description": "AI-powered compiler for C++17 with STL and performance tuning."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI JavaScript Editor",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler",
+                        "description": "AI-powered editor for ES6+ JavaScript with web development features."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI HTML Editor",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-html-editor",
+                        "description": "AI-powered HTML editor with live preview for responsive web design."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI SQL Editor",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-ai-sql-editor",
+                        "description": "AI-powered SQL editor with mock database for query testing."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix AI PHP Compiler",
+                        "url": "https://toolpix.pythonanywhere.com/free-php-online-ai-compiler",
+                        "description": "AI-powered PHP compiler for server-side scripting."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Text Editor",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-text-editor",
+                        "description": "AI-enhanced text editor with syntax highlighting for code editing."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Markdown Editor",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-markdown-editor",
+                        "description": "AI-powered Markdown editor with live rendering for documentation."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix JSON Formatter",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-json-formatter",
+                        "description": "AI-powered tool to format and validate JSON data."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Base64 Encoder",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-base64-encoder",
+                        "description": "Free tool to encode and decode Base64 strings for web applications."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix CSS Obfuscator",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-css-obfuscator",
+                        "description": "AI-powered tool to obfuscate and optimize CSS code."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix JavaScript Obfuscator",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-javascript-obfuscator",
+                        "description": "AI-powered tool to obfuscate and protect JavaScript code."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Code Diff Tool",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-code-diff-tool",
+                        "description": "Free tool to compare code snippets and highlight differences."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Regex Tester",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-regex-tester",
+                        "description": "Free tool to test and debug regular expressions."
+                    },
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix XML Beautifier",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-xml-beautifier",
+                        "description": "Free tool to format and validate XML documents."
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Visit Tool Pix",
+                        "text": "Go to the Tool Pix website to access free AI-powered compilers and coding tools.",
+                        "url": "https://toolpix.pythonanywhere.com/",
+                        "image": "https://ik.imagekit.io/uthakkan/ToolPix/toolpix-home.jpeg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Choose a Coding Tool",
+                        "text": "Select a coding tool (e.g., Python Compiler, JSON Formatter, Regex Tester) from the sidebar or main sections.",
+                        "image": "https://ik.imagekit.io/uthakkan/ToolPix/tool-selection.jpeg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Use AI-Powered Features",
+                        "text": "Write, edit, or process code with AI-driven suggestions, error detection, and debugging.",
+                        "image": "https://ik.imagekit.io/uthakkan/ToolPix/ai-coding.jpeg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Run or Format Code",
+                        "text": "Compile code, format JSON/XML, or test regex with real-time AI assistance.",
+                        "image": "https://ik.imagekit.io/uthakkan/ToolPix/run-output.png"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Save Results",
+                        "text": "Export as PDF, or save outputs for collaboration.",
+                        "image": "https://ik.imagekit.io/uthakkan/ToolPix/share-code.png"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/#video",
+                "name": "Tool Pix Coding Tools Tutorials",
+                "description": "Tutorial videos for using Tool Pix's AI-powered compilers and coding tools for Python, Java, C++, JavaScript, and more.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/toolpix-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/toolpix-coding-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/toolpix-coding-intro",
+                "uploadDate": "2024-01-10",
+                "duration": "PT4M",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "Learn how to use Tool Pix's AI-powered compilers and coding tools for programming and optimization tasks.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 1500
+                }
             }
-        },
-        {
-            "@type": "Question",
-            "name": "Is Tool Pix free to use?",
-            "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, Tool Pix is completely free to use, providing access to all its coding tools and editors without any cost."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Who created Tool Pix?",
-            "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tool Pix was created by Ajmal U K under the organization UTHAKKAN (UK)."
-            }
-        }
         ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Tool Pix - Free Online Coding Tools & Editors",
-        "url": "https://toolpix.pythonanywhere.com/",
-        "description": "Tool Pix offers free online compilers, editors, and formatters for Python, Java, C++, JavaScript, SQL, HTML, CSS, JSON, and more. Ideal for developers to code, debug, and optimize.",
-        "publisher": {
-        "@type": "Organization",
-        "name": "UTHAKKAN (UK)"
-        },
-        "mainEntityOfPage": {
-        "@type": "WebSite",
-        "name": "Tool Pix",
-        "url": "https://toolpix.pythonanywhere.com/"
-        }
     }
     </script>
     <style>
@@ -274,6 +777,8 @@
             --border: #2d4059;
             --success: #4ade80;
             --error: #f87171;
+            --ai-highlight: rgba(100, 252, 217, 0.1);
+            --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -303,6 +808,7 @@
             width: 100%;
             top: 0;
             z-index: 101;
+            box-shadow: var(--shadow);
         }
 
         .navbar-brand {
@@ -319,25 +825,12 @@
             color: var(--accent);
         }
 
-        .navbar-toggle {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            cursor: pointer;
-            display: none;
-        }
-
         .app-container {
-            display: flex;
-            min-height: 100vh;
-            max-width: 100%;
-            overflow-x: hidden;
             flex: 1;
             margin-top: 70px;
+            display: flex;
+            min-height: calc(100vh - 70px);
+            padding-bottom: 200px;
         }
 
         .sidebar {
@@ -346,18 +839,25 @@
             border-right: 1px solid var(--border);
             padding: 20px 0;
             overflow-y: auto;
+            overflow-x: hidden;
             transition: transform 0.3s ease;
             position: fixed;
             height: calc(100vh - 70px);
             top: 70px;
             z-index: 100;
+            box-shadow: var(--shadow);
+            transform: translateX(0);
+        }
+
+        .navbar .sidebar-toggle,
+        .sidebar .sidebar-toggle {
+            display: none;
         }
 
         .sidebar-header {
             padding: 0 20px 20px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 15px;
-            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -377,38 +877,33 @@
         }
 
         .sidebar-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             background: var(--success);
             color: var(--bg-dark);
             font-size: 0.75rem;
             font-weight: 600;
             padding: 2px 8px;
             border-radius: 10px;
-            position: absolute;
-            top: 10px;
-            right: 20px;
         }
 
         .sidebar-toggle {
             background: var(--primary);
-            color: white;
+            color: var(--text-lighter);
             border: none;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             font-size: 18px;
             cursor: pointer;
-            transition: opacity 0.3s ease;
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
         }
 
-        .sidebar-toggle.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .sidebar-toggle i {
+            color: var(--text-lighter);
+            font-size: 18px;
         }
-
         .compiler-list {
             list-style: none;
         }
@@ -416,10 +911,12 @@
         .compiler-item {
             padding: 12px 20px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
             display: flex;
             align-items: center;
             gap: 10px;
+            position: relative;
+            overflow-wrap: break-word;
         }
 
         .compiler-item a {
@@ -428,11 +925,11 @@
             display: flex;
             align-items: center;
             width: 100%;
-            height: 100%;
         }
 
         .compiler-item:hover {
             background: rgba(110, 72, 170, 0.2);
+            transform: translateX(5px);
         }
 
         .compiler-item.active {
@@ -444,16 +941,29 @@
             text-align: center;
         }
 
+        .compiler-item.ai-powered::after {
+            content: "AI";
+            position: absolute;
+            right: 20px;
+            background: var(--ai-highlight);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
         .main-content {
             flex: 1;
             margin-left: 280px;
-            padding: 40px;
+            padding: 40px 20px;
+            max-width: calc(100% - 280px);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            max-width: calc(100% - 280px);
-            overflow-x: hidden;
         }
 
         .sidebar-overlay {
@@ -467,37 +977,63 @@
             z-index: 99;
         }
 
-        .hero-section {
-            text-align: center;
-            max-width: 900px;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-in;
+        .section {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 60px;
+            background: var(--bg-darker);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 0;
+            width: 90vw;
+            border-radius: 20px;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            box-shadow: var(--shadow);
+            animation: heroFadeIn 1s ease-in-out;
+        }
+
+        @keyframes heroFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .hero-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--text-lighter);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--accent);
             margin-bottom: 20px;
             font-weight: 500;
         }
 
         .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-light);
+            font-size: 1.2rem;
+            color: var(--text-lighter);
             margin-bottom: 30px;
             line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
@@ -521,13 +1057,18 @@
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: white;
+            background: var(--accent);
+            color: var(--bg-dark);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: var(--success);
             transform: translateY(-2px);
+        }
+
+        .featured-tool .btn-primary {
+            display: block;
+            margin: 0 auto;
         }
 
         .btn-secondary {
@@ -536,91 +1077,163 @@
             color: var(--accent);
         }
 
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--bg-dark);
-            transform: translateY(-2px);
+        .search-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--primary-dark) 100%);
         }
 
         .search-bar {
             width: 100%;
-            max-width: 500px;
-            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 20px auto;
+            position: relative;
         }
 
         .search-bar input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 20px 12px 45px;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: var(--bg-darker);
+            background: var(--bg-dark);
             color: var(--text-light);
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .search-bar input:focus {
-            border-color: var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 5px var(--accent);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .suggestions-container {
+            width: 100%;
+            max-width: 600px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin: 10px auto 0;
+            display: none;
+            position: relative;
+            z-index: 10;
+        }
+
+        .suggestions-container.visible {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background: var(--primary);
+        }
+
+        .suggestion-item i {
+            color: var(--accent);
+        }
+
+        .suggestion-item span {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-lighter);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title i {
+            color: var(--accent);
         }
 
         .compiler-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             width: 100%;
-            max-width: 1300px;
         }
 
         .compiler-card {
-            background: var(--bg-darker);
+            background: var(--bg-dark);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
             cursor: pointer;
             position: relative;
+            box-shadow: var(--shadow);
+            overflow: hidden;
         }
 
         .compiler-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            background: var(--bg-darker);
         }
 
         .compiler-card i {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--accent);
             margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .compiler-card:hover i {
+            transform: rotate(360deg);
         }
 
         .compiler-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--text-lighter);
             margin-bottom: 10px;
         }
 
         .compiler-card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-light);
             margin-bottom: 10px;
         }
 
-        .notes-section {
-            margin-top: 40px;
-            padding: 20px;
-            background: var(--bg-darker);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            width: 100%;
+        .ai-badge {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: var(--ai-highlight);
+            color: var(--accent);
+            font-size: 0.5rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            z-index: 1;
         }
 
-        .notes-section h2 {
-            font-size: 1.8rem;
-            color: var(--text-lighter);
-            margin-bottom: 20px;
-            text-align: center;
+        .notes-section {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--primary-dark) 100%);
         }
 
         .accordion {
@@ -633,12 +1246,13 @@
             padding: 15px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: background 0.2s;
+            box-shadow: var(--shadow);
         }
 
         .accordion-header:hover {
@@ -664,14 +1278,33 @@
         }
 
         .accordion-content.open {
-            max-height: 500px;
+            max-height: 600px;
             padding: 20px;
         }
 
-        .accordion-content p {
-            font-size: 0.95rem;
+        .accordion-content p, .accordion-content ul {
+            font-size: 1rem;
             color: var(--text-light);
             line-height: 1.6;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .footer {
@@ -679,7 +1312,9 @@
             border-top: 1px solid var(--border);
             padding: 40px 20px;
             width: 100%;
-            margin-top: auto;
+            box-shadow: var(--shadow);
+            position: relative;
+            margin-top: 40px;
         }
 
         .footer-container {
@@ -747,133 +1382,682 @@
             text-decoration: underline;
         }
 
-        ::-webkit-scrollbar {
+        .ai-chat-toggle, .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .back-to-top {
+            bottom: 80px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ai-chat-overlay, .tool-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-chat-overlay.open, .tool-popup-overlay.open {
+            display: flex;
+        }
+
+        .ai-chat-container {
+            background: var(--bg-darker);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow);
+            overflow-y: hidden;
+        }
+
+        .tool-popup-container {
+            background: var(--bg-darker);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow);
+            overflow-y: auto;
+        }
+
+        .ai-chat-header, .tool-popup-header {
+            background: var(--primary);
+            color: var(--text-lighter);
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-chat-header h3, .tool-popup-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .ai-chat-close, .tool-popup-close {
+            background: transparent;
+            border: none;
+            color: var(--text-lighter);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: var(--bg-dark);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-popup-body {
+            padding: 20px;
+            background: var(--bg-dark);
+            text-align: center;
+        }
+
+        .tool-popup-body p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .tool-popup-body .btn-primary {
+            margin-top: 10px;
+        }
+
+        .message-wrapper {
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .message-wrapper.user {
+            justify-content: flex-end;
+        }
+
+        .message-wrapper.ai {
+            justify-content: flex-start;
+        }
+
+        .ai-chat-message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+            box-shadow: var(--shadow);
+        }
+
+        .ai-chat-message.user {
+            background: var(--primary);
+            color: var(--text-lighter);
+            border-bottom-right-radius: 0;
+        }
+
+        .ai-chat-message.ai {
+            background: var(--ai-highlight);
+            color: var(--accent);
+            border-bottom-left-radius: 0;
+        }
+
+        .ai-typing {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            max-width: 80%;
+        }
+
+        .ai-typing span {
             width: 8px;
             height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: blink 1.4s infinite both;
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
+        .ai-typing span:nth-child(2) {
+            animation-delay: 0.2s;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+        .ai-typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+            0%, 80%, 100% { opacity: 0; }
+            40% { opacity: 1; }
+        }
+
+        .ai-chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .ai-chat-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            resize: none;
+            outline: none;
+            min-height: 50px;
+        }
+
+        .ai-chat-input button {
+            margin-left: 10px;
+            padding: 10px;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .clear-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .clear-icon:hover {
+            opacity: 1;
+        }
+
+        .featured-tool .btn-primary {
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: var(--bg-dark);
             border-radius: 4px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--success);
+        }
+
+        .faq-section {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--primary-dark) 100%);
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-section:hover {
+            transform: translateY(-8px);
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .faq-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .faq-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-header {
+            background: var(--primary);
+            color: var(--text-lighter);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .faq-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-card.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            background: var(--bg-dark);
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .faq-content.open {
+            max-height: 200px;
+            padding: 20px;
+        }
+
+        .faq-content p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .faq-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .faq-content a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .navbar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .sidebar-overlay {
-                display: block;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s;
-            }
-
-            .sidebar-overlay.open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .sidebar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .sidebar.open ~ .sidebar-toggle {
-                opacity: 0;
-                pointer-events: none;
-            }
-
-            .main-content {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+            .sidebar-overlay.open { opacity: 1; pointer-events: auto; }
+            .sidebar-toggle { display: flex; }
+            .main-content { margin-left: 0; max-width: 100%; padding-bottom: 220px; }
+            .hero-section {
+                width: 100%; 
                 margin-left: 0;
-                max-width: 100%;
-                padding: 20px;
+                margin-right: 0;
+                padding: 40px 15px;
             }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
+            .hero-title { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-description { font-size: 0.9rem; }
+            .hero-buttons { flex-direction: column; gap: 10px; }
+            .compiler-grid {
+                grid-template-columns: repeat(4, 1fr);
                 gap: 10px;
             }
-
-            .compiler-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-
             .compiler-card {
-                padding: 15px;
+                aspect-ratio: 1 / 1;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
-
-            .compiler-card i {
-                font-size: 1.8rem;
-                margin-bottom: 10px;
-            }
-
-            .compiler-card h3 {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
-
-            .compiler-card p {
-                font-size: 0.85rem;
-            }
-
-            .search-bar {
-                max-width: 100%;
-            }
-
-            .notes-section {
-                padding: 15px;
-            }
-
-            .accordion-content.open {
-                max-height: 800px;
-            }
-
-            .footer-container {
+            .compiler-card i { font-size: 1rem; }
+            .compiler-card h3 { font-size: 0.6rem; }
+            .compiler-card p { font-size: 0.7rem; display: none; }
+            .section-title { font-size: 1.2rem; }
+            .notes-section { padding: 20px; }
+            .accordion-content.open { max-height: 800px; }
+            .footer-container { grid-template-columns: 1fr; }
+            .ai-chat-container, .tool-popup-container { width: 95%; max-height: 90vh; }
+            .section { padding: 20px; }
+            .suggestions-container { max-height: 150px; }
+            .faq-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer {
-                padding: 20px;
+            .faq-section {
+                padding: 30px 15px;
+            }
+
+            .section-description {
+                font-size: 0.8rem;
+            }
+
+            .faq-header h3 {
+                font-size: 0.6rem;
+            }
+
+            .faq-content.open {
+                max-height: 200px;
+            }
+            .navbar .sidebar-toggle,
+            .sidebar .sidebar-toggle {
+                display: flex;
             }
         }
 
         @media (max-width: 480px) {
-            .compiler-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .compiler-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .compiler-card h3 { font-size: 1rem; }
+            .suggestions-container { max-height: 120px; }
+            .faq-section {
+                padding: 20px 10px;
             }
+
+            .faq-header {
+                padding: 10px 15px;
+            }
+
+            .faq-header h3 {
+                font-size: 0.8rem;
+            }
+
+            .faq-content p {
+                font-size: 0.8rem;
+            }
+
+            .notes-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .notes-card .accordion-header {
+                    font-size: 1rem;
+                }
+
+                .notes-card .accordion-content {
+                    font-size: 0.9rem;
+                }
+
+                .notes-card .accordion-content.open {
+                    max-height: 400px;
+                }
+        }
+
+        .organization-section {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--primary-dark) 100%);
+            padding: 60px 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .organization-section:hover {
+            transform: translateY(-8px);
+        }
+
+        .organization-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            animation: heroFadeIn 1s ease-in-out;
+        }
+
+        .organization-hero .section-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .organization-hero .section-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .organization-hero .btn-primary {
+            padding: 12px 24px;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .organization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .organization-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .organization-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .organization-card:hover .card-icon {
+            transform: rotate(360deg);
+        }
+
+        .organization-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
+        }
+
+        .organization-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .organization-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .organization-card .btn-primary,
+        .organization-card .btn-secondary {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .organization-card .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .organization-section {
+                padding: 40px 20px;
+            }
+
+            .organization-hero .section-title {
+                font-size: 1.8rem;
+            }
+
+            .organization-hero .section-description {
+                font-size: 1rem;
+            }
+
+            .organization-hero .btn-primary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .organization-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .organization-card {
+                padding: 20px;
+            }
+
+            .organization-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .organization-card p {
+                font-size: 0.9rem;
+            }
+
+            .organization-card .btn-primary,
+            .organization-card .btn-secondary {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .organization-section {
+                padding: 30px 15px;
+            }
+
+            .organization-hero .section-title {
+                font-size: 1.5rem;
+            }
+
+            .organization-hero .section-description {
+                font-size: 0.9rem;
+            }
+
+            .organization-hero .btn-primary {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .organization-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .organization-card p {
+                font-size: 0.85rem;
+            }
+
+            .organization-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .notes-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .notes-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .notes-card .accordion-header {
+            font-size: 1.2rem;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notes-card .accordion-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .notes-card .accordion-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            list-style-type: disc;
+        }
+
+        .notes-card .accordion-content .btn-primary {
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
     <script src='https://push.aplu.io/push-notify.js'></script>
@@ -884,290 +2068,645 @@
             <i class="fas fa-code"></i>
             <span>Tool Pix</span>
         </a>
-        <button class="navbar-toggle" id="navbar-toggle">
+        <button class="sidebar-toggle" id="navbar-toggle">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
 
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
+                <h2 class="sidebar-title">
+                    <i class="fas fa-tools"></i> Tools
+                </h2>
+                <span class="sidebar-badge">Free</span>
                 <button class="sidebar-toggle" id="sidebar-toggle">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
                 </button>
             </div>
             <ul class="compiler-list">
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-python-compiler" data-description="Free online AI-powered Python compiler for coding, debugging, and learning Python programming.">
+                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
+                        <span>Python Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-java-compiler" data-description="Free online AI-powered Java compiler for developing and testing Java applications.">
+                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
+                        <span>Java Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-c-compiler" data-description="Free online AI-powered C compiler for system programming and debugging C code.">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
+                        <span>C Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-cpp-compiler" data-description="Free online AI-powered C++ compiler for high-performance coding and debugging.">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
+                        <span>C++ Compiler</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-javascript-compiler" data-description="Free online AI-powered JavaScript editor for web development and testing JS code.">
+                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
+                        <span>JavaScript Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-html-editor" data-description="Free online AI-powered HTML editor for creating and previewing web pages.">
+                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
+                        <span>HTML Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-online-ai-sql-editor" data-description="Free online AI-powered SQL editor for writing and testing database queries.">
+                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
+                        <span>SQL Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item ai-powered">
+                    <a href="/free-php-online-ai-compiler" data-description="Run PHP scripts online with AI debugging, suitable for server-side web development.">
+                        <span class="compiler-icon"><i class="fab fa-php"></i></span>
+                        <span>PHP Compiler</span>
+                    </a>
+                </li>
                 <li class="compiler-item">
-                    <a href="/free-online-base64-encoder">
+                    <a href="/free-online-base64-encoder" data-description="Free online tool to encode and decode Base64 strings securely.">
                         <span class="compiler-icon"><i class="fas fa-lock"></i></span>
                         <span>Base64 Encoder</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-ai-c-compiler">
-                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
-                        <span>C</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-ai-cpp-compiler">
-                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
-                        <span>C++</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-css-obfuscator">
+                    <a href="/free-online-css-obfuscator" data-description="Free online AI-powered tool to obfuscate and optimize CSS code for web development.">
                         <span class="compiler-icon"><i class="fab fa-css3-alt"></i></span>
                         <span>CSS Obfuscator</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-ai-html-editor">
-                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
-                        <span>HTML</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-ai-java-compiler">
-                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
-                        <span>Java</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/js-obfuscator">
+                    <a href="/free-online-javascript-obfuscator" data-description="Free online AI-powered tool to obfuscate and protect JavaScript code.">
                         <span class="compiler-icon"><i class="fab fa-js"></i></span>
                         <span>JS Obfuscator</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-ai-javascript-compiler">
-                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
-                        <span>JavaScript</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-json-formatter">
+                    <a href="/free-online-json-formatter" data-description="Free online AI-powered tool to format and validate JSON data for APIs.">
                         <span class="compiler-icon"><i class="fas fa-code"></i></span>
                         <span>JSON Formatter</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/free-online-ai-python-compiler">
-                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
-                        <span>Python</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/free-online-ai-sql-editor">
-                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
-                        <span>SQL</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/online-text-editor">
+                    <a href="/free-online-text-editor" data-description="Free online AI-enhanced text editor for quick code and text editing.">
                         <span class="compiler-icon"><i class="fas fa-edit"></i></span>
                         <span>Text Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-markdown-editor" data-description="Write and preview Markdown documents with live rendering, great for documentation and blogs.">
+                        <span class="compiler-icon"><i class="fas fa-markdown"></i></span>
+                        <span>Markdown Editor</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-code-diff-tool" data-description="Compare two code snippets and highlight differences for version control and collaboration.">
+                        <span class="compiler-icon"><i class="fas fa-code-compare"></i></span>
+                        <span>Code Diff Tool</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-regex-tester" data-description="Test and debug regular expressions with live matching and detailed explanations.">
+                        <span class="compiler-icon"><i class="fas fa-asterisk"></i></span>
+                        <span>Regex Tester</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-xml-beautifier" data-description="Format and validate XML documents with proper indentation for better readability.">
+                        <span class="compiler-icon"><i class="fas fa-file-code"></i></span>
+                        <span>XML Beautifier</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-color-picker" data-description="Select, convert, and manage colors for web design and development projects.">
+                        <span class="compiler-icon"><i class="fas fa-palette"></i></span>
+                        <span>Color Picker</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-favicon-generator" data-description="Create favicons in multiple sizes for your website, enhancing brand visibility.">
+                        <span class="compiler-icon"><i class="fas fa-icons"></i></span>
+                        <span>Favicon Generator</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-qr-code-scanner" data-description="Scan QR codes directly in your browser for quick access to information.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>QR Code Scanner</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-qr-to-url-online" data-description="Convert QR code images to web URLs for easy sharing and access.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>QR to URL</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/free-online-url-encoder-decoder" data-description="Encode and decode URLs for safe web application usage.">
+                        <span class="compiler-icon"><i class="fas fa-link"></i></span>
+                        <span>URL Encoder/Decoder</span>
+                    </a>
+                </li>
+                <li class="compiler-item">
+                    <a href="/convert-url-to-qr-code-online" data-description="Generate QR codes from URLs for offline sharing and marketing.">
+                        <span class="compiler-icon"><i class="fas fa-qrcode"></i></span>
+                        <span>URL to QR Code</span>
                     </a>
                 </li>
             </ul>
         </div>
 
         <div class="main-content">
-            <div class="hero-section">
+            <section class="section hero-section">
                 <h1 class="hero-title">Code Smarter with Tool Pix</h1>
-                <div class="hero-subtitle">Free Online Compilers & Editors for Developers, Students, and Professionals</div>
+                <div class="hero-subtitle">Free AI-Powered Online Compilers & Editors for Programming</div>
                 <p class="hero-description">
-                    Tool Pix empowers coders with free, real-time coding tools for Python, Java, C, C++, JavaScript, SQL, HTML, CSS, JSON, and more. Build, test, optimize, and debug your projects effortlessly, whether you're learning to code or building professional applications.
+                    Tool Pix is your free, AI-powered coding platform. Access online compilers, editors, and smart assistance for Python, Java, C++, JavaScript, PHP, SQL, HTML, CSS, and more. Boost learning and development with real-time code completion, debugging, and optimization.
                 </p>
+
                 <div class="hero-buttons">
-                    <a href="#tools" class="btn btn-primary">
+                    <a href="#search" class="btn btn-primary" id="start-coding-btn">
                         <i class="fas fa-rocket"></i> Start Coding Now
                     </a>
-                    <a href="#notes" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i> Learn More
+                    <a href="#organization" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> About Us
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <div class="search-bar">
-                <input type="text" id="tool-search" placeholder="Search tools (e.g., Python Compiler, JS Obfuscator, SQL Editor)...">
-            </div>
+            <section class="section featured-tool">
+                <h2 class="section-title"><i class="fas fa-star"></i> Featured Tool: Python Compiler</h2>
+                <p>Explore our AI-powered Python Compiler, ideal for data science, machine learning, and web development. Write, run, and debug Python 3.x code with real-time AI assistance from Tool Pix, crafted by Ajmal U K to empower programmers worldwide.</p>
+                <a href="/free-online-ai-python-compiler" class="btn btn-primary">Try Python Compiler</a>
+            </section>
 
-            <div class="compiler-grid" id="tools">
-                <div class="compiler-card" onclick="window.location.href='/free-online-base64-encoder'">
-                    <i class="fas fa-lock"></i>
-                    <h3>Base64 Encoder</h3>
-                    <p>Encode text or binary data securely for web applications.</p>
+            <section class="section search-section" id="search">
+                <h2 class="section-title"><i class="fas fa-search"></i> Find Your Programming Tool</h2>
+                <p>Search Tool Pix's extensive collection of free AI-powered coding tools, including compilers, editors, and utilities for Python, Java, C++, JavaScript, PHP, SQL, and more. Start coding instantly with optimized, user-friendly tools.</p>
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="tool-search" placeholder="Search tools (e.g., Python Compiler, JavaScript Editor, SQL Editor)...">
+                    <i class="fas fa-times clear-icon" id="clear-search" style="display: none;"></i>
+                    <div class="suggestions-container" id="suggestions-container"></div>
                 </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-c-compiler'">
-                    <i class="fas fa-copyright"></i>
-                    <h3>C Compiler</h3>
-                    <p>Compile and run C11 programs with real-time feedback.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-cpp-compiler'">
-                    <i class="fas fa-plus"></i>
-                    <h3>C++ Compiler</h3>
-                    <p>Execute C++17 code for high-performance applications.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-css-obfuscator'">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS Obfuscator</h3>
-                    <p>Protect and minify your CSS stylesheets.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-html-editor'">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML Editor</h3>
-                    <p>Build and preview HTML5 web pages with CSS and JS.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-java-compiler'">
-                    <i class="fab fa-java"></i>
-                    <h3>Java Compiler</h3>
-                    <p>Run Java SE programs for robust app development.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/js-obfuscator'">
-                    <i class="fab fa-js"></i>
-                    <h3>JS Obfuscator</h3>
-                    <p>Secure your JavaScript code with advanced obfuscation.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-javascript-compiler'">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript Editor</h3>
-                    <p>Execute ES6+ code for dynamic web development.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-json-formatter'">
-                    <i class="fas fa-code"></i>
-                    <h3>JSON Formatter</h3>
-                    <p>Beautify and validate JSON data for APIs.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-python-compiler'">
-                    <i class="fab fa-python"></i>
-                    <h3>Python Compiler</h3>
-                    <p>Run Python 3.x for AI, data science, and web apps.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/free-online-ai-sql-editor'">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL Editor</h3>
-                    <p>Practice SQL queries with a mock database.</p>
-                </div>
-                <div class="compiler-card" onclick="window.location.href='/online-text-editor'">
-                    <i class="fas fa-edit"></i>
-                    <h3>Text Editor</h3>
-                    <p>Edit code with syntax highlighting and collaboration.</p>
-                </div>
-            </div>
+            </section>
 
-            <div class="notes-section" id="notes">
-                <h2>Explore Our Free Coding Tools</h2>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        Base64 Encoder
-                        <i class="fas fa-chevron-down"></i>
+            <section class="section" id="tools">
+                <h2 class="section-title"><i class="fas fa-code"></i> Code Editors & Compilers</h2>
+                <div class="compiler-grid">
+                    <div class="compiler-card" data-url="/free-online-ai-python-compiler" data-description="Run Python 3.x code online with AI assistance for data science, AI development, and web applications. Features smart code suggestions and debugging tools.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fab fa-python"></i>
+                        <h3>Python Compiler</h3>
+                        <p>Run Python 3.x code online with AI assistance. Ideal for data science, AI development, and web applications, featuring smart code suggestions and debugging tools.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Effortlessly encode text or binary data into Base64 for secure data transfer in web applications and APIs. Perfect for embedding images in HTML or securing API payloads, this tool offers real-time encoding/decoding, large dataset support, and data integrity checks. Ideal for developers and security professionals working on web development and API integration.</p>
+                    <div class="compiler-card" data-url="/free-online-ai-java-compiler" data-description="Compile and execute Java SE programs with AI-powered debugging, perfect for object-oriented programming and enterprise applications.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fab fa-java"></i>
+                        <h3>Java Compiler</h3>
+                        <p>Compile and execute Java SE programs with AI-powered debugging. Perfect for object-oriented programming and enterprise applications.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        C Compiler
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-ai-c-compiler" data-description="Develop C11 programs with real-time AI feedback, great for system programming and performance-critical applications.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fas fa-copyright"></i>
+                        <h3>C Compiler</h3>
+                        <p>Develop C11 programs with real-time AI feedback. Great for system programming and performance-critical applications.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Compile and execute C11-compliant programs online with real-time feedback. Designed for system programming and embedded systems, it features pointer manipulation, memory management, and detailed error logs. Includes beginner-friendly tutorials and sample code for efficient learning of C programming.</p>
+                    <div class="compiler-card" data-url="/free-online-ai-cpp-compiler" data-description="Execute C++17 code with AI help, ideal for high-performance computing and game development.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fas fa-plus"></i>
+                        <h3>C++ Compiler</h3>
+                        <p>Execute C++17 code with AI help for high-performance computing and game development.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        C++ Compiler
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-ai-javascript-compiler" data-description="Write and test ES6+ JavaScript code with AI suggestions, perfect for web development and interactive applications.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fab fa-js"></i>
+                        <h3>JavaScript Editor</h3>
+                        <p>Write and test ES6+ JavaScript code with AI suggestions, ideal for web development and interactive applications.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Run C++17 programs with instant compilation, ideal for game development and high-performance computing. Supports the Standard Template Library (STL), performance optimization, and advanced debugging. Includes guides and examples for students and professionals mastering C++ programming.</p>
+                    <div class="compiler-card" data-url="/free-online-ai-html-editor" data-description="Create and preview HTML5 pages with integrated CSS and JavaScript, enhanced by AI assistance.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML Editor</h3>
+                        <p>Create and preview HTML5 pages with integrated CSS and JavaScript, enhanced by AI assistance.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        CSS Obfuscator
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-ai-sql-editor" data-description="Practice SQL queries with AI support and a mock database, ideal for database management and learning.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fas fa-database"></i>
+                        <h3>SQL Editor</h3>
+                        <p>Practice SQL queries with AI support and a mock database, perfect for database management and learning.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Protect your CSS designs by obfuscating code while preserving functionality. This tool offers minification, compression, and real-time previews to safeguard stylesheets from theft. Perfect for web designers aiming to secure proprietary styles in web development projects.</p>
+                    <div class="compiler-card" data-url="/free-php-online-ai-compiler" data-description="Run PHP scripts online with AI debugging, suitable for server-side web development.">
+                        <span class="ai-badge">AI</span>
+                        <i class="fab fa-php"></i>
+                        <h3>PHP Compiler</h3>
+                        <p>Run PHP scripts online with AI debugging, suitable for server-side web development.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        HTML Editor
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-text-editor" data-description="Edit code with syntax highlighting and collaboration features, a versatile tool for quick edits.">
+                        <i class="fas fa-edit"></i>
+                        <h3>Text Editor</h3>
+                        <p>Edit code with syntax highlighting and collaboration features, a versatile tool for quick edits.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Create and test HTML5 and CSS3 web pages with live previews. Supports JavaScript integration and responsive design testing, making it ideal for building modern websites. Includes tutorials for beginners and advanced developers learning web development.</p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        Java Compiler
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Compile and run Java SE programs online, perfect for object-oriented programming and app development. Features sample projects, error diagnostics, and comprehensive guides for learners and professionals building robust Java applications.</p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        JS Obfuscator
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Secure JavaScript code with advanced obfuscation, including variable renaming and code scrambling. Offers real-time previews and optimization options, ideal for developers protecting intellectual property in commercial web applications.</p>
+                    <div class="compiler-card" data-url="/free-online-markdown-editor" data-description="Write and preview Markdown documents with live rendering, great for documentation and blogs.">
+                        <i class="fas fa-markdown"></i>
+                        <h3>Markdown Editor</h3>
+                        <p>Write and preview Markdown documents with live rendering, great for documentation and blogs.</p>
                     </div>
                 </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        JavaScript Editor
-                        <i class="fas fa-chevron-down"></i>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-tools"></i> Coding Tools</h2>
+                <div class="compiler-grid">
+                    <div class="compiler-card" data-url="/free-online-json-formatter" data-description="Format and validate JSON data for APIs and configurations, ensuring clean and readable output.">
+                        <i class="fas fa-code"></i>
+                        <h3>JSON Formatter</h3>
+                        <p>Format and validate JSON data for APIs and configurations, ensuring clean and readable output.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Execute ES6+ JavaScript with live results for front-end and back-end development. Features DOM manipulation tools, a debugging console, and tutorials to enhance web development skills for interactive websites.</p>
+                    <div class="compiler-card" data-url="/free-online-base64-encoder" data-description="Encode text or binary data securely for web applications and data transfer.">
+                        <i class="fas fa-lock"></i>
+                        <h3>Base64 Encoder</h3>
+                        <p>Encode text or binary data securely for web applications and data transfer.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        JSON Formatter
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-css-obfuscator" data-description="Protect and minify CSS stylesheets to prevent theft and optimize web performance.">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS Obfuscator</h3>
+                        <p>Protect and minify CSS stylesheets to prevent theft and optimize performance.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Beautify and validate JSON data with proper indentation and error highlighting. Supports minification and large datasets, making it essential for API testing and data debugging for developers working with APIs.</p>
+                    <div class="compiler-card" data-url="/free-online-javascript-obfuscator" data-description="Secure JavaScript code with advanced obfuscation techniques for enhanced privacy.">
+                        <i class="fab fa-js"></i>
+                        <h3>JS Obfuscator</h3>
+                        <p>Secure JavaScript code with advanced obfuscation techniques for enhanced privacy.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        Python Compiler
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="compiler-card" data-url="/free-online-code-diff-tool" data-description="Compare two code snippets and highlight differences for version control and collaboration.">
+                        <i class="fas fa-code-compare"></i>
+                        <h3>Code Diff Tool</h3>
+                        <p>Compare two code snippets and highlight differences for version control and collaboration.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Run Python 3.x code with real-time execution, ideal for AI, data science, and web development. Includes debugging tools, sample scripts, and tutorials for beginners and professionals building complex Python applications.</p>
+                    <div class="compiler-card" data-url="/free-online-regex-tester" data-description="Test and debug regular expressions with live matching and detailed explanations.">
+                        <i class="fas fa-asterisk"></i>
+                        <h3>Regex Tester</h3>
+                        <p>Test and debug regular expressions with live matching and detailed explanations.</p>
                     </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        SQL Editor
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Practice SQL queries (SELECT, INSERT, UPDATE, DELETE) with a mock database and real-time results. Supports standard SQL, error checking, and guides for database administrators and learners mastering database management.</p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">
-                        Text Editor
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>A versatile text editor with syntax highlighting for multiple languages, save/export options, and collaborative editing. Ideal for quick coding, note-taking, and project management with customizable settings for developers.</p>
+                    <div class="compiler-card" data-url="/free-online-xml-beautifier" data-description="Format and validate XML documents with proper indentation for better readability.">
+                        <i class="fas fa-file-code"></i>
+                        <h3>XML Beautifier</h3>
+                        <p>Format and validate XML documents with proper indentation for better readability.</p>
                     </div>
                 </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-wrench"></i> Utility Tools</h2>
+                <div class="compiler-grid">
+                    <div class="compiler-card" data-url="/free-online-color-picker" data-description="Select, convert, and manage colors for web design and development projects.">
+                        <i class="fas fa-palette"></i>
+                        <h3>Color Picker</h3>
+                        <p>Select, convert, and manage colors for web design and development projects.</p>
+                    </div>
+                    <div class="compiler-card" data-url="/free-online-favicon-generator" data-description="Create favicons in multiple sizes for your website, enhancing brand visibility.">
+                        <i class="fas fa-icons"></i>
+                        <h3>Favicon Generator</h3>
+                        <p>Create favicons in multiple sizes for your website, enhancing brand visibility.</p>
+                    </div>
+                    <div class="compiler-card" data-url="/free-online-qr-code-scanner" data-description="Scan QR codes directly in your browser for quick access to information.">
+                        <i class="fas fa-qrcode"></i>
+                        <h3>QR Code Scanner</h3>
+                        <p>Scan QR codes directly in your browser for quick access to information.</p>
+                    </div>
+                    <div class="compiler-card" data-url="/convert-qr-to-url-online" data-description="Convert QR code images to web URLs for easy sharing and access.">
+                        <i class="fas fa-link"></i>
+                        <h3>QR to URL</h3>
+                        <p>Convert QR code images to web URLs for easy sharing and access.</p>
+                    </div>
+                    <div class="compiler-card" data-url="/free-online-url-encoder-decoder" data-description="Encode and decode URLs for safe web application usage.">
+                        <i class="fas fa-link"></i>
+                        <h3>URL Encoder/Decoder</h3>
+                        <p>Encode and decode URLs for safe web application usage.</p>
+                    </div>
+                    <div class="compiler-card" data-url="/convert-url-to-qr-code-online" data-description="Generate QR codes from URLs for offline sharing and marketing.">
+                        <i class="fas fa-qrcode"></i>
+                        <h3>URL to QR Code</h3>
+                        <p>Generate QR codes from URLs for offline sharing and marketing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section notes-section" id="notes">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Explore Tool Pix Features</h2>
+                <p class="section-description">Discover how Tool Pix, crafted by Ajmal U K at UTHAKKAN (UK), empowers developers with AI-enhanced tools for Python, Java, C++, JavaScript, and more. Explore our features below to streamline your coding journey.</p>
+                <div class="notes-grid">
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fas fa-brain"></i> AI-Powered Features</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Tool Pix integrates advanced AI to supercharge your coding experience:</p>
+                                <ul>
+                                    <li>Real-time code completion for faster development</li>
+                                    <li>Instant error detection with actionable fixes</li>
+                                    <li>Code optimization suggestions for efficiency</li>
+                                    <li>AI-generated documentation and explanations</li>
+                                    <li>Personalized learning paths for all skill levels</li>
+                                </ul>
+                                <p>Look for the <span class="ai-badge">AI</span> badge on tools with AI enhancements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fab fa-python"></i> Python Compiler</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Our AI-powered Python Compiler is perfect for data science, machine learning, and web development:</p>
+                                <ul>
+                                    <li>Supports NumPy, Pandas, and Matplotlib</li>
+                                    <li>AI-driven debugging with detailed insights</li>
+                                    <li>Performance optimization recommendations</li>
+                                    <li>Interactive tutorials for beginners</li>
+                                    <li>Sample scripts for real-world projects</li>
+                                </ul>
+                                <a href="/free-online-ai-python-compiler" class="btn btn-primary"><i class="fas fa-rocket"></i> Try Python Compiler</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fab fa-java"></i> Java Compiler</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Compile and run Java SE programs with AI assistance, ideal for enterprise and educational use:</p>
+                                <ul>
+                                    <li>Full support for object-oriented programming</li>
+                                    <li>AI suggestions for design patterns</li>
+                                    <li>Comprehensive error diagnostics</li>
+                                    <li>Performance optimization guidance</li>
+                                    <li>Sample projects for hands-on practice</li>
+                                </ul>
+                                <a href="/free-online-ai-java-compiler" class="btn btn-primary"><i class="fas fa-rocket"></i> Try Java Compiler</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fas fa-copyright"></i> C/C++ Compilers</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Develop high-performance applications with our AI-enhanced C and C++ compilers:</p>
+                                <ul>
+                                    <li>Supports C11 and C++17 standards</li>
+                                    <li>AI assistance for pointer and memory management</li>
+                                    <li>STL support with smart suggestions</li>
+                                    <li>Performance tuning recommendations</li>
+                                    <li>Examples for embedded systems programming</li>
+                                </ul>
+                                <a href="/free-online-ai-cpp-compiler" class="btn btn-primary"><i class="fas fa-rocket"></i> Try C++ Compiler</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fab fa-html5"></i> Web Development Tools</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Build modern websites with our AI-powered web development suite:</p>
+                                <ul>
+                                    <li>HTML5 editor with live preview</li>
+                                    <li>CSS obfuscator for style protection</li>
+                                    <li>JavaScript editor with ES6+ support</li>
+                                    <li>Responsive design testing tools</li>
+                                    <li>DOM manipulation assistance</li>
+                                </ul>
+                                <a href="/free-online-ai-html-editor" class="btn btn-primary"><i class="fas fa-rocket"></i> Try HTML Editor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-card">
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <span><i class="fas fa-database"></i> Data & Utility Tools</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Handle data efficiently with our utility tools:</p>
+                                <ul>
+                                    <li>SQL editor with mock database support</li>
+                                    <li>JSON formatter for structured data</li>
+                                    <li>Base64 encoding/decoding for security</li>
+                                    <li>Code diff tool for collaboration</li>
+                                    <li>Regex tester for pattern matching</li>
+                                </ul>
+                                <a href="/free-online-json-formatter" class="btn btn-primary"><i class="fas fa-rocket"></i> Try JSON Formatter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section organization-section" id="organization">
+                <div class="organization-hero">
+                    <h2 class="section-title"><i class="fas fa-building"></i> About UTHAKKAN (UK)</h2>
+                    <p class="section-description">Tool Pix, powered by UTHAKKAN (UK), is your ultimate platform for free, AI-driven coding tools. Founded by Ajmal U K, we’re on a mission to revolutionize programming with innovative, accessible solutions for developers worldwide.</p>
+                    <a href="/about" class="btn btn-primary"><i class="fas fa-info-circle"></i> Explore Our Story</a>
+                </div>
+                <div class="organization-grid">
+                    <div class="organization-card">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Our Mission</h3>
+                        <p>At UTHAKKAN (UK), we empower developers of all skill levels with free, AI-enhanced tools for Python, Java, C++, JavaScript, and beyond. Our goal is to simplify coding, boost productivity, and make programming inclusive.</p>
+                        <a href="/about#mission" class="btn btn-secondary"><i class="fas fa-eye"></i> Learn More</a>
+                    </div>
+                    <div class="organization-card">
+                        <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+                        <h3>Meet Our Founder</h3>
+                        <p>Ajmal U K, a visionary developer, founded UTHAKKAN (UK) to create Tool Pix, a platform that blends AI innovation with coding accessibility. His leadership drives our commitment to developer success.</p>
+                        <a href="https://www.linkedin.com/in/muhammed-ajmal-u-k-616b152ba" class="btn btn-primary" target="_blank"><i class="fab fa-linkedin"></i> Connect with Ajmal</a>
+                    </div>
+                    <div class="organization-card">
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Join Our Community</h3>
+                        <p>Engage with Tool Pix’s global developer community. Stay updated on new tools, collaborate with us, or reach out for support. Let’s code the future together!</p>
+                        <div class="organization-links">
+                            <a href="https://github.com/toolpix" class="btn btn-secondary" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://x.com/toolpix" class="btn btn-secondary" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a href="/contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="organization-card">
+                        <div class="card-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Our Impact</h3>
+                        <p>Tool Pix supports thousands of developers globally with free, AI-powered tools. From students to professionals, our platform fosters innovation and learning in over 100 countries.</p>
+                        <a href="/about#impact" class="btn btn-secondary"><i class="fas fa-chart-line"></i> See Our Impact</a>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section" id="video">
+                <h2 class="section-title"><i class="fas fa-video"></i> Tutorial Videos</h2>
+                <p>Learn to use Tool Pix's AI-powered coding tools with our expert tutorial videos. Created by UTHAKKAN (UK), these guides cover Python, Java, C++, JavaScript, and more for beginners and advanced developers.</p>
+                <div class="video-container">
+                    
+                </div>
+            </section>
+
+            <section class="section faq-section" id="faq">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                <p class="section-description">Get answers to common questions about Tool Pix, the free AI-powered coding platform by Ajmal U K and UTHAKKAN (UK).</p>
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>What is Tool Pix?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Tool Pix is a free, AI-powered platform offering compilers, editors, and utilities for Python, Java, C++, JavaScript, PHP, SQL, HTML, CSS, JSON, and more, with real-time AI coding assistance for developers of all levels.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>How does AI assistance work in Tool Pix?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Our AI provides real-time code suggestions, error detection, debugging tips, and optimization recommendations, tailored to your coding needs, enhancing productivity across all supported languages.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>Is Tool Pix free to use?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, Tool Pix is completely free, offering unrestricted access to all AI-powered tools for both personal and commercial use, with no hidden costs.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>Can I use Tool Pix for commercial projects?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Absolutely, Tool Pix is free for both personal and commercial use. Check our <a href="/terms">Terms of Service</a> for detailed usage guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>Which programming languages are supported?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Tool Pix supports Python, Java, C, C++, JavaScript, PHP, SQL, HTML, CSS, and more, all enhanced with AI-driven features for a seamless coding experience.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card">
+                        <div class="faq-header">
+                            <h3>How can I contact support for Tool Pix?</h3>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>For support, reach out via our <a href="/contact">Contact page</a> or email us at <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a> for prompt assistance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="software">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Our Software</h2>
+                <p>Tool Pix offers a suite of web-based, AI-powered software tools, including compilers for Python, Java, C++, JavaScript, PHP, and more, designed by UTHAKKAN (UK) to enhance coding efficiency.</p>
+            </section>
+
+            <section class="section" id="review">
+                <h2 class="section-title"><i class="fas fa-star"></i> User Reviews</h2>
+                <p>Hear from developers using Tool Pix, the free AI-powered coding platform by Ajmal U K and UTHAKKAN (UK).</p>
+                <div class="review-list">
+                    <div class="review-item">
+                        <p>"Tool Pix's AI assistance transformed my coding workflow. A must-have for programmers!" - John D.</p>
+                    </div>
+                    <div class="review-item">
+                        <p>"The variety of compilers and AI feedback make Tool Pix exceptional." - Sarah M.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="creativework">
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> Creative Works</h2>
+                <p>Discover innovative projects and tools by the Tool Pix team at UTHAKKAN (UK), showcasing AI-driven coding solutions.</p>
+            </section>
+
+            <section class="section" id="product">
+                <h2 class="section-title"><i class="fas fa-box"></i> Our Product</h2>
+                <p>Tool Pix is a free, all-in-one coding platform with AI-enhanced tools for Python, Java, C++, JavaScript, PHP, and more, created by Ajmal U K.</p>
+            </section>
+
+            <section class="section" id="webpage">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i> Webpage Information</h2>
+                <p>Access Tool Pix's free AI-powered coding tools and resources, designed by UTHAKKAN (UK) to support global developers.</p>
+            </section>
+
+            <section class="section" id="website">
+                <h2 class="section-title"><i class="fas fa-globe"></i> About Our Website</h2>
+                <p>ToolPix.pythonanywhere.com offers free, AI-powered coding tools for Python, Java, C++, JavaScript, PHP, and more, created by Ajmal U K and UTHAKKAN (UK).</p>
+            </section>
+        </div>
+    </div>
+
+    <button class="ai-chat-toggle" id="ai-chat-toggle" title="Open AI Coding Assistant">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <button class="back-to-top" id="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="ai-chat-overlay" id="ai-chat-overlay">
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <h3>AI Coding Assistant</h3>
+                <button class="ai-chat-close" id="ai-chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-chat-body" id="ai-chat-body"></div>
+            <div class="ai-chat-input">
+                <textarea id="ai-chat-input" placeholder="Ask the AI for coding help..."></textarea>
+                <button id="ai-chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tool-popup-overlay" id="tool-popup-overlay">
+        <div class="tool-popup-container">
+            <div class="tool-popup-header">
+                <h3 id="tool-popup-title">Title</h3>
+                <button class="tool-popup-close" id="tool-popup-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tool-popup-body">
+                <p id="tool-popup-description"></p>
+                <a href="#" class="btn btn-primary" id="tool-popup-checkout">Check Out</a>
             </div>
         </div>
     </div>
@@ -1181,98 +2720,352 @@
                     <li><a href="/free-online-ai-cpp-compiler">C++ Compiler</a></li>
                     <li><a href="/free-online-ai-java-compiler">Java Compiler</a></li>
                     <li><a href="/free-online-ai-python-compiler">Python Compiler</a></li>
-                    <li><a href="/free-online-ai-javascript-compiler">JavaScript Editor</a></li>
+                                        <li><a href="/free-online-ai-javascript-compiler">JavaScript Editor</a></li>
+                    <li><a href="/free-online-ai-html-editor">HTML Editor</a></li>
                     <li><a href="/free-online-ai-sql-editor">SQL Editor</a></li>
+                    <li><a href="/free-php-online-ai-compiler">PHP Compiler</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Tools</h3>
+                <h3>Utilities</h3>
                 <ul>
+                    <li><a href="/free-online-json-formatter">JSON Formatter</a></li>
                     <li><a href="/free-online-base64-encoder">Base64 Encoder</a></li>
                     <li><a href="/free-online-css-obfuscator">CSS Obfuscator</a></li>
-                    <li><a href="/js-obfuscator">JS Obfuscator</a></li>
-                    <li><a href="/free-online-json-formatter">JSON Formatter</a></li>
-                    <li><a href="/online-text-editor">Text Editor</a></li>
-                    <li><a href="/free-online-ai-html-editor">HTML Editor</a></li>
+                    <li><a href="/free-online-javascript-obfuscator">JS Obfuscator</a></li>
+                    <li><a href="/free-online-regex-tester">Regex Tester</a></li>
+                    <li><a href="/free-online-xml-beautifier">XML Beautifier</a></li>
                 </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="footer-social">
-                    <a href="https://twitter.com/toolpix" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://github.com/toolpix" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/company/toolpix" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                </div>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="/about">About Us</a></li>
+                    <li><a href="/guides">How-To Guides</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/terms">Terms & Conditions</a></li>
                 </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-social">
+                    <a href="https://github.com/ajmal-uk" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/muhammed-ajmal-u-k-616b152ba" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/ajmal_uk_" target="_blank"><i class="fab fa-twitter"></i></a>
+
+                </div>
+                <p>Contact: <a href="mailto:contact.uthakkan@gmail.com">contact.uthakkan@gmail.com</a></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 <a href="#">Tool Pix</a> by UTHAKKAN (UK). All rights reserved.</p>
+            <p>&copy; 2025 Tool Pix by <a href="https://toolpix.pythonanywhere.com">UTHAKKAN (UK)</a>. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebar-toggle");
-            const navbarToggle = document.getElementById("navbar-toggle");
-            const sidebarOverlay = document.getElementById("sidebar-overlay");
-            const searchInput = document.getElementById("tool-search");
-            const toolCards = document.querySelectorAll(".compiler-card");
-            const accordionHeaders = document.querySelectorAll(".accordion-header");
 
-            function toggleSidebar() {
-                sidebar.classList.toggle("open");
-                sidebarOverlay.classList.toggle("open");
-                sidebarToggle.classList.toggle("hidden");
-                navbarToggle.classList.toggle("hidden");
+        let chatHistory = [];
+
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const navbarToggle = document.getElementById('navbar-toggle');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('open');
+        }
+
+        navbarToggle.addEventListener('click', toggleSidebar);
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
             }
+        });
 
-            function filterTools() {
-                const searchTerm = searchInput.value.toLowerCase();
-                toolCards.forEach(card => {
-                    const title = card.querySelector("h3").textContent.toLowerCase();
-                    const description = card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "";
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            }
+        const renderer = new marked.Renderer();
+        renderer.link = function(href, title, text) {
+            return `<button class="btn btn-primary" onclick="window.location.href='${href}'">Click Here</button>`;
+        };
+        marked.setOptions({ renderer: renderer });
 
-            function toggleAccordion(event) {
-                const header = event.currentTarget;
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
-                const isOpen = content.classList.contains("open");
+                const isOpen = content.classList.contains('open');
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    c.classList.remove('open');
+                    c.previousElementSibling.classList.remove('active');
+                });
+                if (!isOpen) {
+                    content.classList.add('open');
+                    header.classList.add('active');
+                }
+            });
+        });
 
-                document.querySelectorAll(".accordion-content").forEach(item => {
-                    item.classList.remove("open");
-                    item.previousElementSibling.classList.remove("active");
+        const aiChatToggle = document.getElementById('ai-chat-toggle');
+        const aiChatOverlay = document.getElementById('ai-chat-overlay');
+        const aiChatClose = document.getElementById('ai-chat-close');
+        const aiChatBody = document.getElementById('ai-chat-body');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const aiChatSend = document.getElementById('ai-chat-send');
+
+        aiChatToggle.addEventListener('click', () => {
+            aiChatOverlay.classList.add('open');
+        });
+
+        aiChatClose.addEventListener('click', () => {
+            aiChatOverlay.classList.remove('open');
+        });
+
+        function showTypingIndicator() {
+            const typing = document.createElement('div');
+            typing.className = 'message-wrapper ai';
+            typing.innerHTML = `<div class="ai-typing"><span></span><span></span><span></span></div>`;
+            aiChatBody.appendChild(typing);
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            return typing;
+        }
+
+        async function sendChatMessage() {
+            const userInput = aiChatInput.value.trim();
+            if (!userInput) return;
+
+            const userMessageWrapper = document.createElement("div");
+            userMessageWrapper.className = "message-wrapper user";
+            const userMessage = document.createElement("div");
+            userMessage.className = "ai-chat-message user";
+            userMessage.textContent = userInput;
+            userMessageWrapper.appendChild(userMessage);
+            aiChatBody.appendChild(userMessageWrapper);
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            aiChatInput.value = "";
+
+            const typingWrapper = showTypingIndicator();
+
+            const lastMessage = chatHistory.length > 0 ? chatHistory[chatHistory.length - 1] : null;
+            const previousInput = lastMessage ? lastMessage.userInput : "";
+            const previousAIResponse = lastMessage ? lastMessage.aiResponse : "";
+
+            try {
+                const response = await fetch('https://droq.pythonanywhere.com/chat/api', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        currentInput: userInput,
+                        previousInput: previousInput,
+                        previousAIResponse: previousAIResponse,
+                    }),
+                });
+
+                const data = await response.json();
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                const aiResponse = data.aiResponse || "Sorry, I couldn't process your request.";
+                const aiMessageWrapper = document.createElement("div");
+                aiMessageWrapper.className = "message-wrapper ai";
+                const aiMessage = document.createElement("div");
+                aiMessage.className = "ai-chat-message ai";
+                aiMessage.innerHTML = marked.parse(aiResponse); // Uses the custom renderer
+                aiMessageWrapper.appendChild(aiMessage);
+                aiChatBody.replaceChild(aiMessageWrapper, typingWrapper);
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+
+                chatHistory.push({
+                    userInput: userInput,
+                    aiResponse: aiResponse,
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                const errorMessageWrapper = document.createElement("div");
+                errorMessageWrapper.className = "message-wrapper ai";
+                const errorMessage = document.createElement("div");
+                errorMessage.className = "ai-chat-message ai";
+                errorMessage.textContent = `Error: ${error.message}`;
+                errorMessageWrapper.appendChild(errorMessage);
+                aiChatBody.replaceChild(errorMessageWrapper, typingWrapper);
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            }
+        }
+
+        aiChatSend.addEventListener('click', sendChatMessage);
+
+        aiChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+
+        const toolPopupOverlay = document.getElementById('tool-popup-overlay');
+        const toolPopupClose = document.getElementById('tool-popup-close');
+        const toolPopupTitle = document.getElementById('tool-popup-title');
+        const toolPopupDescription = document.getElementById('tool-popup-description');
+        const toolPopupCheckout = document.getElementById('tool-popup-checkout');
+
+        function openToolPopup(title, description, url) {
+            toolPopupTitle.textContent = title;
+            toolPopupDescription.textContent = description;
+            toolPopupCheckout.href = url;
+            toolPopupOverlay.classList.add('open');
+        }
+
+        toolPopupClose.addEventListener('click', () => {
+            toolPopupOverlay.classList.remove('open');
+        });
+
+        document.querySelectorAll('.compiler-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').textContent;
+                const description = card.getAttribute('data-description');
+                const url = card.getAttribute('data-url');
+                openToolPopup(title, description, url);
+            });
+        });
+
+        const searchInput = document.getElementById('tool-search');
+        const suggestionsContainer = document.getElementById('suggestions-container');
+        const compilerItems = document.querySelectorAll('.compiler-item');
+        const compilerCards = document.querySelectorAll('.compiler-card');
+
+        const clearSearch = document.getElementById('clear-search');
+        searchInput.addEventListener('input', (e) => {
+            clearSearch.style.display = e.target.value ? 'block' : 'none';
+            filterTools(e.target.value);
+        });
+
+        clearSearch.addEventListener('click', () => {
+            searchInput.value = '';
+            clearSearch.style.display = 'none';
+            suggestionsContainer.classList.remove('visible');
+            showAllTools();
+        });
+
+        function filterTools(query) {
+            suggestionsContainer.innerHTML = '';
+            const allTools = [];
+
+            compilerItems.forEach(item => {
+                const link = item.querySelector('a');
+                const name = link.querySelector('span:nth-child(2)').textContent;
+                const description = link.getAttribute('data-description') || '';
+                const url = link.getAttribute('href');
+                const icon = link.querySelector('i').outerHTML;
+                allTools.push({ name, description, url, icon });
+            });
+
+            compilerCards.forEach(card => {
+                const name = card.querySelector('h3').textContent;
+                const description = card.getAttribute('data-description');
+                const url = card.getAttribute('data-url');
+                const icon = card.querySelector('i').outerHTML;
+                allTools.push({ name, description, url, icon });
+            });
+
+            const filteredTools = allTools.filter(tool => 
+                tool.name.toLowerCase().includes(query.toLowerCase()) || 
+                tool.description.toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (query && filteredTools.length > 0) {
+                filteredTools.forEach(tool => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.innerHTML = `${tool.icon} <span>${tool.name}</span>`;
+                    suggestionItem.addEventListener('click', () => {
+                        openToolPopup(tool.name, tool.description, tool.url);
+                        suggestionsContainer.classList.remove('visible');
+                        searchInput.value = ''; 
+                        showAllTools();
+                    });
+                    suggestionsContainer.appendChild(suggestionItem);
+                });
+                suggestionsContainer.classList.add('visible');
+            } else {
+                suggestionsContainer.classList.remove('visible');
+                showAllTools(); 
+            }
+
+            compilerItems.forEach(item => {
+                const name = item.querySelector('span:nth-child(2)').textContent;
+                const description = item.querySelector('a').getAttribute('data-description') || '';
+                const matches = query ? 
+                    (name.toLowerCase().includes(query.toLowerCase()) || 
+                    description.toLowerCase().includes(query.toLowerCase())) : 
+                    true;
+                item.style.display = matches ? 'flex' : 'none';
+            });
+
+            compilerCards.forEach(card => {
+                const name = card.querySelector('h3').textContent;
+                const description = card.getAttribute('data-description');
+                const matches = query ? 
+                    (name.toLowerCase().includes(query.toLowerCase()) || 
+                    description.toLowerCase().includes(query.toLowerCase())) : 
+                    true; 
+                card.style.display = matches ? 'block' : 'none';
+            });
+        }
+
+        function showAllTools() {
+            compilerItems.forEach(item => {
+                item.style.display = 'flex';
+            });
+            compilerCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+
+        searchInput.value = ''; 
+        showAllTools(); 
+
+        searchInput.addEventListener('input', (e) => {
+            filterTools(e.target.value);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+                suggestionsContainer.classList.remove('visible');
+                searchInput.value = ''; 
+                showAllTools(); 
+            }
+        });
+
+        document.querySelectorAll('.faq-card').forEach(card => {
+            const header = card.querySelector('.faq-header');
+            const content = card.querySelector('.faq-content');
+
+            header.addEventListener('click', () => {
+                const isOpen = content.classList.contains('open');
+
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    c.classList.remove('open');
+                    c.parentElement.classList.remove('active');
                 });
 
                 if (!isOpen) {
-                    content.classList.add("open");
-                    header.classList.add("active");
+                    content.classList.add('open');
+                    card.classList.add('active');
                 }
-            }
-
-            sidebarToggle.addEventListener("click", toggleSidebar);
-            navbarToggle.addEventListener("click", toggleSidebar);
-            sidebarOverlay.addEventListener("click", toggleSidebar);
-            searchInput.addEventListener("input", filterTools);
-            accordionHeaders.forEach(header => {
-                header.addEventListener("click", toggleAccordion);
             });
         });
-    </script>
+</script>
 </body>
 </html>

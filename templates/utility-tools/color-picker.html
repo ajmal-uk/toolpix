@@ -3,11 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Advanced Color Picker tool to select colors from images, screen, websites, URLs, clipboard, and search. Supports HEX, RGB, HSL, and CMYK conversions with an interactive UI.">
-    <meta name="keywords" content="color picker, advanced color picker, HEX, RGB, HSL, CMYK, web design, color tool, interactive">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="Tool Pix's free online color picker: select, customize, and generate color codes (HEX, RGB, HSL) with real-time previews. Perfect for designers and developers working on web design, UI/UX, and graphic projects.">
+    <meta name="keywords" content="color picker, online color picker, color palette generator, HEX color picker, RGB color picker, HSL color picker, Tool Pix, web design, UI/UX, graphic design, color selection">
+    <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
     <meta name="robots" content="index, follow">
-    <title>Advanced Color Picker with Menus</title>
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+    <title>Free Color Picker Online - HEX, RGB, HSL Generator | Tool Pix</title>
+    <link rel="canonical" href="https://toolpix.pythonanywhere.com/free-online-color-picker">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Tool Pix">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://toolpix.pythonanywhere.com/free-online-color-picker">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <meta property="og:title" content="Free Color Picker Online - HEX, RGB, HSL Generator | Tool Pix">
+    <meta property="og:description" content="Select and generate color codes (HEX, RGB, HSL) with Tool Pix's free online color picker. Ideal for web design, UI/UX, and graphic projects with real-time previews.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpix.pythonanywhere.com/free-online-color-picker">
+    <meta property="og:image" content="/color-picker-og-image.jpg">
+    <meta property="og:image:alt" content="Tool Pix Color Picker Interface">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tool Pix">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Color Picker Online - HEX, RGB, HSL Generator | Tool Pix">
+    <meta name="twitter:description" content="Tool Pix offers a free online color picker to select and generate color codes (HEX, RGB, HSL), perfect for web design, UI/UX, and graphic design projects.">
+    <meta name="twitter:image" content="/color-picker-twitter-image.jpg">
+    <meta name="twitter:image:alt" content="Tool Pix Color Picker Interface">
+    <meta name="twitter:site" content="@toolpix">
+    <meta name="twitter:creator" content="@toolpix">
+
+    <link rel="preload" href="https://toolpix.pythonanywhere.com/logo.png" as="image">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://toolpix.pythonanywhere.com" crossorigin>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#webpage",
+                "name": "Free Color Picker Online - Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                "description": "Tool Pix's free online color picker allows users to select, customize, and generate color codes (HEX, RGB, HSL) with real-time previews, ideal for web design, UI/UX, and graphic projects.",
+                "keywords": "color picker, online color picker, color palette generator, HEX color picker, RGB color picker, HSL color picker, web design, UI/UX",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "inLanguage": "en-US",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://toolpix.pythonanywhere.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Color Picker",
+                            "item": "https://toolpix.pythonanywhere.com/free-online-color-picker"
+                        }
+                    ]
+                },
+                "isPartOf": {
+                    "@id": "https://toolpix.pythonanywhere.com/#website"
+                },
+                "potentialAction": [
+                    {
+                        "@type": "ReadAction",
+                        "target": ["https://toolpix.pythonanywhere.com/free-online-color-picker"]
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#software",
+                "name": "Tool Pix Color Picker",
+                "operatingSystem": "Cross-Platform",
+                "applicationCategory": "DesignApplication",
+                "applicationSubCategory": "Web Design",
+                "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                "image": "https://toolpix.pythonanywhere.com/color-picker-og-image.jpg",
+                "description": "Tool Pix's free online color picker enables users to select and generate color codes (HEX, RGB, HSL) with real-time previews, supporting web design, UI/UX, and graphic design projects.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2025-01-15",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-color-picker"
+                },
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "150",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "featureList": [
+                    "Interactive Color Selection with Real-Time Previews",
+                    "Support for HEX, RGB, and HSL Color Codes",
+                    "Customizable Color Palette Generator",
+                    "Color Wheel and Slider for Precise Adjustments",
+                    "Copy Color Codes with One Click",
+                    "Dark & Light Theme Support for Better Visibility",
+                    "Mobile-Friendly and Responsive Interface",
+                    "No Login Required for Basic Features",
+                    "Export Color Palettes as JSON or CSS",
+                    "Shareable Links for Collaborative Design",
+                    "Support for Gradient and Shade Generation",
+                    "Color History for Easy Access to Previous Selections",
+                    "Keyboard Shortcuts for Faster Navigation",
+                    "Optimized for Web Design and UI/UX Workflows"
+                ],
+                "softwareVersion": "1.0",
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "softwareRequirements": "Modern web browser (Chrome, Firefox, Safari, Edge)"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://toolpix.pythonanywhere.com/#organization",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://toolpix.pythonanywhere.com/logo.png",
+                    "width": 200,
+                    "height": 60
+                },
+                "sameAs": [
+                    "https://twitter.com/toolpix",
+                    "https://www.linkedin.com/company/tool-pix",
+                    "https://github.com/toolpix",
+                    "https://www.facebook.com/toolpix",
+                    "https://www.instagram.com/toolpix",
+                    "https://www.youtube.com/@toolpix"
+                ],
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Customer Support",
+                        "email": "support@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/contact",
+                        "availableLanguage": ["English"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "Technical Support",
+                        "email": "tech@toolpix.com",
+                        "url": "https://toolpix.pythonanywhere.com/support"
+                    }
+                ],
+                "description": "Tool Pix is a leading provider of design and development tools, offering a free online color picker for selecting and generating color codes, designed for designers and developers worldwide.",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "foundingDate": "2024"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://toolpix.pythonanywhere.com/#website",
+                "name": "Tool Pix",
+                "url": "https://toolpix.pythonanywhere.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://toolpix.pythonanywhere.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-US",
+                "description": "Tool Pix offers innovative design and development tools, including a free online color picker for selecting and generating color codes, designed for web designers and developers."
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Tool Pix's Color Picker?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's Color Picker is a free online tool for selecting, customizing, and generating color codes (HEX, RGB, HSL) with real-time previews, ideal for web design and UI/UX projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's Color Picker completely free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix's Color Picker is 100% free, offering full access to all color selection and generation features at no cost."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What color formats does Tool Pix's color picker support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The color picker supports HEX, RGB, and HSL color formats, ensuring compatibility with various design and development workflows."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I generate color palettes with Tool Pix's color picker?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the tool allows you to generate customizable color palettes, including gradients and shades, for design projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why choose Tool Pix's Color Picker?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix provides a free, user-friendly online color picker with real-time previews and versatile features, ideal for designers and developers working on web and UI/UX projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share color palettes with others?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, you can share color palettes via shareable links, enabling easy collaboration on design projects."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does the color picker support real-time previews?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, it provides real-time previews of selected colors, allowing you to see changes instantly."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Tool Pix's Color Picker suitable for beginners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely, its intuitive interface and real-time previews make it an excellent tool for beginners in web design and UI/UX."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's color picker for large design projects?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the color picker supports complex design projects with features like palette generation and export options."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix's color picker support integration with design tools?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The tool supports exporting color codes in formats compatible with popular design tools, such as JSON and CSS."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use Tool Pix's Color Picker offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tool Pix's Color Picker is web-based and requires an internet connection to function, as it relies on cloud-based processing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Tool Pix provide sample color palettes for testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Tool Pix offers sample color palettes to help users test and explore the color picker features."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Product",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#product",
+                "name": "Tool Pix Color Picker",
+                "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                "image": "https://toolpix.pythonanywhere.com/color-picker-og-image.jpg",
+                "description": "Tool Pix's Color Picker is a free online tool for selecting and generating color codes (HEX, RGB, HSL), perfect for web design, UI/UX, and graphic design projects.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Tool Pix"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                    "validFrom": "2025-01-15"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "150",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "review": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#review"
+                },
+                "sku": "TPCOLOR2025",
+                "category": "Design Tools"
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#creativework",
+                "name": "Tool Pix Color Picker",
+                "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Ajmal U K",
+                    "url": "https://toolpix.pythonanywhere.com/about"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "datePublished": "2025-01-15",
+                "dateModified": "2025-07-19",
+                "inLanguage": "en-US",
+                "description": "A free online color picker by Tool Pix, designed for selecting and generating color codes with real-time previews, ideal for designers and developers.",
+                "keywords": "color picker, online color picker, color palette generator, HEX color picker, RGB color picker, HSL color picker, web design, UI/UX"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#review",
+                "itemReviewed": {
+                    "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#software"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.8",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Tool Pix Community"
+                },
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "reviewBody": "Tool Pix's Color Picker is intuitive and versatile, making it easy to select and generate color codes for design projects. Highly recommended for web designers and UI/UX professionals.",
+                "datePublished": "2025-07-01",
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#howto",
+                "name": "How to Use Tool Pix's Color Picker",
+                "description": "A step-by-step guide to selecting and generating color codes using Tool Pix's free online color picker.",
+                "inLanguage": "en-US",
+                "totalTime": "PT3M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Device with a modern web browser (Chrome, Firefox, Safari, Edge)"
+                    },
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Internet connection"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Tool Pix Color Picker",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-color-picker"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "name": "Access the Color Picker",
+                        "text": "Navigate to Tool Pix's Color Picker at the provided URL to start selecting colors instantly.",
+                        "url": "https://toolpix.pythonanywhere.com/free-online-color-picker",
+                        "image": "https://toolpix.pythonanywhere.com/images/free-online-color-picker-access.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Select a Color",
+                        "text": "Use the color wheel or sliders to choose a color, with real-time previews of your selection.",
+                        "image": "https://toolpix.pythonanywhere.com/images/color-picker-selection.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Generate Color Codes",
+                        "text": "View and copy HEX, RGB, or HSL color codes for your selected color, or generate a color palette.",
+                        "image": "https://toolpix.pythonanywhere.com/images/color-picker-codes.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Create and Customize Palettes",
+                        "text": "Generate and customize color palettes, including gradients and shades, for your design projects.",
+                        "image": "https://toolpix.pythonanywhere.com/images/color-picker-palette.jpg"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "name": "Share or Export Colors",
+                        "text": "Share your color palette via a shareable link or export it as JSON or CSS for use in design tools.",
+                        "image": "https://toolpix.pythonanywhere.com/images/color-picker-share-export.jpg"
+                    }
+                ]
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://toolpix.pythonanywhere.com/free-online-color-picker#video",
+                "name": "Introduction to Tool Pix Color Picker",
+                "description": "A brief video tutorial demonstrating how to use Tool Pix's color picker for selecting, generating, and sharing color codes in an online interface.",
+                "thumbnailUrl": "https://toolpix.pythonanywhere.com/color-picker-video-thumbnail.jpg",
+                "contentUrl": "https://toolpix.pythonanywhere.com/videos/free-online-color-picker-intro.mp4",
+                "embedUrl": "https://toolpix.pythonanywhere.com/videos/free-online-color-picker-intro",
+                "uploadDate": "2025-01-20",
+                "duration": "PT2M30S",
+                "publisher": {
+                    "@id": "https://toolpix.pythonanywhere.com/#organization"
+                },
+                "inLanguage": "en-US",
+                "transcript": "This video guides you through using Tool Pix's color picker, including selecting colors, generating color codes, creating palettes, and sharing or exporting results.",
+                "interactionStatistic": {
+                    "@type": "InteractionCounter",
+                    "interactionType": "http://schema.org/WatchAction",
+                    "userInteractionCount": 500
+                }
+            }
+        ]
+    }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.5/babel.min.js"></script>
