@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, send_from_directory
 from flask_compress import Compress
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -37,7 +37,7 @@ def guides():
 
 
 
-#code-editors
+#ai-code-editors
 @app.route('/free-online-ai-python-compiler')
 def python():
     return render_template('code-editors/python.html')
@@ -79,6 +79,42 @@ def markdown_editor():
     return render_template('code-editors/markdown-editor.html')
 
 
+
+#code-editors
+@app.route('/python-compiler')
+def opython():
+    return render_template('normal-compilers/opython.html')
+
+@app.route('/java-compiler')
+def ojava():
+    return render_template('normal-compilers/ojava.html')
+
+@app.route('/c-compiler')
+def oc():
+    return render_template('normal-compilers/oc.html')
+
+@app.route('/cpp-compiler')
+def ocpp():
+    return render_template('normal-compilers/ocpp.html')
+
+@app.route('/javascript-editor')
+def ojs():
+    return render_template('normal-compilers/ojs.html')
+
+@app.route('/html-editor')
+def ohtml():
+    return render_template('normal-compilers/ohtml.html')
+
+@app.route('/sql-editor')
+def osql():
+    return render_template('normal-compilers/osql.html')
+
+@app.route('/online-text-editor')
+def otext_editor():
+    return render_template('normal-compilers/otext-editor.html')
+
+
+
 #coding-tools
 @app.route('/free-online-json-formatter')
 def json_formatter():
@@ -113,9 +149,12 @@ def xml_beautifier():
     return render_template('coding-tools/xml-beautifier.html')
 
 
+#Utility Tools
+
+
 @app.route('/free-online-color-picker')
-def color_picker():
-    return render_template('utility-tools/color-picker.html')
+def cp():
+    return render_template('utility-tools/c-p.html')
 
 @app.route('/free-online-favicon-generator')
 def favicon_generator():
@@ -136,6 +175,10 @@ def url_encoder_decoder():
 @app.route('/convert-url-to-qr-code-online')
 def url_to_qr():
     return render_template('utility-tools/url-to-qr-code-generator.html')
+
+@app.route('/temp-mail')
+def temp_mail():
+    return render_template('utility-tools/temp-mail-generator.html')
 
 
 

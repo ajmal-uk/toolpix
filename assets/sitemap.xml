@@ -23,6 +23,7 @@
       <image:title>Code, Compile and Convert Online</image:title>
     </image:image>
   </url>
+
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-python-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-java-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-c-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
@@ -44,6 +45,19 @@
   <url><loc>https://toolpix.pythonanywhere.com/convert-qr-to-url-online</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/convert-url-to-qr-code-online</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/free-online-favicon-generator</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.70</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/temp-mail</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+
+  <url><loc>https://toolpix.pythonanywhere.com/python-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/java-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/c-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/cpp-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/javascript-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/html-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/sql-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/php-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/online-text-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+
+  <!-- Static pages -->
   <url><loc>https://toolpix.pythonanywhere.com/about</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/contact</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
   <url><loc>https://toolpix.pythonanywhere.com/guides</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
