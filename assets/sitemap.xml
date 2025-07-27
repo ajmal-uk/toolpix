@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
   <url>
     <loc>https://toolpix.pythonanywhere.com/</loc>
     <lastmod>2025-07-10T07:29:07+00:00</lastmod>
@@ -24,43 +21,57 @@
     </image:image>
   </url>
 
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-python-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-java-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-c-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-php-online-ai-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-html-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-sql-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-text-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-markdown-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-json-formatter</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-css-obfuscator</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-xml-beautifier</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-code-diff-tool</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-regex-tester</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-base64-encoder</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-url-encoder-decoder</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-qr-code-scanner</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/convert-qr-to-url-online</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/convert-url-to-qr-code-online</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.75</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/free-online-favicon-generator</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.70</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/temp-mail</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+  <!-- Static Pages -->
+  <url><loc>https://toolpix.pythonanywhere.com/about</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/contact</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/terms</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/privacy</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/faq</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/guides</loc><priority>0.80</priority></url>
 
-  <url><loc>https://toolpix.pythonanywhere.com/python-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/java-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/c-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/cpp-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/javascript-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/html-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/sql-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/php-compiler</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/online-text-editor</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.80</priority></url>
+  <!-- AI Online Compilers -->
+  <url><loc>https://toolpix.pythonanywhere.com/ai-online-compilers</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-python-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-java-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-c-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-cpp-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-javascript-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-html-editor</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-ai-sql-editor</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-php-online-ai-compiler</loc><priority>0.80</priority></url>
 
-  <!-- Static pages -->
-  <url><loc>https://toolpix.pythonanywhere.com/about</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/contact</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/guides</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.60</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/terms</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.50</priority></url>
-  <url><loc>https://toolpix.pythonanywhere.com/privacy</loc><lastmod>2025-07-23T14:26:57+00:00</lastmod><priority>0.50</priority></url>
+  <!-- Code Editors -->
+  <url><loc>https://toolpix.pythonanywhere.com/online-compilers</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/python-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/java-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/c-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/cpp-compiler</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/javascript-editor</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/html-editor</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/sql-editor</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/online-text-editor</loc><priority>0.80</priority></url>
+
+  <!-- AI + Markdown/Text Editors -->
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-text-editor</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-markdown-editor</loc><priority>0.64</priority></url>
+
+  <!-- Coding Tools -->
+  <url><loc>https://toolpix.pythonanywhere.com/coding-tools</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-json-formatter</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-base64-encoder</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-css-obfuscator</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-code-diff-tool</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-regex-tester</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-xml-beautifier</loc><priority>0.64</priority></url>
+
+  <!-- Utility Tools -->
+  <url><loc>https://toolpix.pythonanywhere.com/utility-tools</loc><priority>0.80</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-color-picker</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-favicon-generator</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-qr-code-scanner</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/convert-qr-to-url-online</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/free-online-url-encoder-decoder</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/convert-url-to-qr-code-online</loc><priority>0.64</priority></url>
+  <url><loc>https://toolpix.pythonanywhere.com/temp-mail</loc><priority>0.64</priority></url>
+
 </urlset>
