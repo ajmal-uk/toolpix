@@ -449,7 +449,7 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -473,12 +473,47 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            /* Light theme variables */
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -542,7 +577,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -627,6 +662,10 @@
             color: var(--accent);
         }
 
+        .comment {
+            color: #5c6370;
+        }
+
         .controls {
             display: flex;
             gap: 12px;
@@ -688,6 +727,16 @@
 
         .editor-section {
             border-right: 1px solid var(--border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -1001,11 +1050,13 @@
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
         .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
+            color: var(--text-light);
         }
 
         .seo-content li {
@@ -1018,6 +1069,7 @@
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9em;
+            color: var(--text-light);
         }
 
         .seo-content pre {
@@ -1028,6 +1080,7 @@
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
             position: relative;
+            color: var(--text-light);
         }
 
         .try-out-btn {
@@ -1067,11 +1120,13 @@
 
         .note-box p {
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box ul {
             padding-left: 20px;
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box li {
@@ -1234,6 +1289,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1283,10 +1350,16 @@
                 touch-action: manipulation !important;
             }
         }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -1361,14 +1434,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1380,8 +1449,20 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1414,18 +1495,18 @@ int main() {
             </div>
 
             <div class="ad-container horizontal">
-                
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
                 <h2>Online C++ Compiler - Write, Run & Share C++ Code Instantly</h2>
-                <p>Our <strong>online C++ compiler</strong> empowers developers to write, compile, and execute C++ programs directly in the browser. Whether you're a beginner learning C++ or an advanced developer building performance-critical applications, our tool offers a robust, real-time coding environment with syntax highlighting and debugging support.</p>
+                <p>Our <strong>online C++ compiler</strong> enables developers to write, compile, and execute C++ programs directly in the browser. Perfect for beginners learning C++ or professionals developing high-performance applications, our tool provides a seamless coding experience with syntax highlighting and real-time output.</p>
 
                 <h3>Why Choose Our C++ Compiler?</h3>
                 <ul>
-                    <li><strong>Zero Setup</strong>: No need to install compilers or configure environments—start coding instantly.</li>
+                    <li><strong>Zero Setup</strong>: No need to install compilers like G++—start coding instantly.</li>
                     <li><strong>High Performance</strong>: Fast compilation with an optimized backend for quick results.</li>
-                    <li><strong>Interactive Output</strong>: Real-time console output with support for user input via cin.</li>
+                    <li><strong>Interactive Output</strong>: Real-time console output with support for user input via <code>cin</code>.</li>
                     <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
                     <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
                     <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
@@ -1433,14 +1514,15 @@ int main() {
                 </ul>
 
                 <div class="ad-container vertical">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Mastering C++ Programming</h3>
-                <p>C++, developed by Bjarne Stroustrup in 1985, is a powerful, general-purpose programming language known for its performance and flexibility. It’s widely used in systems programming, game development, and high-performance applications.</p>
+                <p>C++, developed by Bjarne Stroustrup in 1979, is an extension of C that adds object-oriented features, making it ideal for system programming, game development, and high-performance applications.</p>
 
                 <h4>Basic C++ Program Structure</h4>
                 <pre id="basic-structure">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1450,19 +1532,20 @@ int main() {
                 <button class="try-out-btn" data-code-id="basic-structure">Try It Out</button>
                 <p>Key elements of a C++ program:</p>
                 <ul>
-                    <li><code>#include &lt;iostream&gt;</code>: Includes input/output stream library.</li>
-                    <li><code>using namespace std;</code>: Avoids prefixing standard library elements with <code>std::</code>.</li>
+                    <li><code>#include <iostream></code>: Includes the input/output stream library.</li>
+                    <li><code>using namespace std;</code>: Avoids prefixing standard library names with <code>std::</code>.</li>
                     <li><code>int main()</code>: The program's entry point.</li>
                     <li><code>cout</code>: Outputs text to the console.</li>
+                    <li><code>return 0</code>: Indicates successful execution.</li>
                 </ul>
                 <div class="note-box">
                     <h4>Best Practice</h4>
-                    <p>Use <code>std::</code> explicitly or carefully scope namespaces to avoid naming conflicts in larger projects.</p>
+                    <p>Use <code>std::</code> explicitly instead of <code>using namespace std;</code> in large projects to avoid namespace pollution.</p>
                 </div>
 
                 <h3>Core C++ Concepts for All Levels</h3>
                 <h4>Variables and Data Types</h4>
-                <p>C++'s type system ensures robust data handling:</p>
+                <p>C++'s strong typing ensures robust data handling:</p>
                 <ul>
                     <li><code>int</code>: Integer type for whole numbers.</li>
                     <li><code>double</code>: Floating-point for decimals.</li>
@@ -1470,7 +1553,9 @@ int main() {
                     <li><code>string</code>: For text manipulation (requires <code>&lt;string&gt;</code>).</li>
                     <li><code>bool</code>: True/false values for logic.</li>
                 </ul>
-                <pre id="variables-example">#include <string>
+                <pre id="variables-example">#include <iostream>
+#include <string>
+
 using namespace std;
 
 int main() {
@@ -1479,7 +1564,7 @@ int main() {
     char grade = 'A';
     string name = "Alice";
     bool isActive = true;
-    cout << name << " is " << age << endl;
+    cout << "Name: " << name << ", Age: " << age << ", Price: " << price << ", Grade: " << grade << ", Active: " << isActive << endl;
     return 0;
 }</pre>
                 <button class="try-out-btn" data-code-id="variables-example">Try It Out</button>
@@ -1488,6 +1573,7 @@ int main() {
                 <p>Control program flow with these constructs:</p>
                 <h5>If-Else</h5>
                 <pre id="if-else-example">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1503,6 +1589,7 @@ int main() {
 
                 <h5>For Loop</h5>
                 <pre id="for-loop-example">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1515,6 +1602,7 @@ int main() {
 
                 <h5>While Loop</h5>
                 <pre id="while-loop-example">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1529,6 +1617,7 @@ int main() {
 
                 <h5>Switch Statement</h5>
                 <pre id="switch-example">#include <iostream>
+
 using namespace std;
 
 int main() {
@@ -1545,15 +1634,16 @@ int main() {
                 <button class="try-out-btn" data-code-id="switch-example">Try It Out</button>
 
                 <h3>Object-Oriented Programming (OOP)</h3>
-                <p>C++'s OOP principles enable modular, reusable code:</p>
+                <p>C++ supports OOP for modular, reusable code:</p>
                 <ul>
                     <li><strong>Classes and Objects</strong>: Create blueprints and instances.</li>
                     <li><strong>Inheritance</strong>: Extend classes for code reuse.</li>
                     <li><strong>Encapsulation</strong>: Secure data with access specifiers.</li>
-                    <li><strong>Polymorphism</strong>: Flexible function implementations.</li>
+                    <li><strong>Polymorphism</strong>: Flexible method implementations.</li>
                 </ul>
                 <pre id="oop-example">#include <iostream>
 #include <string>
+
 using namespace std;
 
 class Person {
@@ -1575,13 +1665,14 @@ int main() {
                 <button class="try-out-btn" data-code-id="oop-example">Try It Out</button>
                 <div class="note-box">
                     <h4>OOP Tip</h4>
-                    <p>Use <code>private</code> members with public methods to enforce encapsulation and maintain data integrity.</p>
+                    <p>Use <code>private</code> for data members and provide public getters/setters for encapsulation.</p>
                 </div>
 
                 <h3>Handling User Input</h3>
-                <p>The <code>cin</code> stream simplifies user interaction:</p>
+                <p>Use <code>cin</code> for user input:</p>
                 <pre id="input-example">#include <iostream>
 #include <string>
+
 using namespace std;
 
 int main() {
@@ -1594,41 +1685,39 @@ int main() {
                 <button class="try-out-btn" data-code-id="input-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Input Best Practice</h4>
-                    <p>Use <code>getline(cin, name)</code> for strings to handle spaces correctly. Validate input to prevent errors.</p>
+                    <p>Use <code>getline(cin, str)</code> for strings to handle spaces correctly.</p>
                 </div>
 
-                <h3>Arrays and Standard Template Library (STL)</h3>
-                <p>Manage data with arrays or STL containers:</p>
-                <pre id="array-example">#include <iostream>
+                <h3>Standard Template Library (STL)</h3>
+                <p>The STL provides powerful data structures and algorithms:</p>
+                <pre id="stl-example">#include <iostream>
 #include <vector>
+#include <string>
+
 using namespace std;
 
 int main() {
-    // Array
-    int numbers[] = {1, 2, 3, 4, 5};
-    for (int num : numbers) {
-        cout << num << endl;
-    }
-
-    // Vector
     vector<string> names = {"Alice", "Bob"};
     for (const auto& name : names) {
         cout << name << endl;
     }
     return 0;
 }</pre>
-                <button class="try-out-btn" data-code-id="array-example">Try It Out</button>
+                <button class="try-out-btn" data-code-id="stl-example">Try It Out</button>
 
                 <h3>Exception Handling</h3>
-                <p>Handle errors gracefully with try-catch:</p>
+                <p>Handle errors with try-catch:</p>
                 <pre id="exception-example">#include <iostream>
+
 using namespace std;
 
 int main() {
     try {
-        int result = 10 / 0;
-    } catch (const std::exception& e) {
-        cout << "Error: Division by zero" << endl;
+        int divisor = 0;
+        if (divisor == 0) throw runtime_error("Division by zero");
+        cout << "Result: " << (10 / divisor) << endl;
+    } catch (const runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
     }
     return 0;
 }</pre>
@@ -1638,17 +1727,18 @@ int main() {
                 <p>Perform file operations with <code>fstream</code> (note: file operations may be limited in online environments):</p>
                 <pre id="file-example">#include <iostream>
 #include <fstream>
+
 using namespace std;
 
 int main() {
-    try {
-        ofstream writer("output.txt");
-        writer << "Hello, C++!";
-        writer.close();
-        cout << "File written successfully" << endl;
-    } catch (const std::exception& e) {
-        cout << "Error: " << e.what() << endl;
+    ofstream file("output.txt");
+    if (!file.is_open()) {
+        cout << "Error opening file!" << endl;
+        return 1;
     }
+    file << "Hello, C++!";
+    file.close();
+    cout << "File written successfully" << endl;
     return 0;
 }</pre>
                 <button class="try-out-btn" data-code-id="file-example">Try It Out</button>
@@ -1656,23 +1746,23 @@ int main() {
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
                     <div class="faq-question">How do I handle user input in C++?</div>
-                    <p>Use <code>cin</code> for basic input or <code>getline</code> for strings. Always validate input to prevent errors.</p>
+                    <p>Use <code>cin</code> for basic input and <code>getline</code> for strings to handle spaces.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">C++ vs. Java: What's the difference?</div>
-                    <p>C++ offers low-level control and better performance, while Java provides platform independence and automatic memory management.</p>
+                    <div class="faq-question">C++ vs. C: What's the difference?</div>
+                    <p>C++ adds object-oriented programming, STL, and exception handling, while C is procedural and lightweight.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How do I compile C++ locally?</div>
-                    <p>Install a compiler like g++, save code as <code>main.cpp</code>, then run <code>g++ main.cpp -o main</code> and <code>./main</code>.</p>
+                    <p>Install G++, save code as <code>main.cpp</code>, then run <code>g++ main.cpp -o main</code> and <code>./main</code>.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Why choose C++?</div>
-                    <p>C++'s performance, control, and versatility make it ideal for systems programming, game development, and high-performance applications.</p>
+                    <p>C++ offers high performance, OOP, and STL, making it ideal for games, systems, and performance-critical applications.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How can I debug C++ code?</div>
-                    <p>Use print statements, gdb, or our compiler's real-time error output to identify and fix issues.</p>
+                    <p>Use <code>cout</code> for debugging, or tools like GDB, and our compiler's real-time error output.</p>
                 </div>
 
                 <h3>Advanced C++ Concepts</h3>
@@ -1680,6 +1770,7 @@ int main() {
                     <li>
                         <strong>Templates</strong>: Enable generic programming.
                         <pre id="template-example">#include <iostream>
+
 using namespace std;
 
 template <typename T>
@@ -1688,8 +1779,8 @@ T add(T a, T b) {
 }
 
 int main() {
-    cout << add(5, 3) << endl;
-    cout << add(5.5, 3.3) << endl;
+    cout << "Sum: " << add(3, 4) << endl;
+    cout << "Sum: " << add(3.5, 4.5) << endl;
     return 0;
 }</pre>
                         <button class="try-out-btn" data-code-id="template-example">Try It Out</button>
@@ -1698,46 +1789,28 @@ int main() {
                         <strong>Smart Pointers</strong>: Manage memory automatically.
                         <pre id="smart-pointer-example">#include <iostream>
 #include <memory>
+
 using namespace std;
 
 int main() {
-    unique_ptr<int> ptr = make_unique<int>(42);
-    cout << *ptr << endl;
+    unique_ptr<int> ptr = make_unique<int>(10);
+    cout << "Value: " << *ptr << endl;
     return 0;
 }</pre>
                         <button class="try-out-btn" data-code-id="smart-pointer-example">Try It Out</button>
-                    </li>
-                    <li>
-                        <strong>Multithreading</strong>: Execute tasks concurrently.
-                        <pre id="thread-example">#include <iostream>
-#include <thread>
-using namespace std;
-
-void task() {
-    for (int i = 0; i < 5; i++) {
-        cout << "Thread running: " << i << endl;
-        this_thread::sleep_for(chrono::milliseconds(500));
-    }
-}
-
-int main() {
-    thread t(task);
-    t.join();
-    return 0;
-}</pre>
-                        <button class="try-out-btn" data-code-id="thread-example">Try It Out</button>
                     </li>
                     <li>
                         <strong>Lambda Expressions</strong>: Streamline functional programming.
                         <pre id="lambda-example">#include <iostream>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
 int main() {
     vector<int> numbers = {1, 2, 3};
     for_each(numbers.begin(), numbers.end(), [](int n) {
-        cout << n << endl;
+        cout << "Number: " << n << endl;
     });
     return 0;
 }</pre>
@@ -1746,18 +1819,17 @@ int main() {
                 </ul>
                 <div class="note-box">
                     <h4>Advanced Tip</h4>
-                    <p>Use smart pointers and modern C++ features like <code>auto</code> and lambdas for safer, more concise code.</p>
+                    <p>Use smart pointers like <code>unique_ptr</code> to prevent memory leaks in modern C++.</p>
                 </div>
 
                 <h3>Common C++ Pitfalls and Solutions</h3>
                 <div class="note-box">
                     <h4>Watch Out!</h4>
                     <ul>
-                        <li><strong>Memory Leaks</strong>: Use smart pointers to manage dynamic memory.</li>
-                        <li><strong>Namespace Conflicts</strong>: Avoid <code>using namespace std;</code> in headers.</li>
+                        <li><strong>Memory Leaks</strong>: Use smart pointers or ensure manual deletion with <code>delete</code>.</li>
+                        <li><strong>Uninitialized Variables</strong>: Always initialize variables before use.</li>
                         <li><strong>Missing Break</strong>: Include <code>break</code> in switch cases to avoid fall-through.</li>
-                        <li><strong>Undefined Behavior</strong>: Avoid uninitialized variables and dangling pointers.</li>
-                        <li><strong>Buffer Overflows</strong>: Use STL containers like <code>vector</code> for safer array handling.</li>
+                        <li><strong>Namespace Pollution</strong>: Avoid <code>using namespace std;</code> in headers.</li>
                     </ul>
                 </div>
 
@@ -1765,14 +1837,14 @@ int main() {
                 <p>Key components for powerful development:</p>
                 <ul>
                     <li><code>&lt;iostream&gt;</code>: Input/output operations.</li>
-                    <li><code>&lt;vector&gt;</code>: Dynamic arrays.</li>
-                    <li><code>&lt;string&gt;</code>: String manipulation.</li>
-                    <li><code>&lt;algorithm&gt;</code>: Common algorithms like sort and find.</li>
+                    <li><code>&lt;vector&gt;</code>, <code>&lt;map&gt;</code>: STL containers.</li>
+                    <li><code>&lt;algorithm&gt;</code>: Sorting, searching, etc.</li>
+                    <li><code>&lt;memory&gt;</code>: Smart pointers.</li>
                     <li><code>&lt;thread&gt;</code>: Multithreading support.</li>
                 </ul>
 
                 <div class="ad-container horizontal">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Learning Resources for C++</h3>
@@ -1781,8 +1853,8 @@ int main() {
                     <ul>
                         <li><strong>Beginner Books</strong>: "C++ Primer" by Stanley B. Lippman.</li>
                         <li><strong>Advanced Books</strong>: "Effective C++" by Scott Meyers.</li>
-                        <li><strong>Courses</strong>: C++ Tutorials on learncpp.com, Coursera, Udemy.</li>
-                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codeforces.</li>
+                        <li><strong>Courses</strong>: C++ tutorials on Coursera, Udemy.</li>
+                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, Codeforces.</li>
                         <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or C++ forums.</li>
                     </ul>
                 </div>
@@ -1790,7 +1862,7 @@ int main() {
 
             <footer class="footer">
                 <div class="footer-links">
-                    <a href="/">Home</a>          
+                    <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
@@ -1836,6 +1908,7 @@ int main() {
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1848,6 +1921,7 @@ int main() {
             let currentPromptIndex = 0;
             let isRunning = false;
             let expectedInputCount = 0;
+            let currentTheme = "dracula";
 
             updateStatus("ready");
 
@@ -1856,8 +1930,24 @@ int main() {
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1900,8 +1990,15 @@ int main() {
                 }).join('\n');
             }
 
+            function parseCode(code) {
+                return {
+                    files: [{ name: 'main.cpp', content: code }],
+                    mainFile: 'main.cpp'
+                };
+            }
+
             function countExpectedInputs(code) {
-                const inputRegex = /\b(std::)?cin\s*>>/g;
+                const inputRegex = /\bcin\s*>>/g;
                 let count = 0;
                 let match;
                 while ((match = inputRegex.exec(code)) !== null) {
@@ -1911,11 +2008,11 @@ int main() {
             }
 
             function extractPrompts(code) {
-                const promptRegex = /(std::)?cout\s*<<\s*["'](.*?)["']\s*<<\s*(std::)?endl\s*;/g;
+                const promptRegex = /cout\s*<<\s*["'](.*?)["']\s*<<\s*(?:endl|["']\\n["'])\s*;/g;
                 let prompts = [];
                 let match;
                 while ((match = promptRegex.exec(code)) !== null) {
-                    prompts.push(match[2]);
+                    prompts.push(match[1]);
                 }
                 return prompts;
             }
@@ -1990,7 +2087,7 @@ int main() {
 
             function updateOutput() {
                 let outputHtml = currentOutput.map(line => {
-                    if (line.includes('error:') || line.includes('exception')) {
+                    if (line.includes('error:') || line.includes('Error')) {
                         return `<span style="color: #f87171;">${preprocessOutput(line)}</span>`;
                     } else if (line.includes('warning:')) {
                         return `<span style="color: #facc15;">${preprocessOutput(line)}</span>`;
@@ -2004,13 +2101,15 @@ int main() {
             async function executeCode(code, inputs) {
                 updateStatus("running");
                 try {
+                    const { files } = parseCode(code);
+
                     const response = await fetch("https://emkc.org/api/v2/piston/execute", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             language: "cpp",
                             version: "10.2.0",
-                            files: [{ name: "main.cpp", content: code }],
+                            files: files,
                             stdin: inputs.join("\n"),
                             run_timeout: 10000
                         })

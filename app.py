@@ -38,6 +38,10 @@ def guides():
 
 
 #ai-code-editors
+@app.route('/ai-online-compilers')
+def ai_code_editors():
+    return render_template('code-editors/index.html')
+
 @app.route('/free-online-ai-python-compiler')
 def python():
     return render_template('code-editors/python.html')
@@ -81,6 +85,10 @@ def markdown_editor():
 
 
 #code-editors
+@app.route('/online-compilers')
+def online_compilers():
+    return render_template('normal-compilers/index.html')
+
 @app.route('/python-compiler')
 def opython():
     return render_template('normal-compilers/opython.html')
@@ -116,6 +124,10 @@ def otext_editor():
 
 
 #coding-tools
+@app.route('/coding-tools')
+def coding_tools():
+    return render_template('coding-tools/index.html')
+
 @app.route('/free-online-json-formatter')
 def json_formatter():
     return render_template('coding-tools/json-formatter.html')
@@ -150,7 +162,9 @@ def xml_beautifier():
 
 
 #Utility Tools
-
+@app.route('/utility-tools')
+def utility_tools():
+    return render_template('utility-tools/index.html')
 
 @app.route('/free-online-color-picker')
 def cp():

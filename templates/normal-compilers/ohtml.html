@@ -449,13 +449,14 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
 
         :root {
+            /* Dark Theme (Dracula) */
             --primary: #6e48aa;
             --primary-dark: #4b3080;
             --secondary: #9d50bb;
@@ -473,6 +474,59 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            /* Light Theme */
+            --primary-light: #6e48aa;
+            --primary-dark-light: #5a3a8b;
+            --secondary-light: #9d50bb;
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --accent-light: #2aa198;
+            --border-light: #cccccc;
+            --success-light: #2e7d32;
+            --error-light: #d32f2f;
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #e8eaf6;
+            --note-border-light: #5a48aa;
+            /* Current Theme Variables */
+            --current-primary: var(--primary);
+            --current-primary-dark: var(--primary-dark);
+            --current-secondary: var(--secondary);
+            --current-bg-dark: var(--bg-dark);
+            --current-bg-darker: var(--bg-darker);
+            --current-text-light: var(--text-light);
+            --current-text-lighter: var(--text-lighter);
+            --current-accent: var(--accent);
+            --current-border: var(--border);
+            --current-success: var(--success);
+            --current-error: var(--error);
+            --current-shadow: var(--shadow);
+            --current-terminal-bg: var(--terminal-bg);
+            --current-terminal-text: var(--terminal-text);
+            --current-note-bg: var(--note-bg);
+            --current-note-border: var(--note-border);
+        }
+
+        [data-theme="light"] {
+            --current-primary: var(--primary-light);
+            --current-primary-dark: var(--primary-dark-light);
+            --current-secondary: var(--secondary-light);
+            --current-bg-dark: var(--bg-dark-light);
+            --current-bg-darker: var(--bg-darker-light);
+            --current-text-light: var(--text-light-light);
+            --current-text-lighter: var(--text-lighter-light);
+            --current-accent: var(--accent-light);
+            --current-border: var(--border-light);
+            --current-success: var(--success-light);
+            --current-error: var(--error-light);
+            --current-shadow: var(--shadow-light);
+            --current-terminal-bg: var(--terminal-bg-light);
+            --current-terminal-text: var(--terminal-text-light);
+            --current-note-bg: var(--note-bg-light);
+            --current-note-border: var(--note-border-light);
         }
 
         * {
@@ -483,8 +537,8 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--current-bg-dark);
+            color: var(--current-text-light);
             min-height: 100vh;
             line-height: 1.6;
         }
@@ -498,34 +552,34 @@
 
         .sidebar {
             width: 280px;
-            background: var(--bg-darker);
-            border-right: 1px solid var(--border);
+            background: var(--current-bg-darker);
+            border-right: 1px solid var(--current-border);
             padding: 20px 0;
             overflow-y: auto;
             transition: transform 0.3s ease;
             position: fixed;
             height: 100vh;
             z-index: 100;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .sidebar-header {
             padding: 0 20px 20px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--current-border);
             margin-bottom: 15px;
         }
 
         .sidebar-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-lighter);
+            color: var(--current-text-lighter);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .sidebar-title i {
-            color: var(--accent);
+            color: var(--current-accent);
         }
 
         .compiler-list {
@@ -555,8 +609,8 @@
         }
 
         .compiler-item.active {
-            background: var(--primary);
-            color: var(--text-lighter);
+            background: var(--current-primary);
+            color: var(--current-text-lighter);
         }
 
         .compiler-icon {
@@ -574,14 +628,14 @@
 
         .sidebar-toggle {
             display: none;
-            background: var(--primary);
-            color: white;
+            background: var(--current-primary);
+            color: var(--current-text-lighter);
             border: none;
             border-radius: 6px;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .sidebar-overlay {
@@ -606,25 +660,25 @@
         .header {
             padding: 15px 24px;
             background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--current-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             max-width: 100%;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--text-lighter);
+            color: var(--current-text-lighter);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .title i {
-            color: var(--accent);
+            color: var(--current-accent);
         }
 
         .controls {
@@ -643,24 +697,24 @@
             align-items: center;
             gap: 6px;
             font-size: 14px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: white;
+            background: var(--current-primary);
+            color: var(--current-text-lighter);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: var(--current-primary-dark);
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border: 1px solid var(--border);
+            color: var(--current-text-light);
+            border: 1px solid var(--current-border);
         }
 
         .btn-secondary:hover {
@@ -687,7 +741,17 @@
         }
 
         .editor-section {
-            border-right: 1px solid var(--border);
+            border-right: 1px solid var(--current-border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--current-border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -715,13 +779,13 @@
         }
 
         .CodeMirror-gutters {
-            background: var(--bg-darker);
-            border-right: 1px solid var(--border);
-            color: var(--text-light);
+            background: var(--current-bg-darker);
+            border-right: 1px solid var(--current-border);
+            color: var(--current-text-light);
         }
 
         .CodeMirror-linenumber {
-            color: var(--text-light);
+            color: var(--current-text-light);
             padding: 0 5px;
             font-size: 12px;
             min-width: 24px;
@@ -757,13 +821,13 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--current-border);
             max-height: 100%;
             max-width: 100%;
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
-            background: var(--terminal-bg);
+            background: var(--current-terminal-bg);
             border-radius: 6px;
         }
 
@@ -773,7 +837,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--current-border);
             flex-shrink: 0;
             max-width: 100%;
         }
@@ -781,7 +845,7 @@
         .output-title {
             font-size: 1rem;
             font-weight: 500;
-            color: var(--terminal-text);
+            color: var(--current-terminal-text);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -802,7 +866,7 @@
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
-            color: var(--terminal-text);
+            color: var(--current-terminal-text);
             user-select: text !important;
             -webkit-user-select: text !important;
             -moz-user-select: text !important;
@@ -825,6 +889,25 @@
             white-space: pre-wrap;
         }
 
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--current-terminal-text);
+            border: 1px solid var(--current-border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
         .status-indicator {
             display: inline-block;
             width: 10px;
@@ -839,11 +922,11 @@
         }
 
         .status-success {
-            background-color: var(--success);
+            background-color: var(--current-success);
         }
 
         .status-error {
-            background-color: var(--error);
+            background-color: var(--current-error);
         }
 
         @keyframes pulse {
@@ -887,19 +970,19 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--primary);
-            color: white;
+            background: var(--current-primary);
+            color: var(--current-text-lighter);
             border: none;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
         }
 
         .mobile-run-btn:hover {
-            background: var(--primary-dark);
+            background: var(--current-primary-dark);
             transform: translateY(-2px);
         }
 
@@ -913,34 +996,34 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--current-primary);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--current-primary-dark);
         }
 
         .seo-content {
-            background: var(--bg-darker);
+            background: var(--current-bg-darker);
             padding: 40px 20px;
             margin: 0 auto;
         }
 
         .seo-content h2 {
-            color: var(--accent);
+            color: var(--current-accent);
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
 
         .seo-content h3 {
-            color: var(--text-lighter);
+            color: var(--current-text-lighter);
             margin: 25px 0 15px;
             font-size: 1.4rem;
         }
 
         .seo-content h4 {
-            color: var(--text-lighter);
+            color: var(--current-text-lighter);
             margin: 20px 0 10px;
             font-size: 1.2rem;
         }
@@ -981,33 +1064,33 @@
             display: inline-block;
             padding: 8px 16px;
             margin: 10px 0;
-            background: var(--primary);
-            color: var(--text-lighter);
+            background: var(--current-primary);
+            color: var(--current-text-lighter);
             border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.2s ease;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .try-out-btn:hover {
-            background: var(--primary-dark);
+            background: var(--current-primary-dark);
             transform: translateY(-1px);
         }
 
         .note-box {
-            background: var(--note-bg);
-            border: 1px solid var(--note-border);
+            background: var(--current-note-bg);
+            border: 1px solid var(--current-note-border);
             padding: 20px;
             margin: 20px 0;
             border-radius: 8px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--current-shadow);
         }
 
         .note-box h4 {
-            color: var(--accent);
+            color: var(--current-accent);
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
@@ -1027,7 +1110,7 @@
 
         .ad-container {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
+            border: 1px solid var(--current-border);
             padding: 15px;
             margin: 20px auto;
             text-align: center;
@@ -1059,22 +1142,22 @@
 
         .faq-item {
             margin-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--current-border);
             padding-bottom: 20px;
         }
 
         .faq-question {
             font-weight: 600;
-            color: var(--text-lighter);
+            color: var(--current-text-lighter);
             margin-bottom: 10px;
             font-size: 1.1rem;
         }
 
         .footer {
-            background: var(--bg-darker);
+            background: var(--current-bg-darker);
             padding: 30px 20px;
             text-align: center;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--current-border);
         }
 
         .footer-links {
@@ -1086,13 +1169,13 @@
         }
 
         .footer-links a {
-            color: var(--text-light);
+            color: var(--current-text-light);
             text-decoration: none;
             transition: color 0.2s;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--current-accent);
         }
 
         .copyright {
@@ -1107,7 +1190,7 @@
 
             .editor-section {
                 border-right: none;
-                border-bottom: 1px solid var(--border);
+                border-bottom: 1px solid var(--current-border);
                 height: 50vh;
             }
 
@@ -1181,6 +1264,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1208,6 +1303,12 @@
             #output {
                 line-height: 1.4;
                 font-size: 12px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
             }
         }
     </style>
@@ -1288,14 +1389,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1307,6 +1404,17 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code"><!DOCTYPE html>
 <html>
@@ -1350,6 +1458,11 @@
                                     <span class="status-indicator status-success"></span>
                                     Live Preview
                                 </h2>
+                                <button class="copy-btn tooltip" id="copy-output-btn">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy Output</span>
+                                    <span class="tooltip-text">Copy output to clipboard</span>
+                                </button>
                             </div>
                             <div class="output-content">
                                 <iframe id="output" sandbox="allow-scripts allow-same-origin"></iframe>
@@ -1360,7 +1473,7 @@
             </div>
 
             <div class="ad-container horizontal">
-                
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
@@ -1379,7 +1492,7 @@
                 </ul>
 
                 <div class="ad-container vertical">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Mastering HTML Programming</h3>
@@ -1445,17 +1558,17 @@
 
                 <h4>Forms</h4>
                 <p>Create interactive forms for user input:</p>
-                <pre id="form-example"><form action="/submit" method="post">
+                <pre id="form-example"><form>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
-    <button type="submit">Submit</button>
+    <button type="button" onclick="alert('Form submitted!')">Submit</button>
 </form></pre>
                 <button class="try-out-btn" data-code-id="form-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Form Tip</h4>
-                    <p>Always associate <code><label></code> with inputs using the <code>for</code> attribute for accessibility.</p>
+                    <p>Always associate <code><label></code> with inputs using the <code>for</code> attribute for accessibility. Avoid using form onSubmit due to sandbox restrictions.</p>
                 </div>
 
                 <h4>Adding CSS</h4>
@@ -1597,7 +1710,7 @@
                 </div>
 
                 <div class="ad-container horizontal">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
             </section>
 
@@ -1653,6 +1766,8 @@
             const mobileRunButton = document.getElementById("mobile-run-btn");
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
+            const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1660,6 +1775,7 @@
             const sidebarOverlay = document.getElementById("sidebar-overlay");
             const tryOutButtons = document.querySelectorAll(".try-out-btn");
 
+            let currentTheme = "dracula";
             updateStatus("ready");
             runCode();
 
@@ -1668,8 +1784,24 @@
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.documentElement.setAttribute("data-theme", currentTheme === "dracula" ? "dark" : "light");
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1677,7 +1809,14 @@
                     const codeElement = document.getElementById(codeId);
                     if (codeElement) {
                         const rawCode = codeElement.textContent.trim();
-                        editor.setValue(rawCode);
+                        const hasDoctype = /<!DOCTYPE html>/i.test(rawCode);
+                        let finalCode = rawCode;
+
+                        if (!hasDoctype) {
+                            finalCode = `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n${rawCode}\n</body>\n</html>`;
+                        }
+
+                        editor.setValue(finalCode);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         editor.focus();
                         runCode();
@@ -1726,6 +1865,10 @@
                 } catch (error) {
                     updateStatus("error");
                     console.error("Error rendering HTML:", error);
+                    const iframeDoc = outputElement.contentDocument || outputElement.contentWindow.document;
+                    iframeDoc.open();
+                    iframeDoc.write(`<pre style="color: #f87171; padding: 20px;">Error: ${error.message}</pre>`);
+                    iframeDoc.close();
                 }
             }
 
@@ -1739,6 +1882,28 @@
                     }, 2000);
                 }).catch(err => {
                     console.error('Failed to copy: ', err);
+                    copyButton.innerHTML = '<i class="fas fa-times"></i> <span>Failed to Copy</span>';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '<i class="far fa-copy"></i> <span>Copy</span>';
+                    }, 2000);
+                });
+            }
+
+            function copyOutputToClipboard() {
+                const iframeDoc = outputElement.contentDocument || outputElement.contentWindow.document;
+                const outputText = iframeDoc.documentElement.outerHTML;
+                navigator.clipboard.writeText(outputText).then(() => {
+                    const originalText = copyOutputButton.innerHTML;
+                    copyOutputButton.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                    setTimeout(() => {
+                        copyOutputButton.innerHTML = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy output: ', err);
+                    copyOutputButton.innerHTML = '<i class="fas fa-times"></i> <span>Failed to Copy</span>';
+                    setTimeout(() => {
+                        copyOutputButton.innerHTML = '<i class="far fa-copy"></i> <span>Copy Output</span>';
+                    }, 2000);
                 });
             }
 
@@ -1757,6 +1922,7 @@
             mobileRunButton.addEventListener('click', runCode);
             clearButton.addEventListener('click', clearEditor);
             copyButton.addEventListener('click', copyToClipboard);
+            copyOutputButton.addEventListener('click', copyOutputToClipboard);
 
             editor.on('focus', () => {
                 console.log('Editor focused');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tool Pix's free online favicon generator: create custom favicons from images, text, or emojis in multiple sizes (16x16, 32x32, 96x96, and more). Ideal for web developers and designers.">
-    <meta name="keywords" content="online favicon generator, favicon creator, free favicon tool, favicon maker, Tool Pix, website icons, favicon sizes">
+    <meta name="keywords" content="online favicon generator, favicon Frankie creator, free favicon tool, favicon maker, Tool Pix, website icons, favicon sizes">
     <meta name="author" content="Ajmal U K - UTHAKKAN (UK)">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
@@ -326,11 +326,11 @@
             color: var(--accent);
         }
 
-        .compiler-list {
+        .utility-tools-list {
             list-style: none;
         }
 
-        .compiler-item {
+        .utility-tools {
             padding: 12px 20px;
             cursor: pointer;
             transition: background 0.2s, transform 0.2s;
@@ -339,7 +339,7 @@
             gap: 10px;
         }
 
-        .compiler-item a {
+        .utility-tools a {
             color: inherit;
             text-decoration: none;
             display: flex;
@@ -348,16 +348,16 @@
             height: 100%;
         }
 
-        .compiler-item:hover {
+        .utility-tools:hover {
             background: rgba(110, 72, 170, 0.2);
             transform: translateX(5px);
         }
 
-        .compiler-item.active {
+        .utility-tools.active {
             background: var(--primary);
         }
 
-        .compiler-icon {
+        .utility-tools-icon {
             width: 20px;
             text-align: center;
         }
@@ -493,6 +493,16 @@
 
         .btn-copy:hover {
             background: #22c55e;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: var(--primary-dark);
             transform: translateY(-1px);
         }
 
@@ -643,6 +653,35 @@
             justify-content: center;
         }
 
+        .emoji-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .emoji-btn {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .emoji-btn:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .emoji-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
         .image-preview {
             max-width: 200px;
             max-height: 200px;
@@ -734,7 +773,15 @@
             opacity: 1;
         }
 
+        .sidebar-toggle {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: inline-flex;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
             }
@@ -868,62 +915,46 @@
                     <span>Tool Pix</span>
                 </h1>
             </div>
-            <ul class="compiler-list">
-                <li class="compiler-item">
-                    <a href="/python-compiler">
-                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
-                        <span>Python</span>
+            <ul class="utility-tools-list">
+                <li class="utility-tools">
+                    <a href="/temp-mail">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>Temp Mail</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/sql-editor">
-                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
-                        <span>SQL</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/html-editor">
-                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
-                        <span>HTML</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/java-compiler">
-                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
-                        <span>Java</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/c-compiler">
-                        <span>C</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/cpp-compiler">
-                        <span>C++</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/javascript-editor">
-                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
-                        <span>JavaScript</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/online-text-editor">
-                        <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
-                        <span>Text Editor</span>
-                    </a>
-                </li>
-                <li class="compiler-item">
+                <li class="utility-tools">
                     <a href="/free-online-color-picker">
-                        <span class="compiler-icon"><i class="fas fa-palette"></i></span>
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
                         <span>Color Picker</span>
                     </a>
                 </li>
-                <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fas fa-image"></i></span>
+                <li class="utility-tools active">
+                    <span class="utility-tools-icon"><i class="fas fa-image"></i></span>
                     <span>Favicon Generator</span>
+                </li>
+                <li class="utility-tools">
+                    <a href="/free-online-qr-code-scanner">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>QR Scanner</span>
+                    </a>
+                </li>
+                <li class="utility-tools">
+                    <a href="/convert-qr-to-url-online">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>QR to URL</span>
+                    </a>
+                </li>
+                <li class="utility-tools">
+                    <a href="/free-online-url-encoder-decoder">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>URL Encoder</span>
+                    </a>
+                </li>
+                <li class="utility-tools">
+                    <a href="/convert-url-to-qr-code-online">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>URL to QR</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -971,6 +1002,11 @@
                 </div>
                 <div class="favicon-section" id="favicon-section">
                     <div class="favicon-wrapper">
+                        <button class="btn btn-back tooltip" id="back-btn" aria-label="Back to welcome page">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Back</span>
+                            <span class="tooltip-text">Return to selection page</span>
+                        </button>
                         <div class="image-upload" id="image-upload" style="display: none;">
                             <input type="file" id="image-input" accept="image/*" style="display: none;" aria-label="Upload image for favicon">
                             <p>Upload an image to generate your favicon (PNG, JPG, etc.)</p>
@@ -1031,6 +1067,16 @@
                         </div>
                         <div class="emoji-input" id="emoji-input" style="display: none;">
                             <input type="text" id="emoji-content" placeholder="Enter emoji (e.g., 😊)" aria-label="Enter emoji for favicon">
+                            <div class="emoji-panel">
+                                <button class="emoji-btn" data-emoji="😊" aria-label="Smiley emoji">😊</button>
+                                <button class="emoji-btn" data-emoji="⭐" aria-label="Star emoji">⭐</button>
+                                <button class="emoji-btn" data-emoji="🚀" aria-label="Rocket emoji">🚀</button>
+                                <button class="emoji-btn" data-emoji="🌟" aria-label="Sparkles emoji">🌟</button>
+                                <button class="emoji-btn" data-emoji="🎉" aria-label="Party popper emoji">🎉</button>
+                                <button class="emoji-btn" data-emoji="🔥" aria-label="Fire emoji">🔥</button>
+                                <button class="emoji-btn" data-emoji="💡" aria-label="Light bulb emoji">💡</button>
+                                <button class="emoji-btn" data-emoji="🍎" aria-label="Apple emoji">🍎</button>
+                            </div>
                             <div class="action-buttons">
                                 <button class="btn btn-primary tooltip" id="generate-emoji-btn" aria-label="Generate favicons from emoji">
                                     <i class="fas fa-cog"></i>
@@ -1115,8 +1161,6 @@
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
                     <a href="/contact">Contact</a>
-                    <a href="/faq">Faq</a>
-                    <a href="/guides">Guides</a>
                 </div>
                 <div class="copyright">
                     © 2025 Tool Pix. All rights reserved.
@@ -1158,7 +1202,9 @@
             loadingBarEmoji: document.getElementById('loading-bar-emoji'),
             codeSection: document.getElementById('code-section'),
             copyCodeButton: document.getElementById('copy-code-btn'),
-            codeBlock: document.getElementById('code-block')
+            codeBlock: document.getElementById('code-block'),
+            backButton: document.getElementById('back-btn'),
+            emojiPanel: document.querySelector('.emoji-panel')
         };
 
         const faviconSizes = [16, 32, 96, 180, 192, 512];
@@ -1218,7 +1264,6 @@
             elements.codeSection.style.display = 'none';
         };
 
-        // Load image
         const loadImage = (src) => new Promise((resolve, reject) => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
@@ -1227,7 +1272,6 @@
             img.src = src;
         });
 
-        // Generate favicon
         const generateFavicon = (content, size, type = 'image') => new Promise((resolve, reject) => {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
@@ -1251,7 +1295,6 @@
             resolve(canvas);
         });
 
-        // Generate ICO
         const generateICO = (content, type = 'image') => new Promise((resolve, reject) => {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
@@ -1271,7 +1314,6 @@
             resolve(canvas.toDataURL('image/png'));
         });
 
-        // Generate manifest
         const generateManifest = () => ({
             name: "Your Website Name",
             short_name: "Website",
@@ -1284,7 +1326,6 @@
             display: "standalone"
         });
 
-        // Create ZIP
         const createZip = (favicons, icoData) => {
             const zip = new JSZip();
             const faviconFolder = zip.folder("favicons");
@@ -1297,7 +1338,6 @@
             return zip;
         };
 
-        // Generate favicons
         const generateFavicons = async (content, type = 'image') => {
             try {
                 const loadingElement = type === 'image' ? elements.loadingBar : type === 'text' ? elements.loadingBarText : elements.loadingBarEmoji;
@@ -1342,7 +1382,6 @@
             }
         };
 
-        // Download favicon package
         const downloadFaviconPackage = async () => {
             if (!favicons.length) return;
             try {
@@ -1383,6 +1422,12 @@
             });
         };
 
+        // Emoji button handling
+        const handleEmojiClick = (emoji) => {
+            elements.emojiContent.value += emoji;
+            elements.emojiContent.focus();
+        };
+
         // Event delegation for card clicks
         elements.cardContainer = document.querySelector('.card-container');
         elements.cardContainer.addEventListener('click', (e) => {
@@ -1409,6 +1454,13 @@
                 elements.textInput.style.display = currentMode === 'text' ? 'flex' : 'none';
                 elements.emojiInput.style.display = currentMode === 'emoji' ? 'flex' : 'none';
             }
+        });
+
+        // Emoji panel event delegation
+        elements.emojiPanel.addEventListener('click', (e) => {
+            const emojiBtn = e.target.closest('.emoji-btn');
+            if (!emojiBtn) return;
+            handleEmojiClick(emojiBtn.dataset.emoji);
         });
 
         // Image input handling
@@ -1465,6 +1517,7 @@
         elements.sidebarToggle.addEventListener('click', toggleSidebar);
         elements.sidebarOverlay.addEventListener('click', toggleSidebar);
         elements.copyCodeButton.addEventListener('click', copyCodeToClipboard);
+        elements.backButton.addEventListener('click', showWelcomeScreen);
 
         console.log('Favicon Generator page loaded');
     });

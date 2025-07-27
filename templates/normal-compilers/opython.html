@@ -449,7 +449,7 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -473,12 +473,49 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            /* Light theme variables */
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        /* Default to dark theme */
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        /* Light theme */
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -542,7 +579,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -688,6 +725,16 @@
 
         .editor-section {
             border-right: 1px solid var(--border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -1001,11 +1048,13 @@
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
         .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
+            color: var(--text-light);
         }
 
         .seo-content li {
@@ -1018,6 +1067,7 @@
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9em;
+            color: var(--text-light);
         }
 
         .seo-content pre {
@@ -1028,6 +1078,7 @@
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
             position: relative;
+            color: var(--text-light);
         }
 
         .try-out-btn {
@@ -1067,11 +1118,13 @@
 
         .note-box p {
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box ul {
             padding-left: 20px;
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box li {
@@ -1234,6 +1287,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1283,10 +1348,16 @@
                 touch-action: manipulation !important;
             }
         }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -1361,14 +1432,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1380,6 +1447,17 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code">print("Welcome to Tool Pix Python Compiler!")</textarea>
                         </div>
@@ -1408,30 +1486,30 @@
             </div>
 
             <div class="ad-container horizontal">
-                
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
                 <h2>Online Python Compiler - Write, Run & Share Python Code Instantly</h2>
-                <p>Our <strong>online Python compiler</strong> empowers developers of all levels to write, compile, and execute Python programs directly in the browser. Whether you're a beginner learning Python or an advanced developer working on data science projects, our tool offers a robust, real-time coding environment with syntax highlighting and debugging support.</p>
+                <p>Our <strong>online Python compiler</strong> allows developers to write, execute, and share Python code directly in the browser. Ideal for beginners learning Python or professionals building data science, web, or automation projects, our tool offers a seamless coding experience with syntax highlighting and real-time output.</p>
 
                 <h3>Why Choose Our Python Compiler?</h3>
                 <ul>
-                    <li><strong>Zero Setup</strong>: No need to install Python or configure environments—start coding instantly.</li>
-                    <li><strong>High Performance</strong>: Fast execution with an optimized backend for quick results.</li>
+                    <li><strong>No Installation</strong>: Run Python code without installing Python or any dependencies.</li>
+                    <li><strong>High Performance</strong>: Fast execution with an optimized backend.</li>
                     <li><strong>Interactive Output</strong>: Real-time console output with support for user input.</li>
                     <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
-                    <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
+                    <li><strong>Cross-Device Support</strong>: Code on desktops, tablets, or mobiles.</li>
                     <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
-                    <li><strong>Collaboration Ready</strong>: Copy and share code snippets effortlessly.</li>
+                    <li><strong>Shareable Code</strong>: Easily copy and share code snippets.</li>
                 </ul>
 
                 <div class="ad-container vertical">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Mastering Python Programming</h3>
-                <p>Python, created by Guido van Rossum in 1991, is a versatile, high-level programming language known for its readability and extensive libraries. It's widely used in web development, data science, automation, and machine learning.</p>
+                <p>Python, created by Guido van Rossum in 1991, is a versatile, high-level programming language known for its readability and wide use in data science, web development, automation, and AI.</p>
 
                 <h4>Basic Python Program Structure</h4>
                 <pre id="basic-structure">print("Hello, World!")</pre>
@@ -1439,29 +1517,29 @@
                 <p>Key elements of a Python program:</p>
                 <ul>
                     <li><code>print()</code>: Outputs text to the console.</li>
-                    <li>No mandatory main function: Code executes sequentially.</li>
-                    <li>Indentation matters: Use spaces or tabs for blocks.</li>
+                    <li>No mandatory main function or class structure.</li>
+                    <li>Indentation defines code blocks.</li>
                 </ul>
                 <div class="note-box">
                     <h4>Best Practice</h4>
-                    <p>Use 4 spaces for indentation and keep code simple for readability.</p>
+                    <p>Use consistent indentation (4 spaces) and follow PEP 8 style guidelines for clean Python code.</p>
                 </div>
 
                 <h3>Core Python Concepts for All Levels</h3>
                 <h4>Variables and Data Types</h4>
-                <p>Python is dynamically typed, making variable declaration simple:</p>
+                <p>Python's dynamic typing simplifies variable declaration:</p>
                 <ul>
-                    <li><code>int</code>: Whole numbers (e.g., 42).</li>
-                    <li><code>float</code>: Decimals (e.g., 3.14).</li>
-                    <li><code>str</code>: Text (e.g., "Hello").</li>
+                    <li><code>int</code>: Whole numbers (e.g., <code>42</code>).</li>
+                    <li><code>float</code>: Decimal numbers (e.g., <code>3.14</code>).</li>
+                    <li><code>str</code>: Text strings (e.g., <code>"Hello"</code>).</li>
                     <li><code>bool</code>: True/False values.</li>
-                    <li><code>list</code>, <code>tuple</code>, <code>dict</code>: Collections for data.</li>
+                    <li><code>list</code>: Ordered, mutable collections.</li>
                 </ul>
                 <pre id="variables-example">age = 25
 price = 19.99
 name = "Alice"
 is_active = True
-numbers = [1, 2, 3]</pre>
+print(f"Name: {name}, Age: {age}, Price: {price}, Active: {is_active}")</pre>
                 <button class="try-out-btn" data-code-id="variables-example">Try It Out</button>
 
                 <h4>Control Structures</h4>
@@ -1493,30 +1571,28 @@ while i < 5:
 
 print(greet("Alice"))</pre>
                 <button class="try-out-btn" data-code-id="function-example">Try It Out</button>
-                <div class="note-box">
-                    <h4>Function Tip</h4>
-                    <p>Use descriptive function names and include docstrings for clarity.</p>
-                </div>
+
+                <h3>Lists and Dictionaries</h3>
+                <p>Manage data with Python's built-in data structures:</p>
+                <pre id="list-dict-example">numbers = [1, 2, 3, 4, 5]
+names = ["Alice", "Bob"]
+person = {"name": "Alice", "age": 30}
+for num in numbers:
+    print(num)
+for name in names:
+    print(name)
+print(f"Person: {person['name']}, {person['age']}")</pre>
+                <button class="try-out-btn" data-code-id="list-dict-example">Try It Out</button>
 
                 <h3>Handling User Input</h3>
-                <p>The <code>input()</code> function captures user input:</p>
+                <p>The <code>input()</code> function enables user interaction:</p>
                 <pre id="input-example">name = input("Enter your name: ")
 print(f"Hello, {name}!")</pre>
                 <button class="try-out-btn" data-code-id="input-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Input Best Practice</h4>
-                    <p>Validate user input to handle unexpected values safely.</p>
+                    <p>Validate user input to handle errors and ensure correct data types.</p>
                 </div>
-
-                <h3>Lists and Dictionaries</h3>
-                <p>Manage data with flexible collections:</p>
-                <pre id="list-dict-example">numbers = [1, 2, 3, 4, 5]
-for num in numbers:
-    print(num)
-
-person = {"name": "Alice", "age": 30}
-print(person["name"])</pre>
-                <button class="try-out-btn" data-code-id="list-dict-example">Try It Out</button>
 
                 <h3>Exception Handling</h3>
                 <p>Handle errors gracefully with try-except:</p>
@@ -1539,23 +1615,23 @@ except Exception as e:
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
                     <div class="faq-question">How do I handle user input in Python?</div>
-                    <p>Use <code>input()</code> to capture user input as a string. Convert to other types (e.g., <code>int(input())</code>) as needed.</p>
+                    <p>Use the <code>input()</code> function and validate input to handle different data types.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Python vs. Java: What's the difference?</div>
-                    <p>Python is dynamically typed and concise, ideal for scripting and data science, while Java is statically typed and suited for large-scale applications.</p>
+                    <p>Python is dynamically typed and concise, ideal for rapid development, while Java is statically typed and suited for large-scale enterprise applications.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How do I run Python locally?</div>
-                    <p>Install Python 3, save code as <code>script.py</code>, then run <code>python script.py</code> in the terminal.</p>
+                    <p>Install Python, save code as <code>script.py</code>, and run <code>python script.py</code> in the terminal.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Why choose Python?</div>
-                    <p>Python's simplicity, vast libraries, and community support make it ideal for web development, data science, and automation.</p>
+                    <p>Python's simplicity, extensive libraries, and versatility make it ideal for data science, web development, automation, and AI.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How can I debug Python code?</div>
-                    <p>Use print statements, IDE debuggers like PyCharm, or our compiler's real-time error output to identify and fix issues.</p>
+                    <p>Use print statements, an IDE like PyCharm, or our compiler's real-time error output to identify issues.</p>
                 </div>
 
                 <h3>Advanced Python Concepts</h3>
@@ -1567,24 +1643,12 @@ print(squares)</pre>
                         <button class="try-out-btn" data-code-id="list-comp-example">Try It Out</button>
                     </li>
                     <li>
-                        <strong>Lambda Functions</strong>: Anonymous functions for quick operations.
-                        <pre id="lambda-example">double = lambda x: x * 2
-print(double(5))</pre>
-                        <button class="try-out-btn" data-code-id="lambda-example">Try It Out</button>
-                    </li>
-                    <li>
-                        <strong>Modules and Packages</strong>: Organize code efficiently.
-                        <pre id="module-example">import math
-print(math.pi)</pre>
-                        <button class="try-out-btn" data-code-id="module-example">Try It Out</button>
-                    </li>
-                    <li>
                         <strong>Decorators</strong>: Modify function behavior.
                         <pre id="decorator-example">def my_decorator(func):
     def wrapper():
-        print("Something before")
+        print("Before function")
         func()
-        print("Something after")
+        print("After function")
     return wrapper
 
 @my_decorator
@@ -1594,21 +1658,31 @@ def say_hello():
 say_hello()</pre>
                         <button class="try-out-btn" data-code-id="decorator-example">Try It Out</button>
                     </li>
+                    <li>
+                        <strong>Generators</strong>: Memory-efficient iteration.
+                        <pre id="generator-example">def my_generator():
+    for i in range(5):
+        yield i
+
+for num in my_generator():
+    print(num)</pre>
+                        <button class="try-out-btn" data-code-id="generator-example">Try It Out</button>
+                    </li>
                 </ul>
                 <div class="note-box">
                     <h4>Advanced Tip</h4>
-                    <p>Use list comprehensions and lambda functions for cleaner, more efficient code in Python applications.</p>
+                    <p>Use list comprehensions and generators for efficient, readable code in Python.</p>
                 </div>
 
                 <h3>Common Python Pitfalls and Solutions</h3>
                 <div class="note-box">
                     <h4>Watch Out!</h4>
                     <ul>
-                        <li><strong>Indentation Errors</strong>: Ensure consistent use of spaces or tabs.</li>
-                        <li><strong>Mutable Default Arguments</strong>: Avoid mutable objects as default parameters in functions.</li>
-                        <li><strong>Type Errors</strong>: Validate input types before operations.</li>
-                        <li><strong>Name Errors</strong>: Ensure variables are defined before use.</li>
-                        <li><strong>File Handling</strong>: Use <code>with</code> statements to manage resources properly.</li>
+                        <li><strong>Indentation Errors</strong>: Ensure consistent indentation (4 spaces).</li>
+                        <li><strong>Type Errors</strong>: Validate input types when using <code>input()</code>.</li>
+                        <li><strong>Mutable Default Arguments</strong>: Avoid using mutable objects as default function arguments.</li>
+                        <li><strong>Resource Leaks</strong>: Use <code>with</code> statements for file handling to ensure proper closure.</li>
+                        <li><strong>Name Conflicts</strong>: Avoid naming variables after built-in functions (e.g., <code>list</code>).</li>
                     </ul>
                 </div>
 
@@ -1619,21 +1693,21 @@ say_hello()</pre>
                     <li><code>math</code>: Mathematical functions.</li>
                     <li><code>random</code>: Random number generation.</li>
                     <li><code>datetime</code>: Date and time handling.</li>
-                    <li><code>json</code>: JSON encoding and decoding.</li>
+                    <li><code>json</code>: JSON encoding/decoding.</li>
                 </ul>
 
                 <div class="ad-container horizontal">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Learning Resources for Python</h3>
                 <div class="note-box">
                     <h4>Level Up Your Skills</h4>
                     <ul>
-                        <li><strong>Beginner Books</strong>: "Python Crash Course" by Eric Matthes.</li>
+                        <li><strong>Beginner Books</strong>: "Automate the Boring Stuff with Python" by Al Sweigart.</li>
                         <li><strong>Advanced Books</strong>: "Fluent Python" by Luciano Ramalho.</li>
-                        <li><strong>Courses</strong>: Python's official tutorial, Coursera, Codecademy.</li>
-                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codewars.</li>
+                        <li><strong>Courses</strong>: Python Tutorials on Python.org, Coursera, Udemy.</li>
+                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codeforces.</li>
                         <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or Python Discord.</li>
                     </ul>
                 </div>
@@ -1641,7 +1715,7 @@ say_hello()</pre>
 
             <footer class="footer">
                 <div class="footer-links">
-                    <a href="/">Home</a>          
+                    <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
@@ -1687,6 +1761,7 @@ say_hello()</pre>
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1699,6 +1774,7 @@ say_hello()</pre>
             let currentPromptIndex = 0;
             let isRunning = false;
             let expectedInputCount = 0;
+            let currentTheme = "dracula";
 
             updateStatus("ready");
 
@@ -1707,8 +1783,24 @@ say_hello()</pre>
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1751,8 +1843,15 @@ say_hello()</pre>
                 }).join('\n');
             }
 
+            function parseCode(code) {
+                return {
+                    files: [{ name: 'main.py', content: code }],
+                    mainFile: 'main.py'
+                };
+            }
+
             function countExpectedInputs(code) {
-                const inputRegex = /\binput\s*\(\s*(?:["'].*?["'])?\s*\)/g;
+                const inputRegex = /\binput\s*\(/g;
                 let count = 0;
                 let match;
                 while ((match = inputRegex.exec(code)) !== null) {
@@ -1762,7 +1861,7 @@ say_hello()</pre>
             }
 
             function extractPrompts(code) {
-                const promptRegex = /\binput\s*\(\s*["'](.*?)["']\s*\)/g;
+                const promptRegex = /input\s*\(\s*['"](.*?)['"]\s*\)/g;
                 let prompts = [];
                 let match;
                 while ((match = promptRegex.exec(code)) !== null) {
@@ -1841,9 +1940,9 @@ say_hello()</pre>
 
             function updateOutput() {
                 let outputHtml = currentOutput.map(line => {
-                    if (line.includes('Error:') || line.includes('Traceback')) {
+                    if (line.includes('error:') || line.includes('Exception')) {
                         return `<span style="color: #f87171;">${preprocessOutput(line)}</span>`;
-                    } else if (line.includes('Warning:')) {
+                    } else if (line.includes('warning:')) {
                         return `<span style="color: #facc15;">${preprocessOutput(line)}</span>`;
                     }
                     return preprocessOutput(line);
@@ -1855,13 +1954,15 @@ say_hello()</pre>
             async function executeCode(code, inputs) {
                 updateStatus("running");
                 try {
+                    const { files } = parseCode(code);
+
                     const response = await fetch("https://emkc.org/api/v2/piston/execute", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             language: "python",
                             version: "3.10.0",
-                            files: [{ name: "main.py", content: code }],
+                            files: files,
                             stdin: inputs.join("\n"),
                             run_timeout: 10000
                         })

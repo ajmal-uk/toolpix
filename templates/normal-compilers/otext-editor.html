@@ -447,9 +447,7 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/solarized.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -467,12 +465,55 @@
             --border: #2d4059;
             --success: #4ade80;
             --error: #f87171;
+            --output-font-size: 14px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+            /* Light theme variables */
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        /* Default to dark theme */
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        /* Light theme */
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -500,6 +541,7 @@
             position: fixed;
             height: 100vh;
             z-index: 100;
+            box-shadow: var(--shadow);
         }
 
         .sidebar-header {
@@ -535,7 +577,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -549,6 +591,7 @@
 
         .compiler-item.active {
             background: var(--primary);
+            color: var(--text-lighter);
         }
 
         .compiler-icon {
@@ -562,27 +605,6 @@
             transition: margin 0.3s ease;
             max-width: calc(100% - 280px);
             overflow-x: hidden;
-        }
-
-        .main-content.fullscreen {
-            margin-left: 0;
-            max-width: 100%;
-        }
-
-        .sidebar-toggle {
-            display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 101;
         }
 
         .sidebar-overlay {
@@ -612,6 +634,7 @@
             justify-content: space-between;
             align-items: center;
             max-width: 100%;
+            box-shadow: var(--shadow);
         }
 
         .title {
@@ -629,12 +652,12 @@
 
         .controls {
             display: flex;
-            gap: 8px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
@@ -644,6 +667,7 @@
             align-items: center;
             gap: 6px;
             font-size: 14px;
+            box-shadow: var(--shadow);
         }
 
         .btn-primary {
@@ -654,6 +678,7 @@
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary {
@@ -664,6 +689,17 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-section {
@@ -692,12 +728,38 @@
             font-size: 14px;
             padding: 15px 0;
             max-width: 100%;
-            overflow-x: hidden;
+            overflow-x: auto;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            touch-action: auto !important;
+            line-height: 1.5;
+        }
+
+        .CodeMirror-gutters {
+            background: var(--bg-darker);
+            border-right: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        .CodeMirror-linenumber {
+            color: var(--text-light);
+            padding: 0 5px;
+            font-size: 12px;
+            min-width: 24px;
+            text-align: right;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .CodeMirror-linenumber:hover {
+            opacity: 1;
         }
 
         .CodeMirror-sizer, .CodeMirror-lines, .CodeMirror-scroll {
             max-width: 100% !important;
-            overflow-x: hidden !important;
+            overflow-x: auto !important;
             overflow-wrap: anywhere;
             word-break: break-all;
         }
@@ -729,14 +791,16 @@
             opacity: 1;
         }
 
-        .font-size-controls, .theme-selector {
+        .font-size-controls {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        select, .font-size-btn {
+        .font-size-btn {
             padding: 6px;
+            width: 30px;
+            text-align: center;
             border-radius: 4px;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-light);
@@ -744,93 +808,12 @@
             cursor: pointer;
         }
 
-        .font-size-btn {
-            width: 30px;
-            text-align: center;
-        }
-
         .stats {
             padding: 10px 24px;
             background: rgba(0, 0, 0, 0.2);
             font-size: 12px;
             color: var(--text-light);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .sidebar-overlay {
-                display: block;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s;
-            }
-
-            .sidebar-overlay.open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .sidebar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .main-content {
-                margin-left: 0;
-                max-width: 100%;
-            }
-
-            .controls .btn span {
-                display: none;
-            }
-
-            .controls .btn {
-                padding: 8px;
-                width: 40px;
-                height: 40px;
-                justify-content: center;
-                border-radius: 50%;
-            }
-
-            .tooltip-text {
-                width: 100px;
-                font-size: 10px;
-                bottom: 100%;
-            }
-
-            .title span {
-                font-size: 1rem;
-            }
-
-            .font-size-controls, .theme-selector {
-                font-size: 12px;
-            }
+            border-bottom: 1px solid var(--border);
         }
 
         .seo-content {
@@ -851,14 +834,141 @@
             font-size: 1.4rem;
         }
 
+        .seo-content h4 {
+            color: var(--text-lighter);
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
-        .seo-content ul {
+        .seo-content ul, .seo-content ol {
+            margin-bottom: 20px;
             padding-left: 20px;
-            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .seo-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .seo-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .try-out-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 10px 0;
+            background: var(--primary);
+            color: var(--text-lighter);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .try-out-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .note-box {
+            background: var(--note-bg);
+            border: 1px solid var(--note-border);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .note-box h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .note-box p {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .note-box ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .note-box li {
+            margin-bottom: 5px;
+        }
+
+        .ad-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .ad-container.horizontal {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-container.vertical {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-lighter);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
         .footer {
@@ -890,13 +1000,102 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
+
+        @media (max-width: 992px) {
+            .editor-section {
+                height: 100vh;
+            }
+
+            .CodeMirror {
+                height: calc(100vh - 60px) !important;
+                -webkit-user-select: text !important;
+                user-select: text !important;
+                touch-action: manipulation !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 100;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay {
+                display: block;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .sidebar-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+
+            .controls .btn span {
+                display: none;
+            }
+
+            .controls .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .font-size-controls span {
+                display: none;
+            }
+
+            .tooltip-text {
+                width: 100px;
+                font-size: 10px;
+                bottom: 100%;
+            }
+
+            .title span {
+                font-size: 1rem;
+            }
+
+            .CodeMirror {
+                font-size: 12px;
+            }
+
+            .CodeMirror-linenumber {
+                font-size: 10px;
+                min-width: 20px;
+            }
+
+            .stats {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="dark-theme">
     <div class="app-container">
-        <button class="sidebar-toggle" id="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <div class="sidebar" id="sidebar">
@@ -933,23 +1132,27 @@
                 </li>
                 <li class="compiler-item">
                     <a href="/c-compiler">
+                        <span class="compiler-icon"><i class="fas fa-copyright"></i></span>
                         <span>C</span>
                     </a>
                 </li>
                 <li class="compiler-item">
                     <a href="/cpp-compiler">
+                        <span class="compiler-icon"><i class="fas fa-plus"></i></span>
                         <span>C++</span>
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/javascript-editor">
+                    <a href="/javascript-compiler">
                         <span class="compiler-icon"><i class="fab fa-js"></i></span>
                         <span>JavaScript</span>
                     </a>
                 </li>
                 <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
-                    <span>Text Editor</span>
+                    <a href="/online-text-editor">
+                        <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
+                        <span>Text Editor</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -962,6 +1165,27 @@
                         <span>Advanced Online Text Editor</span>
                     </h1>
                     <div class="controls">
+                        <button class="btn btn-primary" id="save-btn" title="Save">
+                            <i class="fas fa-download"></i>
+                            <span>Save</span>
+                        </button>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="stats" id="stats">
+                    Words: 0 | Characters: 0
+                </div>
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <div class="font-size-controls">
+                            <button class="font-size-btn" id="font-decrease">-</button>
+                            <span>Font Size</span>
+                            <button class="font-size-btn" id="font-increase">+</button>
+                        </div>
                         <button class="btn btn-secondary tooltip" id="undo-btn">
                             <i class="fas fa-undo"></i>
                             <span>Undo</span>
@@ -982,91 +1206,180 @@
                             <span>Clear</span>
                             <span class="tooltip-text">Clear editor</span>
                         </button>
-                        <button class="btn btn-primary tooltip" id="save-btn">
-                            <i class="fas fa-download"></i>
-                            <span>Save</span>
-                            <span class="tooltip-text">Download as text file</span>
-                        </button>
-                        <button class="btn btn-secondary tooltip" id="fullscreen-btn">
-                            <i class="fas fa-expand"></i>
-                            <span>Fullscreen</span>
-                            <span class="tooltip-text">Toggle fullscreen</span>
-                        </button>
-                        <div class="font-size-controls">
-                            <button class="font-size-btn" id="font-decrease">-</button>
-                            <span>Font Size</span>
-                            <button class="font-size-btn" id="font-increase">+</button>
-                        </div>
-                        <div class="theme-selector">
-                            <select id="theme-select">
-                                <option value="dracula">Dracula</option>
-                                <option value="solarized light">Solarized Light</option>
-                                <option value="monokai">Monokai</option>
-                            </select>
-                        </div>
                     </div>
-                </div>
-                <div class="stats" id="stats">
-                    Words: 0 | Characters: 0
-                </div>
-                <div class="editor-section">
                     <div class="editor-wrapper">
                         <textarea id="code">Welcome to Tool Pix's Advanced Online Text Editor!
-Start typing your notes, code snippets, or any text here...</textarea>
+Start typing your notes, code snippets, or any text here...
+
+// Example JavaScript snippet
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+console.log(greet("User"));
+
+// Example Markdown
+# My Notes
+- Task 1: Finish project
+- Task 2: Review code
+- Task 3: Write documentation</textarea>
                     </div>
                 </div>
             </div>
 
+            <div class="ad-container horizontal">
+                <span class="ad-label">Advertisement</span>
+            </div>
+
             <section class="seo-content">
-                <h2>Advanced Online Text Editor - Write, Edit & Customize</h2>
-                <p>Our <strong>advanced online text editor</strong> offers a powerful and customizable way to write, edit, and save text directly in your browser. Perfect for notes, code snippets, or drafting ideas without software installation.</p>
-                
-                <h3>Why Choose Our Advanced Text Editor?</h3>
+                <h2>Advanced Online Text Editor - Write, Edit & Customize Instantly</h2>
+                <p>Our <strong>Advanced Online Text Editor</strong> provides a versatile platform for writing, editing, and formatting text directly in your browser. Whether you're drafting notes, coding snippets, or creating documentation, this tool offers a distraction-free environment with customizable themes, font sizes, and powerful editing features.</p>
+
+                <h3>Why Choose Our Text Editor?</h3>
                 <ul>
-                    <li><strong>No Installation:</strong> Edit text instantly in your browser</li>
-                    <li><strong>Customizable Themes:</strong> Choose from Dracula, Solarized Light, or Monokai</li>
-                    <li><strong>Undo/Redo:</strong> Easily revert or restore changes</li>
-                    <li><strong>Font Size Adjustment:</strong> Tailor text size for comfort</li>
-                    <li><strong>Save to File:</strong> Download your text as a .txt file</li>
-                    <li><strong>Fullscreen Mode:</strong> Distraction-free editing</li>
-                    <li><strong>Word/Character Count:</strong> Track your content stats</li>
-                    <li><strong>Mobile-Friendly:</strong> Edit on any device</li>
-                    <li><strong>Free to Use:</strong> No registration required</li>
+                    <li><strong>Zero Setup</strong>: Start editing instantly without software installation.</li>
+                    <li><strong>Customizable Themes</strong>: Switch between dark and light themes for comfortable editing.</li>
+                    <li><strong>Undo/Redo Support</strong>: Easily revert or restore changes with keyboard shortcuts or buttons.</li>
+                    <li><strong>Font Size Adjustment</strong>: Tailor text size for optimal readability.</li>
+                    <li><strong>Save Locally</strong>: Download your work as a text file for offline use.</li>
+                    <li><strong>Real-Time Stats</strong>: Track word and character counts as you type.</li>
+                    <li><strong>Cross-Device Compatibility</strong>: Edit seamlessly on desktops, tablets, or mobiles.</li>
+                    <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
                 </ul>
+
+                <div class="ad-container vertical">
+                    <span class="ad-label">Advertisement</span>
+                </div>
+
+                <h3>Mastering Text Editing</h3>
+                <p>Text editors are essential tools for developers, writers, and anyone working with text-based content. Our editor, powered by CodeMirror, provides a robust interface for creating and managing text, whether it's plain notes, code snippets, or structured formats like Markdown.</p>
+
+                <h4>Basic Text Editing</h4>
+                <p>Start typing directly in the editor to create notes or drafts:</p>
+                <pre id="basic-text-example">Meeting Notes - 2025-07-27
+- Discuss project timeline
+- Assign tasks to team
+- Review budget</pre>
+                <button class="try-out-btn" data-code-id="basic-text-example">Try It Out</button>
+
+                <h4>Code Snippets</h4>
+                <p>Use the editor to write and store code snippets in any programming language:</p>
+                <pre id="code-snippet-example">function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n - 1);
+}
+console.log(factorial(5)); // 120</pre>
+                <button class="try-out-btn" data-code-id="code-snippet-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>Tip</h4>
+                    <p>While this editor doesn't execute code, you can copy snippets to Tool Pix's language-specific compilers (e.g., JavaScript, Python) to run them.</p>
+                </div>
+
+                <h4>Markdown Formatting</h4>
+                <p>Create structured documents using Markdown syntax:</p>
+                <pre id="markdown-example"># Project Roadmap
+## Phase 1
+- [ ] Design UI
+- [ ] Set up database
+## Phase 2
+- [ ] Develop API
+- [ ] Test features</pre>
+                <button class="try-out-btn" data-code-id="markdown-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>Markdown Tip</h4>
+                    <p>Use Markdown for documentation or notes, then copy to a Markdown renderer or tool for previewing.</p>
+                </div>
+
+                <h4>Writing Structured Text</h4>
+                <p>Organize ideas with structured text formats like JSON or YAML:</p>
+                <pre id="json-example">{
+    "project": "Website Redesign",
+    "tasks": [
+        {"id": 1, "name": "Wireframe", "status": "pending"},
+        {"id": 2, "name": "Development", "status": "in-progress"}
+    ]
+}</pre>
+                <button class="try-out-btn" data-code-id="json-example">Try It Out</button>
 
                 <h3>Key Features</h3>
-                <p>Built for productivity and ease of use:</p>
+                <p>Our editor is designed for productivity and flexibility:</p>
                 <ul>
-                    <li><strong>Intuitive Interface:</strong> Clean, distraction-free editing area</li>
-                    <li><strong>Undo/Redo:</strong> Ctrl+Z/Ctrl+Y or dedicated buttons for history navigation</li>
-                    <li><strong>Copy to Clipboard:</strong> Share or save text with one click</li>
-                    <li><strong>Clear Editor:</strong> Reset content instantly</li>
-                    <li><strong>Save Locally:</strong> Download text files for offline use</li>
-                    <li><strong>Responsive Design:</strong> Seamless experience on desktop and mobile</li>
+                    <li><strong>CodeMirror Integration</strong>: Advanced text editing with line numbers and syntax-like highlighting.</li>
+                    <li><strong>Undo/Redo</strong>: Navigate edit history with <code>Ctrl+Z</code>/<code>Ctrl+Y</code> or buttons.</li>
+                    <li><strong>Copy to Clipboard</strong>: Share text instantly with one click.</li>
+                    <li><strong>Font Size Control</strong>: Adjust text size for comfort.</li>
+                    <li><strong>Theme Switching</strong>: Toggle between dark and light themes for day or night use.</li>
+                    <li><strong>Word/Character Count</strong>: Monitor content stats in real-time.</li>
                 </ul>
 
-                <h3>Tips for Using the Text Editor</h3>
-                <p>Boost your efficiency with these tips:</p>
+                <h3>Tips for Effective Editing</h3>
+                <div class="note-box">
+                    <h4>Best Practices</h4>
+                    <ul>
+                        <li>Use <code>Ctrl+Enter</code> or <code>Cmd+Enter</code> to quickly copy text to the clipboard.</li>
+                        <li>Save frequently by downloading your work to avoid data loss.</li>
+                        <li>Adjust font size for better readability, especially on small screens.</li>
+                        <li>Switch to light theme in bright environments for reduced eye strain.</li>
+                        <li>Use the sidebar to access other Tool Pix tools like the SQL or JavaScript compilers.</li>
+                    </ul>
+                </div>
+
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use this editor for coding?</div>
+                    <p>Yes, you can write and store code snippets in any language. For execution, copy the code to the respective Tool Pix compiler (e.g., JavaScript, Python).</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does the editor support syntax highlighting?</div>
+                    <p>The editor uses CodeMirror for a code-like editing experience, but it’s optimized for plain text. Syntax highlighting is available in language-specific compilers.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I save my work?</div>
+                    <p>Click the "Save" button to download your text as a .txt file, or copy it to the clipboard for pasting elsewhere.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is the editor mobile-friendly?</div>
+                    <p>Yes, the editor is fully responsive, with touch-friendly controls and a mobile-optimized layout.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I collaborate with others?</div>
+                    <p>While real-time collaboration isn’t supported, you can copy and share your text via the clipboard or downloaded file.</p>
+                </div>
+
+                <h3>Common Use Cases</h3>
                 <ul>
-                    <li>Use <code>Ctrl+Enter</code> or <code>Cmd+Enter</code> to copy text quickly</li>
-                    <li>Press <code>Ctrl+Z</code>/<code>Ctrl+Y</code> for undo/redo</li>
-                    <li>Toggle fullscreen mode for focused writing</li>
-                    <li>Adjust font size for readability</li>
-                    <li>Download your work regularly to avoid data loss</li>
-                    <li>Explore themes to match your preference</li>
-                    <li>Use the sidebar to access other Tool Pix tools</li>
+                    <li><strong>Note-Taking</strong>: Jot down ideas, meeting notes, or to-do lists.</li>
+                    <li><strong>Code Drafting</strong>: Write code snippets before testing in a compiler.</li>
+                    <li><strong>Documentation</strong>: Create Markdown or plain text documentation.</li>
+                    <li><strong>Configuration Files</strong>: Draft JSON, YAML, or other structured formats.</li>
+                    <li><strong>Quick Drafts</strong>: Write emails, blog posts, or outlines before finalizing elsewhere.</li>
                 </ul>
+
+                <div class="ad-container horizontal">
+                    <span class="ad-label">Advertisement</span>
+                </div>
+
+                <h3>Learning Resources for Text Editing</h3>
+                <div class="note-box">
+                    <h4>Level Up Your Skills</h4>
+                    <ul>
+                        <li><strong>Markdown Tutorials</strong>: Learn Markdown with guides from Markdown Guide or CommonMark.</li>
+                        <li><strong>Text Editor Tips</strong>: Explore productivity tips on Lifehacker or Zapier blogs.</li>
+                        <li><strong>CodeMirror Documentation</strong>: Understand advanced editing features at codemirror.net.</li>
+                        <li><strong>Writing Tools</strong>: Check out Grammarly or Hemingway for text polishing.</li>
+                        <li><strong>Community</strong>: Join Stack Overflow or Reddit for text editing and productivity tips.</li>
+                    </ul>
+                </div>
             </section>
 
             <footer class="footer">
                 <div class="footer-links">
                     <a href="/">Home</a>
-                    
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
                     <a href="/contact">Contact</a>
-                    
+                    <a href="/faq">FAQ</a>
+                    <a href="/guides">Guides</a>
                 </div>
                 <div class="copyright">
                     © 2025 Tool Pix. All rights reserved.
@@ -1086,6 +1399,8 @@ Start typing your notes, code snippets, or any text here...</textarea>
                 smartIndent: true,
                 lineWrapping: true,
                 history: true,
+                matchBrackets: true,
+                autoCloseBrackets: true,
                 extraKeys: {
                     "Ctrl-Enter": copyToClipboard,
                     "Cmd-Enter": copyToClipboard,
@@ -1093,7 +1408,11 @@ Start typing your notes, code snippets, or any text here...</textarea>
                     "Ctrl-Y": "redo",
                     "Cmd-Z": "undo",
                     "Cmd-Y": "redo"
-                }
+                },
+                readOnly: false,
+                styleActiveLine: true,
+                viewportMargin: Infinity,
+                gutters: ["CodeMirror-linenumbers"]
             });
 
             const undoButton = document.getElementById("undo-btn");
@@ -1101,21 +1420,35 @@ Start typing your notes, code snippets, or any text here...</textarea>
             const copyButton = document.getElementById("copy-btn");
             const clearButton = document.getElementById("clear-btn");
             const saveButton = document.getElementById("save-btn");
-            const fullscreenButton = document.getElementById("fullscreen-btn");
+            const themeButton = document.getElementById("theme-btn");
             const fontDecreaseButton = document.getElementById("font-decrease");
             const fontIncreaseButton = document.getElementById("font-increase");
-            const themeSelect = document.getElementById("theme-select");
             const statsElement = document.getElementById("stats");
             const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebar-toggle");
             const sidebarOverlay = document.getElementById("sidebar-overlay");
-            const mainContent = document.querySelector(".main-content");
+            const tryOutButtons = document.querySelectorAll(".try-out-btn");
 
             let fontSize = 14;
+            let currentTheme = "dracula";
 
             function toggleSidebar() {
                 sidebar.classList.toggle("open");
                 sidebarOverlay.classList.toggle("open");
+            }
+
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
             }
 
             function copyToClipboard() {
@@ -1128,6 +1461,10 @@ Start typing your notes, code snippets, or any text here...</textarea>
                     }, 2000);
                 }).catch(err => {
                     console.error('Failed to copy: ', err);
+                    copyButton.innerHTML = '<i class="fas fa-times"></i> <span>Failed to Copy</span>';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '<i class="far fa-copy"></i> <span>Copy</span>';
+                    }, 2000);
                 });
             }
 
@@ -1148,15 +1485,11 @@ Start typing your notes, code snippets, or any text here...</textarea>
                 a.download = 'document.txt';
                 a.click();
                 URL.revokeObjectURL(url);
-            }
-
-            function toggleFullscreen() {
-                mainContent.classList.toggle("fullscreen");
-                sidebar.classList.toggle("open");
-                sidebarOverlay.classList.toggle("open");
-                const isFullscreen = mainContent.classList.contains("fullscreen");
-                fullscreenButton.innerHTML = `<i class="fas fa-${isFullscreen ? 'compress' : 'expand'}"></i> <span>${isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>`;
-                editor.refresh();
+                const originalText = saveButton.innerHTML;
+                saveButton.innerHTML = '<i class="fas fa-check"></i> <span>Saved!</span>';
+                setTimeout(() => {
+                    saveButton.innerHTML = originalText;
+                }, 2000);
             }
 
             function updateFontSize(change) {
@@ -1172,19 +1505,28 @@ Start typing your notes, code snippets, or any text here...</textarea>
                 statsElement.textContent = `Words: ${words} | Characters: ${chars}`;
             }
 
-            sidebarToggle.addEventListener("click", toggleSidebar);
+            tryOutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeId = button.getAttribute('data-code-id');
+                    const codeElement = document.getElementById(codeId);
+                    if (codeElement) {
+                        const rawCode = codeElement.textContent.trim();
+                        editor.setValue(rawCode);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        editor.focus();
+                    }
+                });
+            });
+
             sidebarOverlay.addEventListener("click", toggleSidebar);
             undoButton.addEventListener('click', () => editor.undo());
             redoButton.addEventListener('click', () => editor.redo());
             copyButton.addEventListener('click', copyToClipboard);
             clearButton.addEventListener('click', clearEditor);
             saveButton.addEventListener('click', saveToFile);
-            fullscreenButton.addEventListener('click', toggleFullscreen);
+            themeButton.addEventListener('click', toggleTheme);
             fontDecreaseButton.addEventListener('click', () => updateFontSize(-1));
             fontIncreaseButton.addEventListener('click', () => updateFontSize(1));
-            themeSelect.addEventListener('change', () => {
-                editor.setOption("theme", themeSelect.value);
-            });
 
             editor.on('change', updateStats);
             editor.on('focus', () => console.log('Editor focused'));

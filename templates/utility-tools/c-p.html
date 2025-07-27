@@ -245,6 +245,7 @@
         ]
     }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -260,6 +261,10 @@
             --border: #2d4059;
             --success: #4ade80;
             --error: #f87171;
+            /* Light theme variables */
+            --bg-light: #ffffff;
+            --bg-lighter: #f5f5f5;
+            --text-dark: #333333;
         }
 
         * {
@@ -274,6 +279,88 @@
             color: var(--text-light);
             min-height: 100vh;
             line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        body.light-theme .sidebar {
+            background: var(--bg-lighter);
+            border-right: 1px solid #ddd;
+        }
+
+        body.light-theme .sidebar-header {
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.light-theme .sidebar-title {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .utility-tools {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .utility-tools:hover {
+            background: rgba(110, 72, 170, 0.1);
+        }
+
+        body.light-theme .utility-tools.active {
+            background: var(--primary);
+            color: var(--text-lighter);
+        }
+
+        body.light-theme .header {
+            background: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.light-theme .title {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .color-input input {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-dark);
+            border: 1px solid #ddd;
+        }
+
+        body.light-theme .btn-secondary {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-dark);
+            border: 1px solid #ddd;
+        }
+
+        body.light-theme .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .seo-content {
+            background: var(--bg-lighter);
+        }
+
+        body.light-theme .seo-content h3 {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .footer {
+            background: var(--bg-lighter);
+            border-top: 1px solid #ddd;
+        }
+
+        body.light-theme .footer-links a {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        body.light-theme .copyright {
+            color: rgba(0, 0, 0, 0.6);
         }
 
         .app-container {
@@ -314,20 +401,21 @@
             color: var(--accent);
         }
 
-        .compiler-list {
+        .utility-tools-list {
             list-style: none;
         }
 
-        .compiler-item {
+        .utility-tools {
             padding: 12px 20px;
             cursor: pointer;
             transition: background 0.2s;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: var(--text-light);
         }
 
-        .compiler-item a {
+        .utility-tools a {
             color: inherit;
             text-decoration: none;
             display: flex;
@@ -336,15 +424,15 @@
             height: 100%;
         }
 
-        .compiler-item:hover {
+        .utility-tools:hover {
             background: rgba(110, 72, 170, 0.2);
         }
 
-        .compiler-item.active {
+        .utility-tools.active {
             background: var(--primary);
         }
 
-        .compiler-icon {
+        .utility-tools-icon {
             width: 20px;
             text-align: center;
         }
@@ -364,9 +452,6 @@
 
         .sidebar-toggle {
             display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
             background: var(--primary);
             color: white;
             border: none;
@@ -517,6 +602,14 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
+        .color-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         .tooltip {
             position: relative;
         }
@@ -660,11 +753,7 @@
 </head>
 <body>
     <div class="app-container">
-        <button class="sidebar-toggle" id="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h1 class="sidebar-title">
@@ -672,60 +761,51 @@
                     <span>Tool Pix</span>
                 </h1>
             </div>
-            <ul class="compiler-list">
-                <li class="compiler-item">
-                    <a href="/python-compiler">
-                        <span class="compiler-icon"><i class="fab fa-python"></i></span>
-                        <span>Python</span>
+            <ul class="utility-tools-list">
+                <li class="utility-tools">
+                    <a href="/temp-mail">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>Temp Mail</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/sql-editor">
-                        <span class="compiler-icon"><i class="fas fa-database"></i></span>
-                        <span>SQL</span>
+                <li class="utility-tools">
+                    <a href="#">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>Color Picker</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/html-editor">
-                        <span class="compiler-icon"><i class="fab fa-html5"></i></span>
-                        <span>HTML</span>
+                <li class="utility-tools">
+                    <a href="/free-online-favicon-generator">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>Favicon Generator</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/java-compiler">
-                        <span class="compiler-icon"><i class="fab fa-java"></i></span>
-                        <span>Java</span>
+                <li class="utility-tools">
+                    <a href="/free-online-qr-code-scanner">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>QR Scanner</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/c-compiler">
-                        <span>C</span>
+                <li class="utility-tools">
+                    <a href="/convert-qr-to-url-online">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>QR to URL</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/cpp-compiler">
-                        <span>C++</span>
+                <li class="utility-tools">
+                    <a href="/free-online-url-encoder-decoder">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>URL Encoder</span>
                     </a>
                 </li>
-                <li class="compiler-item">
-                    <a href="/javascript-editor">
-                        <span class="compiler-icon"><i class="fab fa-js"></i></span>
-                        <span>JavaScript</span>
+                <li class="utility-tools">
+                    <a href="/convert-url-to-qr-code-online">
+                        <span class="utility-tools-icon"><i class="fas fa-palette"></i></span>
+                        <span>URL to QR</span>
                     </a>
-                </li>
-                <li class="compiler-item">
-                    <a href="/online-text-editor">
-                        <span class="compiler-icon"><i class="fas fa-file-alt"></i></span>
-                        <span>Text Editor</span>
-                    </a>
-                </li>
-                <li class="compiler-item active">
-                    <span class="compiler-icon"><i class="fas fa-palette"></i></span>
-                    <span>Color Picker</span>
                 </li>
             </ul>
         </div>
-
         <div class="main-content">
             <div class="container">
                 <div class="header">
@@ -734,30 +814,15 @@
                         <span>Online Color Picker</span>
                     </h1>
                     <div class="controls">
-                        <button class="btn btn-secondary tooltip" id="copy-hex-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy HEX</span>
-                            <span class="tooltip-text">Copy HEX code</span>
+                        
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-adjust"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle theme</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-rgb-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy RGB</span>
-                            <span class="tooltip-text">Copy RGB code</span>
-                        </button>
-                        <button class="btn btn-secondary tooltip" id="copy-hsl-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy HSL</span>
-                            <span class="tooltip-text">Copy HSL code</span>
-                        </button>
-                        <button class="btn btn-primary tooltip" id="random-btn">
-                            <i class="fas fa-random"></i>
-                            <span>Random</span>
-                            <span class="tooltip-text">Generate random color</span>
-                        </button>
-                        <button class="btn btn-secondary tooltip" id="fullscreen-btn">
-                            <i class="fas fa-expand"></i>
-                            <span>Fullscreen</span>
-                            <span class="tooltip-text">Toggle fullscreen</span>
+                        <button class="btn btn-secondary tooltip sidebar-toggle" id="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                            <span class="tooltip-text">Toggle sidebar</span>
                         </button>
                     </div>
                 </div>
@@ -779,14 +844,34 @@
                                 <input type="text" id="hsl-input" readonly>
                             </div>
                         </div>
+                        <div class="color-controls">
+                            <button class="btn btn-secondary tooltip" id="copy-hex-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy HEX</span>
+                                <span class="tooltip-text">Copy HEX code</span>
+                            </button>
+                            <button class="btn btn-secondary tooltip" id="copy-rgb-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy RGB</span>
+                                <span class="tooltip-text">Copy RGB code</span>
+                            </button>
+                            <button class="btn btn-secondary tooltip" id="copy-hsl-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy HSL</span>
+                                <span class="tooltip-text">Copy HSL code</span>
+                            </button>
+                            <button class="btn btn-primary tooltip" id="random-btn">
+                                <i class="fas fa-random"></i>
+                                <span>Random</span>
+                                <span class="tooltip-text">Generate random color</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <section class="seo-content">
                 <h2>Free Online Color Picker - Tool Pix</h2>
                 <p>Our <strong>online color picker</strong> is a powerful tool for selecting and customizing colors in HEX, RGB, and HSL formats. Perfect for designers, developers, and artists working on web design, graphic design, or any creative project.</p>
-                
                 <h3>Why Choose Our Color Picker?</h3>
                 <ul>
                     <li><strong>Interactive Color Wheel:</strong> Easily pick colors with a visual interface</li>
@@ -796,7 +881,6 @@
                     <li><strong>Mobile-Friendly:</strong> Use on any device</li>
                     <li><strong>Free to Use:</strong> No registration or payment required</li>
                 </ul>
-
                 <h3>Key Features</h3>
                 <p>Designed for efficiency and ease of use:</p>
                 <ul>
@@ -806,7 +890,6 @@
                     <li><strong>Fullscreen Mode:</strong> Focus on color selection</li>
                     <li><strong>Color History:</strong> Track previously selected colors (coming soon)</li>
                 </ul>
-
                 <h3>Tips for Using the Color Picker</h3>
                 <p>Maximize your experience with these tips:</p>
                 <ul>
@@ -817,7 +900,6 @@
                     <li>Use the sidebar to access other Tool Pix tools</li>
                 </ul>
             </section>
-
             <footer class="footer">
                 <div class="footer-links">
                     <a href="/">Home</a>
@@ -825,8 +907,6 @@
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
                     <a href="/contact">Contact</a>
-                    <a href="/faq">Faq</a>
-                    <a href="/guides">Guides</a>
                 </div>
                 <div class="copyright">
                     © 2025 Tool Pix. All rights reserved.
@@ -834,7 +914,6 @@
             </footer>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const canvas = document.getElementById('color-wheel');
@@ -847,11 +926,10 @@
             const copyRgbButton = document.getElementById('copy-rgb-btn');
             const copyHslButton = document.getElementById('copy-hsl-btn');
             const randomButton = document.getElementById('random-btn');
-            const fullscreenButton = document.getElementById('fullscreen-btn');
             const sidebar = document.getElementById('sidebar');
             const sidebarToggle = document.getElementById('sidebar-toggle');
             const sidebarOverlay = document.getElementById('sidebar-overlay');
-            const mainContent = document.querySelector('.main-content');
+            const themeButton = document.getElementById('theme-btn');
 
             canvas.width = 300;
             canvas.height = 300;
@@ -898,6 +976,7 @@
                     }
                     h /= 6;
                 }
+
                 return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
             }
 
@@ -911,18 +990,18 @@
                 const radius = Math.sqrt(dx * dx + dy * dy);
                 const saturation = Math.min(radius / (canvas.width / 2), 1) * 100;
                 const hslColor = `hsl(${angle}, ${saturation}%, 50%)`;
-                
+
                 const tempCanvas = document.createElement('canvas');
                 tempCanvas.width = 1;
                 tempCanvas.height = 1;
                 const tempCtx = tempCanvas.getContext('2d');
                 tempCtx.fillStyle = hslColor;
                 tempCtx.fillRect(0, 0, 1, 1);
+
                 const [r, g, b] = tempCtx.getImageData(0, 0, 1, 1).data;
-                
                 const hex = rgbToHex(r, g, b);
                 const [h, s, l] = rgbToHsl(r, g, b);
-                
+
                 colorPreview.style.backgroundColor = hex;
                 hexInput.value = hex;
                 rgbInput.value = `rgb(${r}, ${g}, ${b})`;
@@ -945,35 +1024,33 @@
                 const hue = Math.random() * 360;
                 const saturation = Math.random() * 100;
                 const hslColor = `hsl(${hue}, ${saturation}%, 50%)`;
-                
+
                 const tempCanvas = document.createElement('canvas');
                 tempCanvas.width = 1;
                 tempCanvas.height = 1;
                 const tempCtx = tempCanvas.getContext('2d');
                 tempCtx.fillStyle = hslColor;
                 tempCtx.fillRect(0, 0, 1, 1);
+
                 const [r, g, b] = tempCtx.getImageData(0, 0, 1, 1).data;
-                
                 const hex = rgbToHex(r, g, b);
                 const [h, s, l] = rgbToHsl(r, g, b);
-                
+
                 colorPreview.style.backgroundColor = hex;
                 hexInput.value = hex;
                 rgbInput.value = `rgb(${r}, ${g}, ${b})`;
                 hslInput.value = `hsl(${h}, ${s}%, ${l}%)`;
             }
 
-            function toggleFullscreen() {
-                mainContent.classList.toggle("fullscreen");
-                sidebar.classList.toggle("open");
-                sidebarOverlay.classList.toggle("open");
-                const isFullscreen = mainContent.classList.contains("fullscreen");
-                fullscreenButton.innerHTML = `<i class="fas fa-${isFullscreen ? 'compress' : 'expand'}"></i> <span>${isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>`;
+            function toggleSidebar() {
+                sidebar.classList.toggle('open');
+                sidebarOverlay.classList.toggle('open');
             }
 
-            function toggleSidebar() {
-                sidebar.classList.toggle("open");
-                sidebarOverlay.classList.toggle("open");
+            function toggleTheme() {
+                document.body.classList.toggle('light-theme');
+                const isLightTheme = document.body.classList.contains('light-theme');
+                themeButton.querySelector('span').textContent = isLightTheme ? 'Dark Theme' : 'Light Theme';
             }
 
             canvas.addEventListener('click', (e) => {
@@ -984,12 +1061,13 @@
             copyRgbButton.addEventListener('click', () => copyToClipboard(rgbInput.value, copyRgbButton));
             copyHslButton.addEventListener('click', () => copyToClipboard(hslInput.value, copyHslButton));
             randomButton.addEventListener('click', generateRandomColor);
-            fullscreenButton.addEventListener('click', toggleFullscreen);
             sidebarToggle.addEventListener('click', toggleSidebar);
             sidebarOverlay.addEventListener('click', toggleSidebar);
+            themeButton.addEventListener('click', toggleTheme);
 
             drawColorWheel();
             generateRandomColor();
+
             console.log('Color Picker page loaded');
         });
     </script>

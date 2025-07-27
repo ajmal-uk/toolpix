@@ -448,7 +448,7 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js"></script>
@@ -473,12 +473,49 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            /* Light theme variables */
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        /* Default to dark theme */
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        /* Light theme */
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -542,7 +579,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -688,6 +725,16 @@
 
         .editor-section {
             border-right: 1px solid var(--border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -997,11 +1044,13 @@
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
         .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
+            color: var(--text-light);
         }
 
         .seo-content li {
@@ -1014,6 +1063,7 @@
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9em;
+            color: var(--text-light);
         }
 
         .seo-content pre {
@@ -1024,6 +1074,7 @@
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
             position: relative;
+            color: var(--text-light);
         }
 
         .try-out-btn {
@@ -1063,11 +1114,13 @@
 
         .note-box p {
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box ul {
             padding-left: 20px;
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box li {
@@ -1238,6 +1291,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1271,10 +1336,16 @@
                 font-size: 10px;
             }
         }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -1323,7 +1394,7 @@
                     </a>
                 </li>
                 <li class="compiler-item">
-                    <a href="/javascript-editor">
+                    <a href="/javascript-compiler">
                         <span class="compiler-icon"><i class="fab fa-js"></i></span>
                         <span>JavaScript</span>
                     </a>
@@ -1349,14 +1420,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1368,6 +1435,17 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code">
 CREATE TABLE employees (
@@ -1409,31 +1487,31 @@ SELECT * FROM employees;</textarea>
             </div>
 
             <div class="ad-container horizontal">
-                
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
                 <h2>Online SQL Editor - Write, Execute & Test SQL Queries Instantly</h2>
-                <p>Our <strong>online SQL editor</strong> provides a powerful platform to write, execute, and test SQL queries for MySQL, PostgreSQL, and SQLite directly in your browser. Whether you're a beginner learning database management or a professional optimizing complex queries, our tool offers real-time results, syntax highlighting, and a sample database for practice.</p>
+                <p>Our <strong>online SQL editor</strong> empowers developers to write, execute, and test SQL queries for MySQL, PostgreSQL, and SQLite directly in the browser. Ideal for beginners learning database management or professionals optimizing complex queries, this tool provides real-time results, syntax highlighting, and a pre-loaded sample database for seamless practice.</p>
 
                 <h3>Why Choose Our SQL Editor?</h3>
                 <ul>
-                    <li><strong>Zero Setup</strong>: No database installation required—start querying instantly.</li>
-                    <li><strong>Multiple Database Support</strong>: Compatible with MySQL, PostgreSQL, and SQLite syntax.</li>
-                    <li><strong>Real-Time Results</strong>: View query output in formatted tables instantly.</li>
-                    <li><strong>Sample Database</strong>: Pre-loaded tables for immediate practice.</li>
+                    <li><strong>No Setup Required</strong>: Run SQL queries without installing database software.</li>
+                    <li><strong>Multiple Dialect Support</strong>: Compatible with MySQL, PostgreSQL, and SQLite syntax.</li>
+                    <li><strong>Formatted Output</strong>: View query results in clean, interactive tables.</li>
+                    <li><strong>Sample Database</strong>: Pre-loaded tables for immediate experimentation.</li>
                     <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
-                    <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
+                    <li><strong>Cross-Device Support</strong>: Code on desktops, tablets, or mobiles with responsive design.</li>
                     <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
-                    <li><strong>Collaboration Ready</strong>: Copy and share queries or results effortlessly.</li>
+                    <li><strong>Shareable Queries</strong>: Easily copy and share queries or results.</li>
                 </ul>
 
                 <div class="ad-container vertical">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Mastering SQL Programming</h3>
-                <p>SQL (Structured Query Language), developed in the 1970s by IBM, is the standard for managing relational databases. It’s essential for applications ranging from small-scale websites to enterprise-level systems.</p>
+                <p>SQL (Structured Query Language), developed by IBM in the 1970s, is the cornerstone of relational database management, used in applications from small-scale websites to enterprise systems.</p>
 
                 <h4>Basic SQL Query Structure</h4>
                 <pre id="select-example">SELECT column1, column2
@@ -1441,21 +1519,21 @@ FROM table_name
 WHERE condition
 ORDER BY column;</pre>
                 <button class="try-out-btn" data-code-id="select-example">Try It Out</button>
-                <p>Key components:</p>
+                <p>Key components of a SQL query:</p>
                 <ul>
-                    <li><code>SELECT</code>: Specifies columns to retrieve.</li>
-                    <li><code>FROM</code>: Identifies the table to query.</li>
+                    <li><code>SELECT</code>: Retrieves specified columns.</li>
+                    <li><code>FROM</code>: Specifies the target table.</li>
                     <li><code>WHERE</code>: Filters rows based on conditions.</li>
-                    <li><code>ORDER BY</code>: Sorts results.</li>
+                    <li><code>ORDER BY</code>: Sorts the result set.</li>
                 </ul>
                 <div class="note-box">
                     <h4>Best Practice</h4>
-                    <p>Use uppercase for SQL keywords and lowercase for identifiers to enhance readability.</p>
+                    <p>Use uppercase for SQL keywords and lowercase for table/column names to improve readability.</p>
                 </div>
 
                 <h3>Core SQL Concepts for All Levels</h3>
                 <h4>Creating Tables</h4>
-                <p>Create structured tables with appropriate data types:</p>
+                <p>Define table structures with appropriate data types:</p>
                 <pre id="create-table-example">CREATE TABLE customers (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -1464,13 +1542,13 @@ ORDER BY column;</pre>
                 <button class="try-out-btn" data-code-id="create-table-example">Try It Out</button>
 
                 <h4>Inserting Data</h4>
-                <p>Add data to tables with INSERT statements:</p>
+                <p>Add records to tables using INSERT:</p>
                 <pre id="insert-example">INSERT INTO customers (id, name, email)
 VALUES (1, 'Alice Smith', 'alice@example.com');</pre>
                 <button class="try-out-btn" data-code-id="insert-example">Try It Out</button>
 
                 <h4>Selecting Data</h4>
-                <p>Retrieve data with SELECT queries:</p>
+                <p>Retrieve specific data with SELECT queries:</p>
                 <pre id="select-data-example">SELECT name, email
 FROM customers
 WHERE id = 1;</pre>
@@ -1478,14 +1556,19 @@ WHERE id = 1;</pre>
 
                 <h4>Joins</h4>
                 <p>Combine data from multiple tables:</p>
-                <pre id="join-example">SELECT e.name, d.name AS department
+                <pre id="join-example">CREATE TABLE departments (
+    name VARCHAR(50) PRIMARY KEY,
+    location VARCHAR(50)
+);
+INSERT INTO departments VALUES ('Engineering', 'Building A'), ('Marketing', 'Building B');
+SELECT e.name, d.location
 FROM employees e
 JOIN departments d ON e.department = d.name
 WHERE e.salary > 65000;</pre>
                 <button class="try-out-btn" data-code-id="join-example">Try It Out</button>
 
                 <h4>Aggregate Functions</h4>
-                <p>Perform calculations on data sets:</p>
+                <p>Perform calculations across data sets:</p>
                 <pre id="aggregate-example">SELECT department, AVG(salary) AS avg_salary
 FROM employees
 GROUP BY department
@@ -1493,14 +1576,14 @@ HAVING AVG(salary) > 70000;</pre>
                 <button class="try-out-btn" data-code-id="aggregate-example">Try It Out</button>
 
                 <h4>Subqueries</h4>
-                <p>Use nested queries for complex filtering:</p>
+                <p>Use nested queries for advanced filtering:</p>
                 <pre id="subquery-example">SELECT name, salary
 FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);</pre>
                 <button class="try-out-btn" data-code-id="subquery-example">Try It Out</button>
 
                 <h3>Database Relationships</h3>
-                <p>Define relationships using primary and foreign keys:</p>
+                <p>Establish relationships using primary and foreign keys:</p>
                 <pre id="relationship-example">CREATE TABLE orders (
     order_id INT PRIMARY KEY,
     customer_id INT,
@@ -1510,28 +1593,32 @@ WHERE salary > (SELECT AVG(salary) FROM employees);</pre>
                 <button class="try-out-btn" data-code-id="relationship-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Relationship Tip</h4>
-                    <p>Use foreign keys to enforce referential integrity and maintain consistent relationships.</p>
+                    <p>Enforce referential integrity with foreign keys to maintain consistent data across tables.</p>
                 </div>
 
                 <h3>Indexes for Performance</h3>
-                <p>Improve query speed with indexes:</p>
+                <p>Enhance query performance with indexes:</p>
                 <pre id="index-example">CREATE INDEX idx_employee_name ON employees(name);</pre>
                 <button class="try-out-btn" data-code-id="index-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Indexing Tip</h4>
-                    <p>Index frequently queried columns but avoid over-indexing to maintain write performance.</p>
+                    <p>Index frequently queried columns, but avoid excessive indexing to maintain efficient write operations.</p>
                 </div>
 
                 <h3>Transactions</h3>
-                <p>Ensure data integrity with transactions:</p>
+                <p>Ensure data consistency with transactions:</p>
                 <pre id="transaction-example">BEGIN TRANSACTION;
 UPDATE accounts SET balance = balance - 100 WHERE id = 1;
 UPDATE accounts SET balance = balance + 100 WHERE id = 2;
 COMMIT;</pre>
                 <button class="try-out-btn" data-code-id="transaction-example">Try It Out</button>
+                <div class="note-box">
+                    <h4>Transaction Tip</h4>
+                    <p>Use transactions for operations requiring multiple changes to ensure atomicity.</p>
+                </div>
 
                 <h3>Views</h3>
-                <p>Create reusable virtual tables:</p>
+                <p>Create reusable virtual tables with views:</p>
                 <pre id="view-example">CREATE VIEW high_paid_employees AS
 SELECT name, salary
 FROM employees
@@ -1541,36 +1628,36 @@ WHERE salary > 70000;</pre>
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
                     <div class="faq-question">What is the difference between SQL and MySQL?</div>
-                    <p>SQL is the standard query language, while MySQL is a database management system that uses SQL.</p>
+                    <p>SQL is the standard query language for relational databases, while MySQL is a specific database management system that implements SQL.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I optimize SQL queries?</div>
-                    <p>Use indexes, avoid SELECT *, use specific WHERE clauses, and analyze queries with EXPLAIN.</p>
+                    <div class="faq-question">How can I optimize SQL queries?</div>
+                    <p>Use indexes, avoid <code>SELECT *</code>, write precise <code>WHERE</code> clauses, and analyze performance with <code>EXPLAIN</code>.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What are SQL injections?</div>
-                    <p>SQL injections are attacks where malicious SQL is inserted. Prevent them with parameterized queries.</p>
+                    <div class="faq-question">What are SQL injections and how to prevent them?</div>
+                    <p>SQL injections occur when malicious SQL is inserted into queries. Prevent them using parameterized queries or prepared statements.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do WHERE and HAVING differ?</div>
-                    <p>WHERE filters rows before grouping; HAVING filters groups after aggregation.</p>
+                    <div class="faq-question">What’s the difference between WHERE and HAVING?</div>
+                    <p><code>WHERE</code> filters individual rows before grouping, while <code>HAVING</code> filters grouped data after aggregation.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What is database normalization?</div>
-                    <p>Normalization organizes data to reduce redundancy, following normal forms (1NF, 2NF, 3NF).</p>
+                    <p>Normalization organizes data to eliminate redundancy, adhering to normal forms (1NF, 2NF, 3NF) for efficient storage and integrity.</p>
                 </div>
 
                 <h3>Advanced SQL Concepts</h3>
                 <ul>
                     <li>
-                        <strong>Window Functions</strong>: Perform calculations across rows.
+                        <strong>Window Functions</strong>: Perform calculations across rows without grouping.
                         <pre id="window-example">SELECT name, salary,
 RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank
 FROM employees;</pre>
                         <button class="try-out-btn" data-code-id="window-example">Try It Out</button>
                     </li>
                     <li>
-                        <strong>Common Table Expressions (CTEs)</strong>: Simplify complex queries.
+                        <strong>Common Table Expressions (CTEs)</strong>: Simplify complex queries with temporary result sets.
                         <pre id="cte-example">WITH high_earners AS (
     SELECT name, salary FROM employees WHERE salary > 70000
 )
@@ -1580,8 +1667,18 @@ GROUP BY department;</pre>
                         <button class="try-out-btn" data-code-id="cte-example">Try It Out</button>
                     </li>
                     <li>
-                        <strong>Recursive Queries</strong>: Handle hierarchical data.
-                        <pre id="recursive-example">WITH RECURSIVE org_chart AS (
+                        <strong>Recursive Queries</strong>: Query hierarchical or recursive data.
+                        <pre id="recursive-example">CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    manager_id INT,
+    FOREIGN KEY (manager_id) REFERENCES employees(id)
+);
+INSERT INTO employees VALUES 
+(1, 'Alice', NULL),
+(2, 'Bob', 1),
+(3, 'Charlie', 1);
+WITH RECURSIVE org_chart AS (
     SELECT id, name, manager_id
     FROM employees
     WHERE manager_id IS NULL
@@ -1596,35 +1693,45 @@ SELECT * FROM org_chart;</pre>
                 </ul>
                 <div class="note-box">
                     <h4>Advanced Tip</h4>
-                    <p>Use CTEs and window functions for complex queries to improve readability and performance.</p>
+                    <p>Leverage CTEs and window functions to enhance query readability and handle complex data processing efficiently.</p>
                 </div>
 
                 <h3>Common SQL Pitfalls and Solutions</h3>
                 <div class="note-box">
                     <h4>Watch Out!</h4>
                     <ul>
-                        <li><strong>SQL Injection</strong>: Use parameterized queries to prevent attacks.</li>
-                        <li><strong>Overusing Indexes</strong>: Balance read and write performance.</li>
-                        <li><strong>Ignoring NULLs</strong>: Handle NULL values explicitly in conditions.</li>
-                        <li><strong>Poor Join Performance</strong>: Ensure indexes on join columns.</li>
-                        <li><strong>Unoptimized Subqueries</strong>: Replace with joins where possible.</li>
+                        <li><strong>SQL Injection</strong>: Always use parameterized queries to prevent malicious input.</li>
+                        <li><strong>Overusing Indexes</strong>: Balance read and write performance to avoid slowing down inserts/updates.</li>
+                        <li><strong>NULL Handling</strong>: Explicitly account for <code>NULL</code> values in conditions to avoid unexpected results.</li>
+                        <li><strong>Inefficient Joins</strong>: Ensure indexes on join columns for better performance.</li>
+                        <li><strong>Subquery Overuse</strong>: Replace subqueries with joins where possible for efficiency.</li>
                     </ul>
+                </div>
+
+                <h3>SQL Standard Features</h3>
+                <p>Key SQL features for robust database management:</p>
+                <ul>
+                    <li><code>SELECT</code>: Retrieve data with flexible filtering and sorting.</li>
+                    <li><code>JOIN</code>: Combine data from multiple tables.</li>
+                    <li><code>GROUP BY</code>: Aggregate data for summary statistics.</li>
+                    <li><code>INDEX</code>: Optimize query performance.</li>
+                    <li><code>TRANSACTION</code>: Ensure data consistency for multi-step operations.</li>
+                </ul>
+
+                <div class="ad-container horizontal">
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Learning Resources for SQL</h3>
                 <div class="note-box">
                     <h4>Level Up Your Skills</h4>
                     <ul>
-                        <li><strong>Beginner Books</strong>: "SQL in 10 Minutes" by Ben Forta.</li>
+                        <li><strong>Beginner Books</strong>: "SQL in 10 Minutes, Sams Teach Yourself" by Ben Forta.</li>
                         <li><strong>Advanced Books</strong>: "SQL Performance Explained" by Markus Winand.</li>
-                        <li><strong>Courses</strong>: SQLZoo, Coursera, Udemy.</li>
-                        <li><strong>Practice</strong>: LeetCode SQL, HackerRank, StrataScratch.</li>
-                        <li><strong>Community</strong>: Stack Overflow, Reddit, or SQL forums.</li>
+                        <li><strong>Courses</strong>: SQLZoo, Coursera, Udemy, or Mode Analytics SQL tutorials.</li>
+                        <li><strong>Practice Platforms</strong>: LeetCode SQL, HackerRank, StrataScratch, or PGExercises.</li>
+                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or database-focused forums.</li>
                     </ul>
-                </div>
-
-                <div class="ad-container horizontal">
-                    
                 </div>
             </section>
 
@@ -1635,9 +1742,8 @@ SELECT * FROM org_chart;</pre>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
                     <a href="/contact">Contact</a>
-                    <a href="/faq">Faq</a>
+                    <a href="/faq">FAQ</a>
                     <a href="/guides">Guides</a>
-
                 </div>
                 <div class="copyright">
                     © 2025 Tool Pix. All rights reserved.
@@ -1684,6 +1790,7 @@ SELECT * FROM org_chart;</pre>
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1691,6 +1798,7 @@ SELECT * FROM org_chart;</pre>
             const sidebarOverlay = document.getElementById("sidebar-overlay");
             const tryOutButtons = document.querySelectorAll(".try-out-btn");
 
+            let currentTheme = "dracula";
             updateStatus("ready");
 
             function toggleSidebar() {
@@ -1698,8 +1806,24 @@ SELECT * FROM org_chart;</pre>
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {

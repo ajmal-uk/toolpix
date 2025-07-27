@@ -449,7 +449,7 @@
     ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -473,12 +473,49 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            /* Light theme variables */
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        /* Default to dark theme */
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        /* Light theme */
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -542,7 +579,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -688,6 +725,16 @@
 
         .editor-section {
             border-right: 1px solid var(--border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -1001,11 +1048,13 @@
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
         .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
+            color: var(--text-light);
         }
 
         .seo-content li {
@@ -1018,6 +1067,7 @@
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9em;
+            color: var(--text-light);
         }
 
         .seo-content pre {
@@ -1028,6 +1078,7 @@
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
             position: relative;
+            color: var(--text-light);
         }
 
         .try-out-btn {
@@ -1067,11 +1118,13 @@
 
         .note-box p {
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box ul {
             padding-left: 20px;
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box li {
@@ -1234,6 +1287,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1283,10 +1348,16 @@
                 touch-action: manipulation !important;
             }
         }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -1361,14 +1432,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1380,6 +1447,17 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code">console.log("Welcome to Tool Pix JavaScript Compiler!");</textarea>
                         </div>
@@ -1413,16 +1491,16 @@
 
             <section class="seo-content">
                 <h2>Online JavaScript Compiler - Write, Run & Share JavaScript Code Instantly</h2>
-                <p>Our <strong>online JavaScript compiler</strong> enables developers to write, run, and debug JavaScript code directly in the browser. Perfect for beginners learning the language or professionals prototyping web applications, our tool provides a real-time coding environment with syntax highlighting and error handling.</p>
+                <p>Our <strong>online JavaScript compiler</strong> enables developers to write, execute, and share JavaScript code directly in the browser. Perfect for beginners learning JavaScript or professionals building dynamic web applications, our tool provides a seamless coding experience with syntax highlighting and real-time output.</p>
 
                 <h3>Why Choose Our JavaScript Compiler?</h3>
                 <ul>
-                    <li><strong>No Setup Required</strong>: Run JavaScript code instantly without installing Node.js or other tools.</li>
-                    <li><strong>Fast Execution</strong>: Optimized backend for quick code execution and results.</li>
-                    <li><strong>Interactive Console</strong>: Real-time output with support for user input via prompts.</li>
-                    <li><strong>Modern Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
-                    <li><strong>Cross-Device Support</strong>: Code on desktops, tablets, or mobiles seamlessly.</li>
-                    <li><strong>Free to Use</strong>: Full access with no subscriptions or hidden fees.</li>
+                    <li><strong>No Setup Required</strong>: Run JavaScript code without installing Node.js or any dependencies.</li>
+                    <li><strong>Fast Execution</strong>: Optimized backend for quick results.</li>
+                    <li><strong>Interactive Output</strong>: Real-time console output with support for user input via <code>prompt</code>.</li>
+                    <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
+                    <li><strong>Cross-Device Support</strong>: Code on desktops, tablets, or mobiles.</li>
+                    <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
                     <li><strong>Shareable Code</strong>: Easily copy and share code snippets.</li>
                 </ul>
 
@@ -1431,37 +1509,37 @@
                 </div>
 
                 <h3>Mastering JavaScript Programming</h3>
-                <p>JavaScript, introduced in 1995, is the backbone of web development, enabling dynamic and interactive websites. Its versatility extends to server-side development (Node.js), mobile apps, and more, with modern ES6+ features enhancing developer productivity.</p>
+                <p>JavaScript, created by Brendan Eich in 1995, is a versatile, high-level programming language primarily used for web development, enabling dynamic and interactive web pages.</p>
 
                 <h4>Basic JavaScript Program Structure</h4>
                 <pre id="basic-structure">console.log("Hello, World!");</pre>
                 <button class="try-out-btn" data-code-id="basic-structure">Try It Out</button>
                 <p>Key elements of a JavaScript program:</p>
                 <ul>
-                    <li><code>console.log</code>: Outputs text to the console.</li>
-                    <li>No class or main method required, unlike Java.</li>
-                    <li>Runs directly in the browser or Node.js environment.</li>
+                    <li><code>console.log()</code>: Outputs text to the console.</li>
+                    <li>No mandatory main function; code executes top-down.</li>
+                    <li>Scripts can run in browsers or Node.js environments.</li>
                 </ul>
                 <div class="note-box">
                     <h4>Best Practice</h4>
-                    <p>Use <code>const</code> or <code>let</code> for variable declarations to avoid issues with <code>var</code>. Always test code in a browser console for compatibility.</p>
+                    <p>Use <code>const</code> or <code>let</code> for variable declarations and follow modern ES6+ syntax for cleaner code.</p>
                 </div>
 
                 <h3>Core JavaScript Concepts for All Levels</h3>
                 <h4>Variables and Data Types</h4>
-                <p>JavaScript is dynamically typed, supporting various data types:</p>
+                <p>JavaScript's dynamic typing simplifies variable declaration:</p>
                 <ul>
-                    <li><code>number</code>: For integers and floating-point numbers.</li>
-                    <li><code>string</code>: For text data.</li>
-                    <li><code>boolean</code>: True/false values.</li>
-                    <li><code>object</code>: For complex data structures.</li>
-                    <li><code>undefined</code> and <code>null</code>: For unassigned or null values.</li>
+                    <li><code>Number</code>: Integers or decimals (e.g., <code>42</code>, <code>3.14</code>).</li>
+                    <li><code>String</code>: Text (e.g., <code>"Hello"</code>).</li>
+                    <li><code>Boolean</code>: <code>true</code>/<code>false</code>.</li>
+                    <li><code>Array</code>: Ordered collections (e.g., <code>[1, 2, 3]</code>).</li>
+                    <li><code>Object</code>: Key-value pairs (e.g., <code>{name: "Alice"}</code>).</li>
                 </ul>
                 <pre id="variables-example">const age = 25;
-let price = 19.99;
+const price = 19.99;
 const name = "Alice";
 const isActive = true;
-console.log(age, price, name, isActive);</pre>
+console.log(`Name: ${name}, Age: ${age}, Price: ${price}, Active: ${isActive}`);</pre>
                 <button class="try-out-btn" data-code-id="variables-example">Try It Out</button>
 
                 <h4>Control Structures</h4>
@@ -1489,150 +1567,118 @@ while (i < 5) {
 }</pre>
                 <button class="try-out-btn" data-code-id="while-loop-example">Try It Out</button>
 
-                <h5>Switch Statement</h5>
-                <pre id="switch-example">const day = 1;
-switch (day) {
-    case 1:
-        console.log("Monday");
-        break;
-    default:
-        console.log("Invalid day");
-}</pre>
-                <button class="try-out-btn" data-code-id="switch-example">Try It Out</button>
-
-                <h3>Functions in JavaScript</h3>
-                <p>Functions are first-class citizens in JavaScript, supporting various syntaxes:</p>
+                <h3>Functions</h3>
+                <p>Define reusable code blocks with functions:</p>
                 <pre id="function-example">function greet(name) {
     return `Hello, ${name}!`;
 }
-const arrowGreet = (name) => `Hello, ${name}!`;
-console.log(greet("Alice"));
-console.log(arrowGreet("Bob"));</pre>
+console.log(greet("Alice"));</pre>
                 <button class="try-out-btn" data-code-id="function-example">Try It Out</button>
-                <div class="note-box">
-                    <h4>Function Tip</h4>
-                    <p>Use arrow functions for concise syntax and avoid <code>this</code> binding issues in callbacks.</p>
-                </div>
+
+                <h3>Arrays and Objects</h3>
+                <p>Manage data with arrays and objects:</p>
+                <pre id="array-object-example">const numbers = [1, 2, 3, 4, 5];
+const person = { name: "Alice", age: 30 };
+numbers.forEach(num => console.log(num));
+console.log(`Person: ${person.name}, ${person.age}`);</pre>
+                <button class="try-out-btn" data-code-id="array-object-example">Try It Out</button>
 
                 <h3>Handling User Input</h3>
-                <p>Use <code>prompt</code> for simple user input in the browser:</p>
-                <pre id="input-example">const name = prompt("Enter your name:");
+                <p>The <code>prompt</code> function enables user interaction in browsers:</p>
+                <pre id="input-example">const name = prompt("Enter your name: ");
 console.log(`Hello, ${name}!`);</pre>
                 <button class="try-out-btn" data-code-id="input-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Input Best Practice</h4>
-                    <p>Validate <code>prompt</code> input to handle <code>null</code> or empty strings. Consider modern alternatives like HTML forms for complex inputs.</p>
+                    <p>Validate user input from <code>prompt</code> to handle null or empty responses.</p>
                 </div>
 
-                <h3>Arrays and Objects</h3>
-                <p>Manage data with arrays and objects:</p>
-                <pre id="array-example">const numbers = [1, 2, 3, 4, 5];
-const person = { name: "Alice", age: 30 };
-numbers.forEach(num => console.log(num));
-console.log(person.name);</pre>
-                <button class="try-out-btn" data-code-id="array-example">Try It Out</button>
-
-                <h3>Error Handling</h3>
+                <h3>Exception Handling</h3>
                 <p>Handle errors with try-catch:</p>
                 <pre id="exception-example">try {
-    throw new Error("Something went wrong");
+    const result = 10 / 0;
+    console.log(result);
 } catch (error) {
     console.log(`Error: ${error.message}`);
 }</pre>
                 <button class="try-out-btn" data-code-id="exception-example">Try It Out</button>
 
-                <h3>DOM Manipulation</h3>
-                <p>Interact with the Document Object Model (note: limited in this environment):</p>
-                <pre id="dom-example">const div = document.createElement("div");
-div.textContent = "Hello, DOM!";
-document.body.appendChild(div);
-console.log("Element added to DOM");</pre>
-                <button class="try-out-btn" data-code-id="dom-example">Try It Out</button>
-
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
                     <div class="faq-question">How do I handle user input in JavaScript?</div>
-                    <p>Use <code>prompt</code> for simple inputs or HTML forms for complex interactions. Always validate input to prevent errors.</p>
+                    <p>Use <code>prompt()</code> for simple browser input and validate responses to handle null or invalid inputs.</p>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">JavaScript vs. Java: What's the difference?</div>
-                    <p>JavaScript is a dynamic, web-focused scripting language, while Java is a compiled, object-oriented language for broader applications.</p>
+                    <div class="faq-question">JavaScript vs. Python: What's the difference?</div>
+                    <p>JavaScript is primarily used for web development, running natively in browsers, while Python is general-purpose, excelling in data science and automation.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How do I run JavaScript locally?</div>
-                    <p>Run it in a browser console or use Node.js. Save code as <code>.js</code> and execute with <code>node filename.js</code>.</p>
+                    <p>Run in a browser console, use Node.js with <code>node script.js</code>, or include in HTML with <code>&lt;script&gt;</code> tags.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Why choose JavaScript?</div>
-                    <p>JavaScript's ubiquity in web development, vibrant ecosystem, and versatility make it essential for front-end and back-end development.</p>
+                    <p>JavaScript's ubiquity in browsers, flexibility, and vast ecosystem make it essential for web development and interactive applications.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How can I debug JavaScript code?</div>
-                    <p>Use <code>console.log</code>, browser DevTools, or our compiler's real-time error output to identify and fix issues.</p>
+                    <p>Use <code>console.log</code>, browser developer tools, or our compiler's real-time error output to identify issues.</p>
                 </div>
 
                 <h3>Advanced JavaScript Concepts</h3>
                 <ul>
                     <li>
-                        <strong>Async/Await</strong>: Simplify asynchronous code.
-                        <pre id="async-example">async function fetchData() {
+                        <strong>Promises and Async/Await</strong>: Handle asynchronous operations.
+                        <pre id="promise-example">async function fetchData() {
     try {
-        await new Promise(resolve => setTimeout(() => resolve("Data fetched!"), 1000));
-        console.log("Data fetched!");
+        const response = await new Promise(resolve => setTimeout(() => resolve("Data fetched!"), 1000));
+        console.log(response);
     } catch (error) {
-        console.log("Error:", error);
+        console.log(`Error: ${error}`);
     }
 }
 fetchData();</pre>
-                        <button class="try-out-btn" data-code-id="async-example">Try It Out</button>
-                    </li>
-                    <li>
-                        <strong>Promises</strong>: Handle asynchronous operations.
-                        <pre id="promise-example">const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("Success!"), 1000);
-});
-myPromise.then(result => console.log(result));</pre>
                         <button class="try-out-btn" data-code-id="promise-example">Try It Out</button>
                     </li>
                     <li>
-                        <strong>Modules</strong>: Organize code with ES6 modules.
-                        <pre id="module-example">export const greet = name => `Hello, ${name}!`;
-import { greet } from './module.js';
-console.log(greet("Alice"));</pre>
-                        <button class="try-out-btn" data-code-id="module-example">Try It Out</button>
+                        <strong>Arrow Functions</strong>: Concise function syntax.
+                        <pre id="arrow-example">const add = (a, b) => a + b;
+console.log(add(5, 3));</pre>
+                        <button class="try-out-btn" data-code-id="arrow-example">Try It Out</button>
                     </li>
                     <li>
-                        <strong>Destructuring</strong>: Extract data efficiently.
-                        <pre id="destructuring-example">const person = { name: "Alice", age: 30 };
+                        <strong>Destructuring</strong>: Extract values from arrays/objects.
+                        <pre id="destruct-example">const person = { name: "Alice", age: 30 };
 const { name, age } = person;
-console.log(name, age);</pre>
-                        <button class="try-out-btn" data-code-id="destructuring-example">Try It Out</button>
+console.log(`Name: ${name}, Age: ${age}`);</pre>
+                        <button class="try-out-btn" data-code-id="destruct-example">Try It Out</button>
                     </li>
                 </ul>
                 <div class="note-box">
                     <h4>Advanced Tip</h4>
-                    <p>Use async/await and modules to write clean, maintainable code for modern JavaScript applications.</p>
+                    <p>Use <code>async/await</code> for cleaner asynchronous code and leverage ES6+ features like destructuring for concise syntax.</p>
                 </div>
 
                 <h3>Common JavaScript Pitfalls and Solutions</h3>
                 <div class="note-box">
                     <h4>Watch Out!</h4>
                     <ul>
-                        <li><strong>Variable Scope</strong>: Prefer <code>const</code> and <code>let</code> over <code>var</code> to avoid scope issues.</li>
-                        <li><strong>Async Code</strong>: Handle promises or async/await properly to avoid race conditions.</li>
-                        <li><strong>Type Coercion</strong>: Use <code>===</code> instead of <code>==</code> for strict equality.</li>
-                        <li><strong>Undefined/Null</strong>: Check for <code>undefined</code> or <code>null</code> before accessing properties.</li>
-                        <li><strong>Event Listeners</strong>: Remove event listeners when no longer needed to prevent memory leaks.</li>
+                        <li><strong>Undefined/Null Errors</strong>: Check for <code>undefined</code> or <code>null</code> before accessing properties.</li>
+                        <li><strong>Asynchronous Issues</strong>: Use Promises or <code>async/await</code> to handle async operations.</li>
+                        <li><strong>Variable Hoisting</strong>: Prefer <code>const</code> and <code>let</code> over <code>var</code> to avoid hoisting issues.</li>
+                        <li><strong>Type Coercion</strong>: Use strict equality (<code>===</code>) to avoid unexpected type conversions.</li>
+                        <li><strong>Event Loop Blocking</strong>: Avoid long-running tasks in the main thread.</li>
                     </ul>
                 </div>
 
                 <h3>JavaScript Standard Library Highlights</h3>
-                <p>Key built-in objects and methods:</p>
+                <p>Key built-in objects for powerful development:</p>
                 <ul>
-                    <li><code>Array</code>: Methods like <code>map</code>, <code>filter</code>, and <code>reduce</code>.</li>
-                    <li><code>Object</code>: Utilities like <code>keys</code>, <code>values</code>, and <code>assign</code>.</li>
-                    <li><code>Math</code>: Functions for calculations like <code>random</code> and <code>floor</code>.</li>
-                    <li><code>Date</code>: Date and time manipulation.</li>
+                    <li><code>Array</code>: Methods like <code>map</code>, <code>filter</code>, <code>reduce</code>.</li>
+                    <li><code>Object</code>: Key-value pair manipulation.</li>
+                    <li><code>Math</code>: Mathematical functions.</li>
+                    <li><code>Date</code>: Date and time handling.</li>
+                    <li><code>JSON</code>: JSON parsing and stringification.</li>
                 </ul>
 
                 <div class="ad-container horizontal">
@@ -1645,20 +1691,20 @@ console.log(name, age);</pre>
                     <ul>
                         <li><strong>Beginner Books</strong>: "Eloquent JavaScript" by Marijn Haverbeke.</li>
                         <li><strong>Advanced Books</strong>: "You Don't Know JS" series by Kyle Simpson.</li>
-                        <li><strong>Courses</strong>: freeCodeCamp, Codecademy, Udemy.</li>
+                        <li><strong>Courses</strong>: JavaScript tutorials on MDN, FreeCodeCamp, Udemy.</li>
                         <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codewars.</li>
-                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or JavaScript Discord.</li>
+                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or JavaScript forums.</li>
                     </ul>
                 </div>
             </section>
 
             <footer class="footer">
                 <div class="footer-links">
-                    <a href="/">Home</a>          
+                    <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
-                    <a href="/contact">Contact</a>
+                    <a href="/contact">Contact液体
                 </div>
                 <div class="copyright">
                     © 2025 Tool Pix. All rights reserved.
@@ -1700,6 +1746,7 @@ console.log(name, age);</pre>
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1712,6 +1759,7 @@ console.log(name, age);</pre>
             let currentPromptIndex = 0;
             let isRunning = false;
             let expectedInputCount = 0;
+            let currentTheme = "dracula";
 
             updateStatus("ready");
 
@@ -1720,15 +1768,32 @@ console.log(name, age);</pre>
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const codeId = button.getAttribute('data-code-id');
                     const codeElement = document.getElementById(codeId);
                     if (codeElement) {
-                        editor.setValue(codeElement.textContent.trim());
+                        const rawCode = codeElement.textContent.trim();
+                        editor.setValue(rawCode);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         editor.focus();
                     }
@@ -1763,18 +1828,25 @@ console.log(name, age);</pre>
                 }).join('\n');
             }
 
+            function parseCode(code) {
+                return {
+                    files: [{ name: 'main.js', content: code }],
+                    mainFile: 'main.js'
+                };
+            }
+
             function countExpectedInputs(code) {
-                const promptRegex = /\bprompt\s*\(\s*["'](.*?)["']\s*(,\s*["'].*?["'])?\s*\)/g;
+                const inputRegex = /\bprompt\s*\(/g;
                 let count = 0;
                 let match;
-                while ((match = promptRegex.exec(code)) !== null) {
+                while ((match = inputRegex.exec(code)) !== null) {
                     count++;
                 }
                 return count;
             }
 
             function extractPrompts(code) {
-                const promptRegex = /\bprompt\s*\(\s*["'](.*?)["']\s*(,\s*["'].*?["'])?\s*\)/g;
+                const promptRegex = /prompt\s*\(\s*['"](.*?)['"]\s*(?:,\s*['"].*?['"])?\s*\)/g;
                 let prompts = [];
                 let match;
                 while ((match = promptRegex.exec(code)) !== null) {
@@ -1853,8 +1925,10 @@ console.log(name, age);</pre>
 
             function updateOutput() {
                 let outputHtml = currentOutput.map(line => {
-                    if (line.includes('Error:') || line.includes('Exception')) {
+                    if (line.includes('error:') || line.includes('Error')) {
                         return `<span style="color: #f87171;">${preprocessOutput(line)}</span>`;
+                    } else if (line.includes('warning:')) {
+                        return `<span style="color: #facc15;">${preprocessOutput(line)}</span>`;
                     }
                     return preprocessOutput(line);
                 }).join('\n');
@@ -1865,13 +1939,15 @@ console.log(name, age);</pre>
             async function executeCode(code, inputs) {
                 updateStatus("running");
                 try {
+                    const { files } = parseCode(code);
+
                     const response = await fetch("https://emkc.org/api/v2/piston/execute", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             language: "javascript",
                             version: "18.15.0",
-                            files: [{ name: "main.js", content: code }],
+                            files: files,
                             stdin: inputs.join("\n"),
                             run_timeout: 10000
                         })

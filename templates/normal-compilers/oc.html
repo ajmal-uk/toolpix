@@ -449,7 +449,7 @@
         ]
     }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" id="codemirror-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -473,12 +473,46 @@
             --terminal-text: #e0e0e0;
             --note-bg: #2a2a4e;
             --note-border: #5a48aa;
+            --bg-dark-light: #f5f5f5;
+            --bg-darker-light: #e0e0e0;
+            --text-light-light: #333333;
+            --text-lighter-light: #000000;
+            --border-light: #d1d5db;
+            --terminal-bg-light: #ffffff;
+            --terminal-text-light: #333333;
+            --note-bg-light: #f0f0ff;
+            --note-border-light: #a3bffa;
+        }
+
+        body.dark-theme {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --text-light: #f1f1f1;
+            --text-lighter: #ffffff;
+            --border: #2d4059;
+            --terminal-bg: #1c2526;
+            --terminal-text: #e0e0e0;
+            --note-bg: #2a2a4e;
+            --note-border: #5a48aa;
+        }
+
+        body.light-theme {
+            --bg-dark: var(--bg-dark-light);
+            --bg-darker: var(--bg-darker-light);
+            --text-light: var(--text-light-light);
+            --text-lighter: var(--text-lighter-light);
+            --border: var(--border-light);
+            --terminal-bg: var(--terminal-bg-light);
+            --terminal-text: var(--terminal-text-light);
+            --note-bg: var(--note-bg-light);
+            --note-border: var(--note-border-light);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -542,7 +576,7 @@
         }
 
         .compiler-item a {
-            color: inherit;
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -627,6 +661,10 @@
             color: var(--accent);
         }
 
+        .comment {
+            color: #5c6370;
+        }
+
         .controls {
             display: flex;
             gap: 12px;
@@ -688,6 +726,16 @@
 
         .editor-section {
             border-right: 1px solid var(--border);
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
         }
 
         .editor-wrapper {
@@ -1001,11 +1049,13 @@
         .seo-content p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--text-light);
         }
 
         .seo-content ul, .seo-content ol {
             margin-bottom: 20px;
             padding-left: 20px;
+            color: var(--text-light);
         }
 
         .seo-content li {
@@ -1018,6 +1068,7 @@
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9em;
+            color: var(--text-light);
         }
 
         .seo-content pre {
@@ -1028,6 +1079,7 @@
             margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
             position: relative;
+            color: var(--text-light);
         }
 
         .try-out-btn {
@@ -1067,11 +1119,13 @@
 
         .note-box p {
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box ul {
             padding-left: 20px;
             margin-bottom: 10px;
+            color: var(--text-light);
         }
 
         .note-box li {
@@ -1234,6 +1288,18 @@
                 border-radius: 50%;
             }
 
+            .editor-header .btn span {
+                display: none;
+            }
+
+            .editor-header .btn {
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
             .tooltip-text {
                 width: 100px;
                 font-size: 10px;
@@ -1283,10 +1349,16 @@
                 touch-action: manipulation !important;
             }
         }
+
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -1361,14 +1433,10 @@
                             <i class="fas fa-play"></i>
                             <span>Run</span>
                         </button>
-                        <button class="btn btn-secondary tooltip" id="copy-btn">
-                            <i class="far fa-copy"></i>
-                            <span>Copy</span>
-                            <span class="tooltip-text">Copy to clipboard</span>
-                        </button>
-                        <button class="btn btn-secondary" id="clear-btn" title="Clear">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>Clear</span>
+                        <button class="btn btn-secondary tooltip" id="theme-btn">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                            <span class="tooltip-text">Toggle Theme</span>
                         </button>
                         <button class="btn btn-secondary tooltip" id="sidebar-toggle">
                             <i class="fas fa-bars"></i>
@@ -1380,6 +1448,17 @@
 
                 <div class="editor-output-container">
                     <div class="editor-section">
+                        <div class="editor-header">
+                            <button class="btn btn-secondary tooltip" id="copy-btn">
+                                <i class="far fa-copy"></i>
+                                <span>Copy</span>
+                                <span class="tooltip-text">Copy to clipboard</span>
+                            </button>
+                            <button class="btn btn-secondary" id="clear-btn" title="Clear">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
                         <div class="editor-wrapper">
                             <textarea id="code">#include <stdio.h>
 
@@ -1413,30 +1492,30 @@ int main() {
             </div>
 
             <div class="ad-container horizontal">
-                
+                <span class="ad-label">Advertisement</span>
             </div>
 
             <section class="seo-content">
                 <h2>Online C Compiler - Write, Run & Share C Code Instantly</h2>
-                <p>Our <strong>online C compiler</strong> empowers developers of all levels to write, compile, and execute C programs directly in the browser. Whether you're a beginner learning procedural programming or an advanced developer building system-level applications, our tool offers a robust, real-time coding environment with syntax highlighting and debugging support.</p>
+                <p>Our <strong>online C compiler</strong> allows developers to write, compile, and execute C programs directly in the browser. Ideal for students learning C or professionals building high-performance applications, our tool offers a seamless coding experience with syntax highlighting and real-time output.</p>
 
                 <h3>Why Choose Our C Compiler?</h3>
                 <ul>
-                    <li><strong>Zero Setup</strong>: No need to install a compiler or configure environments—start coding instantly.</li>
-                    <li><strong>High Performance</strong>: Fast compilation with an optimized backend for quick results.</li>
-                    <li><strong>Interactive Output</strong>: Real-time console output with support for user input via scanf.</li>
+                    <li><strong>No Installation Required</strong>: Write and run C code without installing compilers like GCC.</li>
+                    <li><strong>Fast Compilation</strong>: Optimized backend for quick compilation and execution.</li>
+                    <li><strong>Interactive Console</strong>: Supports user input with real-time output.</li>
                     <li><strong>Advanced Editor</strong>: Powered by CodeMirror with Dracula theme, line numbers, and auto-indentation.</li>
-                    <li><strong>Cross-Device Compatibility</strong>: Code seamlessly on desktops, tablets, or mobiles.</li>
-                    <li><strong>Free Forever</strong>: Full access with no subscriptions or hidden costs.</li>
-                    <li><strong>Collaboration Ready</strong>: Copy and share code snippets effortlessly.</li>
+                    <li><strong>Cross-Platform</strong>: Code on desktops, tablets, or mobiles seamlessly.</li>
+                    <li><strong>Free to Use</strong>: Full access with no subscriptions or hidden fees.</li>
+                    <li><strong>Shareable Code</strong>: Easily copy and share your code snippets.</li>
                 </ul>
 
                 <div class="ad-container vertical">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Mastering C Programming</h3>
-                <p>C, developed by Dennis Ritchie in the 1970s, is a foundational programming language known for its efficiency, low-level control, and versatility in system programming, embedded systems, and operating systems development.</p>
+                <p>C, developed in the early 1970s by Dennis Ritchie, is a powerful, general-purpose programming language known for its performance and low-level control, widely used in operating systems, embedded systems, and game development.</p>
 
                 <h4>Basic C Program Structure</h4>
                 <pre id="basic-structure">#include <stdio.h>
@@ -1448,25 +1527,24 @@ int main() {
                 <button class="try-out-btn" data-code-id="basic-structure">Try It Out</button>
                 <p>Key elements of a C program:</p>
                 <ul>
-                    <li><code>#include <stdio.h></code>: Includes standard input/output library.</li>
+                    <li><code>#include <stdio.h></code>: Includes the standard input/output library.</li>
                     <li><code>int main()</code>: The program's entry point.</li>
                     <li><code>printf</code>: Outputs text to the console.</li>
                     <li><code>return 0</code>: Indicates successful program execution.</li>
                 </ul>
                 <div class="note-box">
                     <h4>Best Practice</h4>
-                    <p>Always include <code>return 0</code> in the <code>main</code> function to indicate successful execution.</p>
+                    <p>Always include <code>return 0</code> in <code>main()</code> to indicate successful execution.</p>
                 </div>
 
                 <h3>Core C Concepts for All Levels</h3>
                 <h4>Variables and Data Types</h4>
-                <p>C's type system ensures efficient data handling:</p>
+                <p>C's static typing ensures efficient data handling:</p>
                 <ul>
-                    <li><code>int</code>: For whole numbers.</li>
+                    <li><code>int</code>: For integers (e.g., <code>42</code>).</li>
                     <li><code>float</code>, <code>double</code>: For floating-point numbers.</li>
-                    <li><code>char</code>: For single characters.</li>
+                    <li><code>char</code>: For single characters (e.g., <code>'A'</code>).</li>
                     <li><code>char[]</code>: For strings (null-terminated).</li>
-                    <li><code>_Bool</code>: For true/false values (C99).</li>
                 </ul>
                 <pre id="variables-example">#include <stdio.h>
 
@@ -1475,14 +1553,13 @@ int main() {
     float price = 19.99;
     char grade = 'A';
     char name[] = "Alice";
-    _Bool isActive = 1;
-    printf("Age: %d, Price: %.2f, Grade: %c, Name: %s, Active: %d\\n", age, price, grade, name, isActive);
+    printf("Name: %s, Age: %d, Price: %.2f, Grade: %c\\n", name, age, price, grade);
     return 0;
 }</pre>
                 <button class="try-out-btn" data-code-id="variables-example">Try It Out</button>
 
                 <h4>Control Structures</h4>
-                <p>Control program flow with these constructs:</p>
+                <p>Manage program flow with these constructs:</p>
                 <h5>If-Else</h5>
                 <pre id="if-else-example">#include <stdio.h>
 
@@ -1538,13 +1615,13 @@ int main() {
                 <button class="try-out-btn" data-code-id="switch-example">Try It Out</button>
 
                 <h3>Pointers and Memory Management</h3>
-                <p>C's pointer system allows direct memory manipulation:</p>
+                <p>Pointers are a core feature of C, enabling direct memory manipulation:</p>
                 <pre id="pointer-example">#include <stdio.h>
 
 int main() {
     int x = 10;
     int *ptr = &x;
-    printf("Value: %d, Address: %p\\n", *ptr, ptr);
+    printf("Value: %d, Address: %p\\n", *ptr, (void*)ptr);
     return 0;
 }</pre>
                 <button class="try-out-btn" data-code-id="pointer-example">Try It Out</button>
@@ -1554,7 +1631,7 @@ int main() {
                 </div>
 
                 <h3>Handling User Input</h3>
-                <p>The <code>scanf</code> function simplifies user interaction:</p>
+                <p>Use <code>scanf</code> for user input:</p>
                 <pre id="input-example">#include <stdio.h>
 
 int main() {
@@ -1567,39 +1644,24 @@ int main() {
                 <button class="try-out-btn" data-code-id="input-example">Try It Out</button>
                 <div class="note-box">
                     <h4>Input Best Practice</h4>
-                    <p>Use <code>fgets</code> for safer string input to prevent buffer overflows. Specify input format in <code>scanf</code> carefully.</p>
+                    <p>Use <code>fgets</code> instead of <code>scanf</code> for strings to handle spaces and prevent buffer overflows.</p>
                 </div>
 
                 <h3>Arrays and Strings</h3>
                 <p>Manage data with arrays and null-terminated strings:</p>
                 <pre id="array-example">#include <stdio.h>
-#include <string.h>
 
 int main() {
     int numbers[] = {1, 2, 3, 4, 5};
-    char str[] = "Hello";
     for (int i = 0; i < 5; i++) {
         printf("%d ", numbers[i]);
     }
-    printf("\\nString: %s, Length: %lu\\n", str, strlen(str));
+    printf("\\n");
+    char str[] = "Hello";
+    printf("%s\\n", str);
     return 0;
 }</pre>
                 <button class="try-out-btn" data-code-id="array-example">Try It Out</button>
-
-                <h3>Functions</h3>
-                <p>Modularize code with functions:</p>
-                <pre id="function-example">#include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    int sum = add(5, 3);
-    printf("Sum: %d\\n", sum);
-    return 0;
-}</pre>
-                <button class="try-out-btn" data-code-id="function-example">Try It Out</button>
 
                 <h3>Structures</h3>
                 <p>Group related data with structures:</p>
@@ -1618,13 +1680,13 @@ int main() {
                 <button class="try-out-btn" data-code-id="struct-example">Try It Out</button>
 
                 <h3>File Handling</h3>
-                <p>Perform file operations with <code>FILE</code> (note: file operations may be limited in online environments):</p>
+                <p>Perform file operations with <code>stdio.h</code> (note: file operations may be limited in online environments):</p>
                 <pre id="file-example">#include <stdio.h>
 
 int main() {
     FILE *file = fopen("output.txt", "w");
     if (file == NULL) {
-        printf("Error opening file\\n");
+        printf("Error opening file!\\n");
         return 1;
     }
     fprintf(file, "Hello, C!");
@@ -1637,34 +1699,34 @@ int main() {
                 <h3>Frequently Asked Questions</h3>
                 <div class="faq-item">
                     <div class="faq-question">How do I handle user input in C?</div>
-                    <p>Use <code>scanf</code> or <code>fgets</code> for input. Validate inputs to prevent errors and buffer overflows.</p>
+                    <p>Use <code>scanf</code> or <code>fgets</code>. Prefer <code>fgets</code> for strings to avoid buffer overflows.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">C vs. C++: What's the difference?</div>
-                    <p>C is procedural, focusing on simplicity and low-level control, while C++ adds object-oriented features and standard libraries.</p>
+                    <p>C is procedural and offers low-level control, while C++ adds object-oriented features and the STL.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How do I compile C locally?</div>
-                    <p>Install a compiler like GCC, save code as <code>main.c</code>, then run <code>gcc main.c</code> and <code>./a.out</code> (Linux) or <code>a.exe</code> (Windows).</p>
+                    <p>Install GCC, save code as <code>main.c</code>, then run <code>gcc main.c -o main</code> and <code>./main</code>.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Why choose C?</div>
-                    <p>C's speed, low-level control, and portability make it ideal for operating systems, embedded systems, and performance-critical applications.</p>
+                    <p>C's performance, low-level control, and portability make it ideal for system programming, embedded systems, and performance-critical applications.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How can I debug C code?</div>
-                    <p>Use print statements, debuggers like GDB, or our compiler's real-time error output to identify and fix issues.</p>
+                    <p>Use <code>printf</code> for debugging, or tools like GDB and our compiler's real-time error output.</p>
                 </div>
 
                 <h3>Advanced C Concepts</h3>
                 <ul>
                     <li>
-                        <strong>Dynamic Memory Allocation</strong>: Manage memory with <code>malloc</code> and <code>free</code>.
+                        <strong>Dynamic Memory Allocation</strong>: Use <code>malloc</code> and <code>free</code>.
                         <pre id="dynamic-memory-example">#include <stdio.h>
 #include <stdlib.h>
 
 int main() {
-    int *arr = (int *)malloc(5 * sizeof(int));
+    int *arr = (int*)malloc(5 * sizeof(int));
     if (arr == NULL) {
         printf("Memory allocation failed\\n");
         return 1;
@@ -1686,51 +1748,40 @@ int add(int a, int b) { return a + b; }
 
 int main() {
     int (*func)(int, int) = add;
-    printf("Sum: %d\\n", func(5, 3));
+    printf("Sum: %d\\n", func(3, 4));
     return 0;
 }</pre>
                         <button class="try-out-btn" data-code-id="function-pointer-example">Try It Out</button>
                     </li>
-                    <li>
-                        <strong>Preprocessor Directives</strong>: Customize compilation.
-                        <pre id="preprocessor-example">#include <stdio.h>
-#define PI 3.14159
-
-int main() {
-    printf("Value of PI: %.5f\\n", PI);
-    return 0;
-}</pre>
-                        <button class="try-out-btn" data-code-id="preprocessor-example">Try It Out</button>
-                    </li>
                 </ul>
                 <div class="note-box">
                     <h4>Advanced Tip</h4>
-                    <p>Use <code>const</code> for immutable variables and check memory allocations to prevent leaks and crashes.</p>
+                    <p>Always check return values of <code>malloc</code> and free memory to prevent leaks.</p>
                 </div>
 
                 <h3>Common C Pitfalls and Solutions</h3>
                 <div class="note-box">
                     <h4>Watch Out!</h4>
                     <ul>
-                        <li><strong>Buffer Overflows</strong>: Use <code>fgets</code> instead of <code>gets</code> for safer input.</li>
-                        <li><strong>Memory Leaks</strong>: Always free dynamically allocated memory.</li>
-                        <li><strong>Uninitialized Variables</strong>: Initialize variables before use.</li>
-                        <li><strong>Pointer Errors</strong>: Check for <code>NULL</code> before dereferencing pointers.</li>
-                        <li><strong>Missing Return</strong>: Ensure <code>main</code> returns an integer.</li>
+                        <li><strong>Buffer Overflow</strong>: Use <code>fgets</code> instead of <code>gets</code>.</li>
+                        <li><strong>Uninitialized Pointers</strong>: Initialize pointers before use.</li>
+                        <li><strong>Memory Leaks</strong>: Free dynamically allocated memory.</li>
+                        <li><strong>Missing Break</strong>: Include <code>break</code> in switch cases.</li>
                     </ul>
                 </div>
 
                 <h3>C Standard Library Highlights</h3>
-                <p>Key libraries for powerful development:</p>
+                <p>Key libraries for development:</p>
                 <ul>
-                    <li><code>stdio.h</code>: Input/output functions like <code>printf</code>, <code>scanf</code>.</li>
-                    <li><code>stdlib.h</code>: Memory management and utility functions.</li>
+                    <li><code>stdio.h</code>: Input/output operations.</li>
+                    <li><code>stdlib.h</code>: Memory allocation, random numbers.</li>
                     <li><code>string.h</code>: String manipulation functions.</li>
-                    <li><code>math.h</code>: Mathematical functions like <code>sin</code>, <code>sqrt</code>.</li>
+                    <li><code>math.h</code>: Mathematical functions.</li>
+                    <li><code>time.h</code>: Time and date utilities.</li>
                 </ul>
 
                 <div class="ad-container horizontal">
-                    
+                    <span class="ad-label">Advertisement</span>
                 </div>
 
                 <h3>Learning Resources for C</h3>
@@ -1739,16 +1790,16 @@ int main() {
                     <ul>
                         <li><strong>Beginner Books</strong>: "C Programming Language" by Kernighan and Ritchie.</li>
                         <li><strong>Advanced Books</strong>: "C Programming: A Modern Approach" by K.N. King.</li>
-                        <li><strong>Courses</strong>: Coursera, Udemy, or freeCodeCamp.</li>
-                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank, or Codewars.</li>
-                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit, or C programming forums.</li>
+                        <li><strong>Courses</strong>: C tutorials on Coursera, Udemy.</li>
+                        <li><strong>Practice</strong>: Solve problems on LeetCode, HackerRank.</li>
+                        <li><strong>Community</strong>: Engage on Stack Overflow, Reddit.</li>
                     </ul>
                 </div>
             </section>
 
             <footer class="footer">
                 <div class="footer-links">
-                    <a href="/">Home</a>          
+                    <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
@@ -1794,6 +1845,7 @@ int main() {
             const clearButton = document.getElementById("clear-btn");
             const copyButton = document.getElementById("copy-btn");
             const copyOutputButton = document.getElementById("copy-output-btn");
+            const themeButton = document.getElementById("theme-btn");
             const outputElement = document.getElementById("output");
             const statusIndicator = document.querySelector(".status-indicator");
             const sidebar = document.getElementById("sidebar");
@@ -1806,6 +1858,7 @@ int main() {
             let currentPromptIndex = 0;
             let isRunning = false;
             let expectedInputCount = 0;
+            let currentTheme = "dracula";
 
             updateStatus("ready");
 
@@ -1814,8 +1867,24 @@ int main() {
                 sidebarOverlay.classList.toggle("open");
             }
 
+            function toggleTheme() {
+                currentTheme = currentTheme === "dracula" ? "default" : "dracula";
+                const themeLink = document.getElementById("codemirror-theme");
+                themeLink.href = currentTheme === "dracula" 
+                    ? "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+                    : "https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css";
+                editor.setOption("theme", currentTheme);
+                document.body.className = currentTheme === "dracula" ? "dark-theme" : "light-theme";
+                const originalText = themeButton.innerHTML;
+                themeButton.innerHTML = `<i class="fas fa-palette"></i> <span>${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}</span>`;
+                setTimeout(() => {
+                    themeButton.innerHTML = originalText;
+                }, 2000);
+            }
+
             sidebarToggle.addEventListener("click", toggleSidebar);
             sidebarOverlay.addEventListener("click", toggleSidebar);
+            themeButton.addEventListener("click", toggleTheme);
 
             tryOutButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1823,16 +1892,7 @@ int main() {
                     const codeElement = document.getElementById(codeId);
                     if (codeElement) {
                         const rawCode = codeElement.textContent.trim();
-
-                        const hasMain = /int\s+main\s*\(\s*\)/.test(rawCode);
-
-                        let finalCode = rawCode;
-
-                        if (!hasMain) {
-                            finalCode = `#include <stdio.h>\n\nint main() {\n    ${rawCode.split('\n').map(line => '    ' + line).join('\n')}\n    return 0;\n}`;
-                        }
-
-                        editor.setValue(finalCode);
+                        editor.setValue(rawCode);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         editor.focus();
                     }
@@ -1875,7 +1935,7 @@ int main() {
             }
 
             function countExpectedInputs(code) {
-                const inputRegex = /\bscanf\s*\(\s*".*?"\s*,/g;
+                const inputRegex = /\bscanf\s*\(/g;
                 let count = 0;
                 let match;
                 while ((match = inputRegex.exec(code)) !== null) {
@@ -1889,7 +1949,7 @@ int main() {
                 let prompts = [];
                 let match;
                 while ((match = promptRegex.exec(code)) !== null) {
-                    prompts.push(match[1].replace(/\\n/g, ''));
+                    prompts.push(match[1].replace(/\\n$/, ''));
                 }
                 return prompts;
             }
