@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, send_file
 from flask_compress import Compress
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -284,6 +284,11 @@ def apple_icon():
 def webmanifest():
     return send_from_directory('assets/favicon', 'site.webmanifest')
 
+
+@app.route('/download-resume', methods=['GET'])
+def download_resume():
+    resume = "/home/toolpix/mysite/resume/resume.pdf"
+    return send_file(resume,as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=False, threaded=True, host='0.0.0.0', port=5000)
